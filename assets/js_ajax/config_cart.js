@@ -39,6 +39,7 @@ $(document).ready(function () {
 				$("#detail_cart").html(data);
 				if ($("#cekrowcart").val() != "0" || $("#cekrowcart").val() != null) {
 					$("#checkout-btn").show();
+					$("#notif-cart").show();
 				}
 				subTotal();
 				successMsg();
@@ -59,6 +60,7 @@ $(document).ready(function () {
 				$("#detail_checkout").html(data);
 				if ($("#cekrowcart").val() == "0" || $("#cekrowcart").val() == null) {
 					$("#checkout-btn").hide();
+					$("#notif-cart").hide();
 				}
 				subTotal();
 				successMsg();
@@ -92,6 +94,8 @@ $(document).ready(function () {
 		$('#totalorder-clone').val(final_result);
 		$('#totalorder').html(final_result);
 	}
+
+
 
 });
 

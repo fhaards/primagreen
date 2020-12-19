@@ -102,19 +102,19 @@
                 <div class="flex-1"></div>
                 <div class="flex-1"></div>
                 <div class="flex-1 flex flex-col">
-                    <div class="flex flex-row py-1 my-1 border-b border-gray-500">
+                    <div class="flex flex-row py-1 my-1 border-b border-gray-500 p-2">
                         <div class="flex-1">Items</div>
                         <div class="flex-1 text-right">Rp.<span id="sub-total-clone"></span></div>
                     </div>
-                    <div class="flex flex-row py-1 my-1 border-b border-gray-500">
+                    <div class="flex flex-row py-1 my-1 border-b border-gray-500 p-2">
                         <div class="flex-1">Shipments</div>
                         <div class="flex-1 text-right">Rp. 90909</div>
                     </div>
-                    <div class="flex flex-row py-1 my-1 border-b border-gray-500">
+                    <div class="flex flex-row py-1 my-1 p-2">
                         <div class="flex-1">Tax</div>
                         <div class="flex-1 text-right">Rp. <span id="taxes"></span></div>
                     </div>
-                    <div class="flex flex-row py-1 my-1 float-right">
+                    <div class="flex flex-row py-1 my-1 float-right border  border-green-500 p-2">
                         <div class="flex-1 font-bold text-gray-900">Total</div>
                         <div class="flex-1 text-right">Rp. <span id="totalorder"></span></div>
                     </div>
