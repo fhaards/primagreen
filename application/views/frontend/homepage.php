@@ -1,0 +1,176 @@
+<section class="homepage-banner w-full mt-32 my-4 mx-auto flex pt-12 md:pt-0 md:items-center bg-cover bg-right">
+    <div class="container mx-auto">
+        <div class="flex flex-col w-full lg:w-1/3 justify-center items-start lg:p-6 tracking-wide">
+            <h1 class="text-white font-bold lg:text-4xl text-3xl my-4 px-6 rounded-lg tracking-wide">Time to bloom youre house with plants</h1>
+            <h4 class="text-white p-6 rounded-lg">
+                Studies have also proven that indoor plants improve concentration and productivity , reduce stress levels and boost your mood.
+                <a href="<?= base_url(); ?>" class="block justify-between px-4 py-2 my-4 text-sm uppercase font-bold leading-5 text-green-500 transition-colors duration-150 bg-green-100 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-200 focus:border-green-400 focus:shadow-outline-green">
+                    Go to store
+                </a>
+            </h4>
+        </div>
+    </div>
+</section>
+
+<!-- NEW ITEMS -->
+<section class="w-full mx-auto py-8 my-8">
+    <div class="container flex items-center flex-wrap pt-4 pb-2">
+
+        <nav id="new-items" class="w-full top-0 py-1">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+                <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl" href="#">
+                    New Items
+                </a>
+            </div>
+        </nav>
+
+        <?php foreach ($newItems as $newItemsValue) { ?>
+            <?php
+            $newNmProduct = strtolower(str_replace(' ', '-', $newItemsValue['nm_barang']));
+            $checkImage1IfEmpty = $newItemsValue['gambar'];
+            if ($checkImage1IfEmpty == 'default_img.jpg') {
+                $urlImage = 'default_img.jpg';
+            } else {
+                $urlImage = $newItemsValue['sku'] . '/' . $newItemsValue['gambar'];
+            }
+            ?>
+            <div class="w-1/2 md:w-1/3 xl:w-1/4 lg:h-full p-4 flex flex-col">
+                <div class="h-2/3">
+                    <a href="<?php echo site_url('detail/'.$newItemsValue['id_barang'].'/'. $newNmProduct); ?>" class="border-solid  ">
+                        <div class="relative w-full lg:h-48 h-20 rounded-sm md:block">
+                            <img class="object-cover w-full h-full rounded-lg duration-150 hover:grow  hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
+                        </div>
+
+                        <div class="flex h-16 lg:h-12 mb-4 space-x-2">
+                            <div class="flex-1 pt-4">
+                                <p class="text-gray-900 font-bold text-xs lg:text-sm"><?= $newItemsValue['nm_barang']; ?></p>
+                            </div>
+                            <div class="pt-4">
+                                <p class="text-gray-600 font-bold text-xs lg:text-sm"><?= number_format($newItemsValue['harga']); ?></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="h-1/3 flex lg:flex-row lg:flex-wrap space-x-2">
+                    <div class="flex-0">
+                        <input name="quantity" type="number" id="<?= $newItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 lg:py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
+                    </div>
+                    <div class="flex-1">
+                        <button data-produkid="<?= $newItemsValue['id_barang']; ?>" data-produknama="<?= $newItemsValue['nm_barang']; ?>" data-produkharga="<?= $newItemsValue['harga']; ?>" class="add_cart flex space-x-2 shadow-lg lg:w-full px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                            <div class="mx-auto flex space-x-2">
+                                <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span class="lg:text-sm text-xs lg:block hidden">Add to Cart</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+
+    </div>
+</section>
+
+<!-- STORE ITEMS -->
+<section class="w-full mx-auto bg-white  pb-8">
+    <div class="container flex items-center flex-wrap pt-4 pb-8">
+
+        <nav id="store" class="w-full top-0 py-1">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+
+                <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+                    Store
+                </a>
+                <div class="" id="store-nav-content">
+                </div>
+            </div>
+        </nav>
+
+        <?php foreach ($someItems as $someItemsValue) { ?>
+            <?php
+            $checkImage1IfEmpty = $someItemsValue['gambar'];
+            if ($checkImage1IfEmpty == 'default_img.jpg') {
+                $urlImage = 'default_img.jpg';
+            } else {
+                $urlImage = $someItemsValue['sku'] . '/' . $someItemsValue['gambar'];
+            }
+            ?>
+            
+            <div class="w-1/2 md:w-1/3 xl:w-1/4 lg:h-full p-4 flex flex-col">
+                <div class="h-2/3">
+                    <a href="<?php echo site_url('store/detail/' . $someItemsValue['id_barang']); ?>" class="border-solid  ">
+                        <div class="relative w-full lg:h-48 h-20 rounded-sm md:block">
+                            <img class="object-cover w-full h-full rounded-lg duration-150 hover:grow  hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
+                        </div>
+
+                        <div class="flex h-16 lg:h-12 mb-4 space-x-2">
+                            <div class="flex-1 pt-4">
+                                <p class="text-gray-900 font-bold text-xs lg:text-sm"><?= $someItemsValue['nm_barang']; ?></p>
+                            </div>
+                            <div class="pt-4">
+                                <p class="text-gray-600 font-bold text-xs lg:text-sm"><?= number_format($someItemsValue['harga']); ?></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="h-1/3 flex lg:flex-row lg:flex-wrap space-x-2">
+                    <div class="flex-0">
+                        <input name="quantity" type="number" id="<?= $someItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 lg:py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
+                    </div>
+                    <div class="flex-1">
+                        <button data-produkid="<?= $someItemsValue['id_barang']; ?>" data-produknama="<?= $someItemsValue['nm_barang']; ?>" data-produkharga="<?= $someItemsValue['harga']; ?>" class="add_cart flex space-x-2 shadow-lg w-full px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                            <div class="mx-auto flex space-x-2">
+                                <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span class="lg:text-sm text-xs lg:block hidden">Add to Cart</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="w-1/2 md:w-1/3 xl:w-1/4 lg:h-full p-4 flex flex-col">
+                <div class="h-2/3">
+                    <a href="<?php echo site_url('store/detail/' . $someItemsValue['id_barang']); ?>" class="border-solid  ">
+                        <div class="relative w-full lg:h-48 h-20 rounded-sm md:block">
+                            <img class="object-cover w-full h-full rounded-lg duration-150 hover:grow  hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
+                        </div>
+
+                        <div class="flex h-16 lg:h-12 mb-4 space-x-2">
+                            <div class="flex-1 pt-4">
+                                <p class="text-gray-900 font-bold text-xs lg:text-sm"><?= $someItemsValue['nm_barang']; ?></p>
+                            </div>
+                            <div class="pt-4">
+                                <p class="text-gray-600 font-bold text-xs lg:text-sm"><?= number_format($someItemsValue['harga']); ?></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="h-1/3">
+                    <button data-produkid="<?= $newItemsValue['id_barang']; ?>" class="flex space-x-2 shadow-lg w-full px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                        <div class="mx-auto flex space-x-2">
+                            <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span class="lg:text-sm text-xs">Add to Cart</span>
+                        </div>
+                    </button>
+                </div>
+            </div> -->
+
+        <?php } ?>
+
+    </div>
+    <div class="flex flex-col flex-wrap space-y-4 md:flex-row md:items-end md:space-x-4">
+        <div class='flex-1'></div>
+        <div>
+            <a href="<?php echo site_url('company/add-randomly/'); ?>" class="block uppercase shadow-xs px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
+                <p class="tracking-widest"> Go to store </p>
+            </a>
+        </div>
+        <div class='flex-1'></div>
+    </div>
+</section>

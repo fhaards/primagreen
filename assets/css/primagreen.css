@@ -1,0 +1,74 @@
+@keyframes slide-nav-down {
+	100% {
+		transform: translateY(0);
+	}
+}
+@-webkit-keyframes slideRight {
+    100% { right: 0; }
+}
+
+@keyframes slideRight {
+    100% { right: 0; }
+}
+
+html{
+    font-family:'Nunito' !important;
+    font-weight: 400;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+form label{
+    font-family:'Nunito' !important;
+    font-weight: 600;
+}
+
+#frontend-header.is-floating {
+	position: sticky;
+	top: 0;
+	transform: translateY(-100%);
+	animation: slide-nav-down 0.3s ease;
+	animation-fill-mode: forwards;
+}
+.homepage-banner{
+	max-width:1600px; 
+	height: 35rem; 
+	background: url(../image/bg4.jpg)no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+	/* no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; */
+}
+.homepage-banner h1{
+	font-family: 'DM Serif Text', serif;
+}
+.success-banner{
+	background: url(../image/success_bg.svg)no-repeat right; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+}
+.page-title{
+	font-family: 'DM Serif Text', serif;
+}
+/* #show-cart{
+	display:none;
+}
+#show-cart.show{
+	display:block;
+} */
+
+/* .shop-menu {
+	display: none;
+}
+
+.show-shop:hover + .shop-menu {
+	display: block;
+} */
