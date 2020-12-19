@@ -117,7 +117,7 @@ $route['about-us'] = 'Controller_f_about/index';
 // $route['store/list'] = 'Controller_f_store/showAll';
 $route['store/show-all-items'] = 'Controller_f_store/index';
 $route['store/(:any)'] = 'Controller_f_store/showByType/$1';
-$route['detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
+$route['store/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
 
 /*///////// Cart /////////////*/
 $route['cart/add-to-cart'] = 'Controller_f_cart/addToCart';

@@ -60,10 +60,12 @@
                 <div class="container flex items-center flex-wrap">
 
                     <?php foreach ($getItems as $getItemsValue) { ?>
+                        <?php $newNmProduct = strtolower(str_replace(' ', '-', $getItemsValue['nm_barang'])); ?>
 
                         <div class="w-1/2 md:w-1/3 xl:w-1/4 lg:h-full p-4 flex flex-col">
                             <div class="h-2/3">
-                                <a href="<?php echo site_url('store/detail/' . $getItemsValue['id_barang']); ?>" class="border-solid  ">
+                                
+                                <a href="<?php echo site_url('store/detail/'.$getItemsValue['id_barang'].'/'. $newNmProduct); ?>" class="border-solid  ">
                                     <div class="relative w-full lg:h-48 h-20 rounded-sm md:block">
                                         <img class="object-cover w-full h-full rounded-lg duration-150 hover:grow  hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' .  $getItemsValue['sku'] . '/' . $getItemsValue['gambar']; ?>">
                                     </div>

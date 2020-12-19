@@ -48,7 +48,7 @@ class Controller_f_cart extends CI_Controller
                 $output .= '
                     <tr class="border-b border-gray-500">
                         <td class="py-2"><label class="font-bold text-gray-800">' . $items['name'] . '</label></td>
-                        <td class="p-2">' . $items['qty'] . '</td>
+                        <td class="p-2"><label class="font-bold text-gray-800">' . $items['qty'] . '</label></td>
                         <td class="float_right text-right"><button type="button" id="' . $items['rowid'] . '" class="hapus_cart text-center px-auto w-5 h-5 text-xs font-medium text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-full active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">x</button></td>
                     </tr>
                 ';
@@ -60,7 +60,7 @@ class Controller_f_cart extends CI_Controller
                             Subtotal
                         </td>
                         <td></td>
-                        <td class="text-gray-900 font-semibold py-4 float-right text-right">' . 'Rp ' . number_format($this->cart->total()) . '</td>
+                        <td class="text-gray-900 font-bold py-4 float-right text-right">' . 'Rp ' . number_format($this->cart->total()) . '</td>
                     </tr>';
         }
 

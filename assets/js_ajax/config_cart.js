@@ -1,11 +1,20 @@
-function tes(element) {
-	console.log(element);
-	console.log(element.value);
-}
 
 $(document).ready(function () {
 	subTotal();
-	calculateCheckout();
+	$(".checkout-final-btn").hide();
+
+	// calculateCheckout();
+
+	$('.selectkurir').click(function(){
+		setKurir($(this).val());
+	});
+
+	function setKurir(value) {
+		$("#setkurir").html(value);
+		$("#setkurir-clone").val(value);
+		calculateCheckout();
+
+	}
 
 	function successMsg() {
 		swal({
@@ -26,14 +35,7 @@ $(document).ready(function () {
 		$(".show-cart").animate({ width: "toggle" }, 100);
 	});
 
-	$(".selectkurir").change(function () {
-		calculateCheckout();
-		var setValHargaKurir = $(".setkurir input[type=radio]:checked").val();
-		if ($(this).prop("checked")) {
-			$("#setkurir-clone").val(setValHargaKurir);
-			$("#setkurir").html(setValHargaKurir);
-		}
-	});
+
 
 	$(".add_cart").click(function () {
 		var produk_id = $(this).data("produkid");
@@ -57,6 +59,7 @@ $(document).ready(function () {
 				}
 				subTotal();
 				successMsg();
+				
 			},
 		});
 	});
@@ -97,23 +100,40 @@ $(document).ready(function () {
 	}
 
 	function calculateCheckout() {
+		var isCourierChoosen = !isNaN(parseInt($("#setkurir-clone").val()));
 		var set_subtotal = parseInt($("#sub-total").val());
 		var set_taxes = 4 / 100;
 		var res = parseInt(set_subtotal * set_taxes);
-		var set_courier = parseInt($("#setkurir-clone").val());
-
-		// console.log($("#setkurir-clone").val());
-		// console.log($("#setkurir-clone"));
-
+		var set_courier = isCourierChoosen ? parseInt($("#setkurir-clone").val()) : 0;
 		var total_sub = parseInt(set_subtotal + set_courier);
 		var total = parseInt(total_sub + res);
 		var final_result = parseInt(total, 10);
 
+		// console.log( final_result);
+
 		$("#taxes").html(res);
 		$("#totalorder-clone").val(final_result);
 		$("#totalorder").html(final_result);
+		if(set_courier != 0){
+			$(".checkout-final-btn").show();
+			$(".sel-courier ").hide();
+		} 
 	}
 });
+
+// function tes(element) {
+// 	console.log(element);
+// 	console.log(element.value);
+// }
+
+	// $(".selectkurir").change(function () {
+	// 	calculateCheckout();
+	// 	var setValHargaKurir = $(".setkurir input[type=radio]:checked").val();
+	// 	if ($(this).prop("checked")) {
+	// 		$("#setkurir-clone").val(setValHargaKurir);
+	// 		$("#setkurir").html(setValHargaKurir);
+	// 	}
+	// });
 
 // $('input:radio').each(function(){
 // 	var setValHargaKurir = $('.select-kurir').val();

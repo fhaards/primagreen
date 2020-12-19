@@ -145,10 +145,10 @@
 
             <div class="flex text-center space-x-4 border-solid border-2 p-5 border-lg rounded-lg border-green-200 mt-8">
                 <div class="flex space-x-2">
-                    <input type="number" name="qty" placeholder="QTY" class="block w-20 text-sm font-bold leading-5 px-4dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
+                    <input type="number" name="qty"  id="<?= $getDetail['id_barang']; ?>" value="1" placeholder="QTY" class="block w-20 text-sm font-bold leading-5 px-4dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
                 </div>
 
-                <button class="flex space-x-2 shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                <button data-produkid="<?= $getDetail['id_barang']; ?>" data-produknama="<?= $getDetail['nm_barang']; ?>" data-produkharga="<?= $getDetail['harga']; ?>" class="add_cart flex space-x-2 shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                     <div class="mx-auto flex space-x-2">
                         <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
