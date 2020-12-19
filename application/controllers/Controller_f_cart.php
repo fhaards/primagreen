@@ -111,6 +111,12 @@ class Controller_f_cart extends CI_Controller
         }
     }
 
+    function loadCourier()
+    {
+        $data = $this->model_courier->getAllCourier();
+        echo json_encode($data);
+    }
+
     function deleteCartItems()
     {
         $data = array(

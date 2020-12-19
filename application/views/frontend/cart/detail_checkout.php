@@ -64,10 +64,11 @@
 
                     <div class="flex flex-col lg:w-2/3 w-3/3 float-right">
                         <div class="flex mt-2 text-gray-800 py-2 ">Select Courier</div>
+
                         <?php foreach ($getCourier as $getCouriers) : ?>
                             <div class="flex w-full mt-2 border border-gray-500 rounded-md p-2">
-                                <div class="px-2">
-                                    <input type="radio" name="kurir">
+                                <div class="px-2 setkurir">
+                                    <input type="radio" name="hargakurir" onClick="tes(this)" class="selectkurir" value="<?= $getCouriers['harga_kurir']; ?>">
                                 </div>
                                 <div class="flex-1 flex flex-col">
                                     <span class="font-bold text-left"><?= $getCouriers['nm_kurir']; ?></span>
@@ -80,6 +81,7 @@
                                 </div>
                             </div>
                         <?php endforeach; ?>
+
                     </div>
 
                 </div>
@@ -92,11 +94,11 @@
                     </tr>
                 </thead>
             </table>
-            
+
             <!-- KALKULASI -->
             <input hidden type="number" value="" name="subtotal" id="sub-total"> <br>
             <input hidden type="number" value="" name="totalorder" id="totalorder-clone"> <br>
-
+            <input type="number" value="" name="setkurir" id="setkurir-clone"> <br>
 
             <div class="flex w-full lg:flex-row flex-col">
                 <div class="flex-1"></div>
@@ -108,7 +110,7 @@
                     </div>
                     <div class="flex flex-row py-1 my-1 border-b border-gray-500 p-2">
                         <div class="flex-1">Shipments</div>
-                        <div class="flex-1 text-right">Rp. 90909</div>
+                        <div class="flex-1 text-right"><span id="setkurir"></span></div>
                     </div>
                     <div class="flex flex-row py-1 my-1 p-2">
                         <div class="flex-1">Tax</div>
@@ -121,7 +123,7 @@
                 </div>
             </div>
 
-            
+
         </div>
     </div>
 </section>

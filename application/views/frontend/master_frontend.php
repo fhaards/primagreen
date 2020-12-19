@@ -78,6 +78,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             });
 
         });
+
     </script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_cart.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_page.js'; ?>" language="javascript"></script>

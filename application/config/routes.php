@@ -126,6 +126,7 @@ $route['cart/load-cart'] = 'Controller_f_cart/loadCart';
 $route['cart/checkout-detail'] = 'Controller_f_cart/loadCheckoutDetail';
 $route['cart/show-cart'] = 'Controller_f_cart/showCartJson';
 $route['cart/show-subtotal'] = 'Controller_f_cart/subTotalCartJson';
+$route['cart/show-courier'] = 'Controller_f_cart/loadCourier';
 
 
 /*///////// Profile /////////////*/
