@@ -1,19 +1,37 @@
-
 $(document).ready(function () {
 	subTotal();
 	$(".checkout-final-btn").hide();
 
 	// calculateCheckout();
-
-	$('.selectkurir').click(function(){
+	$(".selectkurir").click(function () {
 		setKurir($(this).val());
 	});
+
+	$(".selectedkurir").click(function () {
+		$(".selectedkurir").addClass("shadow-md bg-gray-100").removeClass("bg-blue-600 text-white");
+		$(this).removeClass("shadow-md bg-gray-100").addClass("bg-blue-600 text-white");
+	});
+
+	$(".selectkurir:checked").parent().removeClass("shadow-md");
+
+	// $(".selectkurir").change(function () {
+	// 	$(this).find(".selectedkurir").addClass("shadow-md");
+	// 	if ($(this).is(":checked")) {
+	// 		$(this).parent().removeClass("shadow-md");
+	// 	} else {
+	// 		$(this).parent().addClass("shadow-md");
+	// 	}
+	// });
+
+	// $('.selectkurir').change(function () {
+	// 	$('#selectedkurir').removeClass('shadow-md');
+	// 	$('#selectedkurir').toggleClass('shadow-md');
+	// });
 
 	function setKurir(value) {
 		$("#setkurir").html(value);
 		$("#setkurir-clone").val(value);
 		calculateCheckout();
-
 	}
 
 	function successMsg() {
@@ -34,8 +52,6 @@ $(document).ready(function () {
 	$(".close-cart").click(function () {
 		$(".show-cart").animate({ width: "toggle" }, 100);
 	});
-
-
 
 	$(".add_cart").click(function () {
 		var produk_id = $(this).data("produkid");
@@ -59,7 +75,6 @@ $(document).ready(function () {
 				}
 				subTotal();
 				successMsg();
-				
 			},
 		});
 	});
@@ -92,11 +107,26 @@ $(document).ready(function () {
 			async: true,
 			dataType: "json",
 			success: function (data) {
-				$("#sub-total-clone").html(data.subtotal);
+				var setsubtotal = addCommas(data.subtotal);
+				$("#sub-total-clone").html(setsubtotal);
 				$("#sub-total").val(data.subtotal);
 				calculateCheckout();
 			},
 		});
+	}
+
+	function addCommas(numberString) {
+		var resultString = numberString + "",
+			x = resultString.split("."),
+			x1 = x[0],
+			x2 = x.length > 1 ? "." + x[1] : "",
+			rgxp = /(\d+)(\d{3})/;
+
+		while (rgxp.test(x1)) {
+			x1 = x1.replace(rgxp, "$1" + "," + "$2");
+		}
+
+		return x1 + x2;
 	}
 
 	function calculateCheckout() {
@@ -104,20 +134,24 @@ $(document).ready(function () {
 		var set_subtotal = parseInt($("#sub-total").val());
 		var set_taxes = 4 / 100;
 		var res = parseInt(set_subtotal * set_taxes);
-		var set_courier = isCourierChoosen ? parseInt($("#setkurir-clone").val()) : 0;
+		var set_courier = isCourierChoosen
+			? parseInt($("#setkurir-clone").val())
+			: 0;
 		var total_sub = parseInt(set_subtotal + set_courier);
 		var total = parseInt(total_sub + res);
 		var final_result = parseInt(total, 10);
 
+		var clone_res = addCommas(res);
+		var clone_final_result = addCommas(final_result);
 		// console.log( final_result);
 
-		$("#taxes").html(res);
+		$("#taxes").html(clone_res);
 		$("#totalorder-clone").val(final_result);
-		$("#totalorder").html(final_result);
-		if(set_courier != 0){
+		$("#totalorder").html(clone_final_result);
+		if (set_courier != 0) {
 			$(".checkout-final-btn").show();
 			$(".sel-courier ").hide();
-		} 
+		}
 	}
 });
 
@@ -126,14 +160,14 @@ $(document).ready(function () {
 // 	console.log(element.value);
 // }
 
-	// $(".selectkurir").change(function () {
-	// 	calculateCheckout();
-	// 	var setValHargaKurir = $(".setkurir input[type=radio]:checked").val();
-	// 	if ($(this).prop("checked")) {
-	// 		$("#setkurir-clone").val(setValHargaKurir);
-	// 		$("#setkurir").html(setValHargaKurir);
-	// 	}
-	// });
+// $(".selectkurir").change(function () {
+// 	calculateCheckout();
+// 	var setValHargaKurir = $(".setkurir input[type=radio]:checked").val();
+// 	if ($(this).prop("checked")) {
+// 		$("#setkurir-clone").val(setValHargaKurir);
+// 		$("#setkurir").html(setValHargaKurir);
+// 	}
+// });
 
 // $('input:radio').each(function(){
 // 	var setValHargaKurir = $('.select-kurir').val();

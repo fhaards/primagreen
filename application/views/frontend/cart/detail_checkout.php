@@ -33,7 +33,7 @@
             <table class="w-full">
                 <thead>
                     <tr>
-                        <th colspan="3" class="text-gray-600 bg-gray-200 p-2">Shipments</th>
+                        <th colspan="3" class="text-white bg-gray-500 p-2">Shipments</th>
                     </tr>
                 </thead>
             </table>
@@ -68,22 +68,25 @@
 
                     <div class="flex flex-col lg:full w-3/3 float-right">
                         <div class="flex mt-2 text-gray-800 py-2 ">Select Courier</div>
-
                         <?php foreach ($getCourier as $getCouriers) : ?>
-                            <div class="flex w-full my-2 bg-gray-200 shadow-md border border-gray-300 rounded-md p-2">
-                                <div class="px-2 setkurir">
-                                    <input type="radio" name="hargakurir" class="selectkurir" value="<?= $getCouriers['harga_kurir']; ?>">
-                                </div>
-                                <div class="flex-1 flex flex-col">
+
+                            <label id="selectedkurir" class="selectedkurir flex w-full my-2 shadow-md bg-gray-100 rounded-md p-2 hover:bg-blue-400 hover:shadow-sm">
+                                <!-- <div class="flex items-center mx-auto px-5 setkurir w-1/5"> -->
+                                    <input type="radio" name="hargakurir" class="selectkurir mr-4" value="<?= $getCouriers['harga_kurir']; ?>">
+                                <!-- </div> -->
+                                <div class="w-2/5 flex flex-col">
                                     <span class="font-bold text-left"><?= $getCouriers['nm_kurir']; ?></span>
-                                    <span class="text-left font-semibold text-gray-600">
+                                    <span class="text-left font-semibold ">
                                         Estimated Time <?= $getCouriers['estimasi']; ?> Days
                                     </span>
                                 </div>
-                                <div class="flex-1 font-semibold text-gray-600">
-                                    Price : Rp. <?= number_format($getCouriers['harga_kurir']); ?>
+                                <div class="w-2/5 font-semibold flex flex-col">
+                                    <span class="font-bold text-left">Price :</span>
+                                    <span class="text-left font-semibold">
+                                        Rp. <?= number_format($getCouriers['harga_kurir']); ?>
+                                    </span>
                                 </div>
-                            </div>
+                            </label>
                         <?php endforeach; ?>
 
                     </div>
@@ -94,7 +97,7 @@
             <table class="w-full">
                 <thead>
                     <tr>
-                        <th colspan="3" class="text-gray-600 bg-gray-200 p-2">Payments</th>
+                        <th colspan="3" class="text-white bg-gray-500 p-2">Payments</th>
                     </tr>
                 </thead>
             </table>
@@ -109,23 +112,35 @@
                 <div class="flex-1"></div>
                 <div class="flex-1 flex flex-col">
                     <div class="flex flex-row py-1 my-1 border-b border-gray-500 p-2">
-                        <div class="flex-1">Items</div>
-                        <div class="flex-1 text-right">Rp. <span id="sub-total-clone"></span></div>
+                        <div class="lg:w-2/3 w-1/3 font-semibold text-gray-600">Items</div>
+                        <div class="lg:w-1/3 w-2/3 grid grid-cols-2">
+                            <span class="font-semibold text-gray-600">Rp.</span>
+                            <span id="sub-total-clone" class="text-right font-semibold text-gray-600"></span>
+                        </div>
                     </div>
                     <div class="flex flex-row py-1 my-1 border-b border-gray-500 p-2">
-                        <div class="flex-1">Shipments</div>
-                        <div class="flex-1 text-right">Rp. <span id="setkurir"></span></div>
+                        <div class="lg:w-2/3 w-1/3  font-semibold text-gray-600">Shipments</div>
+                        <div class="lg:w-1/3 w-2/3 grid grid-cols-2">
+                            <span class="font-semibold text-gray-600">Rp.</span>
+                            <span id="setkurir" class="text-right font-semibold text-gray-600"></span>
+                        </div>
                     </div>
                     <div class="flex flex-row py-1 my-1 p-2">
-                        <div class="flex-1">Tax</div>
-                        <div class="flex-1 text-right">Rp. <span id="taxes"></span></div>
+                        <div class="lg:w-2/3 w-1/3  font-semibold text-gray-600">Tax</div>
+                        <div class="lg:w-1/3 w-2/3  grid grid-cols-2">
+                            <span class="font-semibold text-gray-600">Rp.</span>
+                            <span id="taxes" class="text-right font-semibold text-gray-600"></span>
+                        </div>
                     </div>
                     <div class="flex flex-row py-1 my-1 float-right border  border-green-500 p-2">
-                        <div class="flex-1 font-bold text-gray-900">Total</div>
-                        <div class="flex-1 text-right">Rp. <span id="totalorder"></span></div>
+                        <div class="lg:w-2/3 w-1/3 font-bold text-gray-900">Total</div>
+                        <div class="lg:w-1/3 w-2/3 grid grid-cols-2 font-bold text-gray-900">
+                            <span class="w-1/3">Rp.</span>
+                            <span id="totalorder" class="text-right"></span>
+                        </div>
                     </div>
                     <div class="flex flex-row py-1 my-1">
-                        <span class="sel-courier font-bold text-gray-500 uppercase">Before Checkout , Select a Courier First !</span>
+                        <span class="sel-courier font-bold text-green-500 uppercase">Before Checkout , Select a Courier First !</span>
                         <button class="checkout-final-btn flex w-full shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-green-500 rounded-md active:bg-green-600 hover:shadow-none hover:bg-green-600 focus:outline-none focus:shadow-outline-green">
                             <div class="flex mx-auto space-x-2 items-center">
                                 <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
