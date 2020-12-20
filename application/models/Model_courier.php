@@ -16,4 +16,12 @@ class Model_courier extends CI_Model
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+	public function getCourierById($id){
+		$this->db->select('*');
+		$this->db->from('kurir');
+		$this->db->where('id_kurir', $id);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
 }

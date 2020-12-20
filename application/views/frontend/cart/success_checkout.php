@@ -1,5 +1,5 @@
-<section class="w-full mx-auto mt-32 py-4 my-4">
-    <div class="success-banner w-full flex lg:flex-row flex-col py-8 mt-32 ">
+<section class="w-full mx-auto mt-4 py-4 my-4 mt-32">
+    <div class="success-banner w-full flex lg:flex-row flex-col py-8">
         <div class="flex flex-1">
             <div class="w-full py-2">
                 <h2 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-900 text-4xl" href="#">
@@ -15,7 +15,7 @@
             <div class="bg-green-500 p-10 rounded-lg">
                 <div class="flex flex-col">
                     <span class="font-bold text-white text-1xl">This is youre order code</span>
-                    <span class="font-bold text-white text-2xl">8976928080-92-134213</span>
+                    <span class="font-bold text-white text-2xl"><?= $getNoPemesanan; ?></span>
                 </div>
             </div>
             <button class="shadow-lg px-4 py-2 my-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">

@@ -126,9 +126,11 @@ $route['cart/load-cart'] = 'Controller_f_cart/loadCart';
 $route['cart/show-cart'] = 'Controller_f_cart/showCartJson';
 $route['cart/show-subtotal'] = 'Controller_f_cart/subTotalCartJson';
 $route['cart/show-courier'] = 'Controller_f_cart/loadCourier';
+$route['cart/show-courierbyid/(:any)'] = 'Controller_f_cart/loadCourierById/$1';
 
 /*///////// Checkout /////////////*/
 $route['cart/checkout-detail'] = 'Controller_f_cart/loadCheckoutDetail';
+$route['cart/checkout-finish/(:any)'] = 'Controller_f_cart/loadCheckoutFinish/$1';
 $route['cart/checkout'] = 'Controller_f_cart/checkOut';
 
 /*///////// Profile /////////////*/

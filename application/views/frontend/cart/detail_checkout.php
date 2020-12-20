@@ -72,7 +72,7 @@
 
                             <label id="selectedkurir" class="selectedkurir flex w-full my-2 shadow-md bg-gray-100 rounded-md p-2 hover:bg-blue-400 hover:shadow-sm">
                                 <!-- <div class="flex items-center mx-auto px-5 setkurir w-1/5"> -->
-                                <input type="radio" name="hargakurir" class="selectkurir mr-4" value="<?= $getCouriers['harga_kurir']; ?>">
+                                <input type="radio" name="hargakurir" class="selectkurir mr-4" value="<?= $getCouriers['id_kurir']; ?>">
                                 <!-- </div> -->
                                 <div class="w-2/5 flex flex-col">
                                     <span class="font-bold text-left"><?= $getCouriers['nm_kurir']; ?></span>
@@ -107,7 +107,8 @@
             <input hidden type="text" name="user_checkout" value="<?= getUserData()['id_user']; ?>">
             <input hidden type="number" value="" name="subtotal" id="sub-total"> <br>
             <input hidden type="number" value="" name="totalorder" id="totalorder-clone"> <br>
-            <input hidden type="number" name="harga_kurir" value="" name="setkurir" id="setkurir-clone"> <br>
+            <input hidden type="number" name="harga_kurir" value="" id="setkurir-harga"> <br>
+            <input hidden type="number" name="id_kurir" value="" id="setkurir-clone"> <br>
 
             <div class="flex w-full lg:flex-row flex-col">
                 <div class="flex-1"></div>
@@ -124,7 +125,7 @@
                         <div class="lg:w-2/3 w-1/3  font-semibold text-gray-600">Shipments</div>
                         <div class="lg:w-1/3 w-2/3 grid grid-cols-2">
                             <span class="font-semibold text-gray-600">Rp.</span>
-                            <span id="setkurir" class="text-right font-semibold text-gray-600"></span>
+                            <span id="setkurir-harga-clone" class="text-right font-semibold text-gray-600"></span>
                         </div>
                     </div>
                     <div class="flex flex-row py-1 my-1 p-2">

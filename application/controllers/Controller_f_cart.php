@@ -12,6 +12,7 @@ class Controller_f_cart extends CI_Controller
         $this->load->model('model_product');
         $this->load->model('model_f_homepage');
         $this->load->model('model_courier');
+        $this->load->model('model_order');
         $this->load->helper('array');
         $this->load->library('form_validation');
         $this->load->helper('url');
@@ -47,8 +48,8 @@ class Controller_f_cart extends CI_Controller
                 $no++;
                 $output .= '
                     <tr class="border-b border-gray-500">
-                        <input type="text" value="' . $items['id'] . '" name="id_barang[]">
-                        <input type="text" value="' . $items['qty'] . '" name="qty[]">
+                        <input hidden type="text" value="' . $items['id'] . '" name="id_barang[]">
+                        <input hidden type="text" value="' . $items['qty'] . '" name="qty[]">
                         <td class="py-2"><label class="font-bold text-gray-800">' . $items['name'] . '</label></td>
                         <td class="p-2"><label class="font-bold text-gray-800">' . $items['qty'] . '</label></td>
                         <td class="float_right text-right"><button type="button" id="' . $items['rowid'] . '" class="hapus_cart text-center px-auto w-5 h-5 text-xs font-medium text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-full active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">x</button></td>
@@ -113,9 +114,17 @@ class Controller_f_cart extends CI_Controller
         }
     }
 
+
+
     function loadCourier()
     {
         $data = $this->model_courier->getAllCourier();
+        echo json_encode($data);
+    }
+
+    function loadCourierById($id)
+    {
+        $data = $this->model_courier->getCourierById($id);
         echo json_encode($data);
     }
 
@@ -132,48 +141,47 @@ class Controller_f_cart extends CI_Controller
     function checkOut()
     {
         $idbarang = $this->input->post('id_barang');
+        $getUser = $this->input->post('user_checkout');
         $qty = $this->input->post('qty');
         $date = date('Y-m-d');
         $dateSet = date('YmdHis');
         $setRand = rand(10, 90);
         $setRand2 = rand(10, 90);
-        $getUser = $this->input->post('user_checkout');
         $setNoPemesanan = $setRand . $dateSet . $setRand2 . $getUser;
+
+        $totalHarga = $this->input->post('totalorder');
+        $idKurir = $this->input->post('id_kurir');
+        $hargaKurir = $this->input->post('harga_kurir');
+        $namaTujuan = $this->input->post('nama_t') ;
+        $alamatTujuan = $this->input->post('alamat_t');
 
         $data = array();
         foreach ($idbarang as $key => $value) {
             $data[]  = array(
+                'id_barang' => $value,
+                'qty_pesan' => $qty[$key],
                 'id_user' => $getUser,
-                'id_barang' => $idbarang[$key],
-                'qty' => $qty[$key],
                 'no_pemesanan' => $setNoPemesanan,
-                'total_harga' => $this->input->post('totalorder'),
+                'total_harga' => $totalHarga,
                 'tgl_pesan' => $date,
-                'harga_kurir' => $this->input->post('harga_kurir'),
-                'nama_t' => $this->input->post('nama_t'),
-                'alamat_t' => $this->input->post('alamat_t'),
+                'id_kurir' => $idKurir,
+                'hrg_kurir' => $hargaKurir,
+                'nama_t' => $namaTujuan,
+                'alamat_t' => $alamatTujuan,
                 'status' => 1
             );
         }
-        // $date = date('Y-m-d');
-        // $dateSet = date('YmdHis');
-        // $setRand = rand(10, 90);
-        // $setRand2 = rand(10, 90);
-        // $getUser = $this->input->post('user_checkout');
-        // $setNoPemesanan = $setRand . $dateSet . $setRand2 . $getUser;
-        // $data[] = array(
-        //     'idbarang' =>  $this->input->post('id_barang'),
-        //     'id_user' => $getUser,
-        //     'no_pemesanan' => $setNoPemesanan,
-        //     'total_harga' => $this->input->post('totalorder'),
-        //     'tgl_pesan' => $date,
-        //     'harga_kurir' => $this->input->post('harga_kurir'),
-        //     'nama_t' => $this->input->post('nama_t'),
-        //     'alamat_t' => $this->input->post('alamat_t'),
-        //     'status' => 1
-        // );
+        
+        $this->db->insert_batch('pemesanan',$data);
+        $this->session->set_flashdata('SuccessCheckout', 'Data berhasil ditambahkan');
+        redirect('cart/checkout-finish/'.$setNoPemesanan);
+    }
 
-        var_dump($data);
-        exit;
+    function loadCheckoutFinish($setNoPemesanan)
+    {
+        $data['getNoPemesanan'] = $setNoPemesanan;
+        $data['title']   = 'Checkout Finish - ' . APP_NAME;
+        $data['content'] = 'frontend/cart/success_checkout';
+        $this->load->view('frontend/master_frontend', $data);
     }
 }

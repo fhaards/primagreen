@@ -1,5 +1,6 @@
 $(document).ready(function () {
 	subTotal();
+
 	$(".checkout-final-btn").hide();
 
 	// calculateCheckout();
@@ -8,15 +9,19 @@ $(document).ready(function () {
 	});
 
 	$(".selectedkurir").click(function () {
-		$(".selectedkurir").addClass("shadow-md bg-gray-100").removeClass("bg-blue-600 text-white");
-		$(this).removeClass("shadow-md bg-gray-100").addClass("bg-blue-600 text-white");
+		$(".selectedkurir")
+			.addClass("shadow-md bg-gray-100")
+			.removeClass("bg-blue-600 text-white");
+		$(this)
+			.removeClass("shadow-md bg-gray-100")
+			.addClass("bg-blue-600 text-white");
 	});
 
 	$(".selectkurir:checked").parent().removeClass("shadow-md");
-	
+
 	function setKurir(value) {
-		$("#setkurir").html(value);
 		$("#setkurir-clone").val(value);
+		getCourierData();
 		calculateCheckout();
 	}
 
@@ -107,21 +112,19 @@ $(document).ready(function () {
 			x1 = x[0],
 			x2 = x.length > 1 ? "." + x[1] : "",
 			rgxp = /(\d+)(\d{3})/;
-
 		while (rgxp.test(x1)) {
 			x1 = x1.replace(rgxp, "$1" + "," + "$2");
 		}
-
 		return x1 + x2;
 	}
 
 	function calculateCheckout() {
-		var isCourierChoosen = !isNaN(parseInt($("#setkurir-clone").val()));
+		var isCourierChoosen = !isNaN(parseInt($("#setkurir-harga").val()));
 		var set_subtotal = parseInt($("#sub-total").val());
 		var set_taxes = 4 / 100;
 		var res = parseInt(set_subtotal * set_taxes);
 		var set_courier = isCourierChoosen
-			? parseInt($("#setkurir-clone").val())
+			? parseInt($("#setkurir-harga").val())
 			: 0;
 		var total_sub = parseInt(set_subtotal + set_courier);
 		var total = parseInt(total_sub + res);
@@ -138,6 +141,22 @@ $(document).ready(function () {
 			$(".checkout-final-btn").show();
 			$(".sel-courier ").hide();
 		}
+	}
+
+	function getCourierData() {
+		var idCourier = $("#setkurir-clone").val();
+		$.ajax({
+			type: "ajax",
+			url: BASE_URL + "cart/show-courierbyid/" + idCourier,
+			async: false,
+			dataType: "json",
+			success: function (data) {
+				var showHargaKurir = data.harga_kurir;
+				$("#setkurir-harga-clone").html(showHargaKurir);
+				$("#setkurir-harga").val(showHargaKurir);
+				return false;
+			},
+		});
 	}
 });
 

@@ -18,4 +18,8 @@ class Model_order extends CI_Model
 		return $query->result_array();
 	}
 
+	public function insertOrder($data){
+		$this->db->insert('pemesanan', $data);
+	}
+
 }
