@@ -123,11 +123,13 @@ $route['store/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
 $route['cart/add-to-cart'] = 'Controller_f_cart/addToCart';
 $route['cart/delete-cart-items'] = 'Controller_f_cart/deleteCartItems';
 $route['cart/load-cart'] = 'Controller_f_cart/loadCart';
-$route['cart/checkout-detail'] = 'Controller_f_cart/loadCheckoutDetail';
 $route['cart/show-cart'] = 'Controller_f_cart/showCartJson';
 $route['cart/show-subtotal'] = 'Controller_f_cart/subTotalCartJson';
 $route['cart/show-courier'] = 'Controller_f_cart/loadCourier';
 
+/*///////// Checkout /////////////*/
+$route['cart/checkout-detail'] = 'Controller_f_cart/loadCheckoutDetail';
+$route['cart/checkout'] = 'Controller_f_cart/checkOut';
 
 /*///////// Profile /////////////*/
 $route['profile/(:any)'] = 'Controller_f_user/index';

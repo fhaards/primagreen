@@ -13,21 +13,7 @@ $(document).ready(function () {
 	});
 
 	$(".selectkurir:checked").parent().removeClass("shadow-md");
-
-	// $(".selectkurir").change(function () {
-	// 	$(this).find(".selectedkurir").addClass("shadow-md");
-	// 	if ($(this).is(":checked")) {
-	// 		$(this).parent().removeClass("shadow-md");
-	// 	} else {
-	// 		$(this).parent().addClass("shadow-md");
-	// 	}
-	// });
-
-	// $('.selectkurir').change(function () {
-	// 	$('#selectedkurir').removeClass('shadow-md');
-	// 	$('#selectedkurir').toggleClass('shadow-md');
-	// });
-
+	
 	function setKurir(value) {
 		$("#setkurir").html(value);
 		$("#setkurir-clone").val(value);

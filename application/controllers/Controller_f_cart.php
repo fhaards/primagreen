@@ -47,6 +47,8 @@ class Controller_f_cart extends CI_Controller
                 $no++;
                 $output .= '
                     <tr class="border-b border-gray-500">
+                        <input type="text" value="' . $items['id'] . '" name="id_barang[]">
+                        <input type="text" value="' . $items['qty'] . '" name="qty[]">
                         <td class="py-2"><label class="font-bold text-gray-800">' . $items['name'] . '</label></td>
                         <td class="p-2"><label class="font-bold text-gray-800">' . $items['qty'] . '</label></td>
                         <td class="float_right text-right"><button type="button" id="' . $items['rowid'] . '" class="hapus_cart text-center px-auto w-5 h-5 text-xs font-medium text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-full active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">x</button></td>
@@ -56,7 +58,7 @@ class Controller_f_cart extends CI_Controller
             $output .= '
                     <tr>
                         <td class="text-gray-600 font-semibold py-4">
-                            <input type="number" id="cekrowcart" class="cekrowcart hidden" value="' . $countCartRow . '">
+                            <input type="number" id="cekrowcart" name="count_row" class="cekrowcart hidden" value="' . $countCartRow . '">
                             Subtotal
                         </td>
                         <td></td>
@@ -125,5 +127,53 @@ class Controller_f_cart extends CI_Controller
         );
         $this->cart->update($data);
         echo $this->showCart();
+    }
+
+    function checkOut()
+    {
+        $idbarang = $this->input->post('id_barang');
+        $qty = $this->input->post('qty');
+        $date = date('Y-m-d');
+        $dateSet = date('YmdHis');
+        $setRand = rand(10, 90);
+        $setRand2 = rand(10, 90);
+        $getUser = $this->input->post('user_checkout');
+        $setNoPemesanan = $setRand . $dateSet . $setRand2 . $getUser;
+
+        $data = array();
+        foreach ($idbarang as $key => $value) {
+            $data[]  = array(
+                'id_user' => $getUser,
+                'id_barang' => $idbarang[$key],
+                'qty' => $qty[$key],
+                'no_pemesanan' => $setNoPemesanan,
+                'total_harga' => $this->input->post('totalorder'),
+                'tgl_pesan' => $date,
+                'harga_kurir' => $this->input->post('harga_kurir'),
+                'nama_t' => $this->input->post('nama_t'),
+                'alamat_t' => $this->input->post('alamat_t'),
+                'status' => 1
+            );
+        }
+        // $date = date('Y-m-d');
+        // $dateSet = date('YmdHis');
+        // $setRand = rand(10, 90);
+        // $setRand2 = rand(10, 90);
+        // $getUser = $this->input->post('user_checkout');
+        // $setNoPemesanan = $setRand . $dateSet . $setRand2 . $getUser;
+        // $data[] = array(
+        //     'idbarang' =>  $this->input->post('id_barang'),
+        //     'id_user' => $getUser,
+        //     'no_pemesanan' => $setNoPemesanan,
+        //     'total_harga' => $this->input->post('totalorder'),
+        //     'tgl_pesan' => $date,
+        //     'harga_kurir' => $this->input->post('harga_kurir'),
+        //     'nama_t' => $this->input->post('nama_t'),
+        //     'alamat_t' => $this->input->post('alamat_t'),
+        //     'status' => 1
+        // );
+
+        var_dump($data);
+        exit;
     }
 }
