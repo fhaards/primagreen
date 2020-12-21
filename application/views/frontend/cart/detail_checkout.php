@@ -1,4 +1,4 @@
-<section class="w-full mx-auto mt-32 py-4 my-4">
+<section class="w-full mx-auto mt-20 lg:mt-32 py-4 my-4">
     <?php echo validation_errors(); ?>
     <?php echo form_open('cart/checkout'); ?>
     <div class="container flex flex-col items-center flex-wrap">

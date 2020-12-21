@@ -1,4 +1,4 @@
-<div class="w-full mx-auto mt-32 py-4">
+<div class="w-full mx-auto mt-20 lg:mt-32 py-4">
     <div class="container flex items-center flex-wrap">
 
         <div class="flex lg:flex-row flex-col w-full">

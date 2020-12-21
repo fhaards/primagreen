@@ -1,27 +1,10 @@
-<section class="w-full mx-auto mt-32 py-4 my-4">
+<section class="w-full mx-auto mt-20 lg:mt-32 py-4 my-4">
     <div class="container flex flex-col lg:flex-row">
         <div class="flex-1 flex">
             <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl  mb-8 ">
                 Order Detail
             </span>
         </div>
-
-        <?php
-        $getStatus = $getOrderDetail['status'];
-        if ($getStatus == 'PROCESS') {
-            $bgClass = 'bg-blue-100 hover:bg-blue-200';
-            $StatusClass = 'bg-blue-300 border-blue-400';
-        } else if ($getStatus == 'COMPLETE') {
-            $bgClass = 'bg-green-100 hover:bg-green-200';
-            $StatusClass = 'bg-green-300 border-green-400';
-        } else if ($getStatus == 'PACKING') {
-            $bgClass = 'bg-yellow-100 hover:bg-yellow-200';
-            $StatusClass = 'bg-yellow-300 border-yellow-400';
-        } else {
-            $bgClass = 'bg-gray-100 hover:bg-gray-200';
-            $StatusClass = 'bg-gray-300 border-gray-400';
-        }
-        ?>
 
         <div class="flex-1">
             <div class="flex flex-col">
@@ -35,7 +18,7 @@
                     Status
                 </span>
                 <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl text-left lg:text-right">
-                    <div class="inline-block rounded-sm px-4 py-0 lg:text-sm text-xs border <?= $StatusClass; ?>"> <?= $getOrderDetail['status']; ?> </div>
+                    <span class="<?= status_order_color($getOrderDetail['status']); ?>"><?= $getOrderDetail['status']; ?></span>
                 </span>
                 <span class="mt-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm text-left lg:text-right">
                     Order Date
@@ -47,6 +30,8 @@
         </div>
     </div>
     <div class="container mt-4">
+
+
         <div class="mt-4 w-full">
             <table class="w-full table-auto text-xs lg:text-base">
                 <?php

@@ -1,5 +1,5 @@
 <!-- STORE ITEMS -->
-<section class="w-full mx-auto mt-32 bg-white py-4 my-4">
+<section class="w-full mx-auto mt-20 lg:mt-32 bg-white">
     <div class="flex w-full md:space-x-4">
 
         <!-- FILTER  -->
