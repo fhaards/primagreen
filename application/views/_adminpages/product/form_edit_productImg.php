@@ -125,9 +125,12 @@ if ($checkImage3IfEmpty == 'default_img.jpg') {
     <hr class="mt-6">
     </hr>
 
-    <div class="w-full text-center mx-auto">
-        <button type="submit" class="mt-6 block items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-500 border border-transparent rounded-lg active:bg-green-800 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
-            Submit
+    <div class="w-full text-center mx-auto mt-4">
+        <button type="submit" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+            <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+            </svg>
+            <span class="hidden lg:block">Submit</span>
         </button>
     </div>
 </div>

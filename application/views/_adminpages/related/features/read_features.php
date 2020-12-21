@@ -10,10 +10,11 @@
             <h2>
                 Add more features
             </h2>
+            <?php echo validation_errors(); ?>
             <?php echo form_open('product/add-features'); ?>
             <div class="grid gap-4 lg:grid-cols-3">
                 <label class="block text-sm">
-                    <input name="nm_features" features="text" class="block w-full text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Features Name" />
+                    <input name="nm_features" required features="text" class="block w-full text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Features Name" />
                 </label>
                 <label class="block text-sm">
                     <select name="status_features" class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green">
@@ -22,7 +23,7 @@
                     </select>
                 </label>
                 <label>
-                    <button features="submit" class="block items-center justify-between w-full px-4 py-2 text-sm font-medium  text-white transition-colors duration-150 bg-green-500 border border-transparent rounded-lg active:bg-green-800 hover:bg-green-700 focus:border-green-800 focus:shadow-outline-green">
+                    <button features="submit" class="block items-center justify-between w-full px-4 py-2 text-sm font-medium rounded-md text-white transition-colors duration-150 bg-gray-800 active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                         New Features
                         <span class="ml-2" aria-hidden="true">+</span>
                     </button>
@@ -50,9 +51,9 @@
                     $idFeatures = $featuresLists['id_features'];
                     $statusFeatures = $featuresLists['status_features'];
                     if ($statusFeatures == 'Enabled') {
-                        $statusClass = 'text-center py-1 px-2 font-semibold text-xs text-green-700 bg-green-100 rounded-md ';
+                        $statusClass = 'flex flex-row items-center text-center py-1 px-2 font-semibold text-xs text-green-700 bg-green-100 border border-green-300 rounded-sm shadow-xs hover:shadow-md hover:bg-green-500 hover:text-white';
                     } else {
-                        $statusClass = 'text-center py-1 px-2 font-semibold text-xs text-red-700 bg-red-100 rounded-md';
+                        $statusClass = 'flex flex-row items-center text-center py-1 px-2 font-semibold text-xs text-red-700 bg-red-100 border border-red-200 rounded-sm shadow-xs hover:shadow-md hover:bg-red-500 hover:text-white';
                     }
                 ?>
                     <tr class="text-gray-700">
@@ -64,7 +65,7 @@
                                 <label class="block text-sm">
                                     <input type="text" name="nameFeatures" value="<?= $featuresLists['nm_features']; ?>" class="text-sm focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
                                 </label>
-                                <button type="submit" class="flex items-center justify-between px-1 py-1 text-sm font-medium leading-5 bg-green-500 rounded-md hover:bg-green-700">
+                                <button type="submit" class="flex items-center justify-between px-1 py-1 text-sm font-medium leading-5 rounded-md shadow-xs text-white transition-colors duration-150 bg-gray-800 active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                                     <svg class="w-4 h-4 fill-current text-white" aria-hidden="true" fill="" viewBox="0 0 20 20">
                                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                                     </svg>
@@ -73,15 +74,9 @@
                             <?php echo form_close(); ?>
                         </td>
                         <td class="px-4 py-3 flex items-center  space-x-4">
-                            <span class="<?= $statusClass; ?>">
-                                <?= $statusFeatures; ?>
-                            </span>
                             <div class="flex items-center space-x-4 text-sm">
-                                <a href="<?php echo site_url('product/change-features-status/' . $idFeatures); ?>" class="flex items-center justify-between px-2 py-1 text-xs text-white font-medium leading-5 bg-green-500 rounded-md hover:bg-green-700" aria-label="Edit">
-                                    <svg class="w-4 h-4 fill-current text-white" aria-hidden="true" fill="" viewBox="0 0 20 20">
-                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                    </svg>
-                                    <span class="px-1">Change Status</span>
+                                <a href="<?php echo site_url('product/change-features-status/' . $idFeatures); ?>" class="<?= $statusClass; ?>" aria-label="Edit">
+                                    <span class="px-1"> <?= $statusFeatures; ?></span>
                                 </a>
                             </div>
                         </td>

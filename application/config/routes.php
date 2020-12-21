@@ -84,6 +84,12 @@ $route['product/add-features'] = 'Controller_features/newFeatures';
 $route['product/change-features-status/(:any)'] = 'Controller_features/changeFeaturesStatus/$1';
 $route['product/edit-features/(:any)'] = 'Controller_features/editFeatures/$1';
 
+/*///////// Product Features /////////////*/
+$route['product/courier-list'] = 'Controller_courier/index';
+$route['product/add-courier'] = 'Controller_courier/newCourier';
+$route['product/change-courier-status/(:any)'] = 'Controller_courier/changeCourierStatus/$1';
+$route['product/edit-courier/(:any)'] = 'Controller_courier/editCourier/$1';
+
 /*///////// Order /////////////*/
 $route['order/order-list'] = 'Controller_order/index';
 

@@ -9,6 +9,7 @@ class Controller_f_user extends CI_Controller {
         // redirectIfAdminAccessUserPage();
         $this->load->database();
         $this->load->model('model_product');
+        $this->load->model('model_order');
         $this->load->model('model_f_user_login');
         $this->load->helper('array');
         $this->load->library('form_validation');
@@ -20,8 +21,10 @@ class Controller_f_user extends CI_Controller {
     }
 
     function index(){
+        $iduser = getUserData()['id_user'];
         $data['title']   = 'Profile - ' . APP_NAME;
         $data['content'] = 'frontend/profile/read_profile';
+        $data['getUser'] = $this->model_order->getAllOrderByUser($iduser);
         $this->load->view('frontend/master_frontend', $data);
     }
 

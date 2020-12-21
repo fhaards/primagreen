@@ -76,6 +76,11 @@
                 Features
               </a>
             </li>
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+              <a class="w-full" href="<?= base_url(); ?>product/courier-list">
+                Courier
+              </a>
+            </li>
           </ul>
         </template>
       </li>
@@ -100,8 +105,9 @@
         </a>
       </li>
       <div class="px-6 my-6">
-        <a href="<?= base_url(); ?>product/product-add" class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-green-500 transition-colors duration-150 bg-green-100 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-200 focus:border-green-400 focus:shadow-outline-green">
-          New Prodduct
+        <a href="<?= base_url(); ?>product/product-add" 
+        class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5  transition-colors duration-150 text-white border border-green-600 bg-green-500 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-green-600 focus:outline-none focus:shadow-outline-green">
+          New Product
           <span class="ml-2" aria-hidden="true">+</span>
         </a>
       </div>

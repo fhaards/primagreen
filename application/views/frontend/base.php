@@ -2,6 +2,15 @@
     <div class="container flex items-center flex-wrap pt-4 pb-2">
         CONTAINER
     </div>
+
+    <!-- SUBMIT BUTTON -->
+    <button type="submit" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+        <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+        </svg>
+        <span class="hidden lg:block">Submit</span>
+    </button>
+
 </section>
 
 <section class="w-full mx-auto py-8 my-8">

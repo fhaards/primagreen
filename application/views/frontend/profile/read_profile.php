@@ -1,4 +1,4 @@
-<section class="w-full mx-auto mt-32 py-4 my-4">
+<div class="w-full mx-auto mt-32 py-4">
     <div class="container flex items-center flex-wrap">
 
         <div class="flex lg:flex-row flex-col w-full">
@@ -31,13 +31,13 @@
 
             <div class="w-1/3">
                 <div class="flex flex-col">
-                    <div  class="mb-2">
+                    <div class="mb-2">
                         <label>
                             <p class="text-gray-600 font-semibold text-sm">Telphone</p>
                             <p class="text-gray-800 font-bold text-md"><?= getUserData()['tlp']; ?></p>
                         </label>
                     </div>
-                    <div  class="my-2">
+                    <div class="my-2">
                         <label>
                             <p class="text-gray-600 font-semibold text-sm">Address</p>
                             <p class="text-gray-800 font-bold text-md"><?= getUserData()['alamat']; ?></p>
@@ -46,6 +46,9 @@
                 </div>
             </div>
         </div>
-
+        
+        <div class="flex flex-col mt-8 w-full">
+            <?php $this->load->view('frontend/profile/read_order'); ?>
+        </div>
     </div>
-</section>
+</div>

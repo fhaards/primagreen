@@ -135,7 +135,7 @@
                             <span id="taxes" class="text-right font-semibold text-gray-600"></span>
                         </div>
                     </div>
-                    <div class="flex flex-row py-1 my-1 float-right border  border-green-500 p-2">
+                    <div class="flex flex-row py-1 my-1 float-right border-t border-green-500 p-2">
                         <div class="lg:w-2/3 w-1/3 font-bold text-gray-900">Total</div>
                         <div class="lg:w-1/3 w-2/3 grid grid-cols-2 font-bold text-gray-900">
                             <span class="w-1/3">Rp.</span>

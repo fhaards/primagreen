@@ -20,7 +20,7 @@ class Controller_order extends CI_Controller {
     }
 
     public function index(){
-        $data['orderList'] = $this->model_order->getAllOrder();
+        $data['orderList'] = $this->model_order->getAllOrderGroupBy();
         $data['title']   = 'Order List - ' . APP_NAME;
         $data['content'] = '_adminpages/order/read_order';
         $this->load->view('_adminpages/master_admin', $data);
