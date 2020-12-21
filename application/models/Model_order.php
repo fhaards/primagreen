@@ -33,11 +33,45 @@ class Model_order extends CI_Model
 		$this->db->select('*');
 		$this->db->from('pemesanan');
 		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
 		$this->db->group_by("no_pemesanan");
 		$this->db->where("pemesanan.id_user",$iduser);
-		$query = $this->db->get();
-		return $query->result_array();
+		return $this->db->get();
 	}
+
+	public function getAllOrderByNoOrder($noOrder)
+	{
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->join('barang', 'barang.id_barang=pemesanan.id_barang', 'inner');
+		$this->db->where("pemesanan.no_pemesanan",$noOrder);
+		return $this->db->get();
+	}
+
+	public function getAllOrderByNoOrder_GroupBy($noOrder)
+	{
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->join('barang', 'barang.id_barang=pemesanan.id_barang', 'inner');
+		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
+		$this->db->group_by("no_pemesanan");
+		$this->db->where("pemesanan.no_pemesanan",$noOrder);
+		return $this->db->get();
+	}
+
+	// public function getAllOrderByUserRow($iduser)
+	// {
+	// 	$this->db->select('*');
+	// 	$this->db->from('pemesanan');
+	// 	$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+	// 	$this->db->group_by("no_pemesanan");
+	// 	$this->db->where("pemesanan.id_user",$iduser);
+	// 	$query = $this->db->get();
+	// 	return $query->row_array();
+	// }
+
 
 	public function insertOrder($data){
 		$this->db->insert('pemesanan', $data);

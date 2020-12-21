@@ -1,9 +1,9 @@
 <div class="flex w-1/3 mb-4">
-    <nav id="new-items" class="w-full top-0 py-1">
+    <nav class="w-full top-0 py-1">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
-            <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+            <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
                 My Order
-            </a>
+            </span>
         </div>
     </nav>
 </div>
@@ -26,7 +26,7 @@
     }
     ?>
     <div class="flex w-full flex-col mb-5">
-        <a href="#" class="flex flex-row flex-wrap rounded-lg shadow-xs <?= $bgClass; ?>">
+        <a href="<?php echo site_url('profile/detail-order/'.$getUsers['no_pemesanan']); ?>" class="flex flex-row flex-wrap rounded-lg shadow-xs <?= $bgClass; ?>">
             <div class="flex-1 flex flex-col ml-2 mr-3 p-2">
                 <span class="text-gray-600 font-semibold lg:text-sm text-xs">Order Date</span>
                 <span class="text-gray-800 font-bold lg:text-base text-xs"><?= $getUsers['tgl_pesan']; ?></span>

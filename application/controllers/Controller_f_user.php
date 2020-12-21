@@ -21,10 +21,19 @@ class Controller_f_user extends CI_Controller {
     }
 
     function index(){
+        redirectIfNotLogin();
         $iduser = getUserData()['id_user'];
         $data['title']   = 'Profile - ' . APP_NAME;
         $data['content'] = 'frontend/profile/read_profile';
-        $data['getUser'] = $this->model_order->getAllOrderByUser($iduser);
+        $data['getUser'] = $this->model_order->getAllOrderByUser($iduser)->result_array();
+        $this->load->view('frontend/master_frontend', $data);
+    }
+    function detailOrder($noOrder){
+        redirectIfNotLogin();
+        $data['title']   = 'Profile - ' . APP_NAME;
+        $data['content'] = 'frontend/profile/detail_order';
+        $data['getOrderList'] = $this->model_order->getAllOrderByNoOrder($noOrder)->result_array();
+        $data['getOrderDetail'] = $this->model_order->getAllOrderByNoOrder_GroupBy($noOrder)->row_array();
         $this->load->view('frontend/master_frontend', $data);
     }
 
