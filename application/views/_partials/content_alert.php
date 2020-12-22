@@ -111,8 +111,8 @@
 <?php if($this->session->flashdata('SuccessCheckout')): ?>
     <script type="text/javascript"> 
 	swal({
-	      title: "Pemesanan berhasil",
-	      text: "Silahkan lanjutkan prosedur pemesanan",
+	      title: "Order Success",
+	      text: "Continue youre order process",
 	      type: 'success',
 	      timer: 3000,
 	      imageWidth: 50,

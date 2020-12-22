@@ -31,7 +31,7 @@ class Controller_f_user extends CI_Controller {
     }
     function detailOrder($noOrder){
         redirectIfNotLogin();
-        $data['title']   = 'Profile - ' . APP_NAME;
+        $data['title']   = 'Detail Order - ' . APP_NAME;
         $data['content'] = 'frontend/profile/detail_order';
         $data['getOrderList'] = $this->model_order->getAllOrderByNoOrder($noOrder)->result_array();
         $data['getOrderDetail'] = $this->model_order->getAllOrderByNoOrder_GroupBy($noOrder)->row_array();

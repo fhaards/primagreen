@@ -1,37 +1,44 @@
 <section class="w-full mx-auto mt-20 lg:mt-32 py-4 my-4">
     <div class="container flex flex-col lg:flex-row">
-        <div class="flex-1 flex">
-            <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl  mb-8 ">
+        <div class="flex-1 flex flex-col">
+            <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl mb-4">
                 Order Detail
             </span>
+            <div class="">
+                Print
+            </div>
         </div>
 
         <div class="flex-1">
-            <div class="flex flex-col">
-                <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm text-left lg:text-right">
-                    Order Number
-                </span>
-                <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl text-left lg:text-right">
-                    <?= $getOrderDetail['no_pemesanan']; ?>
-                </span>
-                <span class="mt-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm text-left lg:text-right">
-                    Status
-                </span>
-                <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl text-left lg:text-right">
-                    <span class="<?= status_order_color($getOrderDetail['status']); ?>"><?= $getOrderDetail['status']; ?></span>
-                </span>
-                <span class="mt-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm text-left lg:text-right">
-                    Order Date
-                </span>
-                <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl text-left lg:text-right">
-                    <?= $getOrderDetail['tgl_pesan']; ?>
-                </span>
+            <div class="flex flex-col lg:flex-row">
+                <div class="flex flex-col flex-1">
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm ">
+                        Status
+                    </span>
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
+                        <span class="<?= status_order_color($getOrderDetail['status']); ?>"><?= $getOrderDetail['status']; ?></span>
+                    </span>
+                </div>
+                <div class="flex flex-col flex-1">
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm text-left lg:text-right">
+                        Order Number
+                    </span>
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl text-left lg:text-right">
+                        <?= $getOrderDetail['no_pemesanan']; ?>
+                    </span>
+                    <span class="mt-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm text-left lg:text-right">
+                        Order Date
+                    </span>
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl text-left lg:text-right">
+                        <?= $getOrderDetail['tgl_pesan']; ?>
+                    </span>
+                </div>
+
             </div>
         </div>
     </div>
+
     <div class="container mt-4">
-
-
         <div class="mt-4 w-full">
             <table class="w-full table-auto text-xs lg:text-base">
                 <?php
@@ -168,4 +175,13 @@
             </div>
         </div>
     </div>
+
+    <?php if ($getOrderDetail['status'] == 'ONHOLD') : ?>
+        <?php $getNoPemesanan = $getOrderDetail['no_pemesanan']; ?>
+        <div class="container mt-8">
+            <hr>
+            <?php $this->load->view('frontend/cart/success_checkout_info'); ?>
+        </div>
+    <?php endif; ?>
+
 </section>
