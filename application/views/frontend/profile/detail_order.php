@@ -4,32 +4,49 @@
             <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl mb-4">
                 Order Detail
             </span>
-            <div class="">
-                Print
+            <div class="flex flex-row space-x-4">
+                <button class="flex space-x-2 shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                    <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span class=""> Print </span>
+                </button>
+
+                <button class="flex space-x-2 shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                    <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span class=""> Transfer Proof </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex-1 my-4 lg:my-0">
+            <div class="flex flex-col mx-auto">
+                <div class="flex flex-col lg:items-center lg:text-center">
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs lg:text-sm">
+                        Status
+                    </span>
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm lg:text-xl">
+                        <span class="<?= status_order_color($getOrderDetail['status']); ?>"><?= $getOrderDetail['status']; ?></span>
+                    </span>
+                </div>
             </div>
         </div>
 
         <div class="flex-1">
             <div class="flex flex-col lg:flex-row">
                 <div class="flex flex-col flex-1">
-                    <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm ">
-                        Status
-                    </span>
-                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
-                        <span class="<?= status_order_color($getOrderDetail['status']); ?>"><?= $getOrderDetail['status']; ?></span>
-                    </span>
-                </div>
-                <div class="flex flex-col flex-1">
-                    <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm text-left lg:text-right">
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs lg:text-sm text-left lg:text-right">
                         Order Number
                     </span>
-                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl text-left lg:text-right">
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm lg:text-xl text-left lg:text-right">
                         <?= $getOrderDetail['no_pemesanan']; ?>
                     </span>
-                    <span class="mt-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-sm text-left lg:text-right">
+                    <span class="mt-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs lg:text-sm text-left lg:text-right">
                         Order Date
                     </span>
-                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl text-left lg:text-right">
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm lg:text-xl text-left lg:text-right">
                         <?= $getOrderDetail['tgl_pesan']; ?>
                     </span>
                 </div>
