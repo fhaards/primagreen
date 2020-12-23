@@ -61,20 +61,16 @@ class Model_order extends CI_Model
 		return $this->db->get();
 	}
 
-	// public function getAllOrderByUserRow($iduser)
-	// {
-	// 	$this->db->select('*');
-	// 	$this->db->from('pemesanan');
-	// 	$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
-	// 	$this->db->group_by("no_pemesanan");
-	// 	$this->db->where("pemesanan.id_user",$iduser);
-	// 	$query = $this->db->get();
-	// 	return $query->row_array();
-	// }
-
-
 	public function insertOrder($data){
 		$this->db->insert('pemesanan', $data);
 	}
 
+	public function muploadTransfer()
+	{
+		$data = [
+            "no_pemesanan" => $this->input->post('no_pemesanan', true),
+            "ket" => $this->input->post('ket', true)
+        ];
+		return $this->db->insert('pay_con', $data);
+	}
 }

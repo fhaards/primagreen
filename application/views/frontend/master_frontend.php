@@ -48,10 +48,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </main>
         </div>
     </div>
+
+    <!-- Modal -->
+    <?php $this->load->view('_partials/modals'); ?>
+
     <script src="<?php echo base_url() . 'assets/jquery/jquery-2.2.3.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/jquery/jquery.easing.min.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/tailwind/js/alpine.min.js'; ?>" defer></script>
-    <script src="<?php echo base_url() . 'assets/tailwind/js/init-alpine.js'; ?>" language="javascript"></script>
     <script>
         // var l = window.location;
         // var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
@@ -78,10 +80,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
             });
 
         });
-
     </script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_cart.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_page.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/js_ajax/config_order.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/tailwind/js/alpine.min.js'; ?>" defer></script>
+    <script src="<?php echo base_url() . 'assets/tailwind/js/init-alpine.js'; ?>" language="javascript"></script>
 </body>
 
 </html>

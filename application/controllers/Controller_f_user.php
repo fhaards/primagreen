@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Controller_f_user extends CI_Controller {
+class Controller_f_user extends CI_Controller
+{
 
     function __construct()
     {
@@ -21,7 +22,8 @@ class Controller_f_user extends CI_Controller {
         $this->load->helper('styling');
     }
 
-    function index(){
+    function index()
+    {
         redirectIfNotLogin();
         $iduser = getUserData()['id_user'];
         $data['title']   = 'Profile - ' . APP_NAME;
@@ -29,7 +31,8 @@ class Controller_f_user extends CI_Controller {
         $data['getUser'] = $this->model_order->getAllOrderByUser($iduser)->result_array();
         $this->load->view('frontend/master_frontend', $data);
     }
-    function detailOrder($noOrder){
+    function detailOrder($noOrder)
+    {
         redirectIfNotLogin();
         $data['title']   = 'Detail Order - ' . APP_NAME;
         $data['content'] = 'frontend/profile/detail_order';
@@ -38,4 +41,30 @@ class Controller_f_user extends CI_Controller {
         $this->load->view('frontend/master_frontend', $data);
     }
 
+    // UPLOAD TRANSFER PAYMENT PROOF
+
+    function uploadTransfer()
+    {
+        $data = $this->model_order->muploadTransfer();
+        echo json_encode($data);
+        // var_dump($no_pemesanan);
+        // exit;
+
+        // $this->form_validation->set_rules('ket', 'Keterangan', 'required');
+        // if ($this->form_validation->run() === FALSE) {
+        //     redirect('profile/detail-order/'.$no_pemesanan);
+        // } else { 
+        //     $data1 = array(
+        //         'no_pemesanan' => $no_pemesanan ,
+        //         'ket' => $ket
+        //     );
+        //     // $data2 = array('status'=>'PROCESS');
+        //     $this->model_order->uploadTransfer($data1);
+        //     // $this->model_order->changeStatus($data2);
+        //     $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+        //     redirect('profile/detail-order/'.$no_pemesanan);
+        // }
+
+
+    }
 }
