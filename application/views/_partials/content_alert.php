@@ -1,8 +1,8 @@
 <?php if($this->session->flashdata('InputMsg')): ?>
     <script type="text/javascript"> 
 	swal({
-	      title: "Sukses",
-	      text: "Data Berhasil Ditambahkan",
+	      title: "Success",
+	      text: "Youre input was success",
 	      type: 'success',
 	      timer: 3000,
 	      imageWidth: 50,
@@ -16,8 +16,8 @@
 <?php if($this->session->flashdata('deleteMsg')): ?>
     <script type="text/javascript"> 
 	swal({
-	      title: "Sukses ",
-	      text: "Data Berhasil Dihapus",
+	      title: "Success",
+	      text: "Youre Data was deleted",
 	      type: 'success',
 	      timer: 3000,
 	      imageWidth: 50,
@@ -45,8 +45,8 @@
    	<script type="text/javascript"> 
 	swal({
 	      type: 'error',
-  		  title: 'Gagal menghapus data',
-          text: 'Produk terdapat pada Laporan',
+  		  title: 'Oops',
+          text: 'The data cannot delete',
 	      allowOutsideClick: false,
 	      confirmButtonText: "OK",
 	    })
@@ -56,8 +56,8 @@
 <?php if($this->session->flashdata('editMsg')): ?>
     <script type="text/javascript"> 
 	swal({
-	      title: "Sukses ",
-	      text: "Data Berhasil Diubah",
+	      title: "Success",
+	      text: "Successfully edit a data",
 	      type: 'success',
 	      timer: 3000,
 	      imageWidth: 50,
@@ -70,8 +70,8 @@
 <?php if($this->session->flashdata('loginMsg')): ?>
 	<script type="text/javascript"> 
 	swal({
-	      title: "Login Berhasil",
-	      text: "Selamat Datang",
+	      title: "Welcome",
+	      text: "Login Success",
 	      type: 'success',
 	      timer: 3000,
 	      imageWidth: 50,

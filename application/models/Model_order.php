@@ -35,7 +35,7 @@ class Model_order extends CI_Model
 		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
 		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
 		$this->db->group_by("no_pemesanan");
-		$this->db->where("pemesanan.id_user",$iduser);
+		$this->db->where("pemesanan.id_user", $iduser);
 		return $this->db->get();
 	}
 
@@ -45,7 +45,7 @@ class Model_order extends CI_Model
 		$this->db->from('pemesanan');
 		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
 		$this->db->join('barang', 'barang.id_barang=pemesanan.id_barang', 'inner');
-		$this->db->where("pemesanan.no_pemesanan",$noOrder);
+		$this->db->where("pemesanan.no_pemesanan", $noOrder);
 		return $this->db->get();
 	}
 
@@ -57,20 +57,23 @@ class Model_order extends CI_Model
 		$this->db->join('barang', 'barang.id_barang=pemesanan.id_barang', 'inner');
 		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
 		$this->db->group_by("no_pemesanan");
-		$this->db->where("pemesanan.no_pemesanan",$noOrder);
+		$this->db->where("pemesanan.no_pemesanan", $noOrder);
 		return $this->db->get();
 	}
 
-	public function insertOrder($data){
+	public function insertOrder($data)
+	{
 		$this->db->insert('pemesanan', $data);
 	}
 
-	public function muploadTransfer()
+	public function uploadTransfer($data)
 	{
-		$data = [
-            "no_pemesanan" => $this->input->post('no_pemesanan', true),
-            "ket" => $this->input->post('ket', true)
-        ];
 		return $this->db->insert('pay_con', $data);
+	}
+
+	public function changeStatusOrderToProcess($no_pemesanan){
+		$this->db->set('status', 'PROCESS');
+        $this->db->where('no_pemesanan', $no_pemesanan);
+        return $this->db->update('pemesanan');
 	}
 }

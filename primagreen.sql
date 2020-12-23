@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Des 2020 pada 06.01
+-- Waktu pembuatan: 23 Des 2020 pada 17.43
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -168,16 +168,20 @@ CREATE TABLE `kurir` (
   `id_kurir` int(10) NOT NULL,
   `nm_kurir` varchar(50) NOT NULL,
   `estimasi` int(10) NOT NULL,
-  `harga_kurir` int(10) NOT NULL
+  `harga_kurir` int(10) NOT NULL,
+  `status_courier` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `kurir`
 --
 
-INSERT INTO `kurir` (`id_kurir`, `nm_kurir`, `estimasi`, `harga_kurir`) VALUES
-(1, 'JNE REGULER', 3, 10000),
-(2, 'JNE YES', 1, 20000);
+INSERT INTO `kurir` (`id_kurir`, `nm_kurir`, `estimasi`, `harga_kurir`, `status_courier`) VALUES
+(1, 'JNE REGULER', 3, 10000, 'Enabled'),
+(2, 'JNE YES', 1, 20000, 'Enabled'),
+(3, 'SICEPAT EXPRESS', 1, 25000, 'Enabled'),
+(4, 'NINJA EXPRESS', 1, 23000, 'Enabled'),
+(6, 'KILAT EXPRESS', 4, 6000, 'Enabled');
 
 -- --------------------------------------------------------
 
@@ -207,7 +211,9 @@ INSERT INTO `pay_con` (`id_pay`, `no_pemesanan`, `ket`, `gambar`) VALUES
 (11, '7836322090419071044', 'sudah uplod', '1527432315_27-05-2018_photo6077615961109800996.jpg'),
 (12, '7575135490419070840', 'sudah saya kirim buktinya :)', '1527432315_27-05-2018_photo6077615961109800996.jpg'),
 (13, '2304195780419070845', 'sudah yaaaaa', '1527432315_27-05-2018_photo6077615961109800996.jpg'),
-(14, '1934818930519070755', 'sudah di poto', '1527432315_27-05-2018_photo6077615961109800996.jpg');
+(14, '1934818930519070755', 'sudah di poto', '1527432315_27-05-2018_photo6077615961109800996.jpg'),
+(16, '43202012201749352638', 'Hemm Test', ''),
+(17, '77202012202357225938', 'Test', '');
 
 -- --------------------------------------------------------
 
@@ -228,7 +234,7 @@ CREATE TABLE `pemesanan` (
   `tgl_pesan` date NOT NULL,
   `nama_t` text NOT NULL,
   `alamat_t` text NOT NULL,
-  `status` int(5) NOT NULL
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -236,7 +242,19 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`id_pesan`, `id_user`, `id_barang`, `no_pemesanan`, `qty_pesan`, `p_size`, `id_kurir`, `hrg_kurir`, `total_harga`, `tgl_pesan`, `nama_t`, `alamat_t`, `status`) VALUES
-(46, 24, 62, '7930922190919070615', 1, '', 1, 10000, 800000, '2020-12-09', 'Gumilang Alam', 'Bukit Dago', 2);
+(54, 38, 71, '43202012201749352638', 2, '', 4, 23000, 283000, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(55, 38, 70, '43202012201749352638', 1, '', 4, 23000, 283000, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(56, 38, 71, '44202012202303047338', 1, '', 2, 20000, 108400, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'COMPLETE'),
+(57, 38, 69, '77202012202357225938', 3, '', 6, 6000, 1567031, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(58, 38, 70, '77202012202357225938', 1, '', 6, 6000, 1567031, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(59, 38, 71, '77202012202357225938', 1, '', 6, 6000, 1567031, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(60, 38, 72, '77202012202357225938', 1, '', 6, 6000, 1567031, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(61, 38, 74, '77202012202357225938', 3, '', 6, 6000, 1567031, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(62, 38, 73, '77202012202357225938', 4, '', 6, 6000, 1567031, '2020-12-20', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(63, 38, 70, '68202012211120381038', 1, '', 6, 6000, 89200, '2020-12-21', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PROCESS'),
+(64, 38, 75, '24202012211120558338', 1, '', 6, 6000, 121440, '2020-12-21', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PACKING'),
+(65, 38, 74, '24202012211120558338', 1, '', 6, 6000, 121440, '2020-12-21', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'PACKING'),
+(66, 38, 70, '52202012220001051738', 1, '', 3, 25000, 108200, '2020-12-22', 'Example', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'ONHOLD');
 
 -- --------------------------------------------------------
 
@@ -299,9 +317,9 @@ CREATE TABLE `products_type` (
 INSERT INTO `products_type` (`id_type`, `nm_type`, `status_type`) VALUES
 (1, 'Indoor', 'Enabled'),
 (2, 'Outdoor', 'Enabled'),
-(5, 'Tropical Indoor', 'Disabled'),
+(5, 'Tropical Indoor', 'Enabled'),
 (6, 'Edible Garden', 'Enabled'),
-(17, 'Succulents', 'Enabled');
+(17, 'Succulents', 'Disabled');
 
 -- --------------------------------------------------------
 
@@ -448,19 +466,19 @@ ALTER TABLE `favorite_products`
 -- AUTO_INCREMENT untuk tabel `kurir`
 --
 ALTER TABLE `kurir`
-  MODIFY `id_kurir` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kurir` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `pay_con`
 --
 ALTER TABLE `pay_con`
-  MODIFY `id_pay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
@@ -478,7 +496,7 @@ ALTER TABLE `products_features`
 -- AUTO_INCREMENT untuk tabel `products_type`
 --
 ALTER TABLE `products_type`
-  MODIFY `id_type` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_type` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

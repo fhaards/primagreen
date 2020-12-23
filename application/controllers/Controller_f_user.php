@@ -45,26 +45,23 @@ class Controller_f_user extends CI_Controller
 
     function uploadTransfer()
     {
-        $data = $this->model_order->muploadTransfer();
-        echo json_encode($data);
-        // var_dump($no_pemesanan);
-        // exit;
+        // $data = $this->model_order->muploadTransfer();
+        // echo json_encode($data);
+        $no_pemesanan = $this->input->post('no_pemesanan');
+        $ket = $this->input->post('ket');
 
-        // $this->form_validation->set_rules('ket', 'Keterangan', 'required');
-        // if ($this->form_validation->run() === FALSE) {
-        //     redirect('profile/detail-order/'.$no_pemesanan);
-        // } else { 
-        //     $data1 = array(
-        //         'no_pemesanan' => $no_pemesanan ,
-        //         'ket' => $ket
-        //     );
-        //     // $data2 = array('status'=>'PROCESS');
-        //     $this->model_order->uploadTransfer($data1);
-        //     // $this->model_order->changeStatus($data2);
-        //     $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
-        //     redirect('profile/detail-order/'.$no_pemesanan);
-        // }
-
-
+        $this->form_validation->set_rules('ket', 'Keterangan', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            redirect('profile/detail-order/' . $no_pemesanan);
+        } else {
+            $data = array(
+                'no_pemesanan' => $no_pemesanan,
+                'ket' => $ket
+            );
+            $this->model_order->uploadTransfer($data);
+            $this->model_order->changeStatusOrderToProcess($no_pemesanan);
+            $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+            redirect('profile/detail-order/' . $no_pemesanan);
+        }
     }
 }

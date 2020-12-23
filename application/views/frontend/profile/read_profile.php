@@ -2,7 +2,7 @@
     <div class="container flex items-center flex-wrap">
 
         <div class="flex lg:flex-row flex-col w-full">
-            <div class="w-1/3 mb-4">
+            <div class="lg:w-1/3 mb-4">
                 <nav id="new-items" class="w-full top-0 py-1">
                     <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
                         <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
@@ -12,7 +12,7 @@
                 </nav>
             </div>
 
-            <div class="w-1/3">
+            <div class="lg:w-1/3">
                 <div class="flex flex-col">
                     <div class="mb-2">
                         <label>
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="w-1/3">
+            <div class="lg:w-1/3">
                 <div class="flex flex-col">
                     <div class="mb-2">
                         <label>
