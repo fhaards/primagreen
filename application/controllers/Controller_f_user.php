@@ -11,6 +11,7 @@ class Controller_f_user extends CI_Controller
         $this->load->database();
         $this->load->model('model_product');
         $this->load->model('model_order');
+        $this->load->model('model_payment');
         $this->load->model('model_f_user_login');
         $this->load->helper('array');
         $this->load->library('form_validation');
@@ -29,8 +30,10 @@ class Controller_f_user extends CI_Controller
         $data['title']   = 'Profile - ' . APP_NAME;
         $data['content'] = 'frontend/profile/read_profile';
         $data['getUser'] = $this->model_order->getAllOrderByUser($iduser)->result_array();
+        // $data['getOrder_Onhold'] = $this->model_order->getAllOrder_Onhold($iduser)->result_array();
         $this->load->view('frontend/master_frontend', $data);
     }
+
     function detailOrder($noOrder)
     {
         redirectIfNotLogin();
@@ -38,8 +41,10 @@ class Controller_f_user extends CI_Controller
         $data['content'] = 'frontend/profile/detail_order';
         $data['getOrderList'] = $this->model_order->getAllOrderByNoOrder($noOrder)->result_array();
         $data['getOrderDetail'] = $this->model_order->getAllOrderByNoOrder_GroupBy($noOrder)->row_array();
+        $data['getPaymentDetail'] = $this->model_payment->getBy_NoPemesanan($noOrder)->row_array();
         $this->load->view('frontend/master_frontend', $data);
     }
+
 
     // UPLOAD TRANSFER PAYMENT PROOF
 
@@ -54,9 +59,27 @@ class Controller_f_user extends CI_Controller
         if ($this->form_validation->run() === FALSE) {
             redirect('profile/detail-order/' . $no_pemesanan);
         } else {
+            $uploadPath = './uploads/transfer_proof/' . $no_pemesanan;
+            $config = array('upload_path' => $uploadPath, 'allowed_types' =>
+            'jpg|jpeg|gif|png|webp', 'max_size' => '5000', 'encrypt_name' => true);
+
+            $this->load->library('upload', $config);
+
+            if (!is_dir('uploads/transfer_proof/' . $no_pemesanan)) {
+                mkdir($uploadPath, 0777, true);
+            } else {
+            }
+            if ($this->upload->do_upload("transfer_prof")) {
+                $transferImage  = array('upload_data' => $this->upload->data());
+                $getTransferImage = $transferImage['upload_data']['file_name'];
+            } else {
+                $getTransferImage = $this->input->post('default_img');
+            }
+
             $data = array(
                 'no_pemesanan' => $no_pemesanan,
-                'ket' => $ket
+                'ket' => $ket,
+                'gambar' => $getTransferImage
             );
             $this->model_order->uploadTransfer($data);
             $this->model_order->changeStatusOrderToProcess($no_pemesanan);

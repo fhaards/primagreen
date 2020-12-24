@@ -36,6 +36,7 @@ class Model_order extends CI_Model
 		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
 		$this->db->group_by("no_pemesanan");
 		$this->db->where("pemesanan.id_user", $iduser);
+		$this->db->order_by("tgl_pesan", "ASC");
 		return $this->db->get();
 	}
 
@@ -71,9 +72,24 @@ class Model_order extends CI_Model
 		return $this->db->insert('pay_con', $data);
 	}
 
-	public function changeStatusOrderToProcess($no_pemesanan){
+	public function changeStatusOrderToProcess($no_pemesanan)
+	{
 		$this->db->set('status', 'PROCESS');
-        $this->db->where('no_pemesanan', $no_pemesanan);
-        return $this->db->update('pemesanan');
+		$this->db->where('no_pemesanan', $no_pemesanan);
+		return $this->db->update('pemesanan');
 	}
 }
+
+	// GET ORDER BY STATUS 
+
+	// public function getAllOrder_Onhold($iduser)
+	// {
+	// 	$data = array('pemesanan.id_user' => $iduser, 'status' => 'ONHOLD');
+	// 	$this->db->select('*');
+	// 	$this->db->from('pemesanan');
+	// 	$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+	// 	$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
+	// 	$this->db->group_by("no_pemesanan");
+	// 	$this->db->where($data);
+	// 	return $this->db->get();
+	// }

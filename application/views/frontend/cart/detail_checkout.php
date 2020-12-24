@@ -19,7 +19,7 @@
             <table class="w-full">
                 <thead>
                     <tr>
-                        <th colspan="3" class="text-gray-600 bg-gray-200 p-2">Items</th>
+                        <th colspan="3" class="text-gray-600 bg-gray-100 border border-gray-300 p-2">Items</th>
                     </tr>
                     <tr class="border-b border-gray-500">
                         <td class="py-2 font-semibold text-gray-600">Name</td>
@@ -35,7 +35,7 @@
             <table class="w-full">
                 <thead>
                     <tr>
-                        <th colspan="3" class="text-white bg-gray-500 p-2">Shipments</th>
+                        <th colspan="3" class="text-gray-600 bg-gray-100 border border-gray-300 p-2">Shipments</th>
                     </tr>
                 </thead>
             </table>
@@ -70,7 +70,7 @@
                         <div class="flex mt-2 text-gray-800 py-2 ">Select Courier</div>
                         <?php foreach ($getCourier as $getCouriers) : ?>
 
-                            <label id="selectedkurir" class="selectedkurir flex w-full my-2 shadow-md bg-gray-100 rounded-md p-2 hover:bg-blue-400 hover:shadow-sm">
+                            <label id="selectedkurir" class="selectedkurir flex w-full my-2 shadow-md bg-gray-100 rounded-md p-2 hover:bg-green-400 hover:shadow-sm">
                                 <!-- <div class="flex items-center mx-auto px-5 setkurir w-1/5"> -->
                                 <input type="radio" name="hargakurir" class="selectkurir mr-4" value="<?= $getCouriers['id_kurir']; ?>">
                                 <!-- </div> -->
@@ -99,7 +99,7 @@
             <table class="w-full">
                 <thead>
                     <tr>
-                        <th colspan="3" class="text-white bg-gray-500 p-2">Payments</th>
+                        <th colspan="3" class="text-gray-600 bg-gray-100 border border-gray-300 p-2">Payments</th>
                     </tr>
                 </thead>
             </table>

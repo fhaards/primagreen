@@ -71,7 +71,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/js_ajax/config_custom.js'; ?>" language="javascript"></script>
     <script>
         $(document).ready(function() {
-
             $('#detail_cart').load("<?php echo site_url(); ?>cart/load-cart", function() {
                 if ($("#cekrowcart").val() == "0" || $("#cekrowcart").val() == null) {
                     $("#checkout-btn").hide();

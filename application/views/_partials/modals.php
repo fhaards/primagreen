@@ -13,7 +13,7 @@
         <!-- Modal body -->
 
         <?php echo validation_errors(); ?>
-        <?php echo form_open('profile/upload-transfer'); ?>
+        <?php echo form_open_multipart('profile/upload-transfer'); ?>
         <div class="mt-4 mb-6">
             <!-- Modal title -->
             <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
@@ -38,8 +38,13 @@
                         </label>
                     </span>
                 </div>
-                <div class="flex flex-col mt-2">
-                    <span class="text-gray-600 font-semibold">Transfer Proof File</span>
+                <div class="flex flex-col mt-4">
+                    <span class="text-gray-600 font-semibold">Transfer Proof</span>
+                    <label class="block text-sm">
+                        <span>
+                            <input required type='file' name='transfer_prof' size='20' class="block w-full mt-1 text-sm bg-gray-100 focus:bg-white  dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                        </span>
+                    </label>
                 </div>
             </div>
 

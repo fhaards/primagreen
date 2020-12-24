@@ -51,7 +51,9 @@
                 <div class="w-1/3 uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
                     <span class="<?= status_order_color('ONHOLD'); ?>">ONHOLD</span>
                 </div>
-                <div class="w-2/3">The order was succcesfully , you must transfer to our bank account and validate transfer proof in website profile account</div>
+                <div class="w-2/3">
+                    <?= status_order_info('ONHOLD'); ?>
+                </div>
             </div>
 
             <div class="my-4 space-x-4 flex flex-row text-gray-800 font-semibold  border-b border-gray-300 py-4">
@@ -59,7 +61,7 @@
                     <span class="<?= status_order_color('PROCESS'); ?>">PROCESS</span>
                 </div>
                 <div class="w-2/3">
-                    Administrator will check youre transfer proof. If the transfer proof was valid , we will packing your order and send to youre destination
+                    <?= status_order_info('PROCESS'); ?>
                 </div>
             </div>
 
@@ -68,7 +70,7 @@
                     <span class="<?= status_order_color('PACKING'); ?>">PACKING</span>
                 </div>
                 <div class="w-2/3">
-                    The items was packing and we will send to your destination. Destination is same as your address or youre input in checkout.
+                    <?= status_order_info('PACKING'); ?>
                 </div>
             </div>
 
@@ -77,7 +79,7 @@
                     <span class="<?= status_order_color('COMPLETE'); ?>">COMPLETE</span>
                 </div>
                 <div class="w-2/3">
-                    The Order was complete, and enjoy our products :) .
+                    <?= status_order_info('COMPLETE'); ?>
                 </div>
             </div>
 

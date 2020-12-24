@@ -11,10 +11,10 @@ $(document).ready(function () {
 	$(".selectedkurir").click(function () {
 		$(".selectedkurir")
 			.addClass("shadow-md bg-gray-100")
-			.removeClass("bg-blue-600 text-white");
+			.removeClass("bg-green-500 text-white");
 		$(this)
 			.removeClass("shadow-md bg-gray-100")
-			.addClass("bg-blue-600 text-white");
+			.addClass("bg-green-500 text-white");
 	});
 
 	$(".selectkurir:checked").parent().removeClass("shadow-md");
