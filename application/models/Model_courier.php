@@ -18,6 +18,16 @@ class Model_courier extends CI_Model
 		return $query->result_array();
 	}
 
+	public function getAllCourierEnabled()
+	{
+		$data = array('status_courier'=>'Enabled');
+		$this->db->select('*');
+		$this->db->from('kurir');
+		$this->db->where($data);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	public function getCourierById($id)
 	{
 		$this->db->select('*');

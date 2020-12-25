@@ -23,7 +23,7 @@ class Controller_f_store extends CI_Controller
     public function index()
     {
         $data['getItems'] = $this->model_product->getAllProducts();
-        $data['typeList'] = $this->model_product_related->getAllTypes();
+        $data['typeList'] = $this->model_product_related->getAllTypesEnabled();
         $data['title']   = 'Show All Items - ' . APP_NAME;
         $data['content'] = 'frontend/store/read_store';
         $this->load->view('frontend/master_frontend', $data);
@@ -32,7 +32,7 @@ class Controller_f_store extends CI_Controller
     public function showByType($nmType)
     {
         $data['getItems'] = $this->model_product->getAllProductsByType($nmType);
-        $data['typeList'] = $this->model_product_related->getAllTypes();
+        $data['typeList'] = $this->model_product_related->getAllTypesEnabled();
         $data['title']   = APP_NAME;
         $data['content'] = 'frontend/store/read_store';
         $this->load->view('frontend/master_frontend', $data);

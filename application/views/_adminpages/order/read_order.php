@@ -26,31 +26,25 @@
                     <?php
                     $noPemesanan = $orderLists['no_pemesanan'];
                     $statusType = $orderLists['status'];
-                    if ($statusType == 'ONHOLD') {
-                        $statusClass = 'text-center py-1 px-2 font-semibold text-xs text-gray-700 bg-gray-200 border border-gray-300 rounded-sm shadow-md';
-                    } else if ($statusType == 'ONHOLD') {
-                        $statusClass = 'text-center py-1 px-2 font-semibold text-xs text-red-700 bg-red-100 rounded-md';
-                    } else {
-                    }
                     ?>
                     <tr class="lg:h-12 text-gray-700">
-                        <td><?= $orderLists['no_pemesanan']; ?></td>
+                        <td><a class="text-blue-500 hover:text-blue-600 underline" href="<?php echo base_url() . 'order/order-detail/' . $orderLists['no_pemesanan']; ?>"><?= $orderLists['no_pemesanan']; ?></a></td>
                         <td><?= $orderLists['nama']; ?></td>
                         <td><?= $orderLists['tgl_pesan']; ?></td>
                         <td>Rp. <?= number_format($orderLists['total_harga']); ?></td>
-                        <td class="flex flex-row space-x-2">
-                            <span class="<?= $statusClass; ?>">
-                                <?= $statusType; ?>
-                            </span>
-                            <div class="flex items-center space-x-4 text-sm">
-                                <a href="<?php echo site_url('product/change-type-status/' . $noPemesanan); ?>" class="flex items-center justify-between px-2 py-1 text-xs text-white font-medium leading-5 bg-green-500 rounded-md hover:bg-green-700" aria-label="Edit">
+                        <td class="">
+                            <span class="<?= status_order_color($statusType); ?>"><?= $statusType; ?></span>
+                        </td>
+                        <td>
+                            <div class="flex flex-row items-center space-x-4 text-sm">
+                                <button @click="openModal" data-nopemesanans="<?= $noPemesanan;?>" class="openmodal-csorder flex items-center justify-between px-2 py-1 text-xs text-white font-medium leading-5 bg-green-500 rounded-md hover:bg-green-700" >
                                     <svg class="w-4 h-4 fill-current text-white" aria-hidden="true" fill="" viewBox="0 0 20 20">
                                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                                     </svg>
-                                </a>
+                                    <span class="mx-2">Change Status</span>
+                                </button>
                             </div>
                         </td>
-                        <td></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

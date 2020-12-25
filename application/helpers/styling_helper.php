@@ -4,13 +4,13 @@
 function status_order_color($var = '')
 {
     if ($var == 'PROCESS') {
-        $var = 'inline-block rounded-sm lg:px-4 lg:py-2 px-2 py-1 lg:text-sm text-xs border bg-blue-300 border-blue-400 text-blue-800';
+        $var = 'inline-block rounded-sm lg:px-4 px-2 py-1 text-xs border bg-blue-300 border-blue-400 text-blue-800 font-bold';
     } else if ($var == 'PACKING') {
-        $var = 'inline-block rounded-sm lg:px-4 lg:py-2 px-2 py-1 lg:text-sm text-xs border bg-yellow-300 border-yellow-400 text-yellow-800';
+        $var = 'inline-block rounded-sm lg:px-4 px-2 py-1 text-xs border bg-yellow-300 border-yellow-400 text-yellow-800 font-bold';
     } else if ($var == 'COMPLETE') {
-        $var = 'inline-block rounded-sm lg:px-4 lg:py-2 px-2 py-1 lg:text-sm text-xs border bg-green-300 border-green-400 text-green-800';
+        $var = 'inline-block rounded-sm lg:px-4 px-2 py-1 text-xs border bg-green-300 border-green-400 text-green-800 font-bold';
     } else {
-        $var = 'inline-block rounded-sm lg:px-4 lg:py-2 px-2 py-1 lg:text-sm text-xs border bg-gray-300 border-gray-400 text-gray-800';
+        $var = 'inline-block rounded-sm lg:px-4 px-2 py-1 text-xs border bg-gray-300 border-gray-400 text-gray-800 font-bold';
     }
     return $var;
 }

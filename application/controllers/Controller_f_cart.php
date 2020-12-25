@@ -107,14 +107,13 @@ class Controller_f_cart extends CI_Controller
             $this->session->set_flashdata('emptyCart', 'Empty Cart');
             redirect('primagreen');
         } else {
-            $data['getCourier'] = $this->model_courier->getAllCourier();
+            $data['getCourier'] = $this->model_courier->getAllCourierEnabled();
             $data['title']   = 'Checkout - ' . APP_NAME;
             $data['content'] = 'frontend/cart/detail_checkout';
             $data['detailCart'] = $this->showCart();
             $this->load->view('frontend/master_frontend', $data);
         }
     }
-
 
 
     function loadCourier()

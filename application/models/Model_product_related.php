@@ -26,6 +26,16 @@ class Model_product_related extends CI_Model
         return $query->result_array();
     }
 
+    public function getAllTypesEnabled()
+    {
+        $data = array('status_type'=>'Enabled');
+        $this->db->select('*');
+        $this->db->from('products_type');
+        $this->db->where($data);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     // TYPE
 
     public function inputType($data)
