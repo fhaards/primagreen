@@ -93,6 +93,7 @@ $route['product/edit-courier/(:any)'] = 'Controller_courier/editCourier/$1';
 /*///////// Order /////////////*/
 $route['order/order-list'] = 'Controller_order/index';
 $route['order/order-detail/(:any)'] = 'Controller_order/orderDetails/$1';
+$route['order/change-status'] = 'Controller_order/changeStatusOrder';
 
 /*///////// Sold /////////////*/
 $route['sold/sold-list'] = 'Controller_sold/index';

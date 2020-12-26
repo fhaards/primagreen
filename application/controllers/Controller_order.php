@@ -36,4 +36,19 @@ class Controller_order extends CI_Controller {
         $data['content'] = '_adminpages/order/detail_order';
         $this->load->view('_adminpages/master_admin', $data);
     }
+
+    public function changeStatusOrder(){
+        $no_pemesanan = $this->input->post('no_pemesanan');
+        $status_order = $this->input->post('status_baru');
+
+        $this->form_validation->set_rules('status_baru', 'status', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('ErrorMsg', 'Error');
+            redirect('order/order-list/');
+        } else {
+            $this->model_order->changeStatusOrder($no_pemesanan,$status_order);
+            $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+            redirect('order/order-list/');
+        }
+    }
 }

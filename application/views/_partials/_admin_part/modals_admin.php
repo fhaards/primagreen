@@ -11,8 +11,8 @@
             </button>
         </header>
         <!-- Modal body -->
-        <!-- <?php echo validation_errors(); ?>
-        <?php echo form_open_multipart('profile/upload-transfer'); ?> -->
+        <?php echo validation_errors(); ?>
+        <?php echo form_open_multipart('order/change-status'); ?>
         <div class="mt-4 mb-6">
             <!-- Modal title -->
             <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
@@ -23,16 +23,25 @@
                 Warning !! . Be careful when your try to change status order
             </p>
             <div class="py-4 flex flex-col" id="uploadTransferModalBody">
-                <div class="flex flex-col">
-                    <span class="text-gray-600 font-semibold">Order Number</span>
-                    <span class="text-gray-800 font-bold mt-2" id="no_order_pemesanan_modal"></span>
-                    <input hidden type="text" id="no_order_pemesanan_modal_input" name="no_pemesanan">
+                <div class="flex flex-col lg:flex-row lg:space-x-4">
+                    <span class="text-gray-600 font-semibold lg:flex-1">Order Number</span>
+                    <div class="lg:flex-1">
+                        <span class="text-gray-800 font-bold mt-2 lg:mt-0" id="no_order_pemesanan_modal"></span>
+                        <input hidden type="text" id="no_order_pemesanan_modal_input" name="no_pemesanan">
+                    </div>
                 </div>
-                <div class="flex flex-col mt-2">
-                    <span class="text-gray-600 font-semibold">Change Status to</span>
-                    <span class="text-gray-800 font-bold mt-2">
+                <div class="flex flex-col lg:flex-row lg:space-x-4 mt-2">
+                    <span class="text-gray-600 font-semibold lg:flex-1">Change Status to</span>
+                    <span class="text-gray-800 font-bold mt-2 lg:flex-1">
                         <label class="block text-sm">
-                           
+                            <?php $array = array("ONHOLD", "PROCESS", "PACKING", "COMPLETE"); ?>
+                            <select name="status_baru" class="block text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
+                                <?php
+                                foreach ($array as $key => $value) :
+                                    echo '<option value="' . $value . '">' . $value . '</option>';
+                                endforeach;
+                                ?>
+                            </select>
                         </label>
                     </span>
                 </div>
@@ -45,13 +54,13 @@
                 Cancel
             </button>
             <button type="submit" class="flex space-x-2 shadow-lg w-full sm:w-auto  items-center px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-                <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                <svg class="w-4 h-4 fill-current text-white" aria-hidden="true" fill="" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>
                 </svg>
-                <span class=""> Upload </span>
+                <span class=""> Change </span>
             </button>
         </footer>
-        <!-- <?php echo form_close(); ?> -->
+        <?php echo form_close(); ?>
 
     </div>
 </div>

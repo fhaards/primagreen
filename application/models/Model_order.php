@@ -72,6 +72,13 @@ class Model_order extends CI_Model
 		return $this->db->insert('pay_con', $data);
 	}
 
+	public function changeStatusOrder($no_pemesanan,$status_order)
+	{
+		$this->db->set('status', $status_order);
+		$this->db->where('no_pemesanan', $no_pemesanan);
+		return $this->db->update('pemesanan');
+	}
+
 	public function changeStatusOrderToProcess($no_pemesanan)
 	{
 		$this->db->set('status', 'PROCESS');
