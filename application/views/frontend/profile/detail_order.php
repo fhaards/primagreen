@@ -39,7 +39,7 @@
 
         <div class="flex-1">
             <div class="flex flex-row py-4 lg:py-0 space-x-4 border-t border-gray-300 lg:border-none lg:float-right ">
-                <a href="<?php echo base_url().'report/report-order';?>" target="_blank" class="flex space-x-2 shadow-lg items-center px-4 text-sm py-2 font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                <a href="<?php echo base_url().'report/report-order/'.$getOrderDetail['no_pemesanan'];?>" target="_blank" class="flex space-x-2 shadow-lg items-center px-4 text-sm py-2 font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                     <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                     </svg>
@@ -121,17 +121,17 @@
                 <!-- SEND TO -->
                 <div class="flex-1 w-full border border-gray-200  rounded-lg p-5 my-5">
                     <div class="border-b border-gray-400 py-4">
-                        <span class="text-gray-800 font-bold">Shipments To</span>
+                        <span class="text-gray-800 font-bold">Delivery To</span>
                     </div>
                     <div class="flex flex-col">
                         <div class="flex flex-col mt-2 w-full">
-                            <div class="flex mt-2 text-gray-800 py-2">Sending By</div>
+                            <div class="flex mt-2 text-gray-800 py-2">Sending By / To</div>
                             <div class="text-gray-600 w-full">
                                 <span class=""><?= $getOrderDetail['nama_t']; ?></span>
                             </div>
                         </div>
                         <div class="flex flex-col mt-2 w-full">
-                            <div class="flex mt-2 text-gray-800">Address</div>
+                            <div class="flex mt-2 text-gray-800">Delivery Address</div>
                             <div class="text-gray-600 w-full">
                                 <span class=""><?= $getOrderDetail['alamat_t']; ?></span>
                             </div>

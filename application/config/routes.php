@@ -147,7 +147,7 @@ $route['profile/detail-order/(:any)'] = 'Controller_f_user/detailOrder/$1';
 $route['profile/upload-transfer'] = 'Controller_f_user/uploadTransfer';
 
 /*///////// Report /////////////*/
-$route['report/report-order'] = 'Controller_report/reportOrder';
+$route['report/report-order/(:any)'] = 'Controller_report/reportOrder/$1';
 
 /*///////// Base /////////////*/
 $route['foo'] = 'Controller_foo/index';

@@ -44,17 +44,17 @@
             <!-- SEND TO -->
                 <div class="flex-1 w-full border border-gray-200  rounded-lg p-5 my-5">
                     <div class="border-b border-gray-400 py-4">
-                        <span class="text-gray-800 font-bold">Shipments To</span>
+                        <span class="text-gray-800 font-bold">Delivery To</span>
                     </div>
                     <div class="flex flex-col">
                         <div class="flex flex-col mt-2 w-full">
-                            <div class="flex mt-2 text-gray-800 py-2">Sending By</div>
+                            <div class="flex mt-2 text-gray-800 py-2">Sending By / To</div>
                             <div class="text-gray-600 w-full">
                                 <input type="text" name="nama_t" value="<?= getUserData()['nama']; ?>" type="number" class="block mt-1 form-input w-full p-2 border border-gray-500 text-sm focus:bg-whiteform-textarea focus:border-green-400 focus:outline-none focus:shadow-outline-green" />
                             </div>
                         </div>
                         <div class="flex flex-col mt-2 w-full">
-                            <div class="flex mt-2 text-gray-800">Address</div>
+                            <div class="flex mt-2 text-gray-800">Delivery Address</div>
                             <div class="text-gray-600 w-full">
                                 <textarea name="alamat_t" type="number" class="block mt-1 w-full p-4 form-input border border-gray-500 text-sm focus:bg-whiteform-textarea focus:border-green-400 focus:outline-none focus:shadow-outline-green"><?= getUserData()['alamat']; ?></textarea>
                             </div>

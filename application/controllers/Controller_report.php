@@ -25,15 +25,11 @@ class Controller_report extends CI_Controller
         $this->load->helper('styling');
     }
 
-    public function reportOrder()
+    public function reportOrder($noOrder)
     {
-
-        $data = array(
-            "dataku" => array(
-                "nama" => "Petani Kode",
-                "url" => "http://petanikode.com"
-            )
-        );
+        $data['title']   = 'Print Order - ' . APP_NAME;
+        $data['getOrderList'] = $this->model_order->getAllOrderByNoOrder($noOrder)->result_array();
+        $data['getOrderDetail'] = $this->model_order->getAllOrderByNoOrder_GroupBy($noOrder)->row_array();
         $this->pdf->setPaper('A4', 'potrait');
         $this->pdf->filename = "laporan-petanikode.pdf";
         $this->pdf->load_view('frontend/report/report_order', $data);
