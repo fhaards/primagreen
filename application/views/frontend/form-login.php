@@ -1,4 +1,4 @@
-<section class="w-full mx-auto bg-white mt-32 py-16">
+<section class="w-full mx-auto bg-white mt-20 lg:mt-32">
     <div class="container w-full mx-auto lg:flex pt-2 pb-2">
         <div class="flex-1">
             <div id="new-items" class="w-full z-30 top-0 py-1">

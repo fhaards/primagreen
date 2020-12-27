@@ -1,4 +1,4 @@
-<section class="homepage-banner w-full mt-32 my-4 mx-auto flex pt-12 md:pt-0 md:items-center bg-cover bg-right">
+<section class="homepage-banner w-full mt-20 lg:mt-32 my-4 mx-auto flex pt-12 md:pt-0 md:items-center bg-cover bg-right">
     <div class="container mx-auto">
         <div class="flex flex-col w-full lg:w-1/3 justify-center items-start lg:p-6 tracking-wide">
             <h1 class="text-white font-bold lg:text-4xl text-3xl my-4 px-6 rounded-lg tracking-wide">Time to bloom youre house with plants</h1>
