@@ -56,6 +56,24 @@ form label{
 	-o-background-size: cover;
 	background-size: cover; 
 }
+.signup-banner{
+	height: 500px;
+	width: 100%;
+	background: url(../image/signup_banner.svg); 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+}
+.login-banner{
+	height: 700px;
+	width: 100%;
+	background: url(../image/login_banner.svg); 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+}
 .page-title{
 	font-family: 'DM Serif Text', serif;
 }

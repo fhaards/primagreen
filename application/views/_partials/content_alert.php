@@ -93,6 +93,20 @@
 	</script>
 <?php endif; ?>
 
+<?php if($this->session->flashdata('registMsg')): ?>
+	<script type="text/javascript"> 
+	swal({
+	      title: "Welcome",
+	      text: "Registration Success",
+	      type: 'success',
+	      timer: 3000,
+	      imageWidth: 50,
+	      allowOutsideClick: false,
+	      confirmButtonText: "OK",
+	    })
+	</script>
+<?php endif; ?>
+
 <?php if($this->session->flashdata('emptyCart')): ?>
     <script type="text/javascript"> 
 	swal({
