@@ -21,6 +21,7 @@ class Controller_f_cart extends CI_Controller
         $this->load->helper('directory');
         $this->load->helper("file");
         $this->load->helper("styling");
+        $this->load->helper("string");  
     }
 
     function addToCart()
@@ -144,10 +145,13 @@ class Controller_f_cart extends CI_Controller
         $getUser = $this->input->post('user_checkout');
         $qty = $this->input->post('qty');
         $date = date('Y-m-d');
-        $dateSet = date('YmdHis');
-        $setRand = rand(10, 90);
-        $setRand2 = rand(10, 90);
-        $setNoPemesanan = $setRand . $dateSet . $setRand2 . $getUser;
+        $dateSet = date('d');
+        $hourSet = date('h');
+        $minuteSet = date('i');
+        $getString = strtoupper(random_string('alpha', 4));
+        $getString2 = strtoupper(random_string('alpha', 2));
+        $getNum = random_string('numeric', 2);
+        $setNoPemesanan =$getString.$dateSet.$getUser.$hourSet.$getNum.$minuteSet.$getString2;
 
         $totalHarga = $this->input->post('totalorder');
         $idKurir = $this->input->post('id_kurir');

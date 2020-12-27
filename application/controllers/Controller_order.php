@@ -46,7 +46,11 @@ class Controller_order extends CI_Controller {
             $this->session->set_flashdata('ErrorMsg', 'Error');
             redirect('order/order-list/');
         } else {
-            $this->model_order->changeStatusOrder($no_pemesanan,$status_order);
+            if($status_order == 'COMPLETE'){
+                $this->model_order->changeStatusComplete($no_pemesanan,$status_order);
+            } else {
+                $this->model_order->changeStatusOrder($no_pemesanan,$status_order);
+            }
             $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
             redirect('order/order-list/');
         }

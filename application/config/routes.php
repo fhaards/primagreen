@@ -97,6 +97,7 @@ $route['order/change-status'] = 'Controller_order/changeStatusOrder';
 
 /*///////// Sold /////////////*/
 $route['sold/sold-list'] = 'Controller_sold/index';
+$route['sold/sold-detail/(:any)'] = 'Controller_sold/soldDetails/$1';
 
 
 /*///////// Settings and Company /////////////*/
@@ -151,4 +152,5 @@ $route['report/report-order/(:any)'] = 'Controller_report/reportOrder/$1';
 
 /*///////// Base /////////////*/
 $route['foo'] = 'Controller_foo/index';
+$route['dummy'] = 'Controller_foo/dummy';
 $route['base'] = 'Controller_base/index';

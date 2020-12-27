@@ -12,32 +12,27 @@
             <div class="my-4 flex space-x-4 flex-row text-gray-800 font-semibold">
                 <span>1</span>
                 <span>
-                    Transfer To The Following Account Number <br>
+                    Transfer to the following bank account number <br>
                     MANDIRI No. Account 1010005381882 Dwi Winarsih</span>
             </div>
 
             <div class="my-4 flex space-x-4 flex-row text-gray-800 font-semibold">
                 <span>2</span>
                 <span class="flex flex-col">
-                    <span>Money Transfer Confirm Via Website Or Email</span>
-                    <span class="font-bold mt-2">On Website :</span>
-                    <span>Open Your Order History From Account Page & Upload Your Transfers Note</span>
-                    <span class="font-bold mt-2">On Email :</span>
-                    <ul class="border border-green-500 mx-auto my-4 p-4 rounded-sm">
-                        <li><span class="font-bold">to:</span> twodstore18@gmail.com</li>
-                        <li><span class="font-bold">cc:</span> order_code_yourname</li>
-                        <li><span class="font-bold">message content:</span> transfer notes / transfer proof</li>
-                    </ul>
+                    <span>Confirmation transfer via website </span>
+                    <span class="font-bold mt-2">How to :</span>
+                    <span>Open youre profile and click the order</span>
+                    <span>On details order please upload youre transfer confirmation notes , <br> photos or scan</span>
                 </span>
             </div>
             <div class="my-4 flex space-x-4 flex-row text-gray-800 font-semibold">
                 <span>3</span>
                 <span>
-                    We Will Process Your Order <br>
-                    <span class="font-bold">On Website :</span>
+                    We will process youre order <br>
+                    <span class="font-bold">Notes :</span>
                     <br>
-                    * To View The Order Process, You Open It On The Account Page<br>
-                    * Duration Of Delivery Depends On Your Location<br>
+                    * To view the order status , open Profile > My order<br>
+                    * Duration of delivery depends on youre location<br>
                 </span>
             </div>
         </div>
