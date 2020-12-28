@@ -9,5 +9,5 @@
     echo(rand(100,300). "<br>");
     echo(rand(100,300). "<br>");
 
-    echo password_hash("admin", PASSWORD_DEFAULT);
+    echo password_hash("google37", PASSWORD_DEFAULT);
 ?>

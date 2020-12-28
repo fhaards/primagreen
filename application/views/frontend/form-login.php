@@ -13,7 +13,7 @@
                 <?php echo form_open('login'); ?>
                 <label class="block text-sm py-2">
                     <span class="text-gray-700 dark:text-gray-400">Email</span>
-                    <input name="email" type="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type youre username" />
+                    <input name="email" type="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type youre emal" />
                 </label>
                 <label class="block text-sm py-2">
                     <span class="text-gray-700 dark:text-gray-400">Password</span>

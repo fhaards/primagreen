@@ -33,9 +33,9 @@
                 <div class="flex flex-col lg:flex-row lg:space-x-4 mt-2">
                     <span class="text-gray-600 font-semibold lg:flex-1">Change Status to</span>
                     <span class="text-gray-800 font-bold mt-2 lg:flex-1">
-                        <label class="block text-sm">
+                        <label class="block text-sm" id="change_status_order">
                             <?php $array = array("ONHOLD", "PROCESS", "PACKING", "COMPLETE"); ?>
-                            <select name="status_baru" class="block text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
+                            <select name="status_baru" class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
                                 <?php
                                 foreach ($array as $key => $value) :
                                     echo '<option value="' . $value . '">' . $value . '</option>';
@@ -45,14 +45,19 @@
                         </label>
                     </span>
                 </div>
+                <div id="resi_no" class="flex flex-col lg:flex-row lg:space-x-4 mt-2">
+                    <span class="text-gray-600 font-semibold lg:flex-1">Resi Number</span>
+                    <span class="text-gray-800 font-bold mt-2 lg:flex-1">
+                        <label class="block text-sm">
+                            <input type="text" name="resi" onchange="changeStatusOrder(this)" class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white form-input focus:border-green-400 focus:outline-none focus:shadow-outline-green " >
+                        </label>
+                    </span>
+                </div>
             </div>
 
         </div>
 
         <footer class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
-            <button @click="closeModal" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
-                Cancel
-            </button>
             <button type="submit" class="flex space-x-2 shadow-lg w-full sm:w-auto  items-center px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                 <svg class="w-4 h-4 fill-current text-white" aria-hidden="true" fill="" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path>

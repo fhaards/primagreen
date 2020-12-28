@@ -1,3 +1,21 @@
+// hideResiNo();
+// function hideResiNo() {
+// 	var earrings = document.getElementById("resi_no");
+// 	earrings.style.visibility = "hidden";
+// }
+// function showResiNo() {
+// 	var earrings = document.getElementById("resi_no");
+// 	earrings.style.visibility = "visible";
+// }
+
+// function changeStatusOrder(select) {
+// 	if (select.value == "COMPLETE") {
+// 		showResiNo();
+// 	} else {
+// 		hideResiNo();
+// 	}
+// }
+
 function data() {
 	function getThemeFromLocalStorage() {
 		// if user already changed the theme, use it
@@ -11,6 +29,8 @@ function data() {
 			window.matchMedia("(prefers-color-scheme: dark)").matches
 		);
 	}
+
+
 
 	function setThemeToLocalStorage(value) {
 		window.localStorage.setItem("dark", value);
@@ -72,28 +92,28 @@ function data() {
 	};
 }
 
-function changeAtiveTab(event, tabID) {
-	let element = event.target;
-	while (element.nodeName !== "A") {
-		element = element.parentNode;
-	}
-	ulElement = element.parentNode.parentNode;
-	aElements = ulElement.querySelectorAll("li > a");
-	tabContents = document
-		.getElementById("tabs-id")
-		.querySelectorAll(".tab-content > div");
-	for (let i = 0; i < aElements.length; i++) {
-		aElements[i].classList.remove("text-white");
-		aElements[i].classList.remove("bg-green-600");
-		aElements[i].classList.add("text-green-600");
-		aElements[i].classList.add("bg-white");
-		tabContents[i].classList.add("hidden");
-		tabContents[i].classList.remove("block");
-	}
-	element.classList.remove("text-green-600");
-	element.classList.remove("bg-white");
-	element.classList.add("text-white");
-	element.classList.add("bg-green-600");
-	document.getElementById(tabID).classList.remove("hidden");
-	document.getElementById(tabID).classList.add("block");
-}
+// function changeAtiveTab(event, tabID) {
+// 	let element = event.target;
+// 	while (element.nodeName !== "A") {
+// 		element = element.parentNode;
+// 	}
+// 	ulElement = element.parentNode.parentNode;
+// 	aElements = ulElement.querySelectorAll("li > a");
+// 	tabContents = document
+// 		.getElementById("tabs-id")
+// 		.querySelectorAll(".tab-content > div");
+// 	for (let i = 0; i < aElements.length; i++) {
+// 		aElements[i].classList.remove("text-white");
+// 		aElements[i].classList.remove("bg-green-600");
+// 		aElements[i].classList.add("text-green-600");
+// 		aElements[i].classList.add("bg-white");
+// 		tabContents[i].classList.add("hidden");
+// 		tabContents[i].classList.remove("block");
+// 	}
+// 	element.classList.remove("text-green-600");
+// 	element.classList.remove("bg-white");
+// 	element.classList.add("text-white");
+// 	element.classList.add("bg-green-600");
+// 	document.getElementById(tabID).classList.remove("hidden");
+// 	document.getElementById(tabID).classList.add("block");
+// }

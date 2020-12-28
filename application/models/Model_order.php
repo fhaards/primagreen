@@ -85,7 +85,7 @@ class Model_order extends CI_Model
 		$this->db->where('no_pemesanan', $no_pemesanan);
 		return $this->db->update('pemesanan');
 	}
-	public function changeStatusComplete($no_pemesanan, $status_order)
+	public function changeStatusComplete($no_pemesanan, $status_order,$get_resi)
 	{
 		$this->db->select('*');
 		$this->db->from('pemesanan');
@@ -104,7 +104,8 @@ class Model_order extends CI_Model
 				'id_kurir' => $key->id_kurir,
 				'hrg_kurir' => $key->hrg_kurir,
 				'nama_t' => $key->nama_t,
-				'alamat_t' => $key->alamat_t
+				'alamat_t' => $key->alamat_t,
+				'no_resi' => $get_resi
 			);
 			$inserting = $this->db->insert('penjualan', $data);
 			if($inserting){

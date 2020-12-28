@@ -22,6 +22,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/chart.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/primagreen.css'; ?>" />
 
+
+
 </head>
 
 <body>
@@ -46,8 +48,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </div>
     <?php $this->load->view('_partials/_admin_part/modals_admin'); ?>
     <script>
-        // var l = window.location;
-        // var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
         var BASE_URL = "<?php echo base_url(); ?>";
         var SITE_URL = "<?php echo site_url(); ?>";
     </script>
@@ -60,12 +60,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/tailwind/js/charts-pie.js'; ?>" defer></script>
     <script src="<?php echo base_url() . 'assets/DataTables/datatables.min.js'; ?>" type="text/javascript"></script>
     <script src="<?php echo base_url() . 'assets/DataTables/datatables-config.js'; ?>" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.js'; ?>" language="javascript"></script>
-    <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'vendor/tinymce/tinymce/tinymce.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_admin_order.js'; ?>" language="javascript"></script>
-
+    <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.js'; ?>" language="javascript"></script>
     <script>
+        $("#resi_no").hide();
+        $(document).ready(function() {
+            $("#change_status_order").on('change', 'select', function() {
+                if (this.value == "COMPLETE") {
+                    $("#resi_no").show();
+                } else {
+                    $("#resi_no").hide();
+                }
+            });
+        });
+
         tinymce.remove();
         tinymce.init({
             selector: 'textarea'

@@ -40,6 +40,12 @@ class Controller_order extends CI_Controller {
     public function changeStatusOrder(){
         $no_pemesanan = $this->input->post('no_pemesanan');
         $status_order = $this->input->post('status_baru');
+        $get_resi = $this->input->post('resi');
+        if(!empty($get_resi)){
+            $set_resi = $get_resi;
+        } else {
+            $set_resi = '';
+        }
 
         $this->form_validation->set_rules('status_baru', 'status', 'required');
         if ($this->form_validation->run() === FALSE) {
@@ -47,7 +53,7 @@ class Controller_order extends CI_Controller {
             redirect('order/order-list/');
         } else {
             if($status_order == 'COMPLETE'){
-                $this->model_order->changeStatusComplete($no_pemesanan,$status_order);
+                $this->model_order->changeStatusComplete($no_pemesanan,$status_order,$get_resi);
             } else {
                 $this->model_order->changeStatusOrder($no_pemesanan,$status_order);
             }
