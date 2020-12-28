@@ -86,7 +86,7 @@
 	swal({
 	      type: 'error',
   		  title: 'Oops...',
-          text: 'Wrong, Username or Password',
+          text: 'Wrong, Email or Password',
 	      allowOutsideClick: false,
 	      confirmButtonText: "OK",
 	    })

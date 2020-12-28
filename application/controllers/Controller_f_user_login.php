@@ -13,6 +13,7 @@ class Controller_f_user_login extends CI_Controller
 		$this->load->model('model_f_user_login');
 		$this->load->helper('array');
 		$this->load->library('form_validation');
+		$this->load->library('recaptcha');
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->helper('date');
@@ -24,13 +25,19 @@ class Controller_f_user_login extends CI_Controller
 	public function index()
 	{
 		// $data['homepage'] = $this->model_f_homepage->getHomepage();
+		$data['show_captcha'] = $this->recaptcha->render();
 		$data['title']   = 'Login - ' . APP_NAME;
 		$data['content'] = 'frontend/form-login';
 		if ($this->session->userdata('status') == "login") {
 			redirect(base_url("primagreen"));
 		} else {
-			$this->form_validation->set_rules('email', 'Email', 'required');
-			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_error_delimiters('<div class="bg-red-600 w-100 p-2 my-2 text-xs shadow-lg rounded-sm text-white">', '</div>');
+			$this->form_validation->set_rules('email', '<strong>Email</strong>', 'valid_email|required');
+			$this->form_validation->set_rules('password', '<strong>Password</strong>', 'required|min_length[7]|max_length[30]');
+			$this->form_validation->set_rules('g-recaptcha-response', '<strong>Captcha</strong> ', 'callback_getResponseCaptcha');
+			//set message form validation
+			$this->form_validation->set_message('required', '{field} is required.');
+			$this->form_validation->set_message('callback_getResponseCaptcha', '{field} {g-recaptcha-response} harus diisi. ');
 			if ($this->form_validation->run() === FALSE) {
 				$this->load->view('frontend/master_frontend', $data);
 			} else {
@@ -65,12 +72,17 @@ class Controller_f_user_login extends CI_Controller
 
 	public function registration()
 	{
-		$this->form_validation->set_rules('email', 'Email', 'valid_email|required');
-		$this->form_validation->set_rules('password', 'Password', 'required|min_length[7]|max_length[30]');
-		$this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required|matches[password]');
+		$data['show_captcha'] = $this->recaptcha->render();
 		$data['title']   = 'Registration - ' . APP_NAME;
 		$data['content'] = 'frontend/form-registration';
-
+		$this->form_validation->set_error_delimiters('<div class="bg-red-600 w-100 p-2 my-2 text-xs shadow-lg rounded-sm text-white">', '</div>');
+		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'valid_email|required');
+		$this->form_validation->set_rules('password', '<strong>Password</strong>', 'required|min_length[7]|max_length[30]');
+		$this->form_validation->set_rules('password_confirm', '<strong>Confirm Password</strong>', 'required|matches[password]');
+		$this->form_validation->set_rules('g-recaptcha-response', '<strong>Captcha</strong> ', 'callback_getResponseCaptcha');
+		//set message form validation
+		$this->form_validation->set_message('required', '{field} is required.');
+		$this->form_validation->set_message('callback_getResponseCaptcha', '{field} {g-recaptcha-response} harus diisi. ');
 		if ($this->form_validation->run() == FALSE) {
 			// $this->session->set_flashdata('errloginMsg', 'Error');
 			// redirect(base_url("login"));
@@ -91,6 +103,9 @@ class Controller_f_user_login extends CI_Controller
 			$user['level'] = 'user';
 			$user['status_a'] = '2';
 			$user['active'] = false;
+			$user['nama'] = $this->input->post('nama');
+			$user['tlp'] = $this->input->post('tlp');
+			$user['alamat'] = $this->input->post('alamat');
 			$id = $this->model_f_user_login->insert($user);
 
 			//set up email
@@ -134,6 +149,18 @@ class Controller_f_user_login extends CI_Controller
 			}
 			$this->session->set_flashdata('registMsg', 'Success');
 			redirect('login');
+		}
+	}
+
+	public function getResponseCaptcha($str)
+	{
+		$this->load->library('recaptcha');
+		$response = $this->recaptcha->verifyResponse($str);
+		if ($response['success']) {
+			return true;
+		} else {
+			$this->form_validation->set_message('getResponseCaptcha', '%s is required.');
+			return false;
 		}
 	}
 }

@@ -144,7 +144,7 @@ $route['cart/checkout-finish/(:any)'] = 'Controller_f_cart/loadCheckoutFinish/$1
 $route['cart/checkout'] = 'Controller_f_cart/checkOut';
 
 /*///////// Profile /////////////*/
-$route['profile/user-account/(:any)'] = 'Controller_f_user/index';
+$route['profile/user-account'] = 'Controller_f_user/index';
 $route['profile/detail-order/(:any)'] = 'Controller_f_user/detailOrder/$1';
 $route['profile/upload-transfer'] = 'Controller_f_user/uploadTransfer';
 

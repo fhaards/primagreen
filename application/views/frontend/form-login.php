@@ -20,6 +20,11 @@
                     <input name="password" type="password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type youre password" />
                 </label>
                 <label>
+                    <div class="mt-4">
+                        <?php echo $show_captcha; ?>
+                    </div>
+                </label>
+                <label>
                     <button type="submit" class="mt-8 shadow-lg w-full px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                         <p class="tracking-widest"> Login </p>
                     </button>
@@ -27,7 +32,7 @@
                 <?php echo form_close(); ?>
                 <label>
                     <p class="mt-8 text-sm">
-                        New User? Registration or Signup Click -<a href="<?php echo base_url().'registration'?>" class="text-blue-600 underline hover:text-blue-700"> Here</a>
+                        New User? Registration or Signup Click -<a href="<?php echo base_url() . 'registration' ?>" class="text-blue-600 underline hover:text-blue-700"> Here</a>
                     </p>
                 </label>
             </div>
@@ -36,6 +41,6 @@
             <div class="login-banner">
             </div>
         </div>
-        
+
     </div>
 </section>

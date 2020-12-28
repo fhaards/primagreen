@@ -52,6 +52,7 @@ class Controller_f_user extends CI_Controller
     {
         // $data = $this->model_order->muploadTransfer();
         // echo json_encode($data);
+        redirectIfNotLogin();
         $no_pemesanan = $this->input->post('no_pemesanan');
         $ket = $this->input->post('ket');
 
