@@ -50,4 +50,17 @@ class Model_f_user_login extends CI_Model
 		$this->db->insert('user', $user);
 		return $this->db->insert_id();
 	}
+
+	public function getDataExist($email)
+	{
+		$this->db->select('email');
+		$this->db->from('user');
+		$this->db->where('email', $email);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

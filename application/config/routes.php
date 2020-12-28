@@ -117,6 +117,7 @@ $route['company/update-profile/(:any)'] = 'Controller_settings/updateProfile/$1'
 $route['primagreen'] = 'Controller_f_homepage/index';
 $route['login'] = 'Controller_f_user_login/index';
 $route['registration'] = 'Controller_f_user_login/registration';
+$route['registration/data_exist'] = 'Controller_f_user_login/dataExist';
 $route['logout'] = 'Controller_f_user_login/logout';
 
 /*///////// About Us /////////////*/

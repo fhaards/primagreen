@@ -76,7 +76,7 @@ class Controller_f_user_login extends CI_Controller
 		$data['title']   = 'Registration - ' . APP_NAME;
 		$data['content'] = 'frontend/form-registration';
 		$this->form_validation->set_error_delimiters('<div class="bg-red-600 w-100 p-2 my-2 text-xs shadow-lg rounded-sm text-white">', '</div>');
-		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'valid_email|required');
+		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'valid_email|required|is_unique[user.email]');
 		$this->form_validation->set_rules('password', '<strong>Password</strong>', 'required|min_length[7]|max_length[30]');
 		$this->form_validation->set_rules('password_confirm', '<strong>Confirm Password</strong>', 'required|matches[password]');
 		$this->form_validation->set_rules('g-recaptcha-response', '<strong>Captcha</strong> ', 'callback_getResponseCaptcha');
@@ -161,6 +161,28 @@ class Controller_f_user_login extends CI_Controller
 		} else {
 			$this->form_validation->set_message('getResponseCaptcha', '%s is required.');
 			return false;
+		}
+	}
+
+	public function dataExist()
+	{
+		$email = $this->input->post('email');
+		if ($this->model_f_user_login->getDataExist($email)) {
+			echo '<span class="text-red-500 flex flex-row items-center"><svg class="w-4 h-4 fill-current text-green500" aria-hidden="true" fill="" viewBox="0 0 20 20">
+			<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+		</svg> &nbsp; Email already exist</span>';
+		} else {
+			if (preg_match("/^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i", $email)) {
+				echo '<span class="text-green-500 flex flex-row items-center">
+				<svg class="w-4 h-4 fill-current text-green500" aria-hidden="true" fill="" viewBox="0 0 20 20">
+				<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+			</svg> &nbsp; This Email can be use
+				</span>';
+			} else {
+				echo '<span class="text-red-500 flex flex-row items-center"><svg class="w-4 h-4 fill-current text-green500" aria-hidden="true" fill="" viewBox="0 0 20 20">
+			<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+		</svg> &nbsp; Use "@" on Email </span>';
+			}
 		}
 	}
 }
