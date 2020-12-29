@@ -1,4 +1,4 @@
-<header id="header-nav" class="nav-header fixed z-10 bg-white lg:h-32 h:20 py-5 top-0 w-full mx-auto">
+<header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto">
   <div class="container flex items-center justify-between h-full mx-auto px-6 ">
     <!-- Mobile hamburger -->
     <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu" aria-label="Menu">
@@ -10,107 +10,113 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "inline-flex tracking-widest items-center w-full text-md font-bold transition-colors duration-150 uppercase text-green-600 hover:text-green-700";
-    $inactiveside = "inline-flex tracking-widest items-center w-full text-md font-bold transition-colors duration-150 uppercase text-gray-600 hover:text-green-500";
+    $activeside = "tracking-widest items-center text-md font-bold transition-colors duration-150 uppercase text-green-600 hover:text-green-700";
+    $inactiveside = "tracking-widest items-center text-md font-bold transition-colors duration-150 uppercase text-gray-600 hover:text-green-500";
     ?>
 
     <!-- Desktop Menu -->
-    <div class="flex xs:hidden hidden md:block mx:auto">
-      <div class="relative w-full space-x-12 flex max-w-xl focus-within:text-green-500">
-        <div class="flex-1">
-          <a href="<?= base_url(); ?>store/show-all-items" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger">
-            Shop
-          </a>
-
-        </div>
-        <div class="flex-1">
-          <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activeside :  $inactiveside; ?>">
-            About
-          </a>
-        </div>
+    <div class=" flex-1 xs:hidden hidden md:block">
+      <div class="space-x-8 w-full space-x-12 flex max-w-xl focus-within:text-green-500">
+        <a href="<?= base_url(); ?>store/show-all-items" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()">
+          Shop
+        </a>
+        <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activeside :  $inactiveside; ?>">
+          About
+        </a>
       </div>
     </div>
 
 
     <!-- Logo -->
-    <div class="md:block hidden">
-      <a class="text-lg font-bold" href="<?= base_url(); ?>">
-        <img class="h-6 object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
-      </a>
+    <div class="flex-1 md:block hidden">
+      <div class="mx-auto w-1/2 items-center">
+        <a class="text-lg font-bold" href="<?= base_url(); ?>">
+          <img class="mx-auto  h-6 w-100 object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
+        </a>
+      </div>
     </div>
 
-    <ul class="flex items-center space-x-8 max-w-xl">
-      <!-- Notifications menu -->
+    <div class="flex-1 space-x-8">
+      <ul class="flex flex-row space-x-8  float-right">
+        <li class="relative">
+          <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span id="notif-cart" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full"></span>
+          </button>
+        </li>
 
-      <li class="relative">
-        <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <span id="notif-cart" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full"></span>
-        </button>
-      </li>
+        <li class="relative">
+          <button class="align-middle focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </button>
+          <template x-if="isProfileMenuOpen">
+            <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
+              <?php if (isUser()) : ?>
+                <li class="flex">
+                  <a href="<?= base_url(); ?>profile/user-account/<?= getUserData()['username']; ?>" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
+                    <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <span><?= getUserData()['nama']; ?></span>
+                  </a>
+                </li>
+              <?php endif; ?>
 
-      <!-- <li class="relative">
-        <button class="showCartMenu align-middle focus:outline-none" @click="toggleCartMenu" @keydown.escape="closeCartMenu" aria-label="Account" aria-haspopup="true">
-          <svg class="w-6 h-6 text-gray-500 hover:text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <span aria-hidden="true" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"></span>
-        </button>
-      </li> -->
-
-      <!-- Profile menu -->
-      <li class="relative">
-        <button class="align-middle focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-        </button>
-        <template x-if="isProfileMenuOpen">
-          <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
-            <?php if (isUser()) : ?>
               <li class="flex">
-                <a href="<?= base_url(); ?>profile/user-account/<?= getUserData()['username']; ?>" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
-                  <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                  </svg>
-                  <span><?= getUserData()['nama']; ?></span>
-                </a>
+                <?php if (isLoggedIn()) { ?>
+                  <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="<?= base_url(); ?>logout">
+                    <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                    </svg>
+                    <span>Logout</span>
+                  </a>
+                <?php } else { ?>
+                  <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="<?= base_url(); ?>login">
+                    <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                    </svg>
+                    <span>Login / Sign Up</span>
+                  </a>
+                <?php } ?>
               </li>
-            <?php endif; ?>
+            </ul>
+          </template>
+        </li>
+      </ul>
+    </div>
 
-            <li class="flex">
-              <?php if (isLoggedIn()) { ?>
-                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="<?= base_url(); ?>logout">
-                  <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-                  </svg>
-                  <span>Logout</span>
-                </a>
-              <?php } else { ?>
-                <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="<?= base_url(); ?>login">
-                  <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-                  </svg>
-                  <span>Login / Sign Up</span>
-                </a>
-              <?php } ?>
-            </li>
-          </ul>
-        </template>
-      </li>
-
-    </ul>
 
   </div>
 </header>
 
-<div id="submenu-store" class="fixed bg-white w-full p-2 ml-0 z-2 submenu-store">
-  <div class="container mx-auto justify-between px-6">
-    TEST IMPLEMENT
+<section id="sub-nav" onmouseover="openSubNav()" onmouseout="closeSubNav()" class="fixed w-full z-30 mt-20 overflow-y-hidden bg-green-100">
+  <div class="container flex mx-auto px-6 my-8">
+    <div class="flex flex-col mr-20">
+      <div class="flex"><span class="text-green-800 font-bold leading-5 mb-5 leading-5 tracking-widest">Store</span> </div>
+      <ul>
+        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Show All Items</a></li>
+        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Show All Items</a></li>
+        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Show All Items</a></li>
+      </ul>
+    </div>
+    <div class="flex-col mr-20">
+      <div class="flex"><span class="text-green-800 font-bold leading-5 mb-5 leading-5 tracking-widest">Features</span> </div>
+      <ul>
+        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Lastest add</a></li>
+        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Discount Up 25%</a></li>
+      </ul>
+    </div>
+    <div class="flex">
+      <div class="image-subnav bg-red-200">
+        <img class="object-cover w-full h-full" src="<?php echo base_url() . 'assets/image/subnav.jpg'; ?>">
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 
 <!-- <li class="flex">

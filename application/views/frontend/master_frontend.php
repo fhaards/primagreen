@@ -68,6 +68,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/tailwind/js/init-alpine.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_cart.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_custom.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/js_ajax/config_frontend.js'; ?>" language="javascript"></script>
     <script>
         $(document).ready(function() {
             $('#detail_cart').load("<?php echo site_url(); ?>cart/load-cart", function() {

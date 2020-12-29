@@ -1,18 +1,14 @@
 // PAGE SCROLL STYLE
 
-$(window).bind("scroll", function () {
-	if ($(window).scrollTop() > 32) {
-		$(".nav-header").addClass("shadow-lg");
-		$(".nav-header").removeClass("lg:h-32 h:20");
-		$(".submenu-store").addClass("mt-16");
-		$(".submenu-store").removeClass("mt-24");
-	} else {
-		$(".nav-header").removeClass("shadow-lg");
-		$(".nav-header").addClass("lg:h-32 h:20");
-		$(".submenu-store").addClass("mt-24");
-		$(".submenu-store").removeClass("mt-16");
-	}
-});
+// $(window).bind("scroll", function () {
+// 	if ($(window).scrollTop() > 32) {
+// 		$(".nav-header").addClass("shadow-lg");
+// 		$(".nav-header").removeClass("lg:h-32 h:20");
+// 	} else {
+// 		$(".nav-header").removeClass("shadow-lg");
+// 		$(".nav-header").addClass("lg:h-32 h:20");
+// 	}
+// });
 
 $(document).ready(function () {
 	// GET NO PEMESANAN WHEN UPLOAD TRANSFER PROOF
