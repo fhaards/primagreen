@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	subTotal();
 	$(".checkout-final-btn").hide();
-	
+
 	$(".selectkurir").click(function () {
 		setKurir($(this).val());
 	});
@@ -26,8 +26,19 @@ $(document).ready(function () {
 	function successMsg() {
 		swal({
 			type: "success",
+			showConfirmButton: false,
 			timer: 1500,
 			icon: "success",
+		});
+	}
+
+	function loadMsg() {
+		swal({
+			imageUrl: "assets/image/loading.gif",
+			text: "loading .. be patient",
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			imageWidth: 160,
 		});
 	}
 
@@ -47,6 +58,7 @@ $(document).ready(function () {
 		var produk_nama = $(this).data("produknama");
 		var produk_harga = $(this).data("produkharga");
 		var quantity = $("#" + produk_id).val();
+		loadMsg();
 		$.ajax({
 			url: BASE_URL + "cart/add-to-cart",
 			method: "POST",
@@ -70,6 +82,7 @@ $(document).ready(function () {
 
 	$(document).on("click", ".hapus_cart", function () {
 		var row_id = $(this).attr("id");
+		loadMsg();
 		$.ajax({
 			url: BASE_URL + "cart/delete-cart-items",
 			method: "POST",
