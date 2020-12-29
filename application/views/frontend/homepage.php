@@ -181,7 +181,7 @@
     <div class="flex flex-col flex-wrap space-y-4 md:flex-row md:items-end md:space-x-4">
         <div class='flex-1'></div>
         <div>
-            <a href="<?php echo site_url('company/add-randomly/'); ?>" class="block uppercase shadow-xs px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
+            <a href="<?php echo site_url('store/show-all-items'); ?>" class="block uppercase shadow-xs px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
                 <p class="tracking-widest"> Go to store </p>
             </a>
         </div>

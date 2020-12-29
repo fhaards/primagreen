@@ -77,17 +77,9 @@ form label{
 .page-title{
 	font-family: 'DM Serif Text', serif;
 }
-/* #show-cart{
-	display:none;
-}
-#show-cart.show{
-	display:block;
-} */
 
-/* .shop-menu {
-	display: none;
+.submenu-store{
 }
-
-.show-shop:hover + .shop-menu {
-	display: block;
-} */
+.store-trigger:hover .submenu-store{
+    display: block;
+}

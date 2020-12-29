@@ -18,9 +18,10 @@
     <div class="flex xs:hidden hidden md:block mx:auto">
       <div class="relative w-full space-x-12 flex max-w-xl focus-within:text-green-500">
         <div class="flex-1">
-          <a href="<?= base_url(); ?>store/show-all-items" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?>">
+          <a href="<?= base_url(); ?>store/show-all-items" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger">
             Shop
           </a>
+
         </div>
         <div class="flex-1">
           <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activeside :  $inactiveside; ?>">
@@ -29,6 +30,7 @@
         </div>
       </div>
     </div>
+
 
     <!-- Logo -->
     <div class="md:block hidden">
@@ -104,6 +106,11 @@
   </div>
 </header>
 
+<div id="submenu-store" class="fixed bg-white w-full p-2 ml-0 z-2 submenu-store">
+  <div class="container mx-auto justify-between px-6">
+    TEST IMPLEMENT
+  </div>
+</div>
 
 
 <!-- <li class="flex">

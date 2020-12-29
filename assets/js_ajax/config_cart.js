@@ -1,9 +1,7 @@
 $(document).ready(function () {
 	subTotal();
-
 	$(".checkout-final-btn").hide();
-
-	// calculateCheckout();
+	
 	$(".selectkurir").click(function () {
 		setKurir($(this).val());
 	});
@@ -159,37 +157,3 @@ $(document).ready(function () {
 		});
 	}
 });
-
-// function tes(element) {
-// 	console.log(element);
-// 	console.log(element.value);
-// }
-
-// $(".selectkurir").change(function () {
-// 	calculateCheckout();
-// 	var setValHargaKurir = $(".setkurir input[type=radio]:checked").val();
-// 	if ($(this).prop("checked")) {
-// 		$("#setkurir-clone").val(setValHargaKurir);
-// 		$("#setkurir").html(setValHargaKurir);
-// 	}
-// });
-
-// $('input:radio').each(function(){
-// 	var setValHargaKurir = $('.select-kurir').val();
-// 	var className = $(this).prop('select-kurir');
-// 	$('input:radio[class="'+className +'"]').prop('checked',this.checked);
-// 	$('.testerings').html(setValHargaKurir);
-// });
-
-// $(".selectkurir").change(function () {
-// 	var id_kurir = $(this).prop('id');
-// 	var harga_kurir = $(this).val();
-// 	$.ajax({
-// 	   url   : BASE_URL + 'cart/show-courier',
-// 	   data  : {'harga_kurir' : harga_kurir, 'id_kurir' : id_kurir},
-// 	   dataType: 'json',
-// 	   success : function(data) {
-// 		   $('.testerings').html(data.harga_kurir);
-// 	   }
-// 	});
-// });
