@@ -21,16 +21,11 @@
                     <tr>
                         <th colspan="3" class="text-gray-600 bg-gray-100 border border-gray-300 p-2">Items</th>
                     </tr>
-                    <tr class="border-b border-gray-500">
-                        <td class="py-2 font-semibold text-gray-600">Name</td>
-                        <td class="py-2 font-semibold text-gray-600">Qty</td>
-                        <td class="py-2 float-right"></td>
-                    </tr>
                 </thead>
-                <tbody id="detail_checkout">
-                    <?php echo $detailCart; ?>
-                </tbody>
             </table>
+            <div class="flex flex-col">
+                <div> <?php echo $detailCart; ?></div>
+            </div>
             <!-- SHIPMENTS -->
             <table class="w-full">
                 <thead>

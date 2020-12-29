@@ -21,7 +21,7 @@ class Controller_f_cart extends CI_Controller
         $this->load->helper('directory');
         $this->load->helper("file");
         $this->load->helper("styling");
-        $this->load->helper("string");  
+        $this->load->helper("string");
     }
 
     function addToCart()
@@ -44,29 +44,33 @@ class Controller_f_cart extends CI_Controller
         $no = 0;
         $countCartRow = count($this->cart->contents());
         if ($countCartRow == 0) {
-            $output .= '<tr><td colspan="3" class="p-5"> Cart is empty :( </td></tr>';
+            $output .= '<div><div class="p-5"> Cart is empty :( </div></div>';
         } else {
-            foreach ($this->cart->contents() as $items) {
-                $no++;
-                $output .= '
-                    <tr class="border-b border-gray-500">
-                        <input hidden type="text" value="' . $items['id'] . '" name="id_barang[]">
-                        <input hidden type="text" value="' . $items['qty'] . '" name="qty[]">
-                        <td class="py-2"><label class="font-bold text-gray-800">' . $items['name'] . '</label></td>
-                        <td class="p-2"><label class="font-bold text-gray-800">' . $items['qty'] . '</label></td>
-                        <td class="float_right text-right"><button type="button" id="' . $items['rowid'] . '" class="hapus_cart text-center px-auto w-5 h-5 text-xs font-medium text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-full active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">x</button></td>
-                    </tr>
-                ';
-            }
-            $output .= '
-                    <tr>
-                        <td class="text-gray-600 font-semibold py-4">
-                            <input type="number" id="cekrowcart" name="count_row" class="cekrowcart hidden" value="' . $countCartRow . '">
-                            Subtotal
-                        </td>
-                        <td></td>
-                        <td class="text-gray-900 font-bold py-4 float-right text-right">' . 'Rp ' . number_format($this->cart->total()) . '</td>
-                    </tr>';
+            $output .= '<div class="list-cart overflow-y-scroll">';
+                foreach ($this->cart->contents() as $items) {
+                    $no++;
+                    $output .= '
+                        <div class="flex flex-row w-4/4 bg-gray-200 my-2 lg:py-2 lg:px-4 items-center">
+                            <input hidden type="text" value="' . $items['id'] . '" name="id_barang[]">
+                            <input hidden type="text" value="' . $items['qty'] . '" name="qty[]">
+                            <div class="w-3/4 pl-4 lg:pl-0"><label class="font-bold text-gray-800">' . $items['name'] . '</label></div>
+                            <div class="items-center mx-auto"><label class="flex items-center font-bold mx-auto w-1/4 text-gray-800">' . $items['qty'] . '</label></div>
+                            <button type="button" id="' . $items['rowid'] . '" 
+                                class="mt-0 hapus_cart text-center px-auto h-8 w-8 lg:w-5 lg:h-5 text-xs text-white transition-colors duration-150 bg-red-600 lg:rounded-full active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+                                    x
+                            </button>
+                        </div>
+                    ';
+                }
+            $output .= '</div>';
+            $output .= '<div class="flex flex-row space-x-8 border-t border-gray-500">
+                            <div class="flex-1 text-gray-600 font-semibold py-4">
+                                <input type="number" id="cekrowcart" name="count_row" class="cekrowcart hidden" value="' . $countCartRow . '">
+                                Subtotal
+                            </div>
+                            <div class="text-gray-900 font-bold py-4 float-right text-right">' . 'Rp ' . number_format($this->cart->total()) . '</div>
+                        </div>';
+           
         }
 
         // echo json_encode($output);
@@ -151,12 +155,12 @@ class Controller_f_cart extends CI_Controller
         $getString = strtoupper(random_string('alpha', 4));
         $getString2 = strtoupper(random_string('alpha', 2));
         $getNum = random_string('numeric', 2);
-        $setNoPemesanan =$getString.$dateSet.$getUser.$hourSet.$getNum.$minuteSet.$getString2;
+        $setNoPemesanan = $getString . $dateSet . $getUser . $hourSet . $getNum . $minuteSet . $getString2;
 
         $totalHarga = $this->input->post('totalorder');
         $idKurir = $this->input->post('id_kurir');
         $hargaKurir = $this->input->post('harga_kurir');
-        $namaTujuan = $this->input->post('nama_t') ;
+        $namaTujuan = $this->input->post('nama_t');
         $alamatTujuan = $this->input->post('alamat_t');
 
         $data = array();
@@ -175,11 +179,11 @@ class Controller_f_cart extends CI_Controller
                 'status' => "ONHOLD"
             );
         }
-        
-        $this->db->insert_batch('pemesanan',$data);
+
+        $this->db->insert_batch('pemesanan', $data);
         $this->session->set_flashdata('SuccessCheckout', 'Data berhasil ditambahkan');
         $this->cart->destroy();
-        redirect('cart/checkout-finish/'.$setNoPemesanan);
+        redirect('cart/checkout-finish/' . $setNoPemesanan);
     }
 
     function loadCheckoutFinish($setNoPemesanan)

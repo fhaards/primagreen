@@ -93,21 +93,21 @@
   </div>
 </header>
 
-<section id="sub-nav" onmouseover="openSubNav()" onmouseout="closeSubNav()" class="fixed w-full z-30 mt-20 overflow-y-hidden bg-green-100">
+<section id="sub-nav" onmouseover="openSubNav()" onmouseout="closeSubNav()" class="fixed w-full z-40 mt-20 overflow-y-hidden bg-gray-100">
   <div class="container flex mx-auto px-6 my-8">
     <div class="flex flex-col mr-20">
-      <div class="flex"><span class="text-green-800 font-bold leading-5 mb-5 leading-5 tracking-widest">Store</span> </div>
+      <div class="flex"><span class="text-gray-800 font-bold leading-5 mb-5 leading-5 tracking-widest">Store</span> </div>
       <ul>
-        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Show All Items</a></li>
-        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Show All Items</a></li>
-        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Show All Items</a></li>
+        <li class="py-1"><a href="#" class="text-gray-600 font-semibold hover:text-gray-500">Show All Items</a></li>
+        <li class="py-1"><a href="#" class="text-gray-600 font-semibold hover:text-gray-500">Show All Items</a></li>
+        <li class="py-1"><a href="#" class="text-gray-600 font-semibold hover:text-gray-500">Show All Items</a></li>
       </ul>
     </div>
     <div class="flex-col mr-20">
-      <div class="flex"><span class="text-green-800 font-bold leading-5 mb-5 leading-5 tracking-widest">Features</span> </div>
+      <div class="flex"><span class="text-gray-800 font-bold leading-5 mb-5 leading-5 tracking-widest">Features</span> </div>
       <ul>
-        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Lastest add</a></li>
-        <li class="py-1"><a href="#" class="text-green-600 font-semibold hover:text-green-500">Discount Up 25%</a></li>
+        <li class="py-1"><a href="#" class="text-gray-600 font-semibold hover:text-gray-500">Lastest add</a></li>
+        <li class="py-1"><a href="#" class="text-gray-600 font-semibold hover:text-gray-500">Discount Up 25%</a></li>
       </ul>
     </div>
     <div class="flex">

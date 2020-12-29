@@ -91,3 +91,7 @@ form label{
 .page-title{
 	font-family: 'DM Serif Text', serif;
 }
+
+.list-cart{
+	max-height:350px !important;
+}
