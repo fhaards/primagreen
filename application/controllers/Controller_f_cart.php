@@ -44,7 +44,7 @@ class Controller_f_cart extends CI_Controller
         $no = 0;
         $countCartRow = count($this->cart->contents());
         if ($countCartRow == 0) {
-            $output .= '<div><div class="p-5"> Cart is empty :( </div></div>';
+            $output .= '<div class="bg-gray-300 p-10 w-full rounded-lg items-center flex"><div class="mx-auto text-sm font-bold"> Ops, Cart is empty. </div></div>';
         } else {
             $output .= '<div class="list-cart overflow-y-scroll">';
                 foreach ($this->cart->contents() as $items) {

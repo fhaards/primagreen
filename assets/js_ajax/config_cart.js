@@ -1,5 +1,26 @@
 $(document).ready(function () {
+	//START CART CONFIGURATION
+
 	subTotal();
+	function successMsg() {
+		swal({
+			type: "success",
+			showConfirmButton: false,
+			timer: 1500,
+			icon: "success",
+		});
+	}
+
+	function loadMsg() {
+		swal({
+			// imageUrl: "assets/image/loading2.gif",
+			text: "loading ..",
+			showConfirmButton: false,
+			allowOutsideClick: false,
+			imageWidth: 160,
+		});
+	}
+
 	$(".checkout-final-btn").hide();
 
 	$(".selectkurir").click(function () {
@@ -23,25 +44,6 @@ $(document).ready(function () {
 		calculateCheckout();
 	}
 
-	function successMsg() {
-		swal({
-			type: "success",
-			showConfirmButton: false,
-			timer: 1500,
-			icon: "success",
-		});
-	}
-
-	function loadMsg() {
-		swal({
-			imageUrl: "assets/image/loading.gif",
-			text: "loading .. be patient",
-			showConfirmButton: false,
-			allowOutsideClick: false,
-			imageWidth: 160,
-		});
-	}
-
 	$(".show-cart").hide();
 	$("#checkout-btn").hide();
 
@@ -58,6 +60,36 @@ $(document).ready(function () {
 		var produk_nama = $(this).data("produknama");
 		var produk_harga = $(this).data("produkharga");
 		var quantity = $("#" + produk_id).val();
+		var icon_container = $(this).children(".flex");
+		icon_container.children(".load-icon").show();
+		icon_container.children(".cart-icon").hide();
+		$.ajax({
+			url: BASE_URL + "cart/add-to-cart",
+			method: "POST",
+			data: {
+				produk_id: produk_id,
+				produk_nama: produk_nama,
+				produk_harga: produk_harga,
+				quantity: quantity,
+			},
+			success: function (data) {
+				icon_container.children(".load-icon").hide();
+				icon_container.children(".cart-icon").show();
+				$("#detail_cart").html(data);
+				if ($("#cekrowcart").val() != "0" || $("#cekrowcart").val() != null) {
+					$("#checkout-btn").show();
+					$("#notif-cart").show();
+				}
+				subTotal();
+			},
+		});
+	});
+
+	$(".filter_data").on("click", ".add_cart", function () {
+		var produk_id = $(this).data("produkid");
+		var produk_nama = $(this).data("produknama");
+		var produk_harga = $(this).data("produkharga");
+		var quantity = $("#" + produk_id).val();
 		loadMsg();
 		$.ajax({
 			url: BASE_URL + "cart/add-to-cart",
@@ -69,13 +101,13 @@ $(document).ready(function () {
 				quantity: quantity,
 			},
 			success: function (data) {
+				successMsg();
 				$("#detail_cart").html(data);
 				if ($("#cekrowcart").val() != "0" || $("#cekrowcart").val() != null) {
 					$("#checkout-btn").show();
 					$("#notif-cart").show();
 				}
 				subTotal();
-				successMsg();
 			},
 		});
 	});
@@ -143,7 +175,6 @@ $(document).ready(function () {
 
 		var clone_res = addCommas(res);
 		var clone_final_result = addCommas(final_result);
-		// console.log( final_result);
 
 		$("#taxes").html(clone_res);
 		$("#totalorder-clone").val(final_result);
@@ -169,4 +200,70 @@ $(document).ready(function () {
 			},
 		});
 	}
+
+	///LOADING STORE//////////////////////////////////////////////////////////////////
+
+	filter_data(1);
+
+	function filter_data(page) {
+		var action = "fetch_data";
+		var type = get_filter("type");
+		var size = get_filter("size");
+		var minimum_price = $("#hidden_minimum_price").val();
+		var maximum_price = $("#hidden_maximum_price").val();
+		$(".filter_data").html(
+			'<div class="flex"><div class="flex flex-row items-center text-gray-800 font-bold">Loading .. <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6"></div></div>'
+		);
+		$.ajax({
+			url: BASE_URL + "store/product-list/" + page,
+			method: "POST",
+			dataType: "JSON",
+			data: {
+				action: action,
+				type: type,
+				size: size,
+				minimum_price: minimum_price,
+				maximum_price: maximum_price,
+			},
+			success: function (data) {
+				$(".filter_data").html(data.product_list);
+				$("#pagination_link").html(data.pagination_link);
+			},
+		});
+	}
+
+	function get_filter(class_name) {
+		var filter = [];
+		$("." + class_name + ":checked").each(function () {
+			filter.push($(this).val());
+		});
+		return filter;
+	}
+
+	$(document).on("click", ".pagination li a", function (event) {
+		event.preventDefault();
+		var page = $(this).data("ci-pagination-page");
+		filter_data(page);
+	});
+
+	$(".common_selector").click(function () {
+		filter_data(1);
+	});
+
+	$("#price_range").slider({
+		range: true,
+		min: 1000,
+		max: 1000000,
+		values: [1000, 1000000],
+		step: 500,
+		stop: function (event, ui) {
+			$("#price_show").html(
+				addCommas(ui.values[0]) + " - " + addCommas(ui.values[1])
+			);
+			// $("#price_show").html(ui.values[0] + " - " + ui.values[1]);
+			$("#hidden_minimum_price").val(ui.values[0]);
+			$("#hidden_maximum_price").val(ui.values[1]);
+			filter_data(1);
+		},
+	});
 });

@@ -4,38 +4,64 @@
 	}
 }
 @-webkit-keyframes slideRight {
-    100% { right: 0; }
+	100% {
+		right: 0;
+	}
 }
 
 @keyframes slideRight {
-    100% { right: 0; }
+	100% {
+		right: 0;
+	}
 }
 
-html{
-    font-family:'Nunito' !important;
-    font-weight: 400;
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes blink-animation {
+	to {
+		visibility: hidden;
+	}
+}
+@-webkit-keyframes blink-animation {
+	to {
+		visibility: hidden;
+	}
+}
+html {
+	font-family: "Nunito" !important;
+	font-weight: 400;
 }
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
+	width: 0px;
+	background: transparent; /* make scrollbar transparent */
 }
-form label{
-    font-family:'Nunito' !important;
-    font-weight: 600;
+form label {
+	font-family: "Nunito" !important;
+	font-weight: 600;
 }
 
 /* HEADER  */
 
-#header-nav{
+#header-nav {
 	transition: top 0.3s;
 }
-#sub-nav{
-	height:0%;
+#sub-nav {
+	height: 0%;
 	transition: 0.5s;
 }
-#sub-nav .image-subnav{
-	height:15rem;
+#sub-nav .image-subnav {
+	height: 15rem;
 	width: 15rem;
+}
+.title-text {
+	font-family: "DM Serif Text", serif;
 }
 
 #frontend-header.is-floating {
@@ -45,53 +71,93 @@ form label{
 	animation: slide-nav-down 0.3s ease;
 	animation-fill-mode: forwards;
 }
-.homepage-banner{
-	max-width:1600px; 
-	height: 35rem; 
-	background: url(../image/bg4.jpg)no-repeat center center fixed; 
+.homepage-banner {
+	max-width: 1600px;
+	height: 35rem;
+	background: url(../image/bg4.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover; 
-	/* no-repeat center center fixed; 
+	background-size: cover;
+}
+.homepage-banner h1 {
+	font-family: "DM Serif Text", serif;
+}
+.success-banner {
+	height: 20rem;
+	background: url(../image/success_bg.svg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover; */
+	background-size: cover;
 }
-.homepage-banner h1{
-	font-family: 'DM Serif Text', serif;
-}
-.success-banner{
-	height:20rem;
-	background: url(../image/success_bg.svg)no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover; 
-}
-.signup-banner{
+.signup-banner {
 	height: 500px;
 	width: 100%;
-	background: url(../image/signup_banner.svg); 
+	background: url(../image/signup_banner.svg);
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover; 
+	background-size: cover;
 }
-.login-banner{
+.login-banner {
 	height: 700px;
 	width: 100%;
-	background: url(../image/login_banner.svg); 
+	background: url(../image/login_banner.svg);
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover; 
+	background-size: cover;
 }
-.page-title{
-	font-family: 'DM Serif Text', serif;
+.page-title {
+	font-family: "DM Serif Text", serif;
 }
 
-.list-cart{
-	max-height:350px !important;
+.list-cart {
+	max-height: 350px !important;
+}
+
+.store-pagination a {
+	padding: 10px;
+	text-transform: uppercase;
+	font-family: "Nunito" !important;
+	color: #9ca3af;
+}
+
+#loading {
+	background: url(../image/loading2.gif) no-repeat center;
+}
+
+.spin {
+	animation-name: spin;
+	animation-duration: 1000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+.load-icon {
+	animation-name: spin;
+	animation-duration: 1000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+/* SLIDER PRICE RANGE */
+
+#price_range .ui-state-default{
+	outline: 0;
+	background: rgba(31, 41, 55);
+	border-radius: 50%;
+	border:1px solid rgba(31, 41, 55);
+	top: 0.0em;
+	width: 0.8rem;
+	height:0.8rem;
+}
+
+#price_range.ui-slider-horizontal {
+	top: 1em;
+	left:5%;
+	height:0.8rem;
+	width: 90%;
+	border: none;
+	background: #ccc;
 }

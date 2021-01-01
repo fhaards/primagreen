@@ -124,11 +124,13 @@ $route['logout'] = 'Controller_f_user_login/logout';
 $route['about-us'] = 'Controller_f_about/index';
 
 /*///////// Store /////////////*/
-// $route['store'] = 'Controller_f_store/index';
-// $route['store/list'] = 'Controller_f_store/showAll';
-$route['store/show-all-items'] = 'Controller_f_store/index';
-$route['store/(:any)'] = 'Controller_f_store/showByType/$1';
-$route['store/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
+$route['store/product-list'] = 'Controller_f_store';
+$route['store/product-list/(:any)'] = 'Controller_f_store/fetch_data/$1';
+$route['store/product-list/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
+// $route['store/show-all-items/(:num)'] = 'Controller_f_store';
+// $route['store/(:any)'] = 'Controller_f_store/showByType/$1';
+// $route['store/(:any)/(:num)'] = 'Controller_f_store/showByType/$1';
+// $route['store/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
 
 /*///////// Cart /////////////*/
 $route['cart/add-to-cart'] = 'Controller_f_cart/addToCart';

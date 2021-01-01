@@ -1,13 +1,13 @@
-<div id="show-cart" class="flex show-cart shadow-lg z-30 fixed right-0 h-full lg:w-1/4 w-full bg-gray-100 mt-20 focus:outline-none active:outline-none" aria-label="submenu">
-    <div class="container mx-auto px-6 ">
-        <div class="flex flex-row w-full py-4">
+<div id="show-cart" class="flex border-l border-gray-300 show-cart z-40 fixed right-0 h-full lg:w-1/4 w-full bg-gray-100 focus:outline-none active:outline-none" aria-label="submenu">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-row w-full py-4 mt-6">
             <div class="flex-1">
                 <h1 class="tracking-wide font-bold text-gray-800 text-xl" href="#">
                     Your Cart
                 </h1>
             </div>
             <div class="">
-                <button class="close-cart uppercase tracking-wide font-bold text-gray-700 text-xl"> X </button>
+                <button class="close-cart uppercase tracking-wide font-bold text-gray-700 text-xl px-2 hover:text-green-500"> X </button>
             </div>
         </div>
 
@@ -49,7 +49,7 @@
                     </div>
                 </button>
             <?php else : ?>
-                <span class="text-md font-semibold py-4 text-red-500"> Login First Before Checkout ! </span>
+                <span class="text-center text-sm font-bold py-4 text-red-500"> Please <a href="<?= base_url().'login';?>" class="underline">Login</a> <br> To continue youre order proses</span>
             <?php endif; ?>
         </div>
 

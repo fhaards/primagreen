@@ -1,5 +1,5 @@
 <!-- STORE ITEMS -->
-<section class="w-full mx-auto mt-20 lg:mt-32 bg-white">
+<section class="w-full mx-auto mt-20 lg:mt-24 bg-white">
     <div class="flex w-full md:space-x-4">
 
         <!-- FILTER  -->
@@ -7,40 +7,56 @@
         $hal = $this->uri->segment(1);
         $hal2 = $this->uri->segment(2);
         ?>
-        <div class="w-1/5 md:block hidden">
-            <nav id="store" class="w-full top-0">
-                <div class="w-full container flex flex-wrap items-center justify-between mt-0 py-3">
-                    <h2 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+        <div class="w-1/5 md:block">
+            <nav id="store" class="w-full">
+                <div class="w-full container flex flex-wrap items-center justify-between">
+                    <h2 class="py-2 uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
                         Filter
                     </h2>
                 </div>
             </nav>
             <div class="flex">
                 <ul class="">
-                    <li class="mb-3">
-                        <span class="text-gray-600 text-md"> Type </span>
+                    <li class="my-4">
+                        <span class="text-gray-600 text-md font-bold">by Type </span>
+                    </li>
+                    <?php
+                    foreach ($type_data->result_array() as $row) {
+                    ?>
+                        <li class="checkbox">
+                            <label class="text-gray-500 text-md font-semibold space-x-3 flex flex-row items-center"><input type="checkbox" class="common_selector type" value="<?php echo $row['id_type']; ?>"> <span><?php echo $row['nm_type']; ?></span></label>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                    <li class="my-4">
+                        <span class="text-gray-600 text-md font-bold">by Size </span>
+                    </li>
+                    <?php
+                    foreach ($size_data->result_array() as $row) {
+                    ?>
+                        <li class="checkbox">
+                            <label class="text-gray-500 text-md font-semibold space-x-3 flex flex-row items-center"><input type="checkbox" class="common_selector size" value="<?php echo $row['size']; ?>"> <span><?php echo $row['size']; ?></span></label>
+                        </li>
+                    <?php
+                    }
+                    ?>
+
+                    <li class="my-4">
+                        <span class="text-gray-600 text-md font-bold">by Price Range </span>
+                    </li>
+                    <li>
+                        <!-- <div class="slidecontainer">
+                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                        </div> -->
+                        
+                        <input type="hidden" id="hidden_minimum_price" value="1000" />
+                        <input type="hidden" id="hidden_maximum_price" value="1000000" />
+                        <p id="price_show" class="text-gray-500 text-md font-semibold space-x-3 flex flex-row items-center">1,000 - 1,000,000</p>
+                        <div id="price_range"></div>
                     </li>
 
-                    <?php foreach ($typeList as $typeLists) : ?>
-                        <?php
-                        $nmType = $typeLists['nm_type'];
-                        $newNmType = strtolower(str_replace(' ', '-', $nmType));
-                        ?>
-                        <?php echo form_open('store/' . $newNmType); ?>
-                        <li class="relative text-gray-500 text-md mb-1">
-                            <label class="">
-                                <input type="radio" class="form-radio h-4 w-4 text-gray-600 mr-2" onchange="this.form.submit()" value="<?= $newNmType; ?>" <?= ($hal2 == $newNmType ? 'checked' : '') ?> /> <?= $nmType; ?>
-                            </label>
-                        </li>
-                        <?php echo  form_close(); ?>
-                    <?php endforeach; ?>
-                    <li class="relative text-gray-500 text-md mb-1">
-                        <?php echo form_open('store/show-all-items'); ?>
-                        <label class="">
-                            <input type="radio" class="form-radio h-4 w-4 text-gray-600  mr-2" onchange="this.form.submit()" value="show all items" <?= ($hal2 == 'show-all-items' ? 'checked' : '') ?> /> Show All Items
-                        </label>
-                        <?php echo  form_close(); ?>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -48,70 +64,29 @@
         <!-- PRODUCT LIST -->
 
         <div class="md:w-4/5 w-5/5">
-            <nav id="store" class="w-full op-0 py-1 lg:px-6">
-                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
-                    <h2 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
-
-                        Store /
+            <nav id="store" class="w-full mb-6">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
+                    <h2 class="uppercase py-2 tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
+                        Store
                     </h2>
+                    <select class="form-select">
+                        <option> SORT BY</option>
+                        <option> NAME : A - Z</option>
+                        <option> NAME : Z - A</option>
+                        <option> PRICE : HIGH - LOW</option>
+                        <option> PRICE : LOW - HIGH</option>
+                    </select>
                 </div>
             </nav>
             <div class="w-full flex-col flex-wrap">
                 <div class="container flex items-center flex-wrap">
-
-                    <?php foreach ($getItems as $getItemsValue) { ?>
-                        <?php $newNmProduct = strtolower(str_replace(' ', '-', $getItemsValue['nm_barang'])); ?>
-
-                        <div class="w-1/2 md:w-1/3 xl:w-1/4 lg:h-full p-4 flex flex-col">
-                            <div class="h-2/3">
-
-                                <a href="<?php echo site_url('store/detail/' . $getItemsValue['id_barang'] . '/' . $newNmProduct); ?>" class="border-solid  ">
-                                    <div class="relative w-full lg:h-48 h-20 rounded-sm md:block">
-                                        <img class="object-cover w-full h-full rounded-lg duration-150 hover:grow  hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' .  $getItemsValue['sku'] . '/' . $getItemsValue['gambar']; ?>">
-                                    </div>
-
-                                    <div class="flex h-16 lg:h-12 mb-4 space-x-2">
-                                        <div class="flex-1 pt-4">
-                                            <p class="text-gray-900 font-bold text-xs lg:text-sm"><?= $getItemsValue['nm_barang']; ?></p>
-                                        </div>
-                                        <div class="pt-4">
-                                            <p class="text-gray-600 font-bold text-xs lg:text-sm"><?= number_format($getItemsValue['harga']); ?></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="h-1/3 flex lg:flex-row lg:flex-wrap space-x-2">
-                                <?php if ($getItemsValue['stok'] == 0) : ?>
-                                    <div class="flex items-center py-1 lg:py-2">
-                                        <span class="lg:text-sm text-xs lg:block text-gray-600 font-semibold">Out Stock</span>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="flex-0">
-                                        <input name="quantity" type="number" id="<?= $getItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 lg:py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
-                                    </div>
-                                    <div class="flex-1">
-                                        <button data-produkid="<?= $getItemsValue['id_barang']; ?>" data-produknama="<?= $getItemsValue['nm_barang']; ?>" data-produkharga="<?= $getItemsValue['harga']; ?>" class="add_cart flex space-x-2 shadow-lg lg:w-full px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-                                            <div class="mx-auto flex space-x-2">
-                                                <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                </svg>
-                                                <span class="lg:text-sm text-xs lg:block hidden">Add to Cart</span>
-                                            </div>
-                                        </button>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-
-                    <?php } ?>
-
+                    <div id="filter_data" class="filter_data grid grid-cols-2 lg:grid-cols-4 gap-6"> </div>
+                    <div class="store-pagination mt-8">
+                        <div id="pagination_link"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
 </section>

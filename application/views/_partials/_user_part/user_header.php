@@ -10,18 +10,18 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "tracking-widest items-center text-md font-bold transition-colors duration-150 uppercase text-green-600 hover:text-green-700";
-    $inactiveside = "tracking-widest items-center text-md font-bold transition-colors duration-150 uppercase text-gray-600 hover:text-green-500";
+    $activeside = "uppercase tracking-widest items-center text-md font-bold transition-colors duration-150 text-green-600 hover:text-green-700";
+    $inactiveside = "uppercase tracking-widest items-center text-md font-bold transition-colors duration-150 text-gray-600 hover:text-green-500";
     ?>
 
     <!-- Desktop Menu -->
     <div class=" flex-1 xs:hidden hidden md:block">
       <div class="space-x-8 w-full space-x-12 flex max-w-xl focus-within:text-green-500">
-        <a href="<?= base_url(); ?>store/show-all-items" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()">
+        <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()">
           Shop
         </a>
         <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activeside :  $inactiveside; ?>">
-          About
+          About Us
         </a>
       </div>
     </div>
@@ -40,16 +40,16 @@
       <ul class="flex flex-row space-x-8  float-right">
         <li class="relative">
           <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
-            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-6 h-6 text-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
-            <span id="notif-cart" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full"></span>
+            <span id="notif-cart" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-green-600 border-2 border-white rounded-full"></span>
           </button>
         </li>
 
         <li class="relative">
           <button class="align-middle focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
-            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-6 h-6 text-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </button>
