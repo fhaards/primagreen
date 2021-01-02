@@ -27,8 +27,9 @@ class Model_f_store extends CI_Model
 	// 	return $this->db->get();
 	// }
 
-	function make_query($type, $size,$minimum_price,$maximum_price)
+	function make_query($type, $size, $minimum_price, $maximum_price)
 	{
+
 		$query = "SELECT * FROM barang INNER JOIN products_type on products_type.id_type=barang.id_type WHERE product_status = '1' ";
 
 		if (isset($type)) {
@@ -43,20 +44,32 @@ class Model_f_store extends CI_Model
 		if (isset($minimum_price, $maximum_price) && !empty($minimum_price) &&  !empty($maximum_price)) {
 			$query .= "AND harga BETWEEN '" . $minimum_price . "' AND '" . $maximum_price . "'";
 		}
-
 		return $query;
 	}
 
-	function count_all($type, $size,$minimum_price,$maximum_price)
+	function count_all($type, $size, $minimum_price, $maximum_price)
 	{
-		$query = $this->make_query($type, $size,$minimum_price,$maximum_price);
+		$query = $this->make_query($type, $size, $minimum_price, $maximum_price);
 		$data = $this->db->query($query);
 		return $data->num_rows();
 	}
 
-	function fetch_data($limit, $start, $type, $size,$minimum_price,$maximum_price)
+	function fetch_data($limit, $start, $type, $size, $minimum_price, $maximum_price, $sorted_name)
 	{
-		$query = $this->make_query($type, $size,$minimum_price,$maximum_price);
+		$query = $this->make_query($type, $size, $minimum_price, $maximum_price);
+		if (isset($sorted_name) || !empty($sorted_name)) {
+			if ($sorted_name == 'NMASC') {
+				$query .= 'ORDER BY nm_barang ASC';
+			} else if ($sorted_name == 'NMDESC') {
+				$query .= 'ORDER BY nm_barang DESC';
+			} else if ($sorted_name == 'HRGASC') {
+				$query .= 'ORDER BY harga ASC';
+			} else if ($sorted_name == 'HRGDESC') {
+				$query .= 'ORDER BY harga DESC';
+			} else {
+				$query .= 'ORDER BY nm_barang ASC';
+			}
+		}
 		$query .= ' LIMIT ' . $start . ', ' . $limit;
 		$data = $this->db->query($query);
 		$output = '';
@@ -100,7 +113,10 @@ class Model_f_store extends CI_Model
 				</div>';
 			}
 		} else {
-			$output = '<h3>No Data Found</h3>';
+			$output = '<div class="flex flex-col w-full bg-gray-200 p-6 col-span-4 mx-auto rounded-lg">
+							<h3 class="text-gray-600 font-semibold mx-auto"> Ooops , Data Not Found </h3>
+							<p class="text-gray-600 mx-auto text-sm"> Please select any filter to found new one </p>
+						</div>';
 		}
 		return $output;
 	}

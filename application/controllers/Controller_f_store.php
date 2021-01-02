@@ -32,30 +32,33 @@ class Controller_f_store extends CI_Controller
 
     function fetch_data()
     {
+
         sleep(1);
         $type = $this->input->post('type');
         $size = $this->input->post('size');
         $minimum_price = $this->input->post('minimum_price');
         $maximum_price = $this->input->post('maximum_price');
+        $sorted_name =  $this->input->post('sorted_name');
+
         $config = array();
         $config['base_url'] = "#";
-        $config['total_rows'] = $this->model_f_store->count_all($type, $size,$minimum_price,$maximum_price);
+        $config['total_rows'] = $this->model_f_store->count_all($type, $size, $minimum_price, $maximum_price);
         $config['per_page'] = 8;
         $config['uri_segment'] = 3;
         $config['use_page_numbers'] = TRUE;
-        $config['full_tag_open'] = '<ul class="pagination flex flex-row">';
+        $config['full_tag_open'] = '<ul class="pagination flex flex-row space-x-2 font-bold">';
         $config['full_tag_close'] = '</ul>';
         $config['first_tag_open'] = '<li>';
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open'] = '<li>';
         $config['last_tag_close'] = '</li>';
-        $config['next_link'] = '&gt;';
+        $config['next_link'] = 'NEXT &gt;';
         $config['next_tag_open'] = '<li>';
         $config['next_tag_close'] = '</li>';
-        $config['prev_link'] = '&lt;';
+        $config['prev_link'] = '&lt; PREV';
         $config['prev_tag_open'] = '<li>';
         $config['prev_tag_close'] = '</li>';
-        $config['cur_tag_open'] = "<li class='text-gray-900 font-bold'><a href='#'>";
+        $config['cur_tag_open'] = "<li class='text-gray-900 font-bold bg-gray-200 text-white rounded-full inline-block'><a href='#' class=''>";
         $config['cur_tag_close'] = '</a></li>';
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';
@@ -65,7 +68,7 @@ class Controller_f_store extends CI_Controller
         $start = ($page - 1) * $config['per_page'];
         $output = array(
             'pagination_link'  => $this->pagination->create_links(),
-            'product_list'   => $this->model_f_store->fetch_data($config["per_page"], $start, $type, $size,$minimum_price,$maximum_price)
+            'product_list'   => $this->model_f_store->fetch_data($config["per_page"], $start, $type, $size, $minimum_price, $maximum_price, $sorted_name)
         );
         echo json_encode($output);
     }

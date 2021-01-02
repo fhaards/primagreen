@@ -1,6 +1,6 @@
 <!-- STORE ITEMS -->
 <section class="w-full mx-auto mt-20 lg:mt-24 bg-white">
-    <div class="flex w-full md:space-x-4">
+    <div class="flex w-full md:space-x-4 space-x-4">
 
         <!-- FILTER  -->
         <?php
@@ -16,7 +16,7 @@
                 </div>
             </nav>
             <div class="flex">
-                <ul class="">
+                <ul class="lg:text-base text-xs">
                     <li class="my-4">
                         <span class="text-gray-600 text-md font-bold">by Type </span>
                     </li>
@@ -69,18 +69,21 @@
                     <h2 class="uppercase py-2 tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
                         Store
                     </h2>
-                    <select class="form-select">
-                        <option> SORT BY</option>
-                        <option> NAME : A - Z</option>
-                        <option> NAME : Z - A</option>
-                        <option> PRICE : HIGH - LOW</option>
-                        <option> PRICE : LOW - HIGH</option>
-                    </select>
+                    <div id="sorted">
+                        <select class="sort_selector sorted block w-full py-1 font-semibold text-sm text-gray-600 bg-gray-100 focus:bg-white form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green ">
+                            <option value="NMASC"> Sort by</option>
+                            <option value="NMASC"> Name : A - Z</option>
+                            <option value="NMDESC"> Name : Z - A</option>
+                            <option value="HRGASC"> Price : Low - High</option>
+                            <option value="HRGDESC"> Price : High - Low</option>
+                        </select>
+                        <input type="hidden" id="get-sorted" value="" name="send-sorted">
+                    </div>
                 </div>
             </nav>
             <div class="w-full flex-col flex-wrap">
                 <div class="container flex items-center flex-wrap">
-                    <div id="filter_data" class="filter_data grid grid-cols-2 lg:grid-cols-4 gap-6"> </div>
+                    <div id="filter_data" class="filter_data grid grid-cols-1 lg:grid-cols-4 gap-6 w-full "> </div>
                     <div class="store-pagination mt-8">
                         <div id="pagination_link"></div>
                     </div>

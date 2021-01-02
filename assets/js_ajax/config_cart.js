@@ -211,6 +211,8 @@ $(document).ready(function () {
 		var size = get_filter("size");
 		var minimum_price = $("#hidden_minimum_price").val();
 		var maximum_price = $("#hidden_maximum_price").val();
+		var sorted_name = $("#get-sorted").val();
+
 		$(".filter_data").html(
 			'<div class="flex"><div class="flex flex-row items-center text-gray-800 font-bold">Loading .. <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6"></div></div>'
 		);
@@ -224,6 +226,7 @@ $(document).ready(function () {
 				size: size,
 				minimum_price: minimum_price,
 				maximum_price: maximum_price,
+				sorted_name: sorted_name,
 			},
 			success: function (data) {
 				$(".filter_data").html(data.product_list);
@@ -249,6 +252,16 @@ $(document).ready(function () {
 	$(".common_selector").click(function () {
 		filter_data(1);
 	});
+
+	$(".sort_selector").change(function () {
+		setSorted($(this).val());
+		filter_data(1);
+	});
+
+	function setSorted(value) {
+		$("#get-sorted").val(value);
+		filter_data(value);
+	}
 
 	$("#price_range").slider({
 		range: true,
