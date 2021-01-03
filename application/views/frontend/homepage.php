@@ -43,7 +43,6 @@
                         </div>
                         <div class="flex h-16 lg:h-12 pt-2 space-x-2">
                             <div class="w-2/3">
-                                <?= $newItemsValue['id_barang'];?>
                                 <p class="text-gray-900 font-bold text-xs lg:text-sm"><?= $newItemsValue['nm_barang']; ?></p>
                             </div>
                             <div class="w-1/3 text-right">
@@ -52,32 +51,36 @@
                         </div>
                     </a>
 
-                    <?php if (isLoggedIn()) : ?>
+                    <!-- <?php if (isLoggedIn()) : ?>
                         <?php
                         $getIdUser = getUserData()['id_user'];
                         $getIdBarang = $newItemsValue['id_barang'];
-                            if (!empty($favItems['id_barang'])) :
-                                $getClassSvg = "h-6 text-red-600 hover:text-red-700";
-                                $getClassFillSvg = "currentColor";
-                            else :
-                                
-                                $getClassSvg = "h-6 text-gray-600 hover:text-red-700";
-                                $getClassFillSvg = "none";
-                            endif; ?>
+                        ?> 
+                        <?php foreach ($favItems as $row) : ?>
+                            <?php if ($getIdBarang == $row['id_barang']) : ?>
+                                <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-sm mt-5">
+                                    <svg class="w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </button>
+                            <?php else : ?>
+                                <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-sm mt-5">
+                                    <svg class="w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </button>
+                            <?php endif; ?>
                         <?php
+                        endforeach;
                         ?>
-                        <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-sm mt-5">
-                            <svg class="<?= $getClassSvg; ?>" fill="<?= $getClassFillSvg; ?>" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-                        </button>
+
                     <?php else : ?>
                         <a href="<?= base_url() . 'login'; ?>" class="absolute items-center bg-white p-1 rounded-sm mt-5">
                             <svg class="h-6 text-gray-600 right-0 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                         </a>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
 
                     <div class="h-1/3 flex lg:flex-row lg:flex-wrap space-x-2">
                         <?php if ($newItemsValue['stok'] == 0) : ?>

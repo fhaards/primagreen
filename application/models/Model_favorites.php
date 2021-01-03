@@ -14,9 +14,24 @@ class Model_favorites extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('favorite_products');
-        $this->db->join('barang', 'barang.id_barang=favorite_products.id_barang', 'inner');
         // $this->db->group_by('favorite_products.id_barang');
-        return $this->db->get()->row_array();
+        return $this->db->get()->result_array();
+    }
+
+    public function getFavoriteste()
+    {
+        $this->db->select('*');
+        $this->db->from('barang');
+        $this->db->order_by("date_a", "desc");
+		$this->db->limit(4);
+        $query= $this->db->get();
+        foreach ($query->result() as $row) {
+            $getId  = $row->id_barang;
+            $this->db->select('*');
+            $this->db->from('favorite_products');
+            $this->db->where('id_barang',$getId);
+            return $this->db->get()->row_array();
+		}
     }
 
     public function insert($data)

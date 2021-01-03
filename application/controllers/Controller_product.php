@@ -88,7 +88,8 @@ class Controller_product extends CI_Controller
                 'date_a' => $date,
                 'gambar' => $getProductImage1,
                 'gambar2' => $getProductImage2,
-                'gambar3' => $getProductImage3
+                'gambar3' => $getProductImage3,
+                'product_status'=>'1'
             );
 
             $this->model_product->insert_product($data, $getSkuCode);

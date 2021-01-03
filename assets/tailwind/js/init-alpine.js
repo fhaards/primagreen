@@ -80,13 +80,19 @@ function data() {
 		},
 		// Modal
 		isModalOpen: false,
+		isModalReportOpen: false,
 		trapCleanup: null,
 		openModal() {
 			this.isModalOpen = true;
 			this.trapCleanup = focusTrap(document.querySelector("#modal"));
 		},
+		openModalReport() {
+			this.isModalReportOpen = true;
+			this.trapCleanup = focusTrap(document.querySelector("#modal-report"));
+		},
 		closeModal() {
 			this.isModalOpen = false;
+			this.isModalReportOpen = false;
 			this.trapCleanup();
 		},
 	};

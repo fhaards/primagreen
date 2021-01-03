@@ -10,6 +10,8 @@ class Controller_foo extends CI_Controller
         parent::__construct();
         $this->load->database();
         $this->load->model('model_product');
+        $this->load->model('model_f_homepage');
+        $this->load->model('model_favorites');
         $this->load->helper('array');
         $this->load->library('form_validation');
         $this->load->helper('url');
@@ -20,16 +22,25 @@ class Controller_foo extends CI_Controller
         $this->load->helper("string");
     }
 
-    public function index(){
+    public function index()
+    {
         $this->load->view('foo');
     }
 
-    public function dummy(){
+    public function dummy()
+    {
         $rs1 = strtoupper(random_string('alpha', 4));
         $rs2 = random_string('numeric', 4);
         $rs3 = random_string('alpha', 4);
         $getid = '15';
         $getnum = random_string('numeric', 4);
-        var_dump($rs1.'-'.$rs2.'-'.$rs3.'-'.$getid.$getnum);
+        var_dump($rs1 . '-' . $rs2 . '-' . $rs3 . '-' . $getid . $getnum);
+    }
+
+    public function tested()
+    {
+        $data['newItems'] = $this->model_f_homepage->getNewItems();
+        $data['favItems'] = $this->model_favorites->getFavoriteste();
+        $this->load->view('foo', $data);
     }
 }

@@ -31,7 +31,18 @@ class Controller_report extends CI_Controller
         $data['getOrderList'] = $this->model_order->getAllOrderByNoOrder($noOrder)->result_array();
         $data['getOrderDetail'] = $this->model_order->getAllOrderByNoOrder_GroupBy($noOrder)->row_array();
         $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "laporan-petanikode.pdf";
+        $this->pdf->filename = "order-report.pdf";
         $this->pdf->load_view('frontend/report/report_order', $data);
+    }
+
+    public function reportOrderByAdmin(){
+        $month = '12';
+        $year = '2020';
+        $data['title']   = 'Print Pruchased Order - ' . APP_NAME;
+        $data['getOrderList'] = $this->model_order->getAllOrderByMonthYear()->result_array();
+        $data['getTotalOrder'] = $this->model_order->getTotalOrderByMonthYear()->result();
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "order-report.pdf";
+        $this->pdf->load_view('_adminpages/report/report_month_year', $data);
     }
 }

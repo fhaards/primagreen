@@ -62,6 +62,37 @@ class Model_order extends CI_Model
 		return $this->db->get();
 	}
 
+	public function getAllOrderByMonthYear()
+	{
+		$month = '01';
+		$year = '2021';
+		$this->db->select('no_pemesanan,tgl_pesan,pemesanan.total_harga,status,pemesanan.hrg_kurir,kurir.nm_kurir,barang.harga,qty_pesan');
+		$this->db->select('SUM(qty_pesan) as tqty');
+		$this->db->select('SUM(barang.harga) as tharga');
+		$this->db->select('SUM(pemesanan.total_harga) as totAll');
+		$this->db->from('pemesanan');
+		$this->db->join('barang', 'barang.id_barang=pemesanan.id_barang', 'inner');
+		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
+		$this->db->where("DATE_FORMAT(tgl_pesan,'%m')", $month);
+		$this->db->where("DATE_FORMAT(tgl_pesan,'%Y')", $year);
+		$this->db->where('status','COMPLETE');
+		$this->db->group_by("no_pemesanan");
+		return $this->db->get();
+	}
+
+	public function getTotalOrderByMonthYear()
+	{
+		$month = '01';
+		$year = '2021';
+		$this->db->select('no_pemesanan,tgl_pesan,total_harga,status');
+		$this->db->from('pemesanan');
+		$this->db->where("DATE_FORMAT(tgl_pesan,'%m')", $month);
+		$this->db->where("DATE_FORMAT(tgl_pesan,'%Y')", $year);
+		$this->db->where('status','COMPLETE');
+		$this->db->group_by("pemesanan.no_pemesanan");
+		return $this->db->get();
+	}
+
 	public function insertOrder($data)
 	{
 		$this->db->insert('pemesanan', $data);

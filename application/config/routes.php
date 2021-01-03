@@ -153,10 +153,18 @@ $route['profile/user-account'] = 'Controller_f_user/index';
 $route['profile/detail-order/(:any)'] = 'Controller_f_user/detailOrder/$1';
 $route['profile/upload-transfer'] = 'Controller_f_user/uploadTransfer';
 
-/*///////// Report /////////////*/
+/*
+| -------------------------------------------------------------------------
+| REPORT
+| -------------------------------------------------------------------------
+*/
+
 $route['report/report-order/(:any)'] = 'Controller_report/reportOrder/$1';
+$route['report/report-order-adm'] = 'Controller_report/reportOrderByAdmin';
 
 /*///////// Base /////////////*/
 $route['foo'] = 'Controller_foo/index';
 $route['dummy'] = 'Controller_foo/dummy';
+$route['tested'] = 'Controller_foo/tested';
 $route['base'] = 'Controller_base/index';
+
