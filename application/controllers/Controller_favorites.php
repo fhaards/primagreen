@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Controller_f_homepage extends CI_Controller {
+class Controller_favorites extends CI_Controller {
 
     function __construct()
     {
@@ -20,12 +20,12 @@ class Controller_f_homepage extends CI_Controller {
         $this->load->helper("file");
     }
 
-    public function index(){
-        $data['newItems'] = $this->model_f_homepage->getNewItems();
-        $data['someItems'] = $this->model_f_homepage->getSomeItems();
-        $data['favItems'] = $this->model_favorites->getFavorites();
-        $data['title']   = 'Welcome - ' . APP_NAME;
-        $data['content'] = 'frontend/homepage';
-        $this->load->view('frontend/master_frontend', $data);
+    public function addFavorites(){
+        $data = array(
+            'id_barang' => $this->input->post("itemsid"),
+            'id_user' => $this->input->post("userid")
+        );
+        $data = $this->model_favorites->insert($data);
     }
+    
 }

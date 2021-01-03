@@ -1,4 +1,4 @@
-<div id="show-cart" class="flex border-l border-gray-300 show-cart z-40 fixed right-0 h-full lg:w-1/4 w-full bg-gray-100 focus:outline-none active:outline-none" aria-label="submenu">
+<div id="show-cart" class="flex border-l border-gray-300 show-cart z-40 fixed right-0 h-full lg:w-1/4 w-full bg-white focus:outline-none active:outline-none" aria-label="submenu">
     <div class="container mx-auto px-6">
         <div class="flex flex-row w-full py-4 mt-6">
             <div class="flex-1">

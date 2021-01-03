@@ -1,7 +1,7 @@
 <section class="w-full mx-auto bg-white mt-20 lg:mt-32">
-    <div class="container w-full mx-auto lg:flex pt-2 pb-2">
+    <div class="container w-full mx-auto lg:flex">
         <div class="flex-1">
-            <div class="w-full z-30 top-0 py-1">
+            <div class="w-full z-30 top-0">
                 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
                     <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
                         Sign Up

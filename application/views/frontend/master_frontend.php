@@ -13,9 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
     <!--  
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">-->
-
-
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">-->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /> -->
 
     <!-- Tailwind -->
@@ -26,8 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.css'; ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/chart.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/primagreen.css'; ?>" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/jquery/jquery-ui.css'; ?>" />
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.js'; ?>" language="javascript"></script>
 </head>
@@ -38,13 +35,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <!-- Backdrop -->
         <?php $this->load->view('_partials/_user_part/user_backdrop'); ?>
         <!-- Main -->
-        <div class="flex flex-col flex-1 w-full">
+        <div class="flex flex-col flex-1 w-full ">
             <!-- Header & Cart Menu -->
             <?php $this->load->view('_partials/_user_part/user_header'); ?>
             <?php $this->load->view('frontend/cart/show_cart'); ?>
 
             <!-- Main Content -->
-            <main class="h-full" id="main">
+            <main class="h-full " id="main">
                 <div class="container px-6 py-3 mx-auto grid min-h-screen">
                     <?php $this->load->view($content); ?>
                 </div>
@@ -66,12 +63,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
         var SITE_URL = "<?php echo site_url(); ?>";
     </script>
     <script src="<?php echo base_url() . 'assets/jquery/jquery-2.2.3.min.js'; ?>"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="<?php echo base_url() . 'assets/jquery/jquery-ui.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/tailwind/js/alpine.min.js'; ?>" defer></script>
     <script src="<?php echo base_url() . 'assets/tailwind/js/init-alpine.js'; ?>" language="javascript"></script>
     <script>
         $(document).ready(function() {
-
             $('#detail_cart').load("<?php echo site_url(); ?>cart/load-cart", function() {
                 if ($("#cekrowcart").val() == "0" || $("#cekrowcart").val() == null) {
                     $("#checkout-btn").hide();
@@ -81,13 +77,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     $("#notif-cart").show();
                 }
             });
-
+            
         });
     </script>
-
     <script src="<?php echo base_url() . 'assets/js_ajax/config_cart.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_custom.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/js_ajax/config_frontend.js'; ?>" language="javascript"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuxj-0utMuNbJbokRsEEVbfiV5t_t6NRU&callback=initMap"></script> -->
 </body>
 
 </html>

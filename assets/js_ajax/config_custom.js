@@ -1,15 +1,3 @@
-// PAGE SCROLL STYLE
-
-// $(window).bind("scroll", function () {
-// 	if ($(window).scrollTop() > 32) {
-// 		$(".nav-header").addClass("shadow-lg");
-// 		$(".nav-header").removeClass("lg:h-32 h:20");
-// 	} else {
-// 		$(".nav-header").removeClass("shadow-lg");
-// 		$(".nav-header").addClass("lg:h-32 h:20");
-// 	}
-// });
-
 $(document).ready(function () {
 	// GET NO PEMESANAN WHEN UPLOAD TRANSFER PROOF
 	$(".upload-transfer").on("click", function () {
@@ -35,25 +23,24 @@ $(document).ready(function () {
 		}
 	});
 
-	
-
 	// CLICK CHECKOUT
-	$("#checkout-btn").on("click", function() {
+	$("#checkout-btn").on("click", function () {
 		window.location.href = SITE_URL + "cart/checkout-detail";
 	});
 
+	$(".add_favorites").click( function () {
+		var itemsid = $(this).data("itemsid");
+		var userid = $(this).data("userid");
+		$.ajax({
+			url: BASE_URL + "store/add-favorites",
+			method: "POST",
+			data: {
+				itemsid: itemsid,
+				userid: userid
+			},
+			success: function (data) {
+				window.location.href = SITE_URL + "login";
+			},
+		});
+	});
 });
-
-// (function (frontendHeader) {
-//     let observer = new IntersectionObserver(entries => {
-//         if (entries[0].isIntersecting) {
-//             frontendHeader.classList.add('is-floating');
-//         } else {
-//             frontendHeader.classList.remove('is-floating');
-//         }
-//     }, {
-//         threshold: .25
-//     });
-
-//     observer.observe(document.querySelector('section'));
-// })(document.querySelector('#frontend-header'));

@@ -35,13 +35,15 @@
                     $urlImage = $newItemsValue['sku'] . '/' . $newItemsValue['gambar'];
                 }
                 ?>
-                <div class="flex flex-col">
+                <div id="showProducts" class="flex flex-col h-full w-full">
+
                     <a href="<?php echo site_url('store/detail/' . $newItemsValue['id_barang'] . '/' . $newNmProduct); ?>" class="flex flex-col">
                         <div class="relative w-full h-20 md:h-48 lg:h-48 rounded-sm md:block">
                             <img class="object-cover w-full h-full opacity-75 hover:opacity-100 hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
                         </div>
                         <div class="flex h-16 lg:h-12 pt-2 space-x-2">
                             <div class="w-2/3">
+                                <?= $newItemsValue['id_barang'];?>
                                 <p class="text-gray-900 font-bold text-xs lg:text-sm"><?= $newItemsValue['nm_barang']; ?></p>
                             </div>
                             <div class="w-1/3 text-right">
@@ -49,19 +51,51 @@
                             </div>
                         </div>
                     </a>
+
+                    <?php if (isLoggedIn()) : ?>
+                        <?php
+                        $getIdUser = getUserData()['id_user'];
+                        $getIdBarang = $newItemsValue['id_barang'];
+                            if (!empty($favItems['id_barang'])) :
+                                $getClassSvg = "h-6 text-red-600 hover:text-red-700";
+                                $getClassFillSvg = "currentColor";
+                            else :
+                                
+                                $getClassSvg = "h-6 text-gray-600 hover:text-red-700";
+                                $getClassFillSvg = "none";
+                            endif; ?>
+                        <?php
+                        ?>
+                        <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-sm mt-5">
+                            <svg class="<?= $getClassSvg; ?>" fill="<?= $getClassFillSvg; ?>" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </button>
+                    <?php else : ?>
+                        <a href="<?= base_url() . 'login'; ?>" class="absolute items-center bg-white p-1 rounded-sm mt-5">
+                            <svg class="h-6 text-gray-600 right-0 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </a>
+                    <?php endif; ?>
+
                     <div class="h-1/3 flex lg:flex-row lg:flex-wrap space-x-2">
                         <?php if ($newItemsValue['stok'] == 0) : ?>
                             <div class="flex items-center py-1 lg:py-2">
                                 <span class="lg:text-sm text-xs lg:block text-gray-600 font-semibold">Out Stock</span>
                             </div>
                         <?php else : ?>
+
                             <div class="flex-0">
                                 <input name="quantity" type="number" id="<?= $newItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 lg:py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
                             </div>
                             <div class="flex-1">
                                 <button data-produkid="<?= $newItemsValue['id_barang']; ?>" data-produknama="<?= $newItemsValue['nm_barang']; ?>" data-produkharga="<?= $newItemsValue['harga']; ?>" class="add_cart flex space-x-2 shadow-lg w-full lg:w-full px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                                     <div class="mx-auto flex space-x-2">
-                                        <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg class="load-icon type-load hidden w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                        </svg>
+                                        <svg class="cart-icon type-cart w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                         </svg>
                                         <span class="lg:text-sm text-xs lg:block hidden">Add to Cart</span>

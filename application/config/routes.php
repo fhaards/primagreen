@@ -120,6 +120,7 @@ $route['registration'] = 'Controller_f_user_login/registration';
 $route['registration/data_exist'] = 'Controller_f_user_login/dataExist';
 $route['logout'] = 'Controller_f_user_login/logout';
 
+
 /*///////// About Us /////////////*/
 $route['about-us'] = 'Controller_f_about/index';
 
@@ -127,6 +128,7 @@ $route['about-us'] = 'Controller_f_about/index';
 $route['store/product-list'] = 'Controller_f_store';
 $route['store/product-list/(:any)'] = 'Controller_f_store/fetch_data/$1';
 $route['store/product-list/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
+$route['store/add-favorites'] = 'Controller_favorites/addFavorites';
 // $route['store/show-all-items/(:num)'] = 'Controller_f_store';
 // $route['store/(:any)'] = 'Controller_f_store/showByType/$1';
 // $route['store/(:any)/(:num)'] = 'Controller_f_store/showByType/$1';

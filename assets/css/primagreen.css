@@ -34,10 +34,14 @@
 		visibility: hidden;
 	}
 }
-html {
+
+html,body {
 	font-family: "Nunito" !important;
 	font-weight: 400;
+	height:100%;
+	width: 100%;
 }
+
 ::-webkit-scrollbar {
 	width: 0px;
 	background: transparent; /* make scrollbar transparent */
@@ -103,7 +107,7 @@ form label {
 .login-banner {
 	height: 700px;
 	width: 100%;
-	background: url(../image/login_banner.svg);
+	background: url(../image/about1.jpg);
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -111,6 +115,15 @@ form label {
 }
 .page-title {
 	font-family: "DM Serif Text", serif;
+}
+
+/* ABOUT US */
+.about-1-banner {
+	background: url(../image/about1.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .list-cart {
@@ -160,4 +173,9 @@ form label {
 	width: 90%;
 	border: none;
 	background: #ccc;
+}
+
+#googleMap {
+	height: 500px;
+	width: 100%;
 }
