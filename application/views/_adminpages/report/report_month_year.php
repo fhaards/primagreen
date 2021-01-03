@@ -153,7 +153,7 @@
                 <th>Order Number</th>
                 <th>Total Qty</th>
                 <th>Subtotal Items<br>(Rp)</th>
-                <th>TAX 4%<br>(Rp)</th>
+                <th>Tax 4%<br>(Rp)</th>
                 <th>Courier <br>(Rp)</th>
                 <th>Subtotal <br>(Rp)</th>
                 <!-- <th>Subtotal</th> -->
