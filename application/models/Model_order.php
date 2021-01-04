@@ -62,10 +62,8 @@ class Model_order extends CI_Model
 		return $this->db->get();
 	}
 
-	public function getAllOrderByMonthYear()
+	public function getAllOrderByMonthYear($month,$year)
 	{
-		$month = '01';
-		$year = '2021';
 		$this->db->select('no_pemesanan,tgl_pesan,pemesanan.total_harga,status,pemesanan.hrg_kurir,kurir.nm_kurir,barang.harga,qty_pesan');
 		$this->db->select('SUM(qty_pesan) as tqty');
 		$this->db->select('SUM(barang.harga) as tharga');
@@ -77,19 +75,6 @@ class Model_order extends CI_Model
 		$this->db->where("DATE_FORMAT(tgl_pesan,'%Y')", $year);
 		$this->db->where('status','COMPLETE');
 		$this->db->group_by("no_pemesanan");
-		return $this->db->get();
-	}
-
-	public function getTotalOrderByMonthYear()
-	{
-		$month = '01';
-		$year = '2021';
-		$this->db->select('no_pemesanan,tgl_pesan,total_harga,status');
-		$this->db->from('pemesanan');
-		$this->db->where("DATE_FORMAT(tgl_pesan,'%m')", $month);
-		$this->db->where("DATE_FORMAT(tgl_pesan,'%Y')", $year);
-		$this->db->where('status','COMPLETE');
-		$this->db->group_by("pemesanan.no_pemesanan");
 		return $this->db->get();
 	}
 
@@ -118,6 +103,7 @@ class Model_order extends CI_Model
 	}
 	public function changeStatusComplete($no_pemesanan, $status_order,$get_resi)
 	{
+		$dateNow  = date('Y-m-d H:i:s'); 
 		$this->db->select('*');
 		$this->db->from('pemesanan');
 		$this->db->where("pemesanan.no_pemesanan", $no_pemesanan);
@@ -131,7 +117,8 @@ class Model_order extends CI_Model
 				'id_user' => $key->id_user,
 				'no_pemesanan' => $key->no_pemesanan,
 				'total_harga' => $key->total_harga,
-				'tgl_pnjl' => $key->tgl_pesan,
+				'tgl_pesan' => $key->tgl_pesan,
+				'tgl_pnjl' => $dateNow,
 				'id_kurir' => $key->id_kurir,
 				'hrg_kurir' => $key->hrg_kurir,
 				'nama_t' => $key->nama_t,

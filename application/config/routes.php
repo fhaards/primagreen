@@ -50,7 +50,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Controller_f_homepage';
-$route['404_override'] = '';
+$route['404_override'] = 'Controller_error_page';
 $route['translate_uri_dashes'] = FALSE;
 
 /*
@@ -98,6 +98,10 @@ $route['order/change-status'] = 'Controller_order/changeStatusOrder';
 /*///////// Sold /////////////*/
 $route['sold/sold-list'] = 'Controller_sold/index';
 $route['sold/sold-detail/(:any)'] = 'Controller_sold/soldDetails/$1';
+
+/*///////// Sold /////////////*/
+$route['user/user-list'] = 'Controller_user/index';
+$route['user/user-detail/(:any)'] = 'Controller_user/detailUser/$1';
 
 
 /*///////// Settings and Company /////////////*/

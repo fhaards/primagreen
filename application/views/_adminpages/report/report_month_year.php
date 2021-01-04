@@ -25,7 +25,12 @@
         }
 
         header {
+            padding: 15px;
             width: 100%;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color: #D1D5DB;
+            border-collapse: collapse;
         }
 
         /* HEADER  */
@@ -105,12 +110,12 @@
         /* MAIN  */
 
         main {
-            margin-top: 30px;
+            margin-top: 10px;
         }
 
         .table-items {
             width: 100%;
-            margin-top: 30px;
+            margin-top: 10px;
         }
 
         .table-items,
@@ -145,8 +150,28 @@
 </head>
 
 <body>
+    <header>
+        <div class="row">
+            <div class="column left-content">
+                <div class="company">
+                    <span class="text-lg heading-1 text-bold text-green"><?= getCompanyData()['comp_nm']; ?></span>
+                    <div class="text text-xs text-bold text-gray">
+                        <?= getCompanyData()['address']; ?> <?= getCompanyData()['telp']; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="column right-content">
+                <div class="right-subcontent">
+                    <div class="text-lg text-bold">REPORT ORDER PURCHASED</div>
+                    <?php $getDate = $getOrderCounted['tgl_pesan'] ; ?>
+                    <p class="text text-sm text-bold" style="margin-bottom:-15px;">Month : <?=  strftime("%B", strtotime($getDate));?></p>
+                    <p class="text text-sm text-bold">Year  : <?=  strftime("%Y", strtotime($getDate));?></p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <hr>
     <main>
-        <span class="text-bold text-sm">Report Order Purchased</span>
         <table class="text text-xs text-gray table-items">
             <tr>
                 <th>No</th>
@@ -158,13 +183,14 @@
                 <th>Subtotal <br>(Rp)</th>
                 <!-- <th>Subtotal</th> -->
             </tr>
-            <?php $no = 0; ?>
+            <?php $no = 0; $setTotalAll=0; ?>
             <?php foreach ($getOrderList as $row) : ?>
                 <?php $no++; ?>
                 <?php
                 $subtotalItems = $row['tharga'];
                 $subtotalAll = $row['total_harga'];
                 $setTaxSubTotal = $subtotalItems * 0.04;
+                $setTotalAll += $subtotalAll;
                 ?>
                 <tr>
                     <td><?= $no; ?></td>
@@ -177,13 +203,8 @@
                 </tr>
             <?php endforeach; ?>
             <tr>
-                <th colspan="6" style="padding:10px;">TOTAL THIS MONTH AND 2020</th>
-                <?php foreach ($getTotalOrder as $row) : ?>
-                    <?php 
-                        $totalThisMonth += $row->total_harga;
-                    ?>
-                <?php endforeach; ?>
-                <th><?= number_format($totalThisMonth); ?></th>
+                <th colspan="6" style="padding:10px;">Total Purchased Order this <?=  strftime("%B", strtotime($getDate));?> / <?=  strftime("%Y", strtotime($getDate));?></th>
+                <th><?= number_format($setTotalAll); ?></th>
             </tr>
         </table>
     </main>

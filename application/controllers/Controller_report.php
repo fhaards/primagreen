@@ -36,11 +36,11 @@ class Controller_report extends CI_Controller
     }
 
     public function reportOrderByAdmin(){
-        $month = '12';
-        $year = '2020';
+        $month = $this->input->post("month");
+        $year = $this->input->post("year");
         $data['title']   = 'Print Pruchased Order - ' . APP_NAME;
-        $data['getOrderList'] = $this->model_order->getAllOrderByMonthYear()->result_array();
-        $data['getTotalOrder'] = $this->model_order->getTotalOrderByMonthYear()->result();
+        $data['getOrderList'] = $this->model_order->getAllOrderByMonthYear($month,$year)->result_array();
+        $data['getOrderCounted'] = $this->model_order->getAllOrderByMonthYear($month,$year)->row_array();
         $this->pdf->setPaper('A4', 'potrait');
         $this->pdf->filename = "order-report.pdf";
         $this->pdf->load_view('_adminpages/report/report_month_year', $data);

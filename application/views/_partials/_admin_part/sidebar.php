@@ -47,11 +47,11 @@
       </li> -->
 
       <li class="relative px-6 py-3">
-      <span class="<?= ($hal == 'product') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
+        <span class="<?= ($hal == 'product') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
         <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" @click="togglePagesMenu" aria-haspopup="true">
           <span class="inline-flex items-center">
             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+              <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
             </svg>
             <span class="ml-4">Products</span>
           </span>
@@ -105,8 +105,7 @@
         </a>
       </li>
       <div class="px-6 my-6">
-        <a href="<?= base_url(); ?>product/product-add" 
-        class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5  transition-colors duration-150 text-white border border-green-600 bg-green-500 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-green-600 focus:outline-none focus:shadow-outline-green">
+        <a href="<?= base_url(); ?>product/product-add" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5  transition-colors duration-150 text-white border border-green-600 bg-green-500 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-green-600 focus:outline-none focus:shadow-outline-green">
           New Product
           <span class="ml-2" aria-hidden="true">+</span>
         </a>
@@ -119,10 +118,18 @@
 
 
       <!-- SETTING MENU -->
+      <li class="relative px-6 py-3">
+        <span class="<?= ($hal == 'user') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
+        <a class="<?= ($hal == 'user') ? $activeside :  $inactiveside; ?>" href="<?= base_url(); ?>user/user-list">
+          <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"></path>
+          </svg>
+          <span class="ml-4">User List</span>
+        </a>
+      </li>
 
       <li class="relative px-6 py-3">
-        <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" 
-        @click="toggleSettingsMenu" aria-haspopup="true">
+        <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" @click="toggleSettingsMenu" aria-haspopup="true">
           <span class="inline-flex items-center">
             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
@@ -148,6 +155,8 @@
           </ul>
         </template>
       </li>
+
+
 
     </ul>
 

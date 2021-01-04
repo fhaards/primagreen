@@ -148,6 +148,7 @@ class Controller_f_cart extends CI_Controller
         $idbarang = $this->input->post('id_barang');
         $getUser = $this->input->post('user_checkout');
         $qty = $this->input->post('qty');
+        $dateNow  = date('Y-m-d H:i:s'); 
         $date = date('Y-m-d');
         $dateSet = date('d');
         $hourSet = date('h');
@@ -171,7 +172,7 @@ class Controller_f_cart extends CI_Controller
                 'id_user' => $getUser,
                 'no_pemesanan' => $setNoPemesanan,
                 'total_harga' => $totalHarga,
-                'tgl_pesan' => $date,
+                'tgl_pesan' => $dateNow,
                 'id_kurir' => $idKurir,
                 'hrg_kurir' => $hargaKurir,
                 'nama_t' => $namaTujuan,
