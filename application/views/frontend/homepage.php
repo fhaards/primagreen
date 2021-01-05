@@ -1,4 +1,4 @@
-<section class="homepage-banner w-full mt-20 lg:mt-32 my-4 mx-auto flex pt-12 md:pt-0 md:items-center bg-cover bg-right">
+<section class="homepage-banner w-full mt-20 lg:mt-32 my-4 mx-auto flex pt-12 md:pt-0 md:items-center bg-cover bg-right" background>
     <div class="container mx-auto">
         <div class="flex flex-col w-full lg:w-1/3 justify-center items-start lg:p-6 tracking-wide">
             <h1 class="text-white font-bold lg:text-4xl text-3xl my-4 px-6 rounded-lg tracking-wide">Time to bloom youre house with plants</h1>
@@ -37,7 +37,7 @@
                 ?>
                 <div id="showProducts" class="flex flex-col h-full w-full">
 
-                    <a href="<?php echo site_url('store/detail/' . $newItemsValue['id_barang'] . '/' . $newNmProduct); ?>" class="flex flex-col">
+                    <a href="<?php echo site_url('store/product-list/detail/' . $newItemsValue['id_barang'] . '/' . $newNmProduct); ?>" class="flex flex-col">
                         <div class="relative w-full h-20 md:h-48 lg:h-48 rounded-sm md:block">
                             <img class="object-cover w-full h-full opacity-75 hover:opacity-100 hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
                         </div>
@@ -48,6 +48,9 @@
                             <div class="w-1/3 text-right">
                                 <p class="text-gray-600 font-bold text-xs lg:text-sm"><?= number_format($newItemsValue['harga']); ?></p>
                             </div>
+                        </div>
+                        <div class="flex mb-2">
+                            <p class="text-gray-600 font-semibold text-xs lg:text-xs"> Size : <?= $newItemsValue['size']; ?></p>
                         </div>
                     </a>
 
@@ -67,22 +70,23 @@
                             $classFillFav = 'none';
                             ?>
                         <?php endif; ?>
-                        <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-sm mt-5">
+                        <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-br-lg">
                             <svg class="<?= $classFav; ?>" fill="<?= $classFillFav; ?>" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                         </button>
                     <?php else : ?>
-                        <a href="<?= base_url() . 'login'; ?>" class="absolute items-center bg-white p-1 rounded-sm mt-5">
+                        <a href="<?= base_url() . 'login'; ?>" class="absolute items-center bg-white p-1 rounded-br-lg">
                             <svg class="h-6 text-gray-600 right-0 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                         </a>
                     <?php endif; ?>
+
                     <div class="h-1/3 flex lg:flex-row lg:flex-wrap space-x-2">
                         <?php if ($newItemsValue['stok'] == 0) : ?>
-                            <div class="flex items-center py-1 lg:py-2">
-                                <span class="lg:text-sm text-xs lg:block text-gray-600 font-semibold">Out Stock</span>
+                            <div class="flex items-center py-1 lg:py-2 mx-auto">
+                                <span class="lg:text-sm text-xs lg:block text-gray-600 font-bold text-gray-700">Out Stock</span>
                             </div>
                         <?php else : ?>
                             <div class="flex-0">
@@ -125,7 +129,7 @@
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
             <?php foreach ($someItems as $someItemsValue) { ?>
                 <?php
-                $newNmProduct2 = strtolower(str_replace(' ', '-', $someItemsValue['nm_barang']));
+                $someNmProduct = strtolower(str_replace(' ', '-', $someItemsValue['nm_barang']));
                 $checkImage1IfEmpty = $someItemsValue['gambar'];
                 if ($checkImage1IfEmpty == 'default_img.jpg') {
                     $urlImage = 'default_img.jpg';
@@ -134,7 +138,7 @@
                 }
                 ?>
                 <div class="flex flex-col">
-                    <a href="<?php echo site_url('store/detail/' . $newItemsValue['id_barang'] . '/' . $newNmProduct2); ?>" class="flex flex-col">
+                    <a href="<?php echo site_url('store/product-list/detail/' . $someItemsValue['id_barang'] . '/' . $someNmProduct); ?>" class="flex flex-col">
                         <div class="relative w-full h-20 md:h-48 lg:h-48 rounded-sm md:block">
                             <img class="object-cover w-full h-full opacity-75 hover:opacity-100 hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
                         </div>
@@ -146,7 +150,38 @@
                                 <p class="text-gray-600 font-bold text-xs lg:text-sm"><?= number_format($someItemsValue['harga']); ?></p>
                             </div>
                         </div>
+                        <div class="flex mb-2">
+                            <p class="text-gray-600 font-semibold text-xs lg:text-xs"> Size : <?= $someItemsValue['size']; ?></p>
+                        </div>
                     </a>
+                    <?php if (isLoggedIn()) : ?>
+                        <?php
+                        $getIdUser2 = getUserData()['id_user'];
+                        $getIdBarang2 = $someItemsValue['id_barang'];
+                        ?>
+                        <?php if (in_array($getIdBarang2, $favItems)) : ?>
+                            <?php
+                            $classFav2 = 'w-5 text-red-500';
+                            $classFillFav2 = 'currentColor';
+                            ?>
+                        <?php else : ?>
+                            <?php
+                            $classFav2 = 'w-5 text-gray-500 hover:text-red-500';
+                            $classFillFav2 = 'none';
+                            ?>
+                        <?php endif; ?>
+                        <button data-itemsid="<?= $getIdBarang2; ?>" data-userid="<?= $getIdUser2; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-br-lg">
+                            <svg class="<?= $classFav2; ?>" fill="<?= $classFillFav2; ?>" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </button>
+                    <?php else : ?>
+                        <a href="<?= base_url() . 'login'; ?>" class="absolute items-center bg-white p-1 rounded-br-lg">
+                            <svg class="h-6 text-gray-600 right-0 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </a>
+                    <?php endif; ?>
                     <div class="h-1/3 flex lg:flex-row lg:flex-wrap space-x-2">
                         <?php if ($someItemsValue['stok'] == 0) : ?>
                             <div class="flex items-center py-1 lg:py-2">

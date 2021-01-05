@@ -10,10 +10,6 @@ class Model_f_homepage extends CI_Model
 		$this->load->helper("file");
 	}
 
-	public function getHomepage()
-	{
-	}
-
 	public function getNewItems()
 	{
 		$this->db->select('*');

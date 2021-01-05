@@ -57,11 +57,8 @@
                 <?php echo form_close(); ?>
             </div>
         </div>
-        <div class="flex-1 lg:block hidden">
-            <div class="signup-banner">
-                <h4 class="text-white p-6 rounded-lg">
-                </h4>
-            </div>
+        <div class="flex-1  h-full lg:block hidden">
+            <div class="signup-banner"></div>
         </div>
     </div>
 </section>

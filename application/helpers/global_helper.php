@@ -62,3 +62,10 @@ function getBannerData()
 	$ci->load->model('model_settings');
 	return $ci->model_settings->getAllBannerData();
 }
+
+function getTypeData()
+{
+	$ci = &get_instance();
+	$ci->load->model('model_type');
+	return $ci->model_type->getAllType();
+}

@@ -32,11 +32,7 @@
 
         <div class="flex flex-col">
             <?php if (isLoggedIn()) : ?>
-                <div class="flex">
-                    <p class="text-xs text-gray-600 justify-between">
-                        Shipping and taxes calculated at checkout. Please check again the items to be purchased. We will not be held responsible for any mistakes you make during checkout.
-                    </p>
-                </div>
+               
                 <!-- <button id="checkout-btn" type="button" class="shadow-lg w-full px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-green-500 rounded-md active:bg-green-600 hover:shadow-none hover:bg-green-600 focus:outline-none focus:shadow-outline-green">
                         <p class="tracking-widest"> CHECKOUT </p>
                     </button> -->
@@ -49,7 +45,7 @@
                     </div>
                 </button>
             <?php else : ?>
-                <span class="text-center text-sm font-bold py-4 text-red-500"> Please <a href="<?= base_url().'login';?>" class="underline">Login</a> <br> To continue youre order proses</span>
+                <span class="text-center text-sm font-bold py-4 text-red-500"> Please <a href="<?= base_url().'login';?>" class="underline">Login</a> <br> for continue to checkout cart</span>
             <?php endif; ?>
         </div>
 

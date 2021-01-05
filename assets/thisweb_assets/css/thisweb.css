@@ -75,15 +75,7 @@ form label {
 	animation: slide-nav-down 0.3s ease;
 	animation-fill-mode: forwards;
 }
-.homepage-banner {
-	max-width: 1600px;
-	height: 35rem;
-	background: url(../../image/bg4.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
+
 .homepage-banner h1 {
 	font-family: "DM Serif Text", serif;
 }
@@ -95,24 +87,7 @@ form label {
 	-o-background-size: cover;
 	background-size: cover;
 }
-.signup-banner {
-	height: 500px;
-	width: 100%;
-	background: url(../../image/signup_banner.svg);
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-.login-banner {
-	height: 700px;
-	width: 100%;
-	background: url(../../image/about1.jpg);
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
+
 .page-title {
 	font-family: "DM Serif Text", serif;
 }

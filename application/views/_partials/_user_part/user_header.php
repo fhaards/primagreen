@@ -10,28 +10,28 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "uppercase tracking-widest items-center text-md font-bold transition-colors duration-150 text-green-600 hover:text-green-700";
-    $inactiveside = "uppercase tracking-widest items-center text-md font-bold transition-colors duration-150 text-gray-600 hover:text-green-500";
+    $activeside = "uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-green-600 hover:text-green-700 mx-auto";
+    $inactiveside = "uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-600 hover:text-green-500 mx-auto";
     ?>
 
-    <!-- Desktop Menu -->
-    <div class=" flex-1 xs:hidden hidden md:block">
-      <div class="space-x-8 w-full space-x-12 flex max-w-xl focus-within:text-green-500">
-        <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()">
-          Shop
-        </a>
-        <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activeside :  $inactiveside; ?>">
-          About Us
+    <!-- Logo -->
+    <div class="hidden md:block mr-10">
+      <div class="mx-auto w-full">
+        <a class="text-lg font-bold" href="<?= base_url(); ?>">
+          <img class="h-6 w-100 pr-4 object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
         </a>
       </div>
     </div>
 
-
-    <!-- Logo -->
-    <div class="flex-1 md:block hidden">
-      <div class="mx-auto w-1/2 items-center">
-        <a class="text-lg font-bold" href="<?= base_url(); ?>">
-          <img class="mx-auto  h-6 w-100 object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
+    <!-- Desktop Menu -->
+    <div class="hidden md:block items-center ">
+      <div class="mx-auto focus-within:text-green-500 flex flex-row space-x-12">
+        <!-- <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()"> -->
+        <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger">
+          Store
+        </a>
+        <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activeside :  $inactiveside; ?>">
+          About Us
         </a>
       </div>
     </div>

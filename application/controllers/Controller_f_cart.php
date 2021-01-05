@@ -70,6 +70,11 @@ class Controller_f_cart extends CI_Controller
                             </div>
                             <div class="text-gray-900 font-bold py-4 float-right text-right">' . 'Rp ' . number_format($this->cart->total()) . '</div>
                         </div>';
+            $output .= ' <div class="flex">
+            <p class="text-xs text-gray-600 justify-between">
+                Shipping and taxes calculated at checkout. Please check again the items to be purchased. We will not be held responsible for any mistakes you make during checkout.
+            </p>
+        </div>';
            
         }
 

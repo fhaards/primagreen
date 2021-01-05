@@ -26,26 +26,6 @@
         </a>
       </li>
 
-      <!-- <li class="relative px-6 py-3">
-        <span class="<?= ($hal2 == 'product-list') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
-        <a class="<?= ($hal2 == 'product-list') ? $activeside :  $inactiveside; ?>" href="<?= base_url(); ?>product/product-list">
-          <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-          </svg>
-          <span class="ml-4">Product</span>
-        </a>
-      </li> -->
-
-      <!-- <li class="relative px-6 py-3">
-        <span class="<?= ($hal2 == 'list') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
-        <a class="<?= ($hal2 == 'list') ? $activeside :  $inactiveside; ?>" href="<?= base_url(); ?>category-type/list">
-          <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-          </svg>
-          <span class="ml-4">Category / Type</span>
-        </a>
-      </li> -->
-
       <li class="relative px-6 py-3">
         <span class="<?= ($hal == 'product') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
         <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" @click="togglePagesMenu" aria-haspopup="true">
