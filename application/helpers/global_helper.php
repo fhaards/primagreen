@@ -55,3 +55,10 @@ function getCompanyData()
 	$ci->load->model('model_settings');
 	return $ci->model_settings->getAllCompanyData();
 }
+
+function getBannerData()
+{
+	$ci = &get_instance();
+	$ci->load->model('model_settings');
+	return $ci->model_settings->getAllBannerData();
+}

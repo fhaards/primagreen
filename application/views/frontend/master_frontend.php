@@ -23,8 +23,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/DataTables/css/dataTables.tailwind.css'; ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.css'; ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/chart.min.css'; ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/primagreen.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/jquery/jquery-ui.css'; ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/thisweb_assets/css/thisweb.css'; ?>" />
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.js'; ?>" language="javascript"></script>
 </head>
@@ -80,9 +80,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
             
         });
     </script>
-    <script src="<?php echo base_url() . 'assets/js_ajax/config_cart.js'; ?>" language="javascript"></script>
-    <script src="<?php echo base_url() . 'assets/js_ajax/config_custom.js'; ?>" language="javascript"></script>
-    <script src="<?php echo base_url() . 'assets/js_ajax/config_frontend.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_cart.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_custom.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_frontend.js'; ?>" language="javascript"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuxj-0utMuNbJbokRsEEVbfiV5t_t6NRU&callback=initMap"></script> -->
 </body>
 

@@ -91,4 +91,79 @@ class Controller_settings extends CI_Controller
             redirect('company/profile');
         }
     }
+
+    /// ------------------------------------ BANNER
+
+    public function banner()
+    {
+        $data['title']   = 'Banner - ' . APP_NAME;
+        $data['content'] = '_adminpages/banner/read_banner';
+        $this->load->view('_adminpages/master_admin', $data);
+    }
+
+    public function addBannerRandomly()
+    {
+        $defaultImg = 'default_img.jpg';
+        $data = array(
+            'main_banner' => $defaultImg,
+            'login_banner' => $defaultImg,
+            'regist_banner' => $defaultImg
+        );
+        $this->model_settings->addNewBanner($data);
+        $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+        redirect('banner/image-gallery');
+    }
+
+    public function updateBanner($id)
+    {
+
+        $baseMainImage      = $this->input->post('baseMainImg');
+        $baseLoginImage     = $this->input->post('baseLoginImg');
+        $baseRegistImage    = $this->input->post('baseRegistImg');
+        
+        $uploadPath = './uploads/banner';
+        $configImage = array('upload_path' => $uploadPath, 'allowed_types' =>
+        'jpg|jpeg|png', 'max_size' => '5000', 'encrypt_name' => true);
+
+        if (!is_dir('uploads/banner')) {
+            mkdir($uploadPath, 0777, true);
+        } else {
+        }
+
+        $this->load->library('upload', $configImage);
+
+        if ($this->upload->do_upload("mainImage")) {
+            unlink($uploadPath . '/' . $baseMainImage);
+            $mainImage  = array('upload_data' => $this->upload->data());
+            $getmainImage = $mainImage['upload_data']['file_name'];
+        } else {
+            $getmainImage = $baseMainImage;
+        }
+
+        if ($this->upload->do_upload("loginImage")) {
+            unlink($uploadPath . '/' . $baseLoginImage);
+            $loginImage  = array('upload_data' => $this->upload->data());
+            $getloginImage = $loginImage['upload_data']['file_name'];
+        } else {
+            $getloginImage = $baseLoginImage;
+        }
+
+        if ($this->upload->do_upload("registImage")) {
+            unlink($uploadPath . '/' . $baseRegistImage);
+            $registImage  = array('upload_data' => $this->upload->data());
+            $getregistImage = $registImage['upload_data']['file_name'];
+        } else {
+            $getregistImage = $baseRegistImage;
+        }
+        
+        $data = array(
+            'main_banner' => $getmainImage,
+            'login_banner' => $getloginImage,
+            'regist_banner' => $getregistImage
+        );
+
+        $this->model_settings->updateBannerData($data, $id);
+        $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+        redirect('banner/image-gallery');
+    }
 }

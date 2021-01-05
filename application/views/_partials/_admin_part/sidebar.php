@@ -1,5 +1,5 @@
-<aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
-  <div class="text-gray-500 dark:text-gray-400">
+<aside class="z-20 hidden w-64 overflow-y-auto bg-white  md:block flex-shrink-0 border-r border-l border-gray-300">
+  <div class="text-gray-500">
     <div class="pl-6 pr-20 py-6">
       <a class="text-lg font-bold" href="<?= base_url(); ?>dashboard">
         <img class="object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
@@ -148,8 +148,8 @@
               </a>
             </li>
             <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-              <a class="w-full" href="pages/create-account.html">
-                Banner Carousel
+              <a class="w-full" href="<?= base_url()?>banner/image-gallery">
+                Banner
               </a>
             </li>
           </ul>

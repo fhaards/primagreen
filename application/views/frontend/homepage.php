@@ -51,44 +51,40 @@
                         </div>
                     </a>
 
-                    <!-- <?php if (isLoggedIn()) : ?>
+                    <?php if (isLoggedIn()) : ?>
                         <?php
                         $getIdUser = getUserData()['id_user'];
                         $getIdBarang = $newItemsValue['id_barang'];
-                        ?> 
-                        <?php foreach ($favItems as $row) : ?>
-                            <?php if ($getIdBarang == $row['id_barang']) : ?>
-                                <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-sm mt-5">
-                                    <svg class="w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
-                                </button>
-                            <?php else : ?>
-                                <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-sm mt-5">
-                                    <svg class="w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
-                                </button>
-                            <?php endif; ?>
-                        <?php
-                        endforeach;
                         ?>
-
+                        <?php if (in_array($getIdBarang, $favItems)) : ?>
+                            <?php
+                            $classFav = 'w-5 text-red-500';
+                            $classFillFav = 'currentColor';
+                            ?>
+                        <?php else : ?>
+                            <?php
+                            $classFav = 'w-5 text-gray-500 hover:text-red-500';
+                            $classFillFav = 'none';
+                            ?>
+                        <?php endif; ?>
+                        <button data-itemsid="<?= $getIdBarang; ?>" data-userid="<?= $getIdUser; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-sm mt-5">
+                            <svg class="<?= $classFav; ?>" fill="<?= $classFillFav; ?>" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </button>
                     <?php else : ?>
                         <a href="<?= base_url() . 'login'; ?>" class="absolute items-center bg-white p-1 rounded-sm mt-5">
                             <svg class="h-6 text-gray-600 right-0 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                         </a>
-                    <?php endif; ?> -->
-
+                    <?php endif; ?>
                     <div class="h-1/3 flex lg:flex-row lg:flex-wrap space-x-2">
                         <?php if ($newItemsValue['stok'] == 0) : ?>
                             <div class="flex items-center py-1 lg:py-2">
                                 <span class="lg:text-sm text-xs lg:block text-gray-600 font-semibold">Out Stock</span>
                             </div>
                         <?php else : ?>
-
                             <div class="flex-0">
                                 <input name="quantity" type="number" id="<?= $newItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 lg:py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
                             </div>

@@ -108,7 +108,9 @@ $route['user/user-detail/(:any)'] = 'Controller_user/detailUser/$1';
 $route['company/profile'] = 'Controller_settings/profile';
 $route['company/add-randomly'] = 'Controller_settings/addRandomly';
 $route['company/update-profile/(:any)'] = 'Controller_settings/updateProfile/$1';
-
+$route['banner/image-gallery'] = 'Controller_settings/banner';
+$route['banner/add-randomly'] = 'Controller_settings/addBannerRandomly';
+$route['banner/update-banner/(:any)'] = 'Controller_settings/updateBanner/$1';
 
 /*
 | -------------------------------------------------------------------------

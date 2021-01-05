@@ -23,7 +23,7 @@ class Controller_f_homepage extends CI_Controller {
     public function index(){
         $data['newItems'] = $this->model_f_homepage->getNewItems();
         $data['someItems'] = $this->model_f_homepage->getSomeItems();
-        $data['favItems'] = $this->model_favorites->getFavorites();
+        $data['favItems'] = $this->model_favorites->getFavoritesId();
         $data['title']   = 'Welcome - ' . APP_NAME;
         $data['content'] = 'frontend/homepage';
         $this->load->view('frontend/master_frontend', $data);

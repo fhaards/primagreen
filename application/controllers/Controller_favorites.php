@@ -21,11 +21,9 @@ class Controller_favorites extends CI_Controller {
     }
 
     public function addFavorites(){
-        $data = array(
-            'id_barang' => $this->input->post("itemsid"),
-            'id_user' => $this->input->post("userid")
-        );
-        $data = $this->model_favorites->insert($data);
+        $data = $this->model_favorites->insert();
+        var_dump($data);
+        exit;
     }
     
 }
