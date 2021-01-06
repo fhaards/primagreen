@@ -213,8 +213,9 @@ $(document).ready(function () {
 		var maximum_price = $("#hidden_maximum_price").val();
 		var sorted_name = $("#get-sorted").val();
 
+		// loadMsg();
 		$(".filter_data").html(
-			'<div class="flex"><div class="flex flex-row items-center text-gray-800 font-bold">Loading .. <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6"></div></div>'
+			'<div class="flex flex-col w-full bg-red-300"><div class="mx-auto text-gray-800 font-bold mx-auto">Loading .. <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6"></div></div>'
 		);
 		$.ajax({
 			url: BASE_URL + "store/product-list/" + page,
@@ -229,6 +230,7 @@ $(document).ready(function () {
 				sorted_name: sorted_name,
 			},
 			success: function (data) {
+				// successMsg();
 				$(".filter_data").html(data.product_list);
 				$("#pagination_link").html(data.pagination_link);
 			},

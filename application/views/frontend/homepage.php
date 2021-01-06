@@ -18,7 +18,7 @@
 
         <nav id="new-items" class="w-full top-0 py-1">
             <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
-                <a class="uppercase tracking-widest no-underline hover:no-underline font-bold text-gray-600 text-xl" href="#">
+                <a class="uppercase tracking-widest no-underline hover:no-underline font-bold text-gray-800 text-xl" href="#">
                     New Items
                 </a>
             </div>
@@ -119,7 +119,7 @@
 
         <nav id="store" class="w-full top-0 py-1">
             <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
-                <a class="uppercase tracking-widest no-underline hover:no-underline font-bold text-gray-600 text-xl" href="#">
+                <a class="uppercase tracking-widest no-underline hover:no-underline font-bold text-gray-800 text-xl" href="#">
                     Store
                 </a>
                 <div class="" id="store-nav-content"></div>
@@ -142,9 +142,10 @@
                         <div class="relative w-full h-20 md:h-48 lg:h-48 rounded-sm md:block">
                             <img class="object-cover w-full h-full opacity-75 hover:opacity-100 hover:shadow-lg" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
                         </div>
-                        <div class="flex h-16 lg:h-12 pt-2 space-x-2">
-                            <div class="w-2/3">
+                        <div class="flex pt-2 space-x-2">
+                            <div class="w-2/3 h-16 max-h-16 lg:h-12 lg:max-h-12  overflow-y-auto">
                                 <p class="text-gray-900 font-bold text-xs lg:text-sm"><?= $someItemsValue['nm_barang']; ?></p>
+                                <p class="text-gray-600 font-semibold italic text-xs lg:text-xs">(<?= $someItemsValue['nm_barang_bot']; ?>)</p>
                             </div>
                             <div class="w-1/3 text-right">
                                 <p class="text-gray-600 font-bold text-xs lg:text-sm"><?= number_format($someItemsValue['harga']); ?></p>

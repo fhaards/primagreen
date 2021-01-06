@@ -67,6 +67,20 @@
 	</script>
 <?php endif; ?>
 
+<?php if($this->session->flashdata('dataNotFound')): ?>
+	<script type="text/javascript"> 
+	swal({
+	      title: "Ops",
+	      text: "Data Not Found , sorry",
+	      type: 'error',
+	      timer: 3000,
+	      imageWidth: 50,
+	      allowOutsideClick: false,
+	      confirmButtonText: "OK",
+	    })
+	</script>
+<?php endif; ?>
+
 <?php if($this->session->flashdata('loginMsg')): ?>
 	<script type="text/javascript"> 
 	swal({

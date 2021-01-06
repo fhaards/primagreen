@@ -5,6 +5,10 @@ $(document).ready(function () {
 		$("#upNoOrderInput2").html($(this).data("nopemesanan"));
 	});
 
+	$(".open_filter").on("click", function () {
+		$(".filter_store").toggleClass('hidden');
+	});
+
 	// IF DATA EXIST
 	$("#email").change(function () {
 		$("#email_result").text("").fadeIn("slow");

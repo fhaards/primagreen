@@ -77,14 +77,15 @@ class Model_f_store extends CI_Model
 			foreach ($data->result_array() as $row) {
 				$newNmProduct = strtolower(str_replace(' ', '-', $row['nm_barang']));
 				$output .= '
-				<div class="flex flex-col">
+				<div class="flex flex-col w-full">
 					<a href="' . site_url('store/product-list/detail/' . $row['id_barang'] . '/' . $newNmProduct) . '" class="flex flex-col">
-						<div class="relative w-full h-20 md:h-48 lg:h-48 rounded-sm md:block">
+						<div class="w-full h-20 md:h-48 lg:h-48 rounded-sm md:block">
 							<img class="object-cover w-full h-full opacity-75 hover:opacity-100 hover:shadow-lg" src="' . base_url() . 'uploads/product/' .  $row['sku'] . '/' . $row['gambar'] . '">
 						</div>
-						<div class="flex h-16 lg:h-12 pt-2 space-x-2">
-							<div class="w-2/3">
+						<div class="flex pt-2 space-x-2">
+							<div class="w-2/3 h-16 max-h-16 lg:h-12 lg:max-h-12  overflow-y-auto">
 								<p class="text-gray-900 font-bold text-xs lg:text-sm">' . $row['nm_barang'] . '</p>
+								<p class="text-gray-600 font-semibold italic text-xs lg:text-xs">(' . $row['nm_barang_bot'] . ')</p>
 							</div>
 							<div class="w-1/3 text-right">
 								<p class="text-gray-600 font-bold text-xs lg:text-sm">' . number_format($row['harga']) . '</p>

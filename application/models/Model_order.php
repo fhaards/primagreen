@@ -62,7 +62,7 @@ class Model_order extends CI_Model
 		return $this->db->get();
 	}
 
-	public function getAllOrderByMonthYear($month,$year)
+	public function getAllOrderByMonthYear($month, $year)
 	{
 		$this->db->select('no_pemesanan,tgl_pesan,pemesanan.total_harga,status,pemesanan.hrg_kurir,kurir.nm_kurir,barang.harga,qty_pesan');
 		$this->db->select('SUM(qty_pesan) as tqty');
@@ -73,9 +73,17 @@ class Model_order extends CI_Model
 		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
 		$this->db->where("DATE_FORMAT(tgl_pesan,'%m')", $month);
 		$this->db->where("DATE_FORMAT(tgl_pesan,'%Y')", $year);
-		$this->db->where('status','COMPLETE');
+		$this->db->where('status', 'COMPLETE');
 		$this->db->group_by("no_pemesanan");
-		return $this->db->get();
+		$query = $this->db->get();
+		$count = $query->num_rows();
+		if (!empty($count)) {
+			return $query;
+		} else {
+			$this->session->set_flashdata('dataNotFound', 'Data Not Found');
+			redirect('sold/sold-list');
+			return false;
+		}
 	}
 
 	public function insertOrder($data)
@@ -101,9 +109,9 @@ class Model_order extends CI_Model
 		$this->db->where('no_pemesanan', $no_pemesanan);
 		return $this->db->update('pemesanan');
 	}
-	public function changeStatusComplete($no_pemesanan, $status_order,$get_resi)
+	public function changeStatusComplete($no_pemesanan, $status_order, $get_resi)
 	{
-		$dateNow  = date('Y-m-d H:i:s'); 
+		$dateNow  = date('Y-m-d H:i:s');
 		$this->db->select('*');
 		$this->db->from('pemesanan');
 		$this->db->where("pemesanan.no_pemesanan", $no_pemesanan);
@@ -126,7 +134,7 @@ class Model_order extends CI_Model
 				'no_resi' => $get_resi
 			);
 			$inserting = $this->db->insert('penjualan', $data);
-			if($inserting){
+			if ($inserting) {
 				$this->db->select('*');
 				$this->db->from('barang');
 				$this->db->where("barang.id_barang", $getBarang);
@@ -139,7 +147,6 @@ class Model_order extends CI_Model
 					$finish = $this->db->update('barang');
 				}
 			}
-		
 		}
 		if ($finish) {
 			$this->db->set('status', $status_order);

@@ -10,13 +10,13 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-green-600 hover:text-green-700 mx-auto";
-    $inactiveside = "uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-600 hover:text-green-500 mx-auto";
+    $activeside = "uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-green-500 hover:text-green-700 mx-auto";
+    $inactiveside = "uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:text-green-500 mx-auto";
     ?>
 
     <!-- Logo -->
-    <div class="hidden md:block mr-10">
-      <div class="mx-auto w-full">
+    <div class="hidden md:block mr-10 items-center">
+      <div class="mx-auto w-full items-center">
         <a class="text-lg font-bold" href="<?= base_url(); ?>">
           <img class="h-6 w-100 pr-4 object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
         </a>
@@ -40,7 +40,7 @@
       <ul class="flex flex-row space-x-8  float-right">
         <li class="relative">
           <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
-            <svg class="w-6 h-6 text-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-6 h-6 text-gray-800 text-bold hover:text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
             <span id="notif-cart" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-green-600 border-2 border-white rounded-full"></span>
@@ -49,7 +49,7 @@
 
         <li class="relative">
           <button class="align-middle focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
-            <svg class="w-6 h-6 text-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-6 h-6 text-gray-800 text-bold hover:text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </button>
