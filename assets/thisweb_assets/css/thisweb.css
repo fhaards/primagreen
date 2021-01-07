@@ -76,9 +76,6 @@ form label {
 	animation-fill-mode: forwards;
 }
 
-.homepage-banner h1 {
-	font-family: "DM Serif Text", serif;
-}
 .success-banner {
 	height: 20rem;
 	background: url(../../image/success_bg.svg) no-repeat center center fixed;
@@ -94,7 +91,7 @@ form label {
 
 /* ABOUT US */
 .about-1-banner {
-	background: url(../../image/about1.jpg) no-repeat center center fixed;
+	background: url(../../image/about1.jpg) no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -102,7 +99,7 @@ form label {
 }
 
 .list-cart {
-	max-height: 350px !important;
+	max-height: 400px !important;
 }
 
 .store-pagination a {
@@ -150,7 +147,17 @@ form label {
 	background: #ccc;
 }
 
-#googleMap {
-	height: 500px;
+#map {
+	height: 400px;
 	width: 100%;
+}
+
+
+.filter_data{
+	max-height:700px;
+	overflow-y:scroll;
+}
+.loading_store{
+	max-height:400px;
+	height: 400px;
 }

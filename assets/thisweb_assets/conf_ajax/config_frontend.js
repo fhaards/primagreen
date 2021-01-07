@@ -3,26 +3,12 @@ function openSubNav() {
     document.getElementById("header-nav").style.height = "5rem";
 }
 
-function initMap() {
-    var mapProp = {
-        center: new google.maps.LatLng(-6.793285909058999, 107.60184618438252),
-        zoom: 5,
-    };
-    var map = new google.maps.Map(document.getElementById("map"), mapProp);
-}
 // function initMap() {
-//     const uluru = {
-//         lat: -25.344,
-//         lng: 131.036
+//     var mapProp = {
+//         center: new google.maps.LatLng(-6.793285909058999, 107.60184618438252),
+//         zoom: 5,
 //     };
-//     const map = new google.maps.Map(document.getElementById("map"), {
-//         zoom: 4,
-//         center: uluru,
-//     });
-//     const marker = new google.maps.Marker({
-//         position: uluru,
-//         map: map,
-//     });
+//     var map = new google.maps.Map(document.getElementById("map"), mapProp);
 // }
 
 function closeSubNav() {

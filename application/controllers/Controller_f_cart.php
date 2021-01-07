@@ -30,7 +30,9 @@ class Controller_f_cart extends CI_Controller
             'id' => $this->input->post('produk_id'),
             'name' => $this->input->post('produk_nama'),
             'price' => $this->input->post('produk_harga'),
-            'qty' => $this->input->post('quantity')
+            'qty' => $this->input->post('quantity'),
+            'sku' => $this->input->post('sku'),
+            'gambar' => $this->input->post('gambar')
         );
         $this->cart->insert($data);
         // echo json_encode($data);
@@ -47,21 +49,34 @@ class Controller_f_cart extends CI_Controller
             $output .= '<div class="bg-gray-300 p-10 w-full rounded-lg items-center flex"><div class="mx-auto text-sm font-bold"> Ops, Cart is empty. </div></div>';
         } else {
             $output .= '<div class="list-cart overflow-y-scroll">';
-                foreach ($this->cart->contents() as $items) {
-                    $no++;
-                    $output .= '
-                        <div class="flex flex-row w-4/4 bg-gray-200 my-2 lg:py-2 lg:px-4 items-center">
-                            <input hidden type="text" value="' . $items['id'] . '" name="id_barang[]">
-                            <input hidden type="text" value="' . $items['qty'] . '" name="qty[]">
-                            <div class="w-3/4 pl-4 lg:pl-0"><label class="font-bold text-gray-800">' . $items['name'] . '</label></div>
-                            <div class="items-center mx-auto"><label class="flex items-center font-bold mx-auto w-1/4 text-gray-800">' . $items['qty'] . '</label></div>
-                            <button type="button" id="' . $items['rowid'] . '" 
-                                class="mt-0 hapus_cart text-center px-auto h-8 w-8 lg:w-5 lg:h-5 text-xs text-white transition-colors duration-150 bg-red-600 lg:rounded-full active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
-                                    x
-                            </button>
+            foreach ($this->cart->contents() as $items) {
+                $no++;
+                $output .= '
+                <input hidden type="text" value="' . $items['id'] . '" name="id_barang[]">
+                <input hidden type="text" value="' . $items['qty'] . '" name="qty[]">
+                        <div class="flex flex-row w-4/4 border border-gray-500 my-2 md:px-0 md:py-0 py-2 px-2 space-x-3 md:space-x-5">
+                            <div class="flex h-16 w-20 ">
+                                <img class="object-cover opacity-75" src="' . base_url() . 'uploads/product/' .  $items['sku'] . '/' . $items['gambar'] . '">
+                            </div>
+                            <div class="flex flex-col w-full w-4/4 md:px-2 md:py-2">    
+                                <div class="w-full lg:pl-0 flex flex-row ">
+                                    <div class="w-11/12"><span class="font-bold text-gray-800">' . $items['name'] . '</span></div>
+                                    <div class="w-1/12">
+                                        <button type="button" id="' . $items['rowid'] . '" 
+                                            class="hapus_cart p-1 w-5 h-5 rounded-md mt-0 text-center  mx-auto font-bold text-xs text-white transition-colors duration-150 bg-red-600 active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+                                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row w-full md:space-x-6">
+                                    <div class="flex-1"><label class="font-bold mx-auto w-1/4 text-gray-600">Qty : ' . $items['qty'] . '</label></div>
+                                </div>
+                            </div>
                         </div>
                     ';
-                }
+            }
             $output .= '</div>';
             $output .= '<div class="flex flex-row space-x-8 border-t border-gray-500">
                             <div class="flex-1 text-gray-600 font-semibold py-4">
@@ -70,12 +85,6 @@ class Controller_f_cart extends CI_Controller
                             </div>
                             <div class="text-gray-900 font-bold py-4 float-right text-right">' . 'Rp ' . number_format($this->cart->total()) . '</div>
                         </div>';
-            $output .= ' <div class="flex">
-            <p class="text-xs text-gray-600 justify-between">
-                Shipping and taxes calculated at checkout. Please check again the items to be purchased. We will not be held responsible for any mistakes you make during checkout.
-            </p>
-        </div>';
-           
         }
 
         // echo json_encode($output);
@@ -153,7 +162,7 @@ class Controller_f_cart extends CI_Controller
         $idbarang = $this->input->post('id_barang');
         $getUser = $this->input->post('user_checkout');
         $qty = $this->input->post('qty');
-        $dateNow  = date('Y-m-d H:i:s'); 
+        $dateNow  = date('Y-m-d H:i:s');
         $date = date('Y-m-d');
         $dateSet = date('d');
         $hourSet = date('h');

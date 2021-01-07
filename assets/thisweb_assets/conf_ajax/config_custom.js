@@ -6,7 +6,11 @@ $(document).ready(function () {
 	});
 
 	$(".open_filter").on("click", function () {
-		$(".filter_store").toggleClass('hidden');
+		$(".filter_store").toggle(function(){
+			$(this).animate({height:0},200);
+		  },function(){
+			$(this).animate({height:1000},200);
+		  });
 	});
 
 	// IF DATA EXIST

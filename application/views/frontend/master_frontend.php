@@ -21,13 +21,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/tailwinds.css'; ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/DataTables/datatables.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/DataTables/css/dataTables.tailwind.css'; ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.css'; ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/chart.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/jquery/jquery-ui.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/thisweb_assets/css/thisweb.css'; ?>" />
     <?php $this->load->view('_partials/_user_part/user_banner'); ?>
-    <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.js'; ?>" language="javascript"></script>
-    <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.js'; ?>" language="javascript"></script>
 </head>
 
 <body>
@@ -43,9 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
             <!-- Main Content -->
             <main class="h-full " id="main">
-                <div class="container px-6 py-3 mx-auto grid min-h-screen">
-                    <?php $this->load->view($content); ?>
-                </div>
+                <?php $this->load->view($content); ?>
                 <!-- Footer -->
                 <?php $this->load->view('_partials/footer'); ?>
             </main>
@@ -62,11 +57,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script>
         var BASE_URL = "<?php echo base_url(); ?>";
         var SITE_URL = "<?php echo site_url(); ?>";
+
+        function initMap() {
+            const uluru = {
+                lat: -6.793285909058999,
+                lng: 107.60047289334526
+            };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: uluru,
+            });
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
     </script>
     <script src="<?php echo base_url() . 'assets/jquery/jquery-2.2.3.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/jquery/jquery-ui.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/tailwind/js/alpine.min.js'; ?>" defer></script>
     <script src="<?php echo base_url() . 'assets/tailwind/js/init-alpine.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert_1/sweetalert.min.js'; ?>" language="javascript"></script>
     <script>
         $(document).ready(function() {
             $('#detail_cart').load("<?php echo site_url(); ?>cart/load-cart", function() {
@@ -78,13 +89,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     $("#notif-cart").show();
                 }
             });
-            
         });
     </script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_cart.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_custom.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_frontend.js'; ?>" language="javascript"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuxj-0utMuNbJbokRsEEVbfiV5t_t6NRU&callback=initMap"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuxj-0utMuNbJbokRsEEVbfiV5t_t6NRU&callback=initMap"></script>
 </body>
 
 </html>

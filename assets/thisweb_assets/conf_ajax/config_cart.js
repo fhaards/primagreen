@@ -5,7 +5,18 @@ $(document).ready(function () {
 	function successMsg() {
 		swal({
 			type: "success",
-			showConfirmButton: false,
+			buttons:false,
+			timer: 1500,
+			icon: "success",
+		});
+	}
+
+	function successAddToCartMsg() {
+		swal({
+			type: "success",
+			title: "Success",
+			text: "Add items to Cart",
+			buttons:false,
 			timer: 1500,
 			icon: "success",
 		});
@@ -15,7 +26,7 @@ $(document).ready(function () {
 		swal({
 			// imageUrl: "assets/image/loading2.gif",
 			text: "loading ..",
-			showConfirmButton: false,
+			buttons:false,
 			allowOutsideClick: false,
 			imageWidth: 160,
 		});
@@ -59,10 +70,13 @@ $(document).ready(function () {
 		var produk_id = $(this).data("produkid");
 		var produk_nama = $(this).data("produknama");
 		var produk_harga = $(this).data("produkharga");
+		var sku = $(this).data("sku");
+		var gambar = $(this).data("gambar");
 		var quantity = $("#" + produk_id).val();
 		var icon_container = $(this).children(".flex");
 		icon_container.children(".load-icon").show();
 		icon_container.children(".cart-icon").hide();
+		loadMsg();
 		$.ajax({
 			url: BASE_URL + "cart/add-to-cart",
 			method: "POST",
@@ -71,8 +85,11 @@ $(document).ready(function () {
 				produk_nama: produk_nama,
 				produk_harga: produk_harga,
 				quantity: quantity,
+				sku: sku,
+				gambar: gambar,
 			},
 			success: function (data) {
+				successAddToCartMsg();
 				icon_container.children(".load-icon").hide();
 				icon_container.children(".cart-icon").show();
 				$("#detail_cart").html(data);
@@ -90,6 +107,8 @@ $(document).ready(function () {
 		var produk_nama = $(this).data("produknama");
 		var produk_harga = $(this).data("produkharga");
 		var quantity = $("#" + produk_id).val();
+		var sku = $(this).data("sku");
+		var gambar = $(this).data("gambar");
 		loadMsg();
 		$.ajax({
 			url: BASE_URL + "cart/add-to-cart",
@@ -99,9 +118,11 @@ $(document).ready(function () {
 				produk_nama: produk_nama,
 				produk_harga: produk_harga,
 				quantity: quantity,
+				sku: sku,
+				gambar: gambar,
 			},
 			success: function (data) {
-				successMsg();
+				successAddToCartMsg();
 				$("#detail_cart").html(data);
 				if ($("#cekrowcart").val() != "0" || $("#cekrowcart").val() != null) {
 					$("#checkout-btn").show();
@@ -114,25 +135,66 @@ $(document).ready(function () {
 
 	$(document).on("click", ".hapus_cart", function () {
 		var row_id = $(this).attr("id");
-		loadMsg();
-		$.ajax({
-			url: BASE_URL + "cart/delete-cart-items",
-			method: "POST",
-			data: {
-				row_id: row_id,
-			},
-			success: function (data) {
-				$("#detail_cart").html(data);
-				$("#detail_checkout").html(data);
-				if ($("#cekrowcart").val() == "0" || $("#cekrowcart").val() == null) {
-					$("#checkout-btn").hide();
-					$("#notif-cart").hide();
-				}
-				subTotal();
-				successMsg();
-			},
+		swal({
+			title: "Are You Sure ?",
+			text: "Remove this item from Cart",
+			icon: "warning",
+			buttons: ["Cancel", "Remove"],
+			dangerMode: true,
+		}).then(function (isConfirm) {
+			if (isConfirm) {
+				swal({
+					title: "Removed",
+					text: "Items are successfully removed from cart!",
+					icon: "success",
+					timer: 1500,
+				}).then(function () {
+					$.ajax({
+						url: BASE_URL + "cart/delete-cart-items",
+						method: "POST",
+						data: {
+							row_id: row_id,
+						},
+						success: function (data) {
+							$("#detail_cart").html(data);
+							$("#detail_checkout").html(data);
+							if (
+								$("#cekrowcart").val() == "0" ||
+								$("#cekrowcart").val() == null
+							) {
+								$("#checkout-btn").hide();
+								$("#notif-cart").hide();
+							}
+							subTotal();
+						},
+					});
+				});
+			} else {
+				swal("Cancelled", "Your items still on cart :)", "error");
+			}
 		});
 	});
+
+	// $(document).on("click", ".hapus_cart", function () {
+	// 	var row_id = $(this).attr("id");
+	// 	$.ajax({
+	// 		url: BASE_URL + "cart/delete-cart-items",
+	// 		method: "POST",
+	// 		data: {
+	// 			row_id: row_id,
+	// 		},
+	// 		success: function (data) {
+	// 			$("#detail_cart").html(data);
+	// 			$("#detail_checkout").html(data);
+	// 			if ($("#cekrowcart").val() == "0" || $("#cekrowcart").val() == null) {
+	// 				$("#checkout-btn").hide();
+	// 				$("#notif-cart").hide();
+	// 			}
+	// 			subTotal();
+
+	// 		},
+	// 	});
+	// });
 
 	function subTotal() {
 		$.ajax({
@@ -215,7 +277,7 @@ $(document).ready(function () {
 
 		// loadMsg();
 		$(".filter_data").html(
-			'<div class="flex flex-col w-full bg-red-300"><div class="mx-auto text-gray-800 font-bold mx-auto">Loading .. <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6"></div></div>'
+			'<div class="loading_store grid col-span-4 items-center w-full"><div class="mx-auto text-gray-800 font-bold mx-auto">Loading .. <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6"></div></div>'
 		);
 		$.ajax({
 			url: BASE_URL + "store/product-list/" + page,
