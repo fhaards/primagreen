@@ -54,24 +54,23 @@ class Controller_f_cart extends CI_Controller
                 $output .= '
                 <input hidden type="text" value="' . $items['id'] . '" name="id_barang[]">
                 <input hidden type="text" value="' . $items['qty'] . '" name="qty[]">
-                        <div class="flex flex-row w-4/4 border border-gray-500 my-2 md:px-0 md:py-0 py-2 px-2 space-x-3 md:space-x-5">
-                            <div class="flex h-16 w-20 ">
-                                <img class="object-cover opacity-75" src="' . base_url() . 'uploads/product/' .  $items['sku'] . '/' . $items['gambar'] . '">
+                        <div class="grid grid-cols-4 w-full border border-gray-500 my-3">
+                            <div class="grid grid-cols-1 col-span-1">
+                                <img class="object-cover w-20 h-full opacity-75" src="' . base_url() . 'uploads/product/' .  $items['sku'] . '/' . $items['gambar'] . '">
                             </div>
-                            <div class="flex flex-col w-full w-4/4 md:px-2 md:py-2">    
-                                <div class="w-full lg:pl-0 flex flex-row ">
-                                    <div class="w-11/12"><span class="font-bold text-gray-800">' . $items['name'] . '</span></div>
-                                    <div class="w-1/12">
-                                        <button type="button" id="' . $items['rowid'] . '" 
-                                            class="hapus_cart p-1 w-5 h-5 rounded-md mt-0 text-center  mx-auto font-bold text-xs text-white transition-colors duration-150 bg-red-600 active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
-                                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
+                            <div class="grid grid-cols-1 col-span-3 px-2 py-2">    
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class=""><span class="font-bold text-gray-800">' . $items['name'] . '</span></div>
+                                    <div class="text-right">Rp <span class="font-bold text-gray-800">' . number_format($items['price']) . '</span></div>
                                 </div>
-                                <div class="flex flex-row w-full md:space-x-6">
-                                    <div class="flex-1"><label class="font-bold mx-auto w-1/4 text-gray-600">Qty : ' . $items['qty'] . '</label></div>
+                                <div class="grid grid-cols-1 gap-4 mt-2">
+                                        <label class="uppercase flex flex-row  items-center space-x-2 font-bold w-full">
+                                            <div class="flex-1  text-gray-600 text-xs">Qty : ' . $items['qty'] . '</div>
+                                            <button type="button" id="' . $items['rowid'] . '" 
+                                                class="hapus_cart block px-2 py-1 mt-0 font-bold text-xs text-gray-500 transition-colors duration-150 bg-white active:bg-red-600 hover:bg-gray-800 focus:outline-none focus:shadow-outline-red hover:text-white">
+                                                    REMOVE
+                                            </button>
+                                        </label>
                                 </div>
                             </div>
                         </div>

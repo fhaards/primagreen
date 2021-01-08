@@ -4,17 +4,17 @@
 
             <div class="flex flex-col w-full">
                 <div class="flex flex-col">
-                    <h3 class="text-base font-bold -my-4 text-gray-600">
+                    <h3 class="uppercase font-bold md:text-2xl text-2xl tracking-wide -my-4 text-gray-800">
                         About
                     </h3>
-                    <h2 class="title-text uppercase tracking-wide no-underline hover:no-underline font-bold lg:text-4xl text-3xl" href="#">
+                    <h2 class="uppercase tracking-wide no-underline hover:no-underline font-black lg:text-4xl text-3xl" href="#">
                         Our Story
                     </h2>
                 </div>
             </div>
 
             <div class="flex md:flex-row flex-col mt-10 md:space-x-10">
-                <div class="w-full about-1-banner md:h-full h-48 md:my-0 my-20 rounded-lg"></div>
+                <div class="w-full about-1-banner md:h-full h-48 md:my-0 mb-10 rounded-lg"></div>
                 <div class="flex flex-row md:w-5/5 w-full ">
                     <div class="flex md:w-full mx-auto">
                         <div class="text-md text-gray-800">

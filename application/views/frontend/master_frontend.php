@@ -33,13 +33,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <!-- Backdrop -->
         <?php $this->load->view('_partials/_user_part/user_backdrop'); ?>
         <!-- Main -->
-        <div class="flex flex-col flex-1 w-full ">
+        <div class="flex flex-col flex-1 w-full">
             <!-- Header & Cart Menu -->
             <?php $this->load->view('_partials/_user_part/user_header'); ?>
             <?php $this->load->view('frontend/cart/show_cart'); ?>
 
             <!-- Main Content -->
-            <main class="h-full " id="main">
+            <main class="h-full" id="main">
                 <?php $this->load->view($content); ?>
                 <!-- Footer -->
                 <?php $this->load->view('_partials/footer'); ?>
@@ -89,6 +89,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     $("#notif-cart").show();
                 }
             });
+
         });
     </script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_cart.js'; ?>" language="javascript"></script>

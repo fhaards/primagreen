@@ -3,16 +3,18 @@ function openSubNav() {
     document.getElementById("header-nav").style.height = "5rem";
 }
 
-// function initMap() {
-//     var mapProp = {
-//         center: new google.maps.LatLng(-6.793285909058999, 107.60184618438252),
-//         zoom: 5,
-//     };
-//     var map = new google.maps.Map(document.getElementById("map"), mapProp);
-// }
-
 function closeSubNav() {
 	document.getElementById("sub-nav").style.height = "0%";
+}
+
+function openThisCart(index){
+    var thiscart = document.getElementById("this_items_"+index);
+    thiscart.classList.remove("lg:hidden");
+}
+
+function closeThisCart(index){
+    var thiscart = document.getElementById("this_items_"+index);
+    thiscart.classList.add("lg:hidden");
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -28,3 +30,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		prevScrollpos = currentScrollPos;
 	};
 });
+// function initMap() {
+//     var mapProp = {
+//         center: new google.maps.LatLng(-6.793285909058999, 107.60184618438252),
+//         zoom: 5,
+//     };
+//     var map = new google.maps.Map(document.getElementById("map"), mapProp);
+// }

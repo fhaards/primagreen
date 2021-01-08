@@ -6,16 +6,20 @@ $(document).ready(function () {
 	});
 
 	$(".open_filter").on("click", function () {
-		$(".filter_store").toggle(function(){
-			$(this).animate({height:0},200);
-		  },function(){
-			$(this).animate({height:1000},200);
-		  });
+		$(".filter_store").toggle(
+			function () {
+				$(this).animate({ height: 0 }, 200);
+			},
+			function () {
+				$(this).animate({ height: 1000 }, 200);
+			}
+		);
 	});
 
 	// IF DATA EXIST
 	$("#email").change(function () {
 		$("#email_result").text("").fadeIn("slow");
+
 		var email = $("#email").val();
 		if (email != "") {
 			$.ajax({
@@ -36,7 +40,7 @@ $(document).ready(function () {
 		window.location.href = SITE_URL + "cart/checkout-detail";
 	});
 
-	$(".add_favorites").click( function () {
+	$(".add_favorites").click(function () {
 		var itemsid = $(this).data("itemsid");
 		var userid = $(this).data("userid");
 		$.ajax({
@@ -44,11 +48,77 @@ $(document).ready(function () {
 			method: "POST",
 			data: {
 				itemsid: itemsid,
-				userid: userid
+				userid: userid,
 			},
 			success: function (data) {
 				window.location.href = SITE_URL + "login";
 			},
 		});
 	});
+
+	// $("#show_someitems").on("mouseover", ".open_thisitem", function () {
+	// 	var index = $("#show_someitems").index(this);
+	// 	$(".this_item").show();
+	// 	$(".this_item:eq(" + index + ")").show();
+	// });
+
+	// $(".open_thisitem").on("mouseleave", function () {
+	// 	$(this).find(".this_item").hide();
+	// });
+
+	// $(".open_thiscart").hover(
+	// 	function (e) {
+	// 		$(this).find(".this_cart").toggleClass("md:hidden");
+	// 	},
+	// 	function (e) {
+	// 		$(this).find(".this_cart").toggleClass("md:hidden");
+	// 	}
+	// );
+
+	// $(".open_thiscart").on("hover", function () {
+	// 	$(".this_cart").not($(this).next()).hide();
+	// 	$(this).next(".this_cart").fadeIn();
+	// });
+
+	// $("#open_thiscart").each(function () {
+	// 	$(".open_thiscart").mouseover(function () {
+	// 		$("#this_cart").toggleClass("md:hidden");
+	// 	});
+	// });
+
+	// $("#open_thiscart .open_thiscart").mouseout(function (e) {
+	// 	$("#this_cart").toggleClass("md:hidden");
+	// });
+
+	// $("#show_someitems").on("mouseover", ".open_thiscart", function() {
+	// 	$("#this_cart").not($(this).next()).toggleClass("md:hidden");
+	// 	$(this).next("#this_cart").toggleClass("md:hidden");
+	// });
+
+	// $(".open_thiscart").on('mouseover', mEnter)
+	// $('.this_cart').on('mouseleave', function () {
+	// 	$('.this_cart').stop();
+	// });
+	// function mEnter() {
+	// 	$(".this_cart").show();
+	// }
+
+	// $("#open_thiscart").each(function (e) {
+	// 	$(this).mouseover(
+	// 		function (e) {
+	// 			$("#this_cart").hide();
+	// 		},
+	// 		function () {
+	// 			$("#this_cart").hide();
+	// 		}
+	// 	);
+	// });
+
+	// $("#show_someitems").on("mouseover", ".open_thiscart", function() {
+	// 	$(".this_cart").toggleClass('md:hidden');
+	// });
+
+	// $("#show_someitems").on("mouseout", ".open_thiscart", function() {
+	// 	$(".this_cart").toggleClass('md:hidden');
+	// });
 });
