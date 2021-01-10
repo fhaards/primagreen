@@ -20,7 +20,7 @@
                 <input name="nm_barang_bot" type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Philodendron Monstera Deliciosa" />
             </label>
 
-            <div class="grid gap-2 lg:grid-cols-2">
+            <div class="grid gap-2 lg:grid-cols-3">
                 <label class="block text-sm py-2">
                     <span class="text-gray-700 dark:text-gray-400">Type</span>
                     <select name="type" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
@@ -31,18 +31,23 @@
                 </label>
 
                 <label class="block text-sm py-2">
-                    <span class="text-gray-700 dark:text-gray-400">Features</span>
-                    <select name="features" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
-                        <?php foreach ($featuresList as $featuresLists) { ?>
-                            <option value="<?= $featuresLists['id_features']; ?>"><?= $featuresLists['nm_features']; ?></option>
-                        <?php } ?>
+                    <span class="text-gray-700 dark:text-gray-400">Light</span>
+                    <select name="light" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Bright">Bright</option>
                     </select>
                 </label>
+                <label class="block text-sm py-2">
+                    <span class="text-gray-700 dark:text-gray-400">Stok</span>
+                    <input name="stock" type="number" placeholder="20" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                </label>
+
             </div>
         </div>
 
         <div>
-            <div class="grid gap-2 grid-cols-2">
+            <div class="grid gap-2 grid-cols-3">
                 <label class="block text-sm py-2">
                     <span class="text-gray-700 dark:text-gray-400">Size</span>
                     <select name="size" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
@@ -57,32 +62,32 @@
                     <span class="text-gray-700 dark:text-gray-400">Size Description</span>
                     <input name="size_desc" type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder='26"-32" tall, 20"-26" wide' />
                 </label>
-            </div>
-
-            <div class="grid gap-2 grid-cols-2">
                 <label class="block text-sm py-2">
-                    <span class="text-gray-700 dark:text-gray-400">Light</span>
-                    <select name="light" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Bright">Bright</option>
-                    </select>
-                </label>
-                <label class="block text-sm py-2">
-                    <span class="text-gray-700 dark:text-gray-400">Stok</span>
-                    <input name="stock" type="number" placeholder="20" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                    <span class="text-gray-700 dark:text-gray-400">Price</span>
+                    <input name="price" type="number" placeholder="25000" class="block w-full mt-1 text-sm dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
                 </label>
             </div>
 
-            <label class="block text-sm py-2">
-                <span class="text-gray-700 dark:text-gray-400">Price</span>
-                <input name="price" type="number" placeholder="25000" class="block w-full mt-1 text-sm dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
-            </label>
+            <div class="grid gap-2 grid-cols-1">
+                <label class="block text-sm py-2 w-full">
+                    <span class="text-gray-700">Features</span>
+                    <div class="grid grid-cols-2 ">
+                        <?php foreach ($featuresList as $row) { ?>
+                            <div class="flex text-xs">
+                                <div class="flex w-full flex-row space-x-2 items-center">
+                                    <input name="features[]" type="checkbox" value="<?= $row['id_features']; ?>" required>
+                                    <span> <?= $row['nm_features']; ?> </span>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </label>
+            </div>
         </div>
     </div>
     <label class="block mt-4 text-sm">
         <span class="text-gray-700 dark:text-gray-400">Detail Info/ Description</span>
-        <textarea name="detail_info" type="number" class="block w-full mt-1 text-sm dark:text-gray-300 bg-gray-100 focus:bg-white  dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray" rows="3" placeholder="Enter some long form content."></textarea>
+        <textarea id="tiny" name="detail_info" type="number" class="block w-full mt-1 text-sm dark:text-gray-300 bg-gray-100 focus:bg-white  dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray" rows="3" placeholder="Enter some long form content."></textarea>
     </label>
     <div class="grid gap-4 lg:grid-cols-3">
         <input type="hidden" name="default_img" value="default_img.jpg">

@@ -161,6 +161,16 @@ $route['profile/upload-transfer'] = 'Controller_f_user/uploadTransfer';
 
 /*
 | -------------------------------------------------------------------------
+| MESSAGES / CONTACT US
+| -------------------------------------------------------------------------
+*/
+
+$route['contact-us'] = 'Controller_msg_contact/index';
+$route['contact-us/guest'] = 'Controller_msg_contact/guestMsg';
+$route['contact-us/send-messages'] = 'Controller_msg_contact/userMsg';
+
+/*
+| -------------------------------------------------------------------------
 | REPORT
 | -------------------------------------------------------------------------
 */

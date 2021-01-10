@@ -11,7 +11,7 @@
     }
 
     .signup-banner {
-        height: 700px;
+        height: 500px;
         width: 100%;
         background: url(<?= base_url() . 'uploads/banner/' . getBannerData()['regist_banner']; ?>);
         -webkit-background-size: cover;
@@ -21,9 +21,19 @@
     }
 
     .login-banner {
-        height: 700px;
+        height: 500px;
         width: 100%;
         background: url(<?= base_url() . 'uploads/banner/' . getBannerData()['login_banner']; ?>);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .contactus-banner {
+        width: 100%;
+        height: 500px;
+        background: url(<?= base_url() . 'uploads/banner/' . getBannerData()['contactus_banner']; ?>);
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

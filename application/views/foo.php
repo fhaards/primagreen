@@ -13,7 +13,8 @@
 
 TEST FOREACH
 <br><br><br>
-<?php foreach ($newItems as $newItemsValue) { ?>
+<textarea id="tags" ></textarea>
+<!-- <?php foreach ($newItems as $newItemsValue) { ?>
         <?php if ($newItemsValue['id_barang'] == $favItems['id_barang']) : ?>
             <?php echo $favItems['id_barang'];?> <br>
             <?php $ck='ilovethis';?>
@@ -22,4 +23,4 @@ TEST FOREACH
         <?php endif; ?>
     <?php echo $ck;?>
     <?php echo $newItemsValue['id_barang'];?> <br>
-<?php } ?>
+<?php } ?> -->

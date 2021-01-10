@@ -1,8 +1,8 @@
 <div class="my-6">
     <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Forms
+        Edit Forms
     </h2>
-    <p class="">Add New Product</p>
+    <p class="">Products <strong><?php echo $edt_product['nm_barang']; ?></strong> </p>
 </div>
 <div class="py-3"></div>
 <?php echo validation_errors(); ?>
@@ -20,20 +20,7 @@
                 <input name="nm_barang_bot" type="text" value="<?php echo $edt_product['nm_barang_bot']; ?>" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Philodendron Monstera Deliciosa" />
             </label>
 
-            <div class="grid gap-2 lg:grid-cols-2">
-                <label class="block text-sm py-2">
-                    <span class="text-gray-700 dark:text-gray-400">Features</span>
-                    <select name="features" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
-                        <?php foreach ($featuresList as $featuresLists) { ?>
-                            <?php if ($edt_product['id_features'] == $featuresLists['id_features']) { ?>
-                                <option value="<?= $featuresLists['id_features']; ?>" Selected><?= $featuresLists['nm_features']; ?></option>
-                            <?php } else { ?>
-                                <option value="<?= $featuresLists['id_features']; ?>"><?= $featuresLists['nm_features']; ?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
-                </label>
-
+            <div class="grid gap-2 lg:grid-cols-3">
                 <label class="block text-sm py-2">
                     <span class="text-gray-700 dark:text-gray-400">Type</span>
                     <select name="type" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
@@ -46,29 +33,6 @@
                         <?php } ?>
                     </select>
                 </label>
-            </div>
-        </div>
-
-        <div>
-            <div class="grid gap-2 grid-cols-2">
-                <label class="block text-sm py-2">
-                    <span class="text-gray-700 dark:text-gray-400">Size</span>
-                    <select name="size" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
-                        <?php
-                        $size = array('Extra Small', 'Small', 'Medium', 'Large', 'Extra Large');
-                        foreach ($size as $key => $sizeValue) :
-                            echo '<option value="' . $sizeValue . '" ' . ($edt_product['size'] == $sizeValue ? 'selected="selected"' : '') . '>' . $sizeValue . '</option>';
-                        endforeach;
-                        ?>
-                    </select>
-                </label>
-                <label class="block text-sm py-2">
-                    <span class="text-gray-700 dark:text-gray-400">Size Description</span>
-                    <input name="size_desc" type="text" value='<?php echo $edt_product['size_desc']; ?>' class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
-                </label>
-            </div>
-
-            <div class="grid gap-2 grid-cols-2">
                 <label class="block text-sm py-2">
                     <span class="text-gray-700 dark:text-gray-400">Light</span>
                     <select name="light" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
@@ -85,11 +49,52 @@
                     <input name="stock" type="number" value="<?php echo $edt_product['stok']; ?>" class="block w-full mt-1 text-sm bg-gray-100 focus:bg-white  dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
                 </label>
             </div>
+        </div>
 
-            <label class="block text-sm py-2">
-                <span class="text-gray-700 dark:text-gray-400">Price</span>
-                <input name="price" type="number" value="<?php echo $edt_product['harga']; ?>" class="block w-full mt-1 text-sm bg-gray-100 focus:bg-white dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
-            </label>
+        <div>
+            <div class="grid gap-2 grid-cols-3">
+                <label class="block text-sm py-2">
+                    <span class="text-gray-700 dark:text-gray-400">Size</span>
+                    <select name="size" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
+                        <?php
+                        $size = array('Extra Small', 'Small', 'Medium', 'Large', 'Extra Large');
+                        foreach ($size as $key => $sizeValue) :
+                            echo '<option value="' . $sizeValue . '" ' . ($edt_product['size'] == $sizeValue ? 'selected="selected"' : '') . '>' . $sizeValue . '</option>';
+                        endforeach;
+                        ?>
+                    </select>
+                </label>
+                <label class="block text-sm py-2">
+                    <span class="text-gray-700 dark:text-gray-400">Size Description</span>
+                    <input name="size_desc" type="text" value='<?php echo $edt_product['size_desc']; ?>' class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                </label>
+                <label class="block text-sm py-2">
+                    <span class="text-gray-700 dark:text-gray-400">Price</span>
+                    <input name="price" type="number" value="<?php echo $edt_product['harga']; ?>" class="block w-full mt-1 text-sm bg-gray-100 focus:bg-white dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                </label>
+            </div>
+
+            <div class="grid gap-2 grid-cols-1">
+                <label class="block text-sm py-2">
+                    <span class="text-gray-700 dark:text-gray-400">Features</span>
+                    <div class="grid grid-cols-2 ">
+                        <?php foreach ($featuresList as $row) { ?>
+                            <div class="flex text-xs">
+                                <div class="flex w-full flex-row space-x-2 items-center">
+                                    <?php if (in_array($row['id_features'], $get_features)) : ?>
+                                        <?php $getchecked ='checked'; ?>
+                                    <?php else : ?>
+                                        <?php $getchecked =''; ?>
+                                    <?php endif; ?>
+                                    <input name="features[]" type="checkbox" value="<?= $row['id_features']; ?>" <?= $getchecked;?>>
+                                    <span> <?= $row['nm_features']; ?> </span>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </label>
+            </div>
+
         </div>
     </div>
     <label class="block mt-4 text-sm">

@@ -28,12 +28,16 @@ class Controller_product extends CI_Controller
 
     public function newProductForm()
     {
+
         $data['title']   = 'Add New Product - ' . APP_NAME;
         $data['content'] = '_adminpages/product/form_add_product';
         $data['typeList'] = $this->model_product_related->getAllTypes();
-        $data['featuresList'] = $this->model_product_related->getAllFeatures();
+        $data['featuresList'] = $this->model_product_related->getFeaturesEnabled();
+
         $this->form_validation->set_rules('nm_product', 'Product Name', 'required');
+        $this->form_validation->set_rules('features[]', 'Features', 'required');
         if ($this->form_validation->run() === FALSE) {
+            // $this->session->set_flashdata('errorMsgInput', 'Something Wrong');
             $this->load->view('_adminpages/master_admin', $data);
         } else {
             $nmProduct = $this->input->post('nm_product');
@@ -73,11 +77,13 @@ class Controller_product extends CI_Controller
                 $getProductImage3 = $this->input->post('default_img');
             }
 
+            //SEND FEATURES AS ARRAY
+            $features = $this->input->post('features');
+
             $date = date('Y-m-d');
             $data = array(
                 'nm_barang' => $nmProduct,
                 'nm_barang_bot' => $this->input->post('nm_barang_bot'),
-                'id_features' => $this->input->post('features'),
                 'id_type' => $this->input->post('type'),
                 'size' => $this->input->post('size'),
                 'size_desc' => $this->input->post('size_desc'),
@@ -89,10 +95,10 @@ class Controller_product extends CI_Controller
                 'gambar' => $getProductImage1,
                 'gambar2' => $getProductImage2,
                 'gambar3' => $getProductImage3,
-                'product_status'=>'1'
+                'product_status' => '1'
             );
 
-            $this->model_product->insert_product($data, $getSkuCode);
+            $this->model_product->insert_product($data, $getSkuCode, $features);
             $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
             redirect('product/product-list');
         }
@@ -103,16 +109,19 @@ class Controller_product extends CI_Controller
         $data['title']   = 'Edit Product - ' . APP_NAME;
         $data['content'] = '_adminpages/product/form_edit_product';
         $data['typeList'] = $this->model_product_related->getAllTypes();
-        $data['featuresList'] = $this->model_product_related->getAllFeatures();
+        $data['featuresList'] = $this->model_product_related->getFeaturesEnabled();
         $this->form_validation->set_rules('Nama Produk', 'Stok', 'Detail Info', 'features', 'price', 'required');
         if ($this->form_validation->run() === FALSE) {
             $data['edt_product'] = $this->model_product->edt_product($id);
+            $data['get_features'] = $this->model_product->get_product_features($id);
             $this->load->view('_adminpages/master_admin', $data);
         } else {
+            //SEND FEATURES AS ARRAY
+            $features = $this->input->post('features');
+            
             $getData = array(
                 'nm_barang' => $this->input->post('nm_barang'),
                 'nm_barang_bot' => $this->input->post('nm_barang_bot'),
-                'id_features' => $this->input->post('features'),
                 'id_type' => $this->input->post('type'),
                 'size' => $this->input->post('size'),
                 'size_desc' => $this->input->post('size_desc'),
@@ -121,7 +130,7 @@ class Controller_product extends CI_Controller
                 'stok' => $this->input->post('stock'),
                 'detail' => $this->input->post('detail_info'),
             );
-            $this->model_product->edt_product_todb($id,$getData);
+            $this->model_product->edt_product_todb($id, $getData, $features);
             $this->session->set_flashdata('editMsg', 'Data berhasil diubah');
             redirect('product/product-list');
         }
@@ -183,7 +192,8 @@ class Controller_product extends CI_Controller
     }
 
     //EDIT STOCK
-    public function editProductStock($id){
+    public function editProductStock($id)
+    {
         $data = array(
             'stok' => $this->input->post('stock')
         );
@@ -201,7 +211,7 @@ class Controller_product extends CI_Controller
         );
         $this->model_product->edtProductImageSpecific1($id, $data);
         $this->session->set_flashdata('editMsg', 'Data berhasil diubah');
-        redirect('product/product-edit-image/'.$id);
+        redirect('product/product-edit-image/' . $id);
     }
 
     public function editProductImgS2($id)
@@ -211,7 +221,7 @@ class Controller_product extends CI_Controller
         );
         $this->model_product->edtProductImageSpecific2($id, $data);
         $this->session->set_flashdata('editMsg', 'Data berhasil diubah');
-        redirect('product/product-edit-image/'.$id);
+        redirect('product/product-edit-image/' . $id);
     }
 
     public function editProductImgS3($id)
@@ -221,7 +231,7 @@ class Controller_product extends CI_Controller
         );
         $this->model_product->edtProductImageSpecific3($id, $data);
         $this->session->set_flashdata('editMsg', 'Data berhasil diubah');
-        redirect('product/product-edit-image/'.$id);
+        redirect('product/product-edit-image/' . $id);
     }
 }
 

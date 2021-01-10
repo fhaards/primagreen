@@ -120,6 +120,7 @@ class Controller_settings extends CI_Controller
         $baseMainImage      = $this->input->post('baseMainImg');
         $baseLoginImage     = $this->input->post('baseLoginImg');
         $baseRegistImage    = $this->input->post('baseRegistImg');
+        $basetContactusImage    = $this->input->post('baseContactusImg');
         
         $uploadPath = './uploads/banner';
         $configImage = array('upload_path' => $uploadPath, 'allowed_types' =>
@@ -155,11 +156,20 @@ class Controller_settings extends CI_Controller
         } else {
             $getregistImage = $baseRegistImage;
         }
+
+        if ($this->upload->do_upload("contactusImage")) {
+            unlink($uploadPath . '/' . $basetContactusImage);
+            $contactusImage  = array('upload_data' => $this->upload->data());
+            $getcontactusImage = $contactusImage['upload_data']['file_name'];
+        } else {
+            $getcontactusImage = $basetContactusImage;
+        }
         
         $data = array(
             'main_banner' => $getmainImage,
             'login_banner' => $getloginImage,
-            'regist_banner' => $getregistImage
+            'regist_banner' => $getregistImage,
+            'contactus_banner' => $getcontactusImage
         );
 
         $this->model_settings->updateBannerData($data, $id);

@@ -3,6 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_product_related extends CI_Model
 {
+    private $tags = 'products_features';
+    
     public function __construct()
     {
         $this->load->database();
@@ -18,10 +20,22 @@ class Model_product_related extends CI_Model
         return $query->result_array();
     }
 
+    public function getFeaturesEnabled()
+    {
+        $this->db->select('*');
+        $this->db->from('products_features');
+        $this->db->where('status_features','Enabled');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+
     public function getAllTypes()
     {
         $this->db->select('*');
         $this->db->from('products_type');
+        $this->db->where('status_type','Enabled');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -101,4 +115,17 @@ class Model_product_related extends CI_Model
         $this->db->where('id_features', $idFeatures);
         $this->db->update('products_features');
     }
+
+  
+
+    // function add_tags($tags) {
+    //     if (!empty($tags)) {
+    //         foreach ($tags as $tag) {
+    //             $tag_array = array('nm_features' => $tag);
+    //             $this->db->insert($this->tag, $tag_array);
+    //         }
+    //         return TRUE;
+    //     }
+    //     return NULL;
+    // }
 }

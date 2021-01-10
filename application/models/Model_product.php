@@ -18,21 +18,23 @@ class Model_product extends CI_Model
 		return $query->result_array();
 	}
 
-	public function getAllProducts(){
+	public function getAllProducts()
+	{
 		$this->db->select('*');
 		$this->db->from('barang');
 		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
-	
-	public function getAllProductsByType($nmType){
-		
-        $newNmType = strtolower(str_replace('-', ' ', $nmType));
+
+	public function getAllProductsByType($nmType)
+	{
+
+		$newNmType = strtolower(str_replace('-', ' ', $nmType));
 		$this->db->select('*');
 		$this->db->from('barang');
 		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
-		$this->db->where('nm_type',$newNmType);
+		$this->db->where('nm_type', $newNmType);
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -47,7 +49,7 @@ class Model_product extends CI_Model
 		return $query->row_array();
 	}
 
-	public function insert_product($data, $getSkuCode)
+	public function insert_product($data, $getSkuCode, $features)
 	{
 		$this->db->insert('barang', $data);
 		$getIdBarang = $this->db->insert_id();
@@ -59,6 +61,15 @@ class Model_product extends CI_Model
 
 			$this->db->where('id_barang', $getIdBarang);
 			$this->db->update('barang', $dataSku);
+
+			$data2 = array();
+			foreach ($features as  $key => $value) {
+				$data2[] = array(
+					'id_barang' => $getIdBarang,
+					'id_features' => $value
+				);
+			}
+			$this->db->insert_batch('products_features_related', $data2);
 			return true;
 		} else {
 			return false;
@@ -71,10 +82,34 @@ class Model_product extends CI_Model
 		return $query->row_array();
 	}
 
-	public function edt_product_todb($id,$getData)
+	public function get_product_features($id)
+	{
+		$this->db->select('*');
+		$this->db->from('products_features_related');
+		$this->db->where('id_barang', $id);
+		$query = $this->db->get()->result_array();
+
+		return array_map(function ($item) {
+			return $item['id_features'];
+		}, $query);
+	}
+
+	public function edt_product_todb($id, $getData, $features)
 	{
 		$this->db->where('id_barang', $id);
 		$this->db->update('barang', $getData);
+
+		$this->db->delete('products_features_related', array('id_barang' => $id));
+		if ($this->db->affected_rows() > 0) {
+			$data2 = array();
+			foreach ($features as  $key => $value) {
+				$data2[] = array(
+					'id_barang' => $id,
+					'id_features' => $value
+				);
+			}
+			$this->db->insert_batch('products_features_related', $data2);
+		}
 		return true;
 	}
 
@@ -140,9 +175,10 @@ class Model_product extends CI_Model
 	}
 
 	// EDIT STOCK
-	
-	public function editProductStock($id,$data){
-        $this->db->where('id_barang', $id);
+
+	public function editProductStock($id, $data)
+	{
+		$this->db->where('id_barang', $id);
 		$this->db->update('barang', $data);
 	}
 }
