@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jan 2021 pada 23.54
+-- Waktu pembuatan: 10 Jan 2021 pada 23.25
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -31,15 +31,16 @@ CREATE TABLE `banner` (
   `id_banner` int(10) NOT NULL,
   `main_banner` text NOT NULL,
   `login_banner` text NOT NULL,
-  `regist_banner` text NOT NULL
+  `regist_banner` text NOT NULL,
+  `contactus_banner` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `banner`
 --
 
-INSERT INTO `banner` (`id_banner`, `main_banner`, `login_banner`, `regist_banner`) VALUES
-(11, 'dacebb416bc8f34df2ac6ee20c016cfc.jpg', '613c55d7bc8833df447cb3c8d10aa3cb.jpg', '3879a63d85cb869c4e427ea6f6fc1f02.jpg');
+INSERT INTO `banner` (`id_banner`, `main_banner`, `login_banner`, `regist_banner`, `contactus_banner`) VALUES
+(11, 'dacebb416bc8f34df2ac6ee20c016cfc.jpg', '23a685536a22519e38f47172833f0315.jpg', 'bc2b0b8f0a4f409de750c16fa869c2e4.jpg', '7d2f1c47f5fb0681d0328b7750dbf5ec.jpg');
 
 -- --------------------------------------------------------
 
@@ -55,7 +56,6 @@ CREATE TABLE `barang` (
   `size` varchar(100) NOT NULL,
   `size_desc` varchar(100) NOT NULL,
   `light` varchar(100) NOT NULL,
-  `id_features` int(10) NOT NULL,
   `id_type` int(10) NOT NULL,
   `harga` int(15) NOT NULL,
   `stok` int(5) NOT NULL,
@@ -71,16 +71,16 @@ CREATE TABLE `barang` (
 -- Dumping data untuk tabel `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nm_barang`, `nm_barang_bot`, `sku`, `size`, `size_desc`, `light`, `id_features`, `id_type`, `harga`, `stok`, `gambar`, `gambar2`, `gambar3`, `detail`, `date_a`, `product_status`) VALUES
-(69, 'Monstera', 'Monstera Deliciosa', '0050PLNTMON114', 'Extra Large', '26\"-32\" tall, 20\"-26\"', 'Medium', 1, 1, 270000, 49, 'beef5231bd07532863b4035566967829.jpg', 'e2cdff198017e28f1fa72c965ea92d69.jpg', 'e7af25fd8df57596c72890001b4d1723.jpg', '<p>When placed in the right environment, Monsteras are easy to care for and fast-growing&mdash;so give it some space to spread out, make a statement, and thrive! As the Monstera grows, its leaves will develop long ribbons and holes, resembling swiss cheese, giving it a distinct, graphic appearance.</p>\r\n<p>This tropical plant originates from the tropical rainforests of southern Mexico and is extremely adaptable to indoor conditions. Monsteras love bright, indirect light, but will be happy under fluorescent lights as well. Monsteras are climbers, so as they grow, they will want to vine out. This impressive, wild plant is also tolerant of the occasional missed watering, making it an ideal addition for any home.</p>', '2020-12-14', '1'),
-(70, 'Bromeliad Aechmea Pink', 'Aechmea fasciata ‘primera’', '0012PLNTBRO281', 'Extra Small', '15\"-20\" tall', 'Low', 1, 1, 80000, 47, '5465bd6f4d8c9421548e8c56b33c0727.jpg', '4f71222e67ff9e83c1e9b62f9ba63560.jpg', 'default_img.jpg', '<p>Bromeliad Aechmea Pink is a unique, beautiful plant that features colorful, long-lasting blooms. This variety features silver-green leaves and pink blooms. These stunning plants will add a colorful and tropical splash to any space.</p>\r\n<p>Bromeliads are native to Brazil. In their native environments, they typically grow on trees as epiphytes. Because of this, they have minimal roots and absorb most of their nutrients through their foliage.</p>', '2020-12-14', '1'),
-(71, 'Philodendron Brasil', 'Philodendron ‘brasil’', '0050PLNTPHI176', 'Medium', '10\"-14\" tall', 'Low', 1, 1, 85000, 49, '22d1b63c93ff2852629e6ad4c9d1653f.jpg', '4a98542eb51148fa2b107cd08c3d2298.jpg', 'a1bdfc21d8d5ee19d813e6898920bbb8.jpg', '<p>The Philodendron Brasil is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark green with yellow variegation in the center of the leaf. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Brazil is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
-(72, 'Philodendron Xanadu', 'Philodendron Xanadu', '0065PLNTPHI258', 'Medium', '', 'Medium', 1, 1, 98000, 0, 'e765ae733966f398580dff69955298eb.jpg', '4d36224841bcf07011ceee45e7fd362a.jpg', '4fdce8abc7e7c24b6d99f85a9e0ae664.jpg', '', '2020-12-14', '1'),
-(73, 'Philodendron Heartleaf', 'Philodendron cordatum green', '0052PLNTPHI144', 'Small', '7\"-12\" tall', 'Low', 1, 1, 64998, 49, '205a381fbd698c4a56893a3c6b6370f7.jpg', '57b7aa8779396b9c8d226aa16025dea5.jpg', '8ab8e9852512e276a22e455156345894.jpg', '<p>The Philodendron Heartleaf is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark and glossy green in color but almost look transparent at times. Native to Africa and the Canary Islands, the Heartleaf can be grown as a trailer or climber. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Heartleaf is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
-(74, 'Catnip', 'Nepeta cataria', '0023PLNTCAT114', 'Small', '', 'Medium', 1, 6, 56000, 48, 'cbfb9ad2b1bc528f908a10d708341cb8.jpg', 'a7248b5485c63c55469753dfcc86361b.jpg', 'default_img.jpg', '<p>Catnip is a must-have for any cat owner. It can be given to your cat fresh or dried. Catnip is safe for cats in small amounts, but some cats may have adverse reactions especially in large amounts. If this is the first time you are giving your cat catnip, we suggest asking your vet first or starting with a very small amount.<br />Catnip can successfully be grown indoors in your kitchen or on a sunny windowsill, but can also be grown outdoors on a patio or balcony. It is also well-suited for container gardening.</p>\r\n<p><em>We cannot guarantee specific size specs as these plants are very fast-growing. After arrival, growth speed will vary depending on environmental conditions such as light, temperature, and how often you water and prune.</em></p>', '2020-12-14', '1'),
-(75, 'Mints', 'Mentha', '0081PLNTMIN247', 'Small', '', 'Bright', 1, 6, 55000, 50, '6a4052efcdef003c649ba7468b0211fe.jpg', '1687e577eff95d43da366aa12ff68f61.jpg', 'c3df2772de0574e3cd9ee444bce86e98.jpg', '<p>Mint is one of the easiest herbs to grow. Mint plants love full sun but will also grow in partial shade. Place it on a sunny windowsill in your home or on your patio, or in your garden in the summer. Use this refreshing herb to add a bit of minty freshness to any dish or cocktail. Perfect for a calming tea.</p>\r\n<p>We cannot guarantee specific size specs because these plants are very quick-growing. After arrival, growth will vary on your plant depending on environmental conditions such as light, temperature, how often you water, and how often you prune.</p>', '2020-12-14', '1'),
-(76, 'Dragon Tree', 'Dracaena \'Song of India\'', '0078PLNTDRA250', 'Small', '6\"', 'Medium', 1, 5, 150000, 46, 'e7ad56ef7777fe3e0e91e3095e820b92.jpg', 'b36be9615594e7a811bf805b6de805db.jpg', 'a17b247511b3df2e4b4ac5a93d4d0038.jpg', '<p>The Dracaena Plant has narrow smooth leaves with a bright yellow color. This hardy plant has yellow and green leaves that make for a great addition to any area. This Dracaena Song of India in a 4-inch pot is great for larger assortments or areas in your home or office near windows. Dracaenas compose of a large group of popular foliage plants. Most grow strongly upright with long variegated leaves with a large array of colors. Dracaenas grow well at average room temperatures and like ample light.</p>', '2020-12-14', '1'),
-(77, 'Zebra Plant', 'Calathea \'Makoyana\'', '0019PLNTZEB129', 'Small', '', 'Medium', 1, 5, 150000, 49, '59f8d2eb751985b62f8d8609269c99f3.jpg', '5d9bd1afa7a89952a3dd6488ca387acf.jpg', '6d379363cccf7876c40417e404113ccb.jpg', '<p>This Calathea Makoyana comes with soft green leaves with uniquely shaped shades. Like all calathea plants, the leaves adjust as the sun rotates throughout the day. Calathea Plants, native to tropical South and Central America, Africa, and the West Indies, are grown primarily for their beautiful, brightly colored, upright, oval leaves.&nbsp;</p>', '2020-12-14', '1');
+INSERT INTO `barang` (`id_barang`, `nm_barang`, `nm_barang_bot`, `sku`, `size`, `size_desc`, `light`, `id_type`, `harga`, `stok`, `gambar`, `gambar2`, `gambar3`, `detail`, `date_a`, `product_status`) VALUES
+(69, 'Monstera', 'Monstera Deliciosa', '0050PLNTMON114', 'Extra Large', '26\"-32\" tall, 20\"-26\"', 'Medium', 1, 270000, 49, 'beef5231bd07532863b4035566967829.jpg', 'e2cdff198017e28f1fa72c965ea92d69.jpg', 'e7af25fd8df57596c72890001b4d1723.jpg', '<p>When placed in the right environment, Monsteras are easy to care for and fast-growing&mdash;so give it some space to spread out, make a statement, and thrive! As the Monstera grows, its leaves will develop long ribbons and holes, resembling swiss cheese, giving it a distinct, graphic appearance.</p>\r\n<p>This tropical plant originates from the tropical rainforests of southern Mexico and is extremely adaptable to indoor conditions. Monsteras love bright, indirect light, but will be happy under fluorescent lights as well. Monsteras are climbers, so as they grow, they will want to vine out. This impressive, wild plant is also tolerant of the occasional missed watering, making it an ideal addition for any home.</p>', '2020-12-14', '1'),
+(70, 'Bromeliad Aechmea Pink', 'Aechmea fasciata ‘primera’', '0012PLNTBRO281', 'Extra Small', '15\"-20\" tall', 'Low', 1, 80000, 47, '5465bd6f4d8c9421548e8c56b33c0727.jpg', '4f71222e67ff9e83c1e9b62f9ba63560.jpg', 'default_img.jpg', '<p>Bromeliad Aechmea Pink is a unique, beautiful plant that features colorful, long-lasting blooms. This variety features silver-green leaves and pink blooms. These stunning plants will add a colorful and tropical splash to any space.</p>\r\n<p>Bromeliads are native to Brazil. In their native environments, they typically grow on trees as epiphytes. Because of this, they have minimal roots and absorb most of their nutrients through their foliage.</p>', '2020-12-14', '1'),
+(71, 'Philodendron Brasil', 'Philodendron ‘brasil’', '0050PLNTPHI176', 'Medium', '10\"-14\" tall', 'Low', 1, 85000, 49, '22d1b63c93ff2852629e6ad4c9d1653f.jpg', '4a98542eb51148fa2b107cd08c3d2298.jpg', 'a1bdfc21d8d5ee19d813e6898920bbb8.jpg', '<p>The Philodendron Brasil is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark green with yellow variegation in the center of the leaf. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Brazil is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
+(72, 'Philodendron Xanadu', 'Philodendron Xanadu', '0065PLNTPHI258', 'Medium', '', 'Medium', 1, 98000, 0, 'e765ae733966f398580dff69955298eb.jpg', '4d36224841bcf07011ceee45e7fd362a.jpg', '4fdce8abc7e7c24b6d99f85a9e0ae664.jpg', '', '2020-12-14', '1'),
+(73, 'Philodendron Heartleaf', 'Philodendron cordatum green', '0052PLNTPHI144', 'Small', '7\"-12\" tall', 'Low', 1, 64998, 49, '205a381fbd698c4a56893a3c6b6370f7.jpg', '57b7aa8779396b9c8d226aa16025dea5.jpg', '8ab8e9852512e276a22e455156345894.jpg', '<p>The Philodendron Heartleaf is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark and glossy green in color but almost look transparent at times. Native to Africa and the Canary Islands, the Heartleaf can be grown as a trailer or climber. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Heartleaf is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
+(74, 'Catnip', 'Nepeta cataria', '0023PLNTCAT114', 'Small', '', 'Medium', 6, 56000, 48, 'cbfb9ad2b1bc528f908a10d708341cb8.jpg', 'a7248b5485c63c55469753dfcc86361b.jpg', 'default_img.jpg', '<p>Catnip is a must-have for any cat owner. It can be given to your cat fresh or dried. Catnip is safe for cats in small amounts, but some cats may have adverse reactions especially in large amounts. If this is the first time you are giving your cat catnip, we suggest asking your vet first or starting with a very small amount.<br />Catnip can successfully be grown indoors in your kitchen or on a sunny windowsill, but can also be grown outdoors on a patio or balcony. It is also well-suited for container gardening.</p>\r\n<p><em>We cannot guarantee specific size specs as these plants are very fast-growing. After arrival, growth speed will vary depending on environmental conditions such as light, temperature, and how often you water and prune.</em></p>', '2020-12-14', '1'),
+(75, 'Mints', 'Mentha', '0081PLNTMIN247', 'Small', '', 'Bright', 6, 55000, 50, '6a4052efcdef003c649ba7468b0211fe.jpg', '1687e577eff95d43da366aa12ff68f61.jpg', 'c3df2772de0574e3cd9ee444bce86e98.jpg', '<p>Mint is one of the easiest herbs to grow. Mint plants love full sun but will also grow in partial shade. Place it on a sunny windowsill in your home or on your patio, or in your garden in the summer. Use this refreshing herb to add a bit of minty freshness to any dish or cocktail. Perfect for a calming tea.</p>\r\n<p>We cannot guarantee specific size specs because these plants are very quick-growing. After arrival, growth will vary on your plant depending on environmental conditions such as light, temperature, how often you water, and how often you prune.</p>', '2020-12-14', '1'),
+(76, 'Dragon Tree', 'Dracaena \'Song of India\'', '0078PLNTDRA250', 'Small', '6\"', 'Medium', 5, 150000, 46, 'e7ad56ef7777fe3e0e91e3095e820b92.jpg', 'b36be9615594e7a811bf805b6de805db.jpg', 'a17b247511b3df2e4b4ac5a93d4d0038.jpg', '<p>The Dracaena Plant has narrow smooth leaves with a bright yellow color. This hardy plant has yellow and green leaves that make for a great addition to any area. This Dracaena Song of India in a 4-inch pot is great for larger assortments or areas in your home or office near windows. Dracaenas compose of a large group of popular foliage plants. Most grow strongly upright with long variegated leaves with a large array of colors. Dracaenas grow well at average room temperatures and like ample light.</p>', '2020-12-14', '1'),
+(77, 'Zebra Plant', 'Calathea \'Makoyana\'', '0019PLNTZEB129', 'Small', '', 'Medium', 5, 150000, 49, '59f8d2eb751985b62f8d8609269c99f3.jpg', '5d9bd1afa7a89952a3dd6488ca387acf.jpg', '6d379363cccf7876c40417e404113ccb.jpg', '<p>This Calathea Makoyana comes with soft green leaves with uniquely shaped shades. Like all calathea plants, the leaves adjust as the sun rotates throughout the day. Calathea Plants, native to tropical South and Central America, Africa, and the West Indies, are grown primarily for their beautiful, brightly colored, upright, oval leaves.&nbsp;</p>', '2020-12-14', '1');
 
 -- --------------------------------------------------------
 
@@ -121,50 +121,6 @@ CREATE TABLE `company` (
 
 INSERT INTO `company` (`id`, `unique_code`, `comp_nm`, `about`, `instagram`, `telp`, `address`, `logo`, `icon`) VALUES
 (1, '54584445563', 'Primagreen', '<p style=\"text-align: justify;\"><strong>Primagreen</strong> is a startup that tries to bring green space wherever you are. Both in Indonesia or other parts of the world. We start a business by bridging farmers who have crops or services but they don\'t get very good results.&nbsp;</p>\r\n<p style=\"text-align: justify;\"><br />Our founders started out as a group of childhood friends that all had a passion for nature and the outdoors. Post college, they ended up becoming roommates. Turns out, having a home filled with plants was something they continued to have in common. Unfortunately, they found it difficult to find a place online to purchase houseplants that was easy to navigate and wasn&rsquo;t just geared to wholesale</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<h2><strong>Why we do that?</strong></h2>\r\n<p>&nbsp;</p>\r\n<p>Because our focus is providing the socio-economy impact for many of our partners (farmers and job seeker).<br />The products we sell are tropical plants, cactus, succulent and landscape care<br />Primagreen bring green spaces for you!</p>', 'prima_green', '081317352815', '<p>Jl. Rawakalong Selatan No. 44 , Kecamatan Gn. Sindur, Bogor, Jawa Barat</p>', 'f092957bd7d1be5f7d7254305ee757be.png', '3358b15efc061104e8c1979f6c4367cd.ico');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `contact`
---
-
-CREATE TABLE `contact` (
-  `id_contact` int(10) NOT NULL,
-  `nama_c` text NOT NULL,
-  `email_c` text NOT NULL,
-  `msg_c` text NOT NULL,
-  `tgl` date NOT NULL,
-  `time` time NOT NULL,
-  `status_c` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `contact`
---
-
-INSERT INTO `contact` (`id_contact`, `nama_c`, `email_c`, `msg_c`, `tgl`, `time`, `status_c`) VALUES
-(8, 'Amril Aziz', 'amrielaziz@gmail.com', 'Terimakasih anda telah memakai wifi saya :)', '2019-07-01', '20:56:21', 2),
-(9, 'Yori Aliffa D', 'djamilyorialiffa@gmail.com', 'Assalamualaikum', '2019-07-02', '12:59:28', 2);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `daftar`
---
-
-CREATE TABLE `daftar` (
-  `id_daftar` int(11) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` text NOT NULL,
-  `level` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `daftar`
---
-
-INSERT INTO `daftar` (`id_daftar`, `username`, `password`, `level`) VALUES
-(0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin');
 
 -- --------------------------------------------------------
 
@@ -213,6 +169,60 @@ INSERT INTO `kurir` (`id_kurir`, `nm_kurir`, `estimasi`, `harga_kurir`, `status_
 (3, 'SICEPAT EXPRESS', 1, 25000, 'Enabled'),
 (4, 'NINJA EXPRESS', 1, 23000, 'Enabled'),
 (6, 'KILAT EXPRESS', 4, 6000, 'Disabled');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `msg_guest`
+--
+
+CREATE TABLE `msg_guest` (
+  `id_msg` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `msg` text NOT NULL,
+  `status_msg` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `msg_guest`
+--
+
+INSERT INTO `msg_guest` (`id_msg`, `name`, `email`, `subject`, `msg`, `status_msg`) VALUES
+(1, 'fhaards', 'm.fahmi37@gmail.com', 'tester', 'tester', 'UNREAD'),
+(2, 'fahmi', 'm.fahmi37@gmail.com', 'tester 2', 'my order not updating status', 'UNREAD'),
+(3, 'fahmi', 'm.fahmi37@gmail.com', 'tester 2', 'my order not updating status', 'UNREAD'),
+(4, 'fahmi', 'm.fahmi37@gmail.com', 'tester 2', 'my order not updating status', 'UNREAD'),
+(5, 'fahmi', 'm.fahmi37@gmail.com', 'tester 2', 'my order not updating status', 'UNREAD'),
+(6, 'fahmi', 'm.fahmi@mial.com', 'asda', 'asdsadsad', 'UNREAD'),
+(7, 'fahmi', 'm.fahmi@mial.com', 'asda', 'asdsadsad', 'UNREAD'),
+(8, 'asdasd', 'sadas@mail.com', 'asdasd', 'asdasd', 'UNREAD'),
+(9, 'asdasd', 'sadas@mail.com', 'asdasd', 'asdasd', 'UNREAD'),
+(10, 'asdasd', 'sadas@mail.com', 'asdasd', 'asdasd', 'UNREAD'),
+(11, 'fahmi', 'fahmi37@gmail.com', 'lalala', 'lalalala', 'UNREAD'),
+(12, 'thisguest', 'test@mail.com', 'thistestguest', 'teetetetessss', 'UNREAD');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `msg_user`
+--
+
+CREATE TABLE `msg_user` (
+  `id_msg` int(10) NOT NULL,
+  `id_user` int(10) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `msg` text NOT NULL,
+  `status_msg` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `msg_user`
+--
+
+INSERT INTO `msg_user` (`id_msg`, `id_user`, `subject`, `msg`, `status_msg`) VALUES
+(1, 45, 'test', 'test1', 'UNREAD');
 
 -- --------------------------------------------------------
 
@@ -316,7 +326,44 @@ CREATE TABLE `products_features` (
 INSERT INTO `products_features` (`id_features`, `nm_features`, `status_features`) VALUES
 (1, 'None', 'Enabled'),
 (2, 'Up discount 25%', 'Disabled'),
-(4, 'Up discount 50%', 'Enabled');
+(4, 'Up discount 50%', 'Disabled'),
+(5, 'Easy Indoor Favorites', 'Enabled'),
+(6, 'Pet-Friendly Plants', 'Enabled'),
+(7, 'Low Light Favorites', 'Enabled'),
+(8, 'Best Seller', 'Enabled');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `products_features_related`
+--
+
+CREATE TABLE `products_features_related` (
+  `id_features_related` int(15) NOT NULL,
+  `id_barang` int(10) NOT NULL,
+  `id_features` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `products_features_related`
+--
+
+INSERT INTO `products_features_related` (`id_features_related`, `id_barang`, `id_features`) VALUES
+(29, 103, 4),
+(30, 103, 5),
+(31, 103, 7),
+(33, 70, 5),
+(34, 71, 5),
+(35, 72, 5),
+(36, 73, 5),
+(37, 74, 5),
+(38, 75, 5),
+(39, 76, 5),
+(45, 77, 5),
+(46, 77, 8),
+(47, 69, 5),
+(48, 69, 6),
+(49, 69, 8);
 
 -- --------------------------------------------------------
 
@@ -401,12 +448,6 @@ ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `contact`
---
-ALTER TABLE `contact`
-  ADD PRIMARY KEY (`id_contact`);
-
---
 -- Indeks untuk tabel `favorite_products`
 --
 ALTER TABLE `favorite_products`
@@ -419,6 +460,18 @@ ALTER TABLE `favorite_products`
 --
 ALTER TABLE `kurir`
   ADD PRIMARY KEY (`id_kurir`);
+
+--
+-- Indeks untuk tabel `msg_guest`
+--
+ALTER TABLE `msg_guest`
+  ADD PRIMARY KEY (`id_msg`);
+
+--
+-- Indeks untuk tabel `msg_user`
+--
+ALTER TABLE `msg_user`
+  ADD PRIMARY KEY (`id_msg`);
 
 --
 -- Indeks untuk tabel `pay_con`
@@ -448,6 +501,12 @@ ALTER TABLE `products_features`
   ADD PRIMARY KEY (`id_features`);
 
 --
+-- Indeks untuk tabel `products_features_related`
+--
+ALTER TABLE `products_features_related`
+  ADD PRIMARY KEY (`id_features_related`);
+
+--
 -- Indeks untuk tabel `products_type`
 --
 ALTER TABLE `products_type`
@@ -473,7 +532,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_barang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT untuk tabel `cart`
@@ -488,12 +547,6 @@ ALTER TABLE `company`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `contact`
---
-ALTER TABLE `contact`
-  MODIFY `id_contact` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT untuk tabel `favorite_products`
 --
 ALTER TABLE `favorite_products`
@@ -504,6 +557,18 @@ ALTER TABLE `favorite_products`
 --
 ALTER TABLE `kurir`
   MODIFY `id_kurir` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `msg_guest`
+--
+ALTER TABLE `msg_guest`
+  MODIFY `id_msg` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT untuk tabel `msg_user`
+--
+ALTER TABLE `msg_user`
+  MODIFY `id_msg` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pay_con`
@@ -527,7 +592,13 @@ ALTER TABLE `penjualan`
 -- AUTO_INCREMENT untuk tabel `products_features`
 --
 ALTER TABLE `products_features`
-  MODIFY `id_features` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_features` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `products_features_related`
+--
+ALTER TABLE `products_features_related`
+  MODIFY `id_features_related` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_type`
