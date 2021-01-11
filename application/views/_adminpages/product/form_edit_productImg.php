@@ -1,10 +1,3 @@
-<div class="my-6">
-    <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Forms
-    </h2>
-    <p class="">Edit Product Images</p>
-</div>
-<div class="py-3"></div>
 <?php echo validation_errors(); ?>
 <?php echo form_open_multipart('product/product-edit-image/' . $edtProductImg['id_barang']); ?>
 <?php
@@ -36,7 +29,7 @@ if ($checkImage3IfEmpty == 'default_img.jpg') {
     $hiddenDelete3 = '';
 }
 ?>
-<div class="px-5 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+<div class="px-5 py-3 mb-8 bg-white rounded-lg shadow-xs">
     <input type="hidden" name="nm_product" value="<?php echo $edtProductImg['nm_barang']; ?>">
     <input type="hidden" name="sku" value="<?php echo $edtProductImg['sku']; ?>">
     <div class="grid grid-cols-2 gap-3">
@@ -122,8 +115,7 @@ if ($checkImage3IfEmpty == 'default_img.jpg') {
         </label>
     </div>
 
-    <hr class="mt-6">
-    </hr>
+    <hr class="mt-6"></hr>
 
     <div class="w-full text-center mx-auto mt-4">
         <button type="submit" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">

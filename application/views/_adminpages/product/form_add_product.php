@@ -1,13 +1,6 @@
-<div class="my-6">
-    <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Forms
-    </h2>
-    <p class="">Add New Product</p>
-</div>
-<div class="py-3"></div>
 <?php echo validation_errors(); ?>
 <?php echo form_open_multipart('product/product-add'); ?>
-<div class="p-8 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+<div class="p-8 mb-8 bg-white rounded-lg shadow-xs">
     <div class="grid gap-8 lg:grid-cols-2">
         <div>
             <label class="block text-sm py-2">

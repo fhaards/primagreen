@@ -11,6 +11,7 @@ class Controller_courier extends CI_Controller
         $this->load->model('model_courier');
         $this->load->helper('array');
         $this->load->library('form_validation');
+        $this->load->library('crumbs');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -20,6 +21,10 @@ class Controller_courier extends CI_Controller
 
     public function index()
     {
+        $this->crumbs->add('Courier List', base_url().'product/courier-list');  
+        $data['breadcrumb']=$this->crumbs->output();
+        $data['pageTitle']   = 'Courier';
+        $data['pageSubTitle']   = 'List of Courier / Shipments Agents';
         $data['courierList'] = $this->model_courier->getAllCourier();
         $data['title']   = 'Courier List - ' . APP_NAME;
         $data['content'] = '_adminpages/related/courier/read_courier';

@@ -1,12 +1,35 @@
-<div class="my-6 flex">
-    <div class="flex-1">
-        <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Order
-        </h2>
-        <p class="">List of table order</p>
-    </div>
+<!-- <div class="bg-white">
+    <nav class="tabs flex flex-col sm:flex-row">
+        <button data-target="panel-1" class="tab active text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none text-blue-500 border-b-2 font-medium border-blue-500">
+            Description
+        </button>
+        <button data-target="panel-2" class="tab ext-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none">
+            Map and Street View
+        </button>
+        <button data-target="panel-3" class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none">
+            Other info
+        </button>
+    </nav>
 </div>
-<div class="py-3"></div>
+
+<div id="panels">
+    <div class="panel-1 tab-content active py-5">
+        <span class="mr-5">
+            <i class="fal fa-bed mr-1"></i> {{ entry.bedrooms }}
+        </span>
+        <span>
+            <i class="fal fa-bath mr-1"></i> {{ entry.bathrooms }}
+        </span>
+
+        {{ entry.body }}
+    </div>
+    <div class="panel-2 tab-content py-5">
+        Map here
+    </div>
+    <div class="panel-3 tab-content py-5">
+        other info
+    </div>
+</div> -->
 
 <div class="w-full bg-white overflow-hidden rounded-lg shadow-xs">
     <div class="w-full overflow-x-auto">

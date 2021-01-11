@@ -13,6 +13,7 @@ class Controller_settings extends CI_Controller
         $this->load->model('model_settings');
         $this->load->helper('array');
         $this->load->library('form_validation');
+        $this->load->library('crumbs');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -22,6 +23,10 @@ class Controller_settings extends CI_Controller
 
     public function profile()
     {
+        $this->crumbs->add('Company Profile', base_url().'company/profile');   
+        $data['breadcrumb']=$this->crumbs->output();
+        $data['pageTitle']   = 'Company Profile';
+        $data['pageSubTitle']   = 'Detail of '.APP_NAME.' Profile';
         $data['orderList'] = $this->model_settings->getAllCompanyData();
         $data['title']   = 'Company Profile - ' . APP_NAME;
         $data['content'] = '_adminpages/company/read_company';
@@ -96,7 +101,11 @@ class Controller_settings extends CI_Controller
 
     public function banner()
     {
+        $this->crumbs->add('Setting Banner', base_url().'banner/image-gallery');   
+        $data['breadcrumb']=$this->crumbs->output();
         $data['title']   = 'Banner - ' . APP_NAME;
+        $data['pageTitle']   = 'Setting Banner';
+        $data['pageSubTitle']   = 'Detail of '.APP_NAME.' Websites Banner';
         $data['content'] = '_adminpages/banner/read_banner';
         $this->load->view('_adminpages/master_admin', $data);
     }

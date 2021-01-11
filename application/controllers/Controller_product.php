@@ -12,6 +12,7 @@ class Controller_product extends CI_Controller
         $this->load->model('model_product_related');
         $this->load->helper('array');
         $this->load->library('form_validation');
+        $this->load->library('crumbs');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -20,8 +21,12 @@ class Controller_product extends CI_Controller
     }
     public function index()
     {
+        $this->crumbs->add('Product List', base_url().'product/product-list');  
+        $data['breadcrumb']=$this->crumbs->output();
         $data['productList'] = $this->model_product->getAllProducts();
         $data['title']   = 'Product - ' . APP_NAME;
+        $data['pageTitle']   = 'Product';
+        $data['pageSubTitle']   = 'List of Table Products';
         $data['content'] = '_adminpages/product/read_product';
         $this->load->view('_adminpages/master_admin', $data);
     }
@@ -29,7 +34,12 @@ class Controller_product extends CI_Controller
     public function newProductForm()
     {
 
+        $this->crumbs->add('Product List', base_url().'product/product-list');  
+        $this->crumbs->add('New Product', base_url().'product/product-add');  
+        $data['breadcrumb']=$this->crumbs->output();
         $data['title']   = 'Add New Product - ' . APP_NAME;
+        $data['pageTitle']   = 'Product';
+        $data['pageSubTitle']   = 'New Product Form';
         $data['content'] = '_adminpages/product/form_add_product';
         $data['typeList'] = $this->model_product_related->getAllTypes();
         $data['featuresList'] = $this->model_product_related->getFeaturesEnabled();
@@ -106,7 +116,13 @@ class Controller_product extends CI_Controller
 
     public function editProductForm($id)
     {
+        $this->crumbs->add('Product List', base_url().'product/product-list');  
+        $this->crumbs->add('Edit Product', base_url().'product/product-edit');  
+        $data['breadcrumb']=$this->crumbs->output();
+        
         $data['title']   = 'Edit Product - ' . APP_NAME;
+        $data['pageTitle']   = 'Product';
+        $data['pageSubTitle']   = 'Edit Product Form';
         $data['content'] = '_adminpages/product/form_edit_product';
         $data['typeList'] = $this->model_product_related->getAllTypes();
         $data['featuresList'] = $this->model_product_related->getFeaturesEnabled();
@@ -138,7 +154,13 @@ class Controller_product extends CI_Controller
 
     public function editProductImg($id)
     {
+        $this->crumbs->add('Product List', base_url().'product/product-list');  
+        $this->crumbs->add('Edit Product', base_url().'product/product-edit-image');  
+        $data['breadcrumb']=$this->crumbs->output();
+
         $data['title']   = 'Edit Product - ' . APP_NAME;
+        $data['pageTitle']   = 'Product';
+        $data['pageSubTitle']   = 'Edit Product Image';
         $data['content'] = '_adminpages/product/form_edit_productImg';
         $this->form_validation->set_rules('nm_product', 'Product Name', 'required');
         if ($this->form_validation->run() === FALSE) {

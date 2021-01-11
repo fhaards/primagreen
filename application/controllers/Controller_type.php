@@ -11,6 +11,7 @@ class Controller_type extends CI_Controller
         $this->load->model('model_product_related');
         $this->load->helper('array');
         $this->load->library('form_validation');
+        $this->load->library('crumbs');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -20,6 +21,10 @@ class Controller_type extends CI_Controller
 
     public function index()
     {
+        $this->crumbs->add('Type List', base_url().'product/type-list');  
+        $data['breadcrumb']=$this->crumbs->output();
+        $data['pageTitle']   = 'Type';
+        $data['pageSubTitle']   = 'List of Products Type';
         $data['typeList'] = $this->model_product_related->getAllTypes();
         $data['title']   = 'Type List - ' . APP_NAME;
         $data['content'] = '_adminpages/related/type/read_type';

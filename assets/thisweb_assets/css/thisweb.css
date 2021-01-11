@@ -163,3 +163,10 @@ form label {
 	height: 400px;
 }
 
+.tab-content {
+	display: none;
+}
+
+.tab-content.active {
+	display: block;
+}

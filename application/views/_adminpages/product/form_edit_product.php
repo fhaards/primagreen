@@ -1,13 +1,6 @@
-<div class="my-6">
-    <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-        Edit Forms
-    </h2>
-    <p class="">Products <strong><?php echo $edt_product['nm_barang']; ?></strong> </p>
-</div>
-<div class="py-3"></div>
 <?php echo validation_errors(); ?>
 <?php echo form_open('product/product-edit/' . $edt_product['id_barang']); ?>
-<div class="p-8 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+<div class="p-8 mb-8 bg-white rounded-lg shadow-xs">
     <div class="grid gap-8 lg:grid-cols-2">
         <div>
             <label class="block text-sm py-2">

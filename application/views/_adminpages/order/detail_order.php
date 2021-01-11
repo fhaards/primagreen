@@ -1,15 +1,4 @@
 <div clas="grid grid-cols-1">
-    <div class="my-6 flex">
-        <div class="flex-1">
-            <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                Detail Order
-            </h2>
-            <p class="">List of detail order</p>
-        </div>
-    </div>
-
-    <div class="py-3"></div>
-
     <div class="grid gid-cols-3">
         <div class="grid gap-4 grid-flow-col auto-rows-max overflow-x-scroll">
             <div class="grid bg-white w-48 rounded-lg border border-gray-200 md:w-full p-4">

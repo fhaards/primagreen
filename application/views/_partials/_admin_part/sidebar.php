@@ -1,6 +1,6 @@
 <aside class="z-20 hidden w-64 overflow-y-auto bg-white  md:block flex-shrink-0 border-r border-l border-gray-300">
   <div class="text-gray-500">
-    <div class="pl-6 pr-20 py-6">
+    <div class="pl-6 pr-20 py-4">
       <a class="text-lg font-bold" href="<?= base_url(); ?>dashboard">
         <img class="object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
       </a>

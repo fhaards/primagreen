@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jan 2021 pada 23.25
+-- Waktu pembuatan: 11 Jan 2021 pada 23.36
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -40,7 +40,7 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id_banner`, `main_banner`, `login_banner`, `regist_banner`, `contactus_banner`) VALUES
-(11, 'dacebb416bc8f34df2ac6ee20c016cfc.jpg', '23a685536a22519e38f47172833f0315.jpg', 'bc2b0b8f0a4f409de750c16fa869c2e4.jpg', '7d2f1c47f5fb0681d0328b7750dbf5ec.jpg');
+(11, 'b0ac292ec8d1812501af3b6dde022f6c.jpg', '1c54bf519f6104005f5a9db7e358db00.jpg', 'd74371c9bdbd8d7a265c1ceabce86fae.jpg', '78dbed9a22bc3b20a26f513fcc94566c.jpg');
 
 -- --------------------------------------------------------
 
@@ -168,7 +168,8 @@ INSERT INTO `kurir` (`id_kurir`, `nm_kurir`, `estimasi`, `harga_kurir`, `status_
 (2, 'JNE YES', 1, 20000, 'Enabled'),
 (3, 'SICEPAT EXPRESS', 1, 25000, 'Enabled'),
 (4, 'NINJA EXPRESS', 1, 23000, 'Enabled'),
-(6, 'KILAT EXPRESS', 4, 6000, 'Disabled');
+(6, 'KILAT EXPRESS', 4, 6000, 'Disabled'),
+(7, 'TESTING ', 1, 1000, 'Disabled');
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,8 @@ INSERT INTO `products_type` (`id_type`, `nm_type`, `status_type`) VALUES
 (2, 'Outdoor', 'Enabled'),
 (5, 'Tropical Indoor', 'Enabled'),
 (6, 'Edible Garden', 'Enabled'),
-(17, 'Succulents', 'Disabled');
+(17, 'Succulents', 'Disabled'),
+(19, 'Test', 'Enabled');
 
 -- --------------------------------------------------------
 
@@ -556,7 +558,7 @@ ALTER TABLE `favorite_products`
 -- AUTO_INCREMENT untuk tabel `kurir`
 --
 ALTER TABLE `kurir`
-  MODIFY `id_kurir` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_kurir` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `msg_guest`
@@ -604,7 +606,7 @@ ALTER TABLE `products_features_related`
 -- AUTO_INCREMENT untuk tabel `products_type`
 --
 ALTER TABLE `products_type`
-  MODIFY `id_type` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_type` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

@@ -13,6 +13,7 @@ class Controller_order extends CI_Controller {
         $this->load->model('model_payment');
         $this->load->helper('array');
         $this->load->library('form_validation');
+        $this->load->library('crumbs');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -22,6 +23,10 @@ class Controller_order extends CI_Controller {
     }
 
     public function index(){
+        $this->crumbs->add('Order List', base_url().'order/order-list');  
+        $data['breadcrumb']=$this->crumbs->output();
+        $data['pageTitle']   = 'Order';
+        $data['pageSubTitle']   = 'List of Table Order';
         $data['orderList'] = $this->model_order->getAllOrderGroupBy();
         $data['title']   = 'Order List - ' . APP_NAME;
         $data['content'] = '_adminpages/order/read_order';
@@ -29,6 +34,11 @@ class Controller_order extends CI_Controller {
     }
 
     public function orderDetails($noOrder){
+        $this->crumbs->add('Order List', base_url().'order/order-list');  
+        $this->crumbs->add('Detail Order', base_url().'order/order-detail');  
+        $data['breadcrumb']=$this->crumbs->output();
+        $data['pageTitle']   = 'Order';
+        $data['pageSubTitle']   = 'Detail Order';
         $data['getOrderList'] = $this->model_order->getAllOrderByNoOrder($noOrder)->result_array();
         $data['getOrderDetail'] = $this->model_order->getAllOrderByNoOrder_GroupBy($noOrder)->row_array();
         $data['getPaymentDetail'] = $this->model_payment->getBy_NoPemesanan($noOrder)->row_array();

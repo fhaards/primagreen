@@ -42,6 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- Main Content -->
             <main class="h-full overflow-y-auto">
                 <div class="container px-6 py-3 mx-auto grid">
+                    <?php $this->load->view("_partials/_admin_part/page_title"); ?>
                     <?php $this->load->view($content); ?>
                 </div>
             </main>

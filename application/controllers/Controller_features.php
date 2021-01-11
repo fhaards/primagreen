@@ -11,6 +11,7 @@ class Controller_features extends CI_Controller
         $this->load->model('model_product_related');
         $this->load->helper('array');
         $this->load->library('form_validation');
+        $this->load->library('crumbs');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -18,6 +19,10 @@ class Controller_features extends CI_Controller
         $this->load->helper("file");
     }
     public function index(){
+        $this->crumbs->add('Features List', base_url().'product/features-list');  
+        $data['breadcrumb']=$this->crumbs->output();
+        $data['pageTitle']   = 'Features';
+        $data['pageSubTitle']   = 'List of Products Features';
         $data['featuresList'] = $this->model_product_related->getAllFeatures();
         $data['title']   = 'Features List - ' . APP_NAME;
         $data['content'] = '_adminpages/related/features/read_features';
