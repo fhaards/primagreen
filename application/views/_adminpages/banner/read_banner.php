@@ -7,7 +7,7 @@ if (empty($checkBanner)) {
                 <div class='flex-1'></div>
                 <div>
                     <p class="mb-2">Don't have any data</p>
-                    <a href="<?php echo site_url('banner/add-randomly/'); ?>" class="block px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
+                    <a href="<?php echo site_url('settings/add-banner-randomly/'); ?>" class="block px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
                         Add Randomly
                     </a>
                 </div>

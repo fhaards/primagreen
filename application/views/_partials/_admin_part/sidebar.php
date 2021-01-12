@@ -1,21 +1,22 @@
-<aside class="z-20 hidden w-64 overflow-y-auto bg-white  md:block flex-shrink-0 border-r border-l border-gray-300">
+<aside class="z-20 hidden w-64 overflow-y-auto bg-white md:block flex-shrink-0 border-r border-l border-gray-300">
   <div class="text-gray-500">
-    <div class="pl-6 pr-20 py-4">
-      <a class="text-lg font-bold" href="<?= base_url(); ?>dashboard">
-        <img class="object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
+
+    <div class="w-full">
+      <a class="w-full h-20" href="<?= base_url(); ?>dashboard">
+        <img class="px-5 py-5 mx-auto  object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
       </a>
     </div>
+
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100";
-    $inactiveside = "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200";
+    $activeside = "inline-flex items-center w-full text-sm font-bold text-green-500 transition-colors duration-150 hover:text-green-600 ";
+    $inactiveside = "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800";
     ?>
 
     <!-- CONTENT MENU -->
 
-    <ul class="mt-3">
-
+    <ul class="">\
       <li class="relative px-6 py-3">
         <span class="<?= ($hal == 'dashboard') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
         <a class="<?= ($hal == 'dashboard') ? $activeside :  $inactiveside; ?>" href="<?= base_url(); ?>dashboard">
@@ -28,7 +29,7 @@
 
       <li class="relative px-6 py-3">
         <span class="<?= ($hal == 'product') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
-        <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" @click="togglePagesMenu" aria-haspopup="true">
+        <button class="<?= ($hal == 'product') ? $activeside :  $inactiveside; ?> justify-between focus:outline-none" @click="togglePagesMenu" aria-haspopup="true">
           <span class="inline-flex items-center">
             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
@@ -40,23 +41,23 @@
           </svg>
         </button>
         <template x-if="isPagesMenuOpen">
-          <ul x-transition:enter="transition-all ease-in-out duration-300" x-transition:enter-start="opacity-25 max-h-0" x-transition:enter-end="opacity-100 max-h-xl" x-transition:leave="transition-all ease-in-out duration-300" x-transition:leave-start="opacity-100 max-h-xl" x-transition:leave-end="opacity-0 max-h-0" class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900" aria-label="submenu">
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+          <ul x-transition:enter="transition-all ease-in-out duration-300" x-transition:enter-start="opacity-25 max-h-0" x-transition:enter-end="opacity-100 max-h-xl" x-transition:leave="transition-all ease-in-out duration-300" x-transition:leave-start="opacity-100 max-h-xl" x-transition:leave-end="opacity-0 max-h-0" class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50" aria-label="submenu">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
               <a class="w-full" href="<?= base_url(); ?>product/product-list">
-                Product/ Plant List
+                Products / Plants
               </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
               <a class="w-full" href="<?= base_url(); ?>product/type-list">
                 Type
               </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
               <a class="w-full" href="<?= base_url(); ?>product/features-list">
                 Features
               </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
               <a class="w-full" href="<?= base_url(); ?>product/courier-list">
                 Courier
               </a>
@@ -74,6 +75,7 @@
           <span class="ml-4">Order</span>
         </a>
       </li>
+  
 
       <li class="relative px-6 py-3">
         <span class="<?= ($hal == 'sold' || $hal2 == 'sold-list') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
@@ -85,9 +87,13 @@
         </a>
       </li>
       <div class="px-6 my-6">
-        <a href="<?= base_url(); ?>product/product-add" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5  transition-colors duration-150 text-white border border-green-600 bg-green-500 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-green-600 focus:outline-none focus:shadow-outline-green">
-          New Product
-          <span class="ml-2" aria-hidden="true">+</span>
+        <a href="<?= base_url(); ?>product/product-add" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+          <div class="mx-auto flex flex-row items-center space-x-2">
+            <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            <span class="">New Products</span>
+          </div>
         </a>
       </div>
 
@@ -109,7 +115,7 @@
       </li>
 
       <li class="relative px-6 py-3">
-        <button class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" @click="toggleSettingsMenu" aria-haspopup="true">
+        <button class="<?= ($hal == 'settings') ? $activeside :  $inactiveside; ?> justify-between focus:outline-none" @click="toggleSettingsMenu" aria-haspopup="true">
           <span class="inline-flex items-center">
             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
@@ -122,13 +128,13 @@
         </button>
         <template x-if="isSettingMenuOpen">
           <ul x-transition:enter="transition-all ease-in-out duration-300" x-transition:enter-start="opacity-25 max-h-0" x-transition:enter-end="opacity-100 max-h-xl" x-transition:leave="transition-all ease-in-out duration-300" x-transition:leave-start="opacity-100 max-h-xl" x-transition:leave-end="opacity-0 max-h-0" class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900" aria-label="submenu">
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-              <a class="w-full" href="<?= base_url(); ?>company/profile">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
+              <a class="w-full" href="<?= base_url(); ?>settings/company-profile">
                 Company Profile
               </a>
             </li>
-            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-              <a class="w-full" href="<?= base_url()?>banner/image-gallery">
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
+              <a class="w-full" href="<?= base_url() ?>settings/banner">
                 Banner
               </a>
             </li>

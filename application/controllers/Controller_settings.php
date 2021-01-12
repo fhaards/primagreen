@@ -23,7 +23,7 @@ class Controller_settings extends CI_Controller
 
     public function profile()
     {
-        $this->crumbs->add('Company Profile', base_url().'company/profile');   
+        $this->crumbs->add('Company Profile', base_url().'settings/company-profile');   
         $data['breadcrumb']=$this->crumbs->output();
         $data['pageTitle']   = 'Company Profile';
         $data['pageSubTitle']   = 'Detail of '.APP_NAME.' Profile';
@@ -41,7 +41,7 @@ class Controller_settings extends CI_Controller
         );
         $this->model_settings->addNewCompany($data);
         $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
-        redirect('company/profile');
+        redirect('settings/company-profile');
     }
 
     public function updateProfile($id)
@@ -49,7 +49,7 @@ class Controller_settings extends CI_Controller
         $this->form_validation->set_rules('comp_nm', 'Company Name', 'required');
         if ($this->form_validation->run() === FALSE) {
             $this->session->set_flashdata('errorMsg', 'Data Gagal');
-            redirect('company/profile');
+            redirect('settings/company-profile');
         } else {
             $baseLogo = $this->input->post('baseLogo');
             $baseFavIco = $this->input->post('baseFavIco');
@@ -93,7 +93,7 @@ class Controller_settings extends CI_Controller
             );
             $this->model_settings->updateProfileCompany($data, $id);
             $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
-            redirect('company/profile');
+            redirect('settings/company-profile');
         }
     }
 
@@ -101,7 +101,7 @@ class Controller_settings extends CI_Controller
 
     public function banner()
     {
-        $this->crumbs->add('Setting Banner', base_url().'banner/image-gallery');   
+        $this->crumbs->add('Setting Banner', base_url().'settings/banner');   
         $data['breadcrumb']=$this->crumbs->output();
         $data['title']   = 'Banner - ' . APP_NAME;
         $data['pageTitle']   = 'Setting Banner';
@@ -120,7 +120,7 @@ class Controller_settings extends CI_Controller
         );
         $this->model_settings->addNewBanner($data);
         $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
-        redirect('banner/image-gallery');
+        redirect('settings/banner');
     }
 
     public function updateBanner($id)
@@ -183,6 +183,6 @@ class Controller_settings extends CI_Controller
 
         $this->model_settings->updateBannerData($data, $id);
         $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
-        redirect('banner/image-gallery');
+        redirect('settings/banner');
     }
 }

@@ -209,7 +209,7 @@ class Controller_product extends CI_Controller
 
             $this->model_product->edt_productImage_todb($id, $data);
             $this->session->set_flashdata('editMsg', 'Data berhasil diubah');
-            redirect('product/product-list');
+            redirect('product/product-edit-image/'.$id);
         }
     }
 

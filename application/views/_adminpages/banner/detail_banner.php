@@ -1,5 +1,5 @@
 <?php echo validation_errors(); ?>
-<?php echo form_open_multipart('banner/update-banner/' . getBannerData()['id_banner']); ?>
+<?php echo form_open_multipart('settings/update-banner/' . getBannerData()['id_banner']); ?>
 <div class="md:grid md:grid-cols-3 md:gap-3">
     <input name="baseMainImg" type="hidden" value="<?= getBannerData()['main_banner']; ?>">
     <input name="baseLoginImg" type="hidden" value="<?= getBannerData()['login_banner']; ?>">
