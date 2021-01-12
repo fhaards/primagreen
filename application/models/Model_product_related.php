@@ -35,7 +35,6 @@ class Model_product_related extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('products_type');
-        $this->db->where('status_type','Enabled');
         $query = $this->db->get();
         return $query->result_array();
     }

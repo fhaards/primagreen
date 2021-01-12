@@ -10,9 +10,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <title><?= $title; ?></title>
     <link rel="shortcut icon" href="<?php echo base_url() . 'uploads/company/' . getCompanyData()['icon']; ?>">
     <!-- Font style -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;700;800;900&display=swap" rel="stylesheet">
-
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;700;800;900&display=swap" rel="stylesheet"> -->
     <!-- Tailwind -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/tailwind.output.css'; ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/tailwinds.css'; ?>">
@@ -64,6 +62,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/DataTables/datatables-config.js'; ?>" type="text/javascript"></script>
     <script src="<?php echo base_url() . 'vendor/tinymce/tinymce/tinymce.min.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_admin_order.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_admin_product.js'; ?>"></script>
     <script>
         $("#resi_no").hide();
         $(document).ready(function() {
@@ -74,7 +73,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     $("#resi_no").hide();
                 }
             });
+
+
         });
+
+
 
         tinymce.remove();
         tinymce.init({

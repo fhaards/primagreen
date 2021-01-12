@@ -27,6 +27,69 @@ class Model_product extends CI_Model
 		return $query->result_array();
 	}
 
+	public function getAllProductsByIdType($type)
+	{
+		$this->db->select('*');
+		$this->db->from('barang');
+		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
+		$this->db->where('barang.id_type', $type);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	// function fetchFilterType()
+	// {
+	// 	$this->db->distinct();
+	// 	$this->db->select('*');
+	// 	$this->db->from('barang');
+	// 	$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
+	// 	$this->db->where('product_status', '1');
+	// 	return $this->db->get();
+	// }
+
+	// function makeQuery($type)
+	// {
+	// 	$query = "SELECT * FROM barang INNER JOIN products_type on products_type.id_type=barang.id_type WHERE product_status = '1' ";
+	// 	if (isset($type)) {
+	// 		$type_filter = implode("','", $type);
+	// 		$query .= " AND barang.id_type IN('" . $type_filter . "')";
+	// 	}
+	// 	return $query;
+	// }
+
+	// function countAll($type)
+	// {
+	// 	$query = $this->makeQuery($type);
+	// 	$data = $this->db->query($query);
+	// 	return $data->num_rows();
+	// }
+
+	// function fetchData($type)
+	// {
+	// 	$query = $this->makeQuery($type);
+	// 	$data = $this->db->query($query);
+	// 	$output = '';
+	// 	if ($data->num_rows() > 0) {
+	// 		foreach ($data->result_array() as $row) {
+	// 			$output .= '
+	// 			<tr>
+	// 				<td>'.$row['nm_barang'].'</td>
+	// 			</tr>';
+	// 		}
+	// 	} else {
+	// 		$output = 
+	// 			'<tr>
+	// 				<td colspan="10">
+	// 					<h3 class="text-gray-600 font-semibold mx-auto"> Ooops , Data Not Found </h3>
+	// 					<p class="text-gray-600 mx-auto text-sm"> Please select any filter to found new one </p>
+	// 				</td>
+	// 			</tr>';
+	// 	}
+	// 	return $output;
+	// }
+
+
+
 	public function getAllProductsByType($nmType)
 	{
 

@@ -21,9 +21,19 @@ class Controller_product extends CI_Controller
     }
     public function index()
     {
+        $type = $this->input->post("type");
+        $data['getType'] =  '' ;
+        if (!empty($type)) {
+            $data['getType'] = $type;
+            $data['productList'] = $this->model_product->getAllProductsByIdType($type);
+        } else {
+            $data['getType'] = $type;
+            $data['productList'] = $this->model_product->getAllProducts();
+        }
+
         $this->crumbs->add('Product List', base_url().'product/product-list');  
         $data['breadcrumb']=$this->crumbs->output();
-        $data['productList'] = $this->model_product->getAllProducts();
+        $data['type_data'] = $this->model_product_related->getAllTypesEnabled();
         $data['title']   = 'Product - ' . APP_NAME;
         $data['pageTitle']   = 'Product';
         $data['pageSubTitle']   = 'List of Table Products';
@@ -31,9 +41,9 @@ class Controller_product extends CI_Controller
         $this->load->view('_adminpages/master_admin', $data);
     }
 
+
     public function newProductForm()
     {
-
         $this->crumbs->add('Product List', base_url().'product/product-list');  
         $this->crumbs->add('New Product', base_url().'product/product-add');  
         $data['breadcrumb']=$this->crumbs->output();
@@ -51,14 +61,11 @@ class Controller_product extends CI_Controller
             $this->load->view('_adminpages/master_admin', $data);
         } else {
             $nmProduct = $this->input->post('nm_product');
-
             $getSku = mb_substr($nmProduct, 0, 3);
             $getSkuCode = '00' . rand(10, 100) . 'PLNT' . strtoupper($getSku) . rand(100, 300);
-
             $uploadPath = './uploads/product/' . $getSkuCode;
             $config = array('upload_path' => $uploadPath, 'allowed_types' =>
             'jpg|jpeg|gif|png|webp', 'max_size' => '5000', 'encrypt_name' => true);
-
             $this->load->library('upload', $config);
 
             if (!is_dir('uploads/product/' . $getSkuCode)) {

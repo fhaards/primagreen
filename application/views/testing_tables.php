@@ -1,38 +1,28 @@
-<div class="flex md:flex-row flex-wrap md:space-x-5">
-    <div class="flex-1 flex md:flex-row-reverse w-full py-5 px-4 mb-5 bg-white rounded-lg relative shadow-xs">
-        <?php echo form_open('product/product-list', array('class' => 'flex flex-row w-full md:space-y-0 space-x-5 md:w-auto md:flex-row md:items-center')); ?>
-        <select name="type" id="send_type" class="send_type form-select">
-            <option value="">Select All Types</option>
-            <?php foreach ($type_data as $row) : ?>
-                <!-- <input type="checkbox" class="common_selector type" value="<?php echo $row['id_type']; ?>"> &nbsp; <?php echo $row['nm_type']; ?> -->
-                <?php echo '<option value="' . $row['id_type'] . '" ' . ($row['id_type'] == $getType ? 'selected="selected"' : '') . '>' . $row['nm_type'] . '</option>'; ?>
-                <!-- <option value="<?= $row['id_type']; ?>"><?= $row['nm_type']; ?></option> -->
-            <?php endforeach; ?>
-        </select>
-        <button type="submit" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-            <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-            </svg>
-            <span class="">Filter</span>
-        </button>
-        <?php echo form_close(); ?>
-    </div>
-
-    <div class="flex md:flex-row-reverse md:w-auto w-full py-5 px-4 mb-5 bg-white rounded-lg relative shadow-xs">
-        <div class="flex flex-col space-y-2 w-full md:space-y-0 md:space-x-5 md:w-auto md:flex-row">
-            <a href="<?= base_url(); ?>product/product-add" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-                <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                <span class="">New Products</span>
-            </a>
-        </div>
-    </div>
+<?php echo form_open('dummy'); ?>
+A <input type="text" class="this_type">
+B <input type="text" class="getTypeInput" value="<?= $getType; ?>">
+<div class="flex flex-row space-x-5">
+    <select name="type" id="send_type" class="send_type form-select">
+        <option value="">Select All Types</option>
+        <?php foreach ($type_data as $row) : ?>
+            <!-- <input type="checkbox" class="common_selector type" value="<?php echo $row['id_type']; ?>"> &nbsp; <?php echo $row['nm_type']; ?> -->
+            <?php  echo '<option value="' . $row['id_type'] . '" ' . ($row['id_type'] == $getType ? 'selected="selected"' : '') . '>' . $row['nm_type'] . '</option>'; ?>
+            <!-- <option value="<?= $row['id_type']; ?>"><?= $row['nm_type']; ?></option> -->
+        <?php endforeach; ?>
+        <option value="20">SeSDSDlect All Types</option>
+    </select>
+    <button type="submit" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+        <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+        </svg>
+        <span class="">Filter</span>
+    </button>
 </div>
-
+<?php echo form_close(); ?>
 
 <div class="w-full bg-white overflow-hidden rounded-lg shadow-xs">
     <div class="w-full overflow-x-auto">
+        <div class="checkwei"></div>
         <table id="primaTable" class="w-full whitespace-no-wrap stripe hover" width="100%">
             <thead>
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
@@ -116,7 +106,7 @@
                         <td class="px-4 py-3"><?= $productLists['nm_type']; ?></td>
                         <td class="px-4 py-3">Rp <?= number_format($productLists['harga']); ?></td>
                         <td class="px-4 py-3 <?= $bgStockStatus; ?>">
-                            <div class="flex items-center space-x-1">
+                            <div class="flex items-center space-x-3">
                                 <span class="hidden"><?= $productLists['stok']; ?></span>
                                 <span class="<?= $stockClass; ?>">
                                     <div class="flex space-x-2 items-center justify-between font-medium leading-5">
@@ -140,8 +130,8 @@
                             </div>
                         </td>
                         <td class="px-4 py-3 w-10">
-                            <div class="flex items-center space-x-4 text-sm ">
-                                <a href="<?php echo site_url('product/product-edit/' . $id); ?>" class="flex items-center mx-auto justify-between px-1 py-1 text-sm font-medium leading-5 rounded-md shadow-xs text-white transition-colors duration-150 bg-gray-800 active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
+                            <div class="flex items-center space-x-4 text-sm">
+                                <a href="<?php echo site_url('product/product-edit/' . $id); ?>" class="flex items-center justify-between px-1 py-1 text-sm font-medium leading-5 rounded-md shadow-xs text-white transition-colors duration-150 bg-gray-800 active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
                                     <svg class="w-4 h-4 fill-current text-white" aria-hidden="true" fill="" viewBox="0 0 20 20">
                                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                                     </svg>
@@ -153,6 +143,4 @@
             </tbody>
         </table>
     </div>
-
 </div>
-<div class="mt-6"></div>

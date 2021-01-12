@@ -33,6 +33,14 @@ function redirectIfNotLogin()
 	}
 }
 
+function redirectIfNotAdmin()
+{
+	$ci = &get_instance();
+	if ($ci->session->userdata('level') != "admin") {
+		redirect(base_url("login"));
+	}
+}
+
 function redirectIfAdminAccessUserPage()
 {
 	$ci = &get_instance();

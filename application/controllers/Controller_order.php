@@ -23,11 +23,20 @@ class Controller_order extends CI_Controller {
     }
 
     public function index(){
+        $status = $this->input->post("status");
+        $data['getStatus'] =  '' ;
+        if (!empty($status)) {
+            $data['getStatus'] = $status ;
+            $data['orderList'] = $this->model_order->getAllOrderByStatus($status);
+        } else {
+            $data['getStatus'] =  '' ;
+            $data['orderList'] = $this->model_order->getAllOrderGroupBy();
+        }
+
         $this->crumbs->add('Order List', base_url().'order/order-list');  
         $data['breadcrumb']=$this->crumbs->output();
         $data['pageTitle']   = 'Order';
         $data['pageSubTitle']   = 'List of Table Order';
-        $data['orderList'] = $this->model_order->getAllOrderGroupBy();
         $data['title']   = 'Order List - ' . APP_NAME;
         $data['content'] = '_adminpages/order/read_order';
         $this->load->view('_adminpages/master_admin', $data);

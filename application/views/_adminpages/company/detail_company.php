@@ -104,9 +104,7 @@
     </label>
 </div>
 
-
-<hr class="mt-6">
-</hr>
+<hr class="mt-6"></hr>
 
 <div class="flex w-full text-center mx-auto mt-4">
     <button type="submit" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">

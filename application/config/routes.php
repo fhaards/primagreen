@@ -64,6 +64,7 @@ $route['dashboard'] = 'Controller_dashboard/index';
 
 /*///////// Product /////////////*/
 $route['product/product-list'] = 'Controller_product/index';
+$route['product/product-list/(:any)'] = 'Controller_product/fetch_data/$1';
 $route['product/product-add'] = 'Controller_product/newProductForm';
 $route['product/product-edit/(:any)'] = 'Controller_product/editProductForm/$1';
 $route['product/product-edit-stock/(:any)'] = 'Controller_product/editProductStock/$1';

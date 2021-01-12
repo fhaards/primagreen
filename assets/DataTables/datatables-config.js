@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	var table = $("#primaTable").DataTable({
         responsive: true,
-        pageLength : 10,
+        pageLength : 5,
 	});
 });
 

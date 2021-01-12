@@ -18,6 +18,18 @@ class Model_order extends CI_Model
 		return $query->result_array();
 	}
 
+	public function getAllOrderByStatus($status)
+	{
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->group_by("no_pemesanan");
+		$this->db->where("pemesanan.status", $status);
+		$this->db->order_by("tgl_pesan", "ASC");
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	public function getAllOrderGroupBy()
 	{
 		$this->db->select('*');

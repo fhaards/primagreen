@@ -49,30 +49,31 @@ table.dataTable.display tbody tr:hover {
 
 /*Pagination Buttons - Current selected */
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-	color: #e5e7eb !important;
+	color: #374151 !important;
 	font-weight: 700;
 	border-radius: 0.25rem;
-	background: #1f2937 !important;
+	background: #e5e7eb !important;
 	border: 1px solid transparent;
 	cursor: context-menu;
 }
 
 /*Pagination Buttons - Hover */
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-	background: #1f2937; /*bg-indigo-500*/
+	background: #D1D5DB; /*bg-indigo-500*/
+	color:#374151 !important;
 	border: 1px solid transparent;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
-	background: #1f2937; /*bg-indigo-500*/
+	background: #D1D5DB; /*bg-indigo-500*/
 	border: 1px solid transparent;
 	outline: none;
 	box-shadow: none;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-	background: #1f2937 !important;
-	color: #e5e7eb !important;
+	background: #D1D5DB !important;
+	color: #374151 !important;
 	border: 1px solid transparent;
 }
 
