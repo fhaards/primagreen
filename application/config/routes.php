@@ -113,6 +113,10 @@ $route['settings/banner'] = 'Controller_settings/banner';
 $route['settings/add-banner-randomly'] = 'Controller_settings/addBannerRandomly';
 $route['settings/update-banner/(:any)'] = 'Controller_settings/updateBanner/$1';
 
+
+/*///////// Messages /////////////*/
+$route['messages'] = 'Controller_messages/index';
+
 /*
 | -------------------------------------------------------------------------
 | FRONTEND AND USER ROUTES
