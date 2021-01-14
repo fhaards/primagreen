@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jan 2021 pada 04.48
+-- Waktu pembuatan: 14 Jan 2021 pada 23.02
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -121,6 +121,26 @@ CREATE TABLE `company` (
 
 INSERT INTO `company` (`id`, `unique_code`, `comp_nm`, `about`, `instagram`, `telp`, `address`, `logo`, `icon`) VALUES
 (1, '54584445563', 'Primagreen', '<h2 style=\"padding-left: 40px;\"><strong>What is Primagreen ?</strong></h2>\r\n<p style=\"text-align: justify; padding-left: 40px;\"><strong>Primagreen</strong> is a startup that tries to bring green space wherever you are. Both in Indonesia or other parts of the world. We start a business by bridging farmers who have crops or services but they don\'t get very good results.&nbsp;</p>\r\n<p style=\"text-align: justify; padding-left: 40px;\"><br />Our founders started out as a group of childhood friends that all had a passion for nature and the outdoors. Post college, they ended up becoming roommates. Turns out, having a home filled with plants was something they continued to have in common. Unfortunately, they found it difficult to find a place online to purchase houseplants that was easy to navigate and wasn&rsquo;t just geared to wholesale</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<h2 style=\"padding-left: 40px;\"><strong>Why we do that?</strong></h2>\r\n<p style=\"padding-left: 40px;\">Because our focus is providing the socio-economy impact for many of our partners (farmers and job seeker).<br />The products we sell are tropical plants, cactus, succulent and landscape care<br />Primagreen bring green spaces for you!</p>', 'prima_green', '081317352815', '<p>Jl. Rawakalong Selatan No. 44 , Kecamatan Gn. Sindur, Bogor, Jawa Barat</p>', 'a9be88de089f15a51649d25f617401ce.png', '3358b15efc061104e8c1979f6c4367cd.ico');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `faq`
+--
+
+CREATE TABLE `faq` (
+  `id_faq` int(10) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `date_add` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `faq`
+--
+
+INSERT INTO `faq` (`id_faq`, `question`, `answer`, `date_add`) VALUES
+(1, 'Is this an online store, an offline store, a warehouse, or an office?', 'We are an online shop and have an offline store. We have a warehouse for stock and office supplies for our Staff and Customer Service. information about our store can be found on our contact page', '2021-01-15 02:36:58');
 
 -- --------------------------------------------------------
 
@@ -388,7 +408,7 @@ INSERT INTO `products_type` (`id_type`, `nm_type`, `status_type`) VALUES
 (5, 'Tropical Indoor', 'Enabled'),
 (6, 'Edible Garden', 'Enabled'),
 (17, 'Succulents', 'Disabled'),
-(19, 'Test', 'Enabled');
+(19, 'Test', 'Disabled');
 
 -- --------------------------------------------------------
 
@@ -448,6 +468,12 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `faq`
+--
+ALTER TABLE `faq`
+  ADD PRIMARY KEY (`id_faq`);
 
 --
 -- Indeks untuk tabel `favorite_products`
@@ -547,6 +573,12 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `company`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `faq`
+--
+ALTER TABLE `faq`
+  MODIFY `id_faq` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `favorite_products`
