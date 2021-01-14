@@ -20,6 +20,10 @@ class Model_settings extends CI_Model
         return $this->db->get('banner')->row_array();
     }
 
+    public function getAllFaqData(){
+        return $this->db->get('faq')->result();
+    }
+
     public function addNewCompany($data)
     {
         return $this->db->insert('company', $data);
@@ -28,6 +32,11 @@ class Model_settings extends CI_Model
     public function addNewBanner($data)
     {
         return $this->db->insert('banner', $data);
+    }
+
+    public function addNewFaq($data)
+    {
+        return $this->db->insert('faq', $data);
     }
 
     public function updateProfileCompany($data, $id)

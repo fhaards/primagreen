@@ -61,8 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/DataTables/datatables.min.js'; ?>" type="text/javascript"></script>
     <script src="<?php echo base_url() . 'assets/DataTables/datatables-config.js'; ?>" type="text/javascript"></script>
     <script src="<?php echo base_url() . 'vendor/tinymce/tinymce/tinymce.min.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_admin_order.js'; ?>"></script>
-    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_admin_product.js'; ?>"></script>
+    <?php $this->load->view('_partials/_admin_part/js_control'); ?>
     <script>
         $("#resi_no").hide();
         $(document).ready(function() {
@@ -74,11 +73,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 }
             });
 
-
         });
-
-
-
         tinymce.remove();
         tinymce.init({
             selector: 'textarea'

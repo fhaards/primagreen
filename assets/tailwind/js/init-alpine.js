@@ -81,6 +81,7 @@ function data() {
 		// Modal
 		isModalOpen: false,
 		isModalReportOpen: false,
+		isModalAddFaqOpen: false,
 		trapCleanup: null,
 		openModal() {
 			this.isModalOpen = true;
@@ -90,9 +91,14 @@ function data() {
 			this.isModalReportOpen = true;
 			this.trapCleanup = focusTrap(document.querySelector("#modal-report"));
 		},
+		openModalAddFaq() {
+			this.isModalAddFaqOpen = true;
+			this.trapCleanup = focusTrap(document.querySelector("#modal-faq"));
+		},
 		closeModal() {
 			this.isModalOpen = false;
 			this.isModalReportOpen = false;
+			this.isModalAddFaqOpen = false;
 			this.trapCleanup();
 		},
 	};

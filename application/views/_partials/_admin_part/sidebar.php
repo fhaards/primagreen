@@ -3,7 +3,7 @@
 
     <div class="w-full">
       <a class="w-full h-20" href="<?= base_url(); ?>dashboard">
-        <img class="px-5 py-5 mx-auto  object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
+        <img class="px-6 py-5 mx-auto  object-cover" src="<?php echo base_url() . 'uploads/company/' . getCompanyData()['logo']; ?>" alt="" loading="lazy" />
       </a>
     </div>
 
@@ -16,7 +16,7 @@
 
     <!-- CONTENT MENU -->
 
-    <ul class="">\
+    <ul class="mt-3">
       <li class="relative px-6 py-3">
         <span class="<?= ($hal == 'dashboard') ? 'absolute inset-y-0 left-0 w-1 bg-green-500 rounded-tr-lg rounded-br-lg' : ''; ?>" aria-hidden="true"></span>
         <a class="<?= ($hal == 'dashboard') ? $activeside :  $inactiveside; ?>" href="<?= base_url(); ?>dashboard">
@@ -121,7 +121,7 @@
             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
             </svg>
-            <span class="ml-4">Settings</span>
+            <span class="ml-4">Supports</span>
           </span>
           <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -137,6 +137,11 @@
             <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
               <a class="w-full" href="<?= base_url() ?>settings/banner">
                 Banner
+              </a>
+            </li>
+            <li class="px-2 py-1 transition-colors duration-150 hover:text-gray-800">
+              <a class="w-full" href="<?= base_url() ?>settings/faq">
+                FAQ
               </a>
             </li>
           </ul>

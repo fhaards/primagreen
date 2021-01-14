@@ -23,10 +23,10 @@ class Controller_settings extends CI_Controller
 
     public function profile()
     {
-        $this->crumbs->add('Company Profile', base_url().'settings/company-profile');   
-        $data['breadcrumb']=$this->crumbs->output();
+        $this->crumbs->add('Company Profile', base_url() . 'settings/company-profile');
+        $data['breadcrumb'] = $this->crumbs->output();
         $data['pageTitle']   = 'Company Profile';
-        $data['pageSubTitle']   = 'Detail of '.APP_NAME.' Profile';
+        $data['pageSubTitle']   = 'Detail of ' . APP_NAME . ' Profile';
         $data['orderList'] = $this->model_settings->getAllCompanyData();
         $data['title']   = 'Company Profile - ' . APP_NAME;
         $data['content'] = '_adminpages/company/read_company';
@@ -53,7 +53,7 @@ class Controller_settings extends CI_Controller
         } else {
             $baseLogo = $this->input->post('baseLogo');
             $baseFavIco = $this->input->post('baseFavIco');
-           
+
             $uploadPath = './uploads/company';
             $configIcon = array('upload_path' => $uploadPath, 'allowed_types' =>
             'jpg|jpeg|gif|png|ico', 'max_size' => '5000', 'encrypt_name' => true);
@@ -101,11 +101,11 @@ class Controller_settings extends CI_Controller
 
     public function banner()
     {
-        $this->crumbs->add('Setting Banner', base_url().'settings/banner');   
-        $data['breadcrumb']=$this->crumbs->output();
+        $this->crumbs->add('Setting Banner', base_url() . 'settings/banner');
+        $data['breadcrumb'] = $this->crumbs->output();
         $data['title']   = 'Banner - ' . APP_NAME;
         $data['pageTitle']   = 'Setting Banner';
-        $data['pageSubTitle']   = 'Detail of '.APP_NAME.' Websites Banner';
+        $data['pageSubTitle']   = 'Detail of ' . APP_NAME . ' Websites Banner';
         $data['content'] = '_adminpages/banner/read_banner';
         $this->load->view('_adminpages/master_admin', $data);
     }
@@ -130,7 +130,7 @@ class Controller_settings extends CI_Controller
         $baseLoginImage     = $this->input->post('baseLoginImg');
         $baseRegistImage    = $this->input->post('baseRegistImg');
         $basetContactusImage    = $this->input->post('baseContactusImg');
-        
+
         $uploadPath = './uploads/banner';
         $configImage = array('upload_path' => $uploadPath, 'allowed_types' =>
         'jpg|jpeg|png', 'max_size' => '5000', 'encrypt_name' => true);
@@ -173,7 +173,7 @@ class Controller_settings extends CI_Controller
         } else {
             $getcontactusImage = $basetContactusImage;
         }
-        
+
         $data = array(
             'main_banner' => $getmainImage,
             'login_banner' => $getloginImage,
@@ -184,5 +184,46 @@ class Controller_settings extends CI_Controller
         $this->model_settings->updateBannerData($data, $id);
         $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
         redirect('settings/banner');
+    }
+
+
+    /// ------------------------------------ FAQ
+
+    public function faq()
+    {
+        $this->crumbs->add('Setting FAQ', base_url() . 'settings/faq');
+        $data['breadcrumb'] = $this->crumbs->output();
+        $data['title']   = 'FAQ - ' . APP_NAME;
+        $data['pageTitle']   = 'Setting FAQ';
+        $data['pageSubTitle']   = 'Frequently Ask and Question';
+        $data['content'] = '_adminpages/faq/read_faq';
+        $this->load->view('_adminpages/master_admin', $data);
+    }
+
+    public function showFaq()
+    {
+        $data = $this->model_settings->getAllFaqData();
+        echo json_encode($data);
+    }
+
+    public function addFaq()
+    {
+        $dateNow  = date('Y-m-d H:i:s');
+        $data = array(
+            'question' => $this->input->post('question'),
+            'answer' => $this->input->post('answer'),
+            'date_add' => $dateNow
+        );
+
+        $this->form_validation->set_rules('question', 'Faq', 'required');
+        $this->form_validation->set_rules('answer', 'Answer', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('ErrorMsg', 'Error');
+            redirect('settings/faq');
+        } else {
+            $this->model_settings->addNewFaq($data);
+            $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+            redirect('settings/faq');
+        }
     }
 }

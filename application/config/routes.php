@@ -112,7 +112,9 @@ $route['settings/update-company-profile/(:any)'] = 'Controller_settings/updatePr
 $route['settings/banner'] = 'Controller_settings/banner';
 $route['settings/add-banner-randomly'] = 'Controller_settings/addBannerRandomly';
 $route['settings/update-banner/(:any)'] = 'Controller_settings/updateBanner/$1';
-
+$route['settings/faq'] = 'Controller_settings/faq';
+$route['settings/faq/faq-list'] = 'Controller_settings/showFaq';
+$route['settings/add-faq'] = 'Controller_settings/addFaq';
 
 /*///////// Messages /////////////*/
 $route['messages'] = 'Controller_messages/index';
