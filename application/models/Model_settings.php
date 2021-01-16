@@ -16,13 +16,17 @@ class Model_settings extends CI_Model
         return $this->db->get('company')->row_array();
     }
 
-    public function getAllBannerData(){
+    public function getAllBannerData()
+    {
         return $this->db->get('banner')->row_array();
     }
 
-    public function getAllFaqData(){
-        return $this->db->get('faq')->result();
+    public function getAllFaqData()
+    {
+        return $this->db->get('faq')->result_array();
     }
+
+    // INSERT/INPUT
 
     public function addNewCompany($data)
     {
@@ -39,6 +43,8 @@ class Model_settings extends CI_Model
         return $this->db->insert('faq', $data);
     }
 
+    // UPDATE
+
     public function updateProfileCompany($data, $id)
     {
         $this->db->where('id', $id);
@@ -49,5 +55,20 @@ class Model_settings extends CI_Model
     {
         $this->db->where('id_banner', $id);
         return $this->db->update('banner', $data);
+    }
+
+    public function updateFaq($data, $id)
+    {
+        $this->db->where('id_faq', $id);
+        return $this->db->update('faq', $data);
+    }
+
+
+    // DELETE
+
+    public function deleteFaq($id)
+    {
+        $this->db->where('id_faq', $id);
+        return $this->db->delete('faq');
     }
 }

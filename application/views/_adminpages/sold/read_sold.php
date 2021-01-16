@@ -26,7 +26,10 @@
                     <tr class="lg:h-12 text-gray-700">
                         <td><a class="text-blue-500 hover:text-blue-600 underline" href="<?php echo base_url() . 'sold/sold-detail/' . $orderLists['no_pemesanan']; ?>"><?= $orderLists['no_pemesanan']; ?></a></td>
                         <td><?= $orderLists['nama']; ?></td>
-                        <td><?= $orderLists['tgl_pnjl']; ?></td>
+                        <td>
+                            <span class="hidden"> <?= strftime("%d-%M-%Y-%H:%M", strtotime($orderLists['tgl_pnjl'])); ?></span>
+                            <?= strftime("%d-%M-%Y / %H:%M", strtotime($orderLists['tgl_pnjl'])); ?>
+                        </td>
                         <td>Rp. <?= number_format($orderLists['total_harga']); ?></td>
                     </tr>
                 <?php endforeach; ?>

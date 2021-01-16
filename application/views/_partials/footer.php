@@ -22,6 +22,7 @@
                     <li class="font-bold text-gray-800 mb-1 md:mb-4">Support</li>
                     <li><a class="hover:text-gray-500 hover:underline text-gray-600 font-semibold" href="">How to buy</a></li>
                     <li><a href="<?= base_url().'contact-us/'.$whoThis;?>"  class="hover:text-gray-500 hover:underline text-gray-600 font-semibold" href="">Contact us</a></li>
+                    <li><a href="<?= base_url().'faq';?>"  class="hover:text-gray-500 hover:underline text-gray-600 font-semibold" href="">FAQ</a></li>
                     <li></li>
                 </ul>
             </div>

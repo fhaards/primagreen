@@ -25,7 +25,7 @@
         <div>
             <label class="block text-sm py-2">
                 <span class="text-gray-700 dark:text-gray-400">Address</span>
-                <textarea name="address" type="number" class="block w-full mt-1 text-sm dark:text-gray-300 form-textarea bg-gray-200 focus:bg-white focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray"><?= getCompanyData()['address']; ?></textarea>
+                <textarea name="address" type="number" class="tiny-mce block w-full mt-1 text-sm dark:text-gray-300 form-textarea bg-gray-200 focus:bg-white focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray"><?= getCompanyData()['address']; ?></textarea>
             </label>
         </div>
     </div>
@@ -100,7 +100,7 @@
 <div class="grid gap-4 lg:grid-cols-1 bg-white px-4 py-3 rounded-md shadow-xs">
     <label class="block text-sm py-2">
         <div class="text-gray-700 dark:text-gray-400 mb-5">About Us</div>
-        <textarea name="about" type="number" class="block w-full h-screen mt-1 text-sm dark:text-gray-300 form-textarea bg-gray-200 focus:bg-white focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray"><?= getCompanyData()['about']; ?></textarea>
+        <textarea  name="about" type="number" class="tiny-mce block w-full h-screen mt-1 text-sm dark:text-gray-300 form-textarea bg-gray-200 focus:bg-white focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray"><?= getCompanyData()['about']; ?></textarea>
     </label>
 </div>
 

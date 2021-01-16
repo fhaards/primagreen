@@ -35,11 +35,11 @@
     <?php echo form_open('order/order-list', array('class' => 'flex flex-row w-full  space-x-5 md:w-auto md:flex-row md:items-center')); ?>
     <label class="block text-sm" id="">
         <?php $array = array(
-            ""=>"Select Status","ONHOLD"=>"Onhold", "PROCCESS"=>"Process", "PACKING"=>"Packing", "COMPLETE"=>"Complete"
+            "" => "Select Status", "ONHOLD" => "Onhold", "PROCCESS" => "Process", "PACKING" => "Packing", "COMPLETE" => "Complete"
         ); ?>
         <select name="status" class="block w-full text-sm  bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
             <?php foreach ($array as $key => $value) :
-                echo '<option value="' . $key. '" ' . ($key == $getStatus ? 'selected="selected"' : '') . '>' . $value . '</option>';
+                echo '<option value="' . $key . '" ' . ($key == $getStatus ? 'selected="selected"' : '') . '>' . $value . '</option>';
             endforeach; ?>
         </select>
     </label>
@@ -74,7 +74,10 @@
                     <tr class="lg:h-12 text-gray-700">
                         <td><a class="text-blue-500 hover:text-blue-600 underline" href="<?php echo base_url() . 'order/order-detail/' . $orderLists['no_pemesanan']; ?>"><?= $orderLists['no_pemesanan']; ?></a></td>
                         <td><?= $orderLists['nama']; ?></td>
-                        <td><?= $orderLists['tgl_pesan']; ?></td>
+                        <td>
+                            <span class="hidden"> <?= strftime("%d-%M-%Y-%H:%M", strtotime($orderLists['tgl_pesan'])); ?></span>
+                            <?= strftime("%d-%M-%Y / %H:%M", strtotime($orderLists['tgl_pesan'])); ?>
+                        </td>
                         <td>Rp. <?= number_format($orderLists['total_harga']); ?></td>
                         <td class="">
                             <span class="<?= status_order_color($statusType); ?>"><?= $statusType; ?></span>

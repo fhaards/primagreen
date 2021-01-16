@@ -114,6 +114,8 @@ $route['settings/add-banner-randomly'] = 'Controller_settings/addBannerRandomly'
 $route['settings/update-banner/(:any)'] = 'Controller_settings/updateBanner/$1';
 $route['settings/faq'] = 'Controller_settings/faq';
 $route['settings/faq/faq-list'] = 'Controller_settings/showFaq';
+$route['settings/faq/faq-edit'] = 'Controller_settings/editFaq';
+$route['settings/faq/faq-delete'] = 'Controller_settings/deleteFaq';
 $route['settings/add-faq'] = 'Controller_settings/addFaq';
 
 /*///////// Messages /////////////*/
@@ -134,8 +136,6 @@ $route['registration/data_exist'] = 'Controller_f_user_login/dataExist';
 $route['logout'] = 'Controller_f_user_login/logout';
 
 
-/*///////// About Us /////////////*/
-$route['about-us'] = 'Controller_f_about/index';
 
 /*///////// Store /////////////*/
 $route['store/product-list'] = 'Controller_f_store';
@@ -165,6 +165,12 @@ $route['cart/checkout'] = 'Controller_f_cart/checkOut';
 $route['profile/user-account'] = 'Controller_f_user/index';
 $route['profile/detail-order/(:any)'] = 'Controller_f_user/detailOrder/$1';
 $route['profile/upload-transfer'] = 'Controller_f_user/uploadTransfer';
+
+/*///////// About Us /////////////*/
+$route['about-us'] = 'Controller_f_about/index';
+
+/*///////// FAQ /////////////*/
+$route['faq'] = 'Controller_f_faq/index';
 
 /*
 | -------------------------------------------------------------------------

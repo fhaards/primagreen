@@ -1,6 +1,6 @@
-<div x-show="isModalAddFaqOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-30 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center">
+<div x-show="isModalEditFaqOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-30 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center">
     <!-- Modal -->
-    <div x-show="isModalAddFaqOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform translate-y-1/2" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0  transform translate-y-1/2" @click.away="closeModal" @keydown.escape="closeModal" class="w-full px-6 py-4 overflow-hidden bg-white dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl" role="dialog" id="modal-faq">
+    <div x-show="isModalEditFaqOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform translate-y-1/2" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0  transform translate-y-1/2" @click.away="closeModal" @keydown.escape="closeModal" class="w-full px-6 py-4 overflow-hidden bg-white dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl" role="dialog" id="modal-faq-edit">
         <!-- Remove header if you don't want a close icon. Use modal body to place modal tile. -->
 
         <header class="flex justify-end">
@@ -12,7 +12,7 @@
         </header>
         <!-- Modal body -->
         <?php echo validation_errors(); ?>
-        <?php echo form_open('settings/add-faq'); ?>
+        <?php echo form_open('settings/faq/faq-edit'); ?>
         <div class="mt-4 mb-6">
             <!-- Modal title -->
             <p class="text-lg font-semibold text-gray-700">
@@ -25,14 +25,15 @@
                 <div class="flex flex-col my-2">
                     <span class="text-gray-600 font-semibold lg:flex-1">Question</span>
                     <div class="mt-2">
-                        <input type="text" id="" name="question" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type a Question" >
+                        <input type="hidden" id="faqEditId" name="id_faq" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type a Question" >
+                        <input type="text" id="faqEditQuestion" name="question" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type a Question" >
                     </div>
                 </div>
                 <div class="flex flex-col my-2">
                     <span class="text-gray-600 font-semibold lg:flex-1">Answer</span>
                     <span class="text-gray-800 font-bold mt-2">
                         <label class="block text-sm" id="change_status_order">
-                            <textarea name="answer" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type an Answer" ></textarea>
+                            <textarea name="answer" id="faqEditAnswer" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type an Answer" ></textarea>
                         </label>
                     </span>
                 </div>

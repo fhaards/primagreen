@@ -82,6 +82,7 @@ function data() {
 		isModalOpen: false,
 		isModalReportOpen: false,
 		isModalAddFaqOpen: false,
+		isModalEditFaqOpen: false,
 		trapCleanup: null,
 		openModal() {
 			this.isModalOpen = true;
@@ -95,10 +96,15 @@ function data() {
 			this.isModalAddFaqOpen = true;
 			this.trapCleanup = focusTrap(document.querySelector("#modal-faq"));
 		},
+		openModalEditFaq() {
+			this.isModalEditFaqOpen = true;
+			this.trapCleanup = focusTrap(document.querySelector("#modal-faq-edit"));
+		},
 		closeModal() {
 			this.isModalOpen = false;
 			this.isModalReportOpen = false;
 			this.isModalAddFaqOpen = false;
+			this.isModalEditFaqOpen = false;
 			this.trapCleanup();
 		},
 	};

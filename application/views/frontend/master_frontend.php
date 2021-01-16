@@ -15,7 +15,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!--  
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">-->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /> -->
-
     <!-- Tailwind -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/tailwind.output.css'; ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/tailwinds.css'; ?>">
@@ -60,16 +59,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
         var SITE_URL = "<?php echo site_url(); ?>";
 
         function initMap() {
-            const uluru = {
+            const primagreen = {
                 lat: -6.793285909058999,
                 lng: 107.60047289334526
             };
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 12,
-                center: uluru,
+                center: primagreen,
             });
             const marker = new google.maps.Marker({
-                position: uluru,
+                position: primagreen,
                 map: map,
             });
         }
@@ -78,7 +77,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/jquery/jquery-ui.js'; ?>"></script>
     <script src="<?php echo base_url() . 'assets/tailwind/js/alpine.min.js'; ?>" defer></script>
     <script src="<?php echo base_url() . 'assets/tailwind/js/init-alpine.js'; ?>" language="javascript"></script>
-    
     <script>
         $(document).ready(function() {
             $('#detail_cart').load("<?php echo site_url(); ?>cart/load-cart", function() {

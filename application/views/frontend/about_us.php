@@ -32,7 +32,7 @@
                 <div class="md:w-3/5 "></div>
             </div>
         </div>
-        <div class="w-full flex md:flex-row nd:space-x-10 flex-col">
+        <div class="w-full flex md:flex-row md:space-x-10 flex-col">
             <div class="w-1/3 flex flex-col">
                 <h2 class="text-gray-800 font-bold text-xl">Contact Us </h2>
                 <div class="mt-10">

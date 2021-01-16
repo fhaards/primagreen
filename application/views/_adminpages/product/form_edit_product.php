@@ -92,7 +92,7 @@
     </div>
     <label class="block mt-4 text-sm">
         <span class="text-gray-700 dark:text-gray-400">Detail Info/ Description</span>
-        <textarea name="detail_info" type="number" class="block w-full mt-1 text-sm bg-gray-100 focus:bg-white  dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray" rows="3"><?php echo $edt_product['detail']; ?></textarea>
+        <textarea name="detail_info" type="number" class="tiny-mce block w-full mt-1 text-sm bg-gray-100 focus:bg-white  dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray" rows="3"><?php echo $edt_product['detail']; ?></textarea>
     </label>
 
     <hr class="mt-6">

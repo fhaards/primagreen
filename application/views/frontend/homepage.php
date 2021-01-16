@@ -91,8 +91,29 @@
 <div class="container px-6 mx-auto grid min-h-screen">
     <!-- STORE ITEMS -->
     <section class="w-full mx-auto bg-white" id="show_someitems">
-
         <div class="container flex items-center flex-wrap">
+
+            <div class="grid grid-rows-3 grid-flow-col gap-3 w-full mt-10" style="max-height:400px;">
+                <div class="md:row-span-3 bg-gray-200 homepage-banner">
+                    <div class="relative h-full w-full px-10">
+                        <div class="absolute bottom-0 pb-10">
+                            <h1 class="text-white text-4xl uppercase"> Shop</h1>
+                            <h1 class="text-white text-4xl -mt-3 uppercase font-bold"> All Items </h1>
+                            <a href="<?php echo site_url('store/show-all-items'); ?>" class="block flex flex-row space-x-4 text-white uppercase py-2 text-sm font-bold leading-5 transition-colors duration-150">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                                <span class="tracking-widest">
+                                    Go to store
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-2 bg-gray-100 h-48">2</div>
+                <div class="md:row-span-2 md:col-span-2 bg-gray-400">3</div>
+            </div>
+
             <div id="store" class="w-full  py-10">
                 <div class="w-full flex flex-row space-x-10 items-center justify-between mt-0 py-3">
                     <div class="flex-1 h-1 bg-gray-900"></div>
@@ -103,8 +124,7 @@
                     <div class="flex-1 h-1 bg-gray-900"></div>
                 </div>
             </div>
-
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
                 <?php foreach ($someItems as $someItemsValue) { ?>
                     <?php
                     $getIds = $someItemsValue['id_barang'];
@@ -118,8 +138,8 @@
                     ?>
                     <div class="flex flex-col">
                         <!--  onmouseover="openThisCart()" onmouseout="closeThisCart()" -->
-                        <div id="open_this_items"  onmouseover="openThisCart(<?= $getIds; ?>)" onmouseleave="closeThisCart(<?= $getIds; ?>)">
-                            <a style="cursor:pointer;" href="<?php echo site_url('store/product-list/detail/' . $someItemsValue['id_barang'] . '/' . $someNmProduct); ?>" class="flex flex-col" >
+                        <div id="open_this_items" onmouseover="openThisCart(<?= $getIds; ?>)" onmouseleave="closeThisCart(<?= $getIds; ?>)">
+                            <a style="cursor:pointer;" href="<?php echo site_url('store/product-list/detail/' . $someItemsValue['id_barang'] . '/' . $someNmProduct); ?>" class="flex flex-col">
                                 <div class="w-full h-20 md:h-48 lg:h-48 rounded-sm md:block">
                                     <img class="object-cover w-full h-full" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
                                 </div>
@@ -135,18 +155,18 @@
                         </div>
                         <!-- <?php if (isLoggedIn()) : ?>
                             <?php
-                            $getIdUser2 = getUserData()['id_user'];
-                            $getIdBarang2 = $someItemsValue['id_barang'];
+                                    $getIdUser2 = getUserData()['id_user'];
+                                    $getIdBarang2 = $someItemsValue['id_barang'];
                             ?>
                             <?php if (in_array($getIdBarang2, $favItems)) : ?>
                                 <?php
-                                $classFav2 = 'w-5 text-red-500';
-                                $classFillFav2 = 'currentColor';
+                                        $classFav2 = 'w-5 text-red-500';
+                                        $classFillFav2 = 'currentColor';
                                 ?>
                             <?php else : ?>
                                 <?php
-                                $classFav2 = 'w-5 text-gray-500 hover:text-red-500';
-                                $classFillFav2 = 'none';
+                                        $classFav2 = 'w-5 text-gray-500 hover:text-red-500';
+                                        $classFillFav2 = 'none';
                                 ?>
                             <?php endif; ?>
                             <button data-itemsid="<?= $getIdBarang2; ?>" data-userid="<?= $getIdUser2; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-br-lg">
@@ -161,8 +181,7 @@
                                 </svg>
                             </a>
                         <?php endif; ?> -->
-                        <div id="this_items_<?= $getIds; ?>"   onmouseover="openThisCart(<?= $getIds; ?>)" onmouseleave="closeThisCart(<?= $getIds; ?>)" 
-                        class="lg:hidden lg:absolute flex flex-row lg:mx-10 lg:mt-20 space-x-2 lg:px-2 lg:py-2 rounded-md lg:shadow-lg lg:bg-gray-100 z-30">
+                        <div id="this_items_<?= $getIds; ?>" onmouseover="openThisCart(<?= $getIds; ?>)" onmouseleave="closeThisCart(<?= $getIds; ?>)" class="lg:hidden lg:absolute flex flex-row lg:mx-10 lg:mt-20 space-x-2 lg:px-2 lg:py-2 rounded-md lg:shadow-lg lg:bg-gray-100 z-30">
                             <?php if ($someItemsValue['stok'] == 0) : ?>
                                 <div class="flex items-center py-1 lg:py-2 md:mx-6">
                                     <span class="lg:text-sm text-xs lg:block text-gray-600 font-semibold">Ops Sorry , Out Stock</span>
@@ -207,9 +226,5 @@
         </div>
     </section>
 
-    <div class="grid grid-rows-3 grid-flow-col gap-4 w-full mt-10" style="max-height:600px;">
-        <div class="md:row-span-3 bg-gray-200 homepage-banner">1</div>
-        <div class="md:col-span-2 bg-gray-100 h-48">2</div>
-        <div class="md:row-span-2 md:col-span-2 bg-gray-400">3</div>
-    </div>
+
 </div>

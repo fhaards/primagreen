@@ -196,6 +196,7 @@ class Controller_settings extends CI_Controller
         $data['title']   = 'FAQ - ' . APP_NAME;
         $data['pageTitle']   = 'Setting FAQ';
         $data['pageSubTitle']   = 'Frequently Ask and Question';
+        $data['faqList']   = $this->model_settings->getAllFaqData();
         $data['content'] = '_adminpages/faq/read_faq';
         $this->load->view('_adminpages/master_admin', $data);
     }
@@ -225,5 +226,32 @@ class Controller_settings extends CI_Controller
             $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
             redirect('settings/faq');
         }
+    }
+
+    public function editFaq()
+    {
+        $id = $this->input->post('id_faq');
+        $data = array(
+
+            'question' => $this->input->post('question'),
+            'answer' => $this->input->post('answer')
+        );
+
+        $this->form_validation->set_rules('question', 'Faq', 'required');
+        $this->form_validation->set_rules('answer', 'Answer', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('ErrorMsg', 'Error');
+            redirect('settings/faq');
+        } else {
+            $this->model_settings->updateFaq($data, $id);
+            $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
+            redirect('settings/faq');
+        }
+    }
+    public function deleteFaq()
+    {
+        $id = $this->input->post('id');
+        $data = $this->model_settings->deleteFaq($id);
+        echo json_encode($data);
     }
 }

@@ -12,8 +12,9 @@ if($modal_page == 'sold') :
 endif;
 
 if($modal_page_2 == 'faq') :
-    // MODAL REPORT ORDER
+    // MODAL FAQ
     $this->load->view('_adminpages/faq/form_add');
+    $this->load->view('_adminpages/faq/form_edit');
 endif;
 
 
