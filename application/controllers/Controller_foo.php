@@ -1,14 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-// use Ramsey\Uuid\Uuid;
-
 class Controller_foo extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
-        redirectIfNotAdmin();
+        // redirectIfNotAdmin();
         $this->load->database();
         $this->load->model('model_product');
         $this->load->model('model_f_homepage');
@@ -33,7 +31,7 @@ class Controller_foo extends CI_Controller
     public function dummy()
     {
         $type = $this->input->post("type");
-        $data['getType'] =  '' ;
+        $data['getType'] =  '';
         if (!empty($type)) {
             $data['getType'] = $type;
             $data['productList'] = $this->model_product->getAllProductsByIdType($type);
@@ -58,5 +56,48 @@ class Controller_foo extends CI_Controller
         $data['newItems'] = $this->model_f_homepage->getNewItems();
         $data['favItems'] = $this->model_favorites->getFavoriteste();
         $this->load->view('foo', $data);
+    }
+
+    public function sendmail()
+    {
+        $this->load->view('tested/sendmail_regist');
+    }
+
+    public function sendthismail()
+    {
+        $this->load->library('mailer');
+        $email_penerima = $this->input->post('email_penerima');
+        $subjek = $this->input->post('subjek');
+        $pesan = $this->input->post('pesan');
+        $content = $this->load->view('tested/mail_content', array('pesan' => $pesan), true);
+        $sendmail = array(
+            'email_penerima' => $email_penerima,
+            'subjek' => $subjek,
+            'content' => $content
+        );
+        $send = $this->mailer->send($sendmail);
+        if ($send) {
+            redirect('foo/sendmail');
+        }
+    }
+
+    public function sendthismail_regist()
+    {
+        $this->load->library('mailer');
+        $email_receipt = $this->input->post('email');
+        $subject = 'Hey, Thanks for signing up !';
+        $name = $this->input->post('name');
+        $content = $this->load->view('tested/mail_content',  array('name' => $name), true);
+        $sendmail = array(
+            'email_receipt' => $email_receipt,
+            'subject' => $subject,
+            'content' => $content
+        );
+        $send = $this->mailer->send_registration($sendmail);
+        if ($send) {
+            echo "<b>" . $send['status'] . "</b><br />";
+            echo $send['message'];
+            echo "<br /><a href='" . base_url("foo/sendthismail") . "'>Kembali ke Form</a>";
+        }
     }
 }

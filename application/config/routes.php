@@ -193,7 +193,10 @@ $route['report/report-order-adm'] = 'Controller_report/reportOrderByAdmin';
 
 /*///////// Base /////////////*/
 $route['foo'] = 'Controller_foo/index';
-$route['dummy'] = 'Controller_foo/dummy';
-$route['tested'] = 'Controller_foo/tested';
-$route['base'] = 'Controller_base/index';
+$route['foo/dummy'] = 'Controller_foo/dummy';
+$route['foo/sendmail'] = 'Controller_foo/sendmail';
+$route['foo/sendthismail'] = 'Controller_foo/sendthismail';
+$route['foo/sendthismail_regist'] = 'Controller_foo/sendthismail_regist';
+$route['foo/tested'] = 'Controller_foo/tested';
+$route['foo/base'] = 'Controller_base/index';
 
