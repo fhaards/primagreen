@@ -1,56 +1,39 @@
-<div class="container px-6 py-3  mx-auto grid min-h-screen">
-    <div class="w-full mx-auto mt-20 lg:mt-32">
-        <div class="container flex items-center flex-wrap">
+<div class="container px-6 py-3 mx-auto grid min-h-screen">
+    <div class="w-full mx-auto mt-20">
+        <div class="container flex flex-row md:space-x-10">
 
-            <div class="flex lg:flex-row flex-col w-full">
-                <div class="lg:w-1/3 mb-4">
-                    <nav id="new-items" class="w-full top-0 py-1">
-                        <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
-                            <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
-                                Profile
-                            </a>
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="lg:w-1/3">
-                    <div class="flex flex-col">
-                        <div class="mb-2">
-                            <label>
-                                <p class="text-gray-600 font-semibold text-sm">Name</p>
-                                <p class="text-gray-800 font-bold text-md"><?= getUserData()['nama']; ?></p>
-                            </label>
-                        </div>
-                        <div class="my-2">
-                            <label>
-                                <p class="text-gray-600 font-semibold text-sm">Email</p>
-                                <p class="text-gray-800 font-bold text-md"><?= getUserData()['email']; ?></p>
-                            </label>
-                        </div>
+            <div class="flex flex-col w-1/5 mr-5 md:block hidden">
+                <nav id="new-items" class="w-full top-0 py-1">
+                    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mb-5">
+                        <h2 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl py-2" href="#">
+                            My Account
+                        </h2>
                     </div>
-                </div>
+                    <ul class="md:text-sm text-xs font-semibold">
+                        <?php
+                             $profile_page = $this->uri->segment(2);
+                             $active = "transition-colors duration-150 text-green-500 hover:text-green-700 border-b border-green-500";
+                             $inactive = "transition-colors duration-150 text-gray-800 hover:text-green-500 border-b border-gray-300";
+                        ?>
+                        <li><a href="<?= base_url() . 'profile/user-account'; ?>" class="inline-block py-2 w-full <?= ($profile_page == 'user-account') ? $active :  $inactive; ?>"> Account Information </a></li>
+                        <li><a href="<?= base_url() . 'profile/edit-address'; ?>" class="inline-block py-2 w-full <?= ($profile_page == 'edit-address') ? $active :  $inactive; ?>"> Address Book </a></li>
+                        <li><a href="<?= base_url() . 'profile/order-history'; ?>" class="inline-block py-2 w-full <?= ($profile_page == 'order-history') ? $active :  $inactive; ?>"> My Order </a></li>
+                    </ul>
+                </nav>
+            </div>
 
-                <div class="lg:w-1/3">
-                    <div class="flex flex-col">
-                        <div class="mb-2">
-                            <label>
-                                <p class="text-gray-600 font-semibold text-sm">Telphone</p>
-                                <p class="text-gray-800 font-bold text-md"><?= getUserData()['tlp']; ?></p>
-                            </label>
-                        </div>
-                        <div class="my-2">
-                            <label>
-                                <p class="text-gray-600 font-semibold text-sm">Address</p>
-                                <p class="text-gray-800 font-bold text-md"><?= getUserData()['alamat']; ?></p>
-                            </label>
-                        </div>
-                    </div>
+            <div class="flex-1 flex flex-col">
+                <div class="flex flex-col">
+                    <?php $this->load->view($profile_content); ?>
                 </div>
             </div>
 
-            <div class="flex flex-col mt-8 w-full">
-                <?php $this->load->view('frontend/profile/read_order'); ?>
-            </div>
+
         </div>
+
     </div>
+</div>
+
+<div class="flex flex-col mt-8 w-full">
+    <!-- <?php $this->load->view('frontend/profile/read_order'); ?> -->
 </div>

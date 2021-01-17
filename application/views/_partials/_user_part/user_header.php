@@ -1,5 +1,5 @@
 <header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto">
-  <div class="container flex items-center justify-between h-full mx-auto px-6 ">
+  <div class="container flex items-center justify-between h-full mx-auto px-6">
     <!-- Mobile hamburger -->
     <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu" aria-label="Menu">
       <svg class="w-6 h-6 fill-current text-green-500" aria-hidden="true" fill="" viewBox="0 0 20 20">
@@ -10,8 +10,8 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-green-500 hover:text-green-700 mx-auto";
-    $inactiveside = "uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:text-green-500 mx-auto";
+    $activeside = "py-1 px-4 uppercase bg-gray-200 tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-gray-100 mx-auto rounded-xs";
+    $inactiveside = "py-1 px-4 uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-gray-200 mx-auto rounded-xs focus:bg-gray-200";
     ?>
 
     <!-- Logo -->
@@ -25,7 +25,7 @@
 
     <!-- Desktop Menu -->
     <div class="hidden md:block items-center ">
-      <div class="mx-auto focus-within:text-green-500 flex flex-row space-x-12">
+      <div class="mx-auto focus-within:text-green-500 flex flex-row space-x-8">
         <!-- <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()"> -->
         <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger">
           Store
@@ -36,22 +36,16 @@
       </div>
     </div>
 
-    <div class="flex-1 space-x-8">
-      <ul class="flex flex-row space-x-8  float-right">
-        <li class="relative">
-          <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
-            <svg class="w-6 h-6 text-gray-800 text-bold hover:text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            <span id="notif-cart" class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-green-600 border-2 border-white rounded-full"></span>
-          </button>
-        </li>
+    <div class="flex-1 items-center py-2">
+      <ul class="flex flex-row-reverse ">
+
 
         <li class="relative">
-          <button class="align-middle focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
-            <svg class="w-6 h-6 text-gray-800 text-bold hover:text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button style="cursor:pointer;" class="flex flex-row md:space-x-5 focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
+            <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
+            <?php if (isUser()) : ?><label class="md:block hidden"><?= getUserData()['nama']; ?></label> <?php endif; ?>
           </button>
           <template x-if="isProfileMenuOpen">
             <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
@@ -61,7 +55,7 @@
                     <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
-                    <span><?= getUserData()['nama']; ?></span>
+                    <span>My Account</span>
                   </a>
                 </li>
               <?php endif; ?>
@@ -85,6 +79,16 @@
               </li>
             </ul>
           </template>
+        </li>
+
+        <li class="relative">
+          <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
+            <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <!-- -mt-5 right-10 -->
+            <span id="notif-cart" class="absolute -mt-5 right-8 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-green-600 border-2 border-white rounded-full"></span>
+          </button>
         </li>
       </ul>
     </div>

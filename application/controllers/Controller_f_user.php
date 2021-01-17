@@ -15,6 +15,7 @@ class Controller_f_user extends CI_Controller
         $this->load->model('model_f_user_login');
         $this->load->helper('array');
         $this->load->library('form_validation');
+        $this->load->library('pagination');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -29,14 +30,53 @@ class Controller_f_user extends CI_Controller
         $iduser = getUserData()['id_user'];
         $data['title']   = 'Profile - ' . APP_NAME;
         $data['content'] = 'frontend/profile/read_profile';
+        $data['profile_content'] = 'frontend/profile/edit_account';
         $data['getUser'] = $this->model_order->getAllOrderByUser($iduser)->result_array();
-        // $data['getOrder_Onhold'] = $this->model_order->getAllOrder_Onhold($iduser)->result_array();
+        $this->load->view('frontend/master_frontend', $data);
+    }
+
+    function editAccount()
+    {
+    }
+
+    function editAddress()
+    {
+        redirectIfNotLogin();
+        // $iduser = getUserData()['id_user'];
+        $data['title']   = 'Profile - ' . APP_NAME;
+        $data['content'] = 'frontend/profile/read_profile';
+        $data['profile_content'] = 'frontend/profile/edit_address';
+        $this->load->view('frontend/master_frontend', $data);
+    }
+
+    function orderHistory()
+    {
+        redirectIfNotLogin();
+        $iduser = getUserData()['id_user'];
+        $jumlah_data = $this->model_order->getAllOrderByUser_count($iduser);
+        $config = array();
+        $config['base_url'] = base_url() . 'profile/order-history';
+        $config['total_rows'] = $jumlah_data;
+        $config['per_page'] = 5;
+        $config['full_tag_open'] = '<div class="pagination flex flex-row space-x-2 font-bold">';
+        $config['full_tag_close'] = '</div>';
+        $from = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $data['title']   = 'Profile - ' . APP_NAME;
+        $data['content'] = 'frontend/profile/read_profile';
+        $data['profile_content'] = 'frontend/profile/read_order';
+        $data['getUser'] = $this->model_order->getAllOrderByUser_paging($config['per_page'], $from, $iduser)->result_array();
         $this->load->view('frontend/master_frontend', $data);
     }
 
     function detailOrder($noOrder)
     {
         redirectIfNotLogin();
+        $this->load->library('crumbs');
+        $this->crumbs->add('My Account', base_url() . 'profile/edit-account');
+        $this->crumbs->add('Order History', base_url() . 'profile/order-history');
+        $this->crumbs->add('Detail Order', base_url() . 'profile/detail-order');
+        $data['breadcrumb'] = $this->crumbs->output();
         $data['title']   = 'Detail Order - ' . APP_NAME;
         $data['content'] = 'frontend/profile/detail_order';
         $data['getOrderList'] = $this->model_order->getAllOrderByNoOrder($noOrder)->result_array();

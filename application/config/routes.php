@@ -163,6 +163,10 @@ $route['cart/checkout'] = 'Controller_f_cart/checkOut';
 
 /*///////// Profile /////////////*/
 $route['profile/user-account'] = 'Controller_f_user/index';
+$route['profile/edit-account/(:any)'] = 'Controller_f_user/editAccount/$1';
+$route['profile/edit-address'] = 'Controller_f_user/editAddress';
+$route['profile/order-history'] = 'Controller_f_user/orderHistory';
+$route['profile/order-history/(:any)'] = 'Controller_f_user/orderHistory/$1';
 $route['profile/detail-order/(:any)'] = 'Controller_f_user/detailOrder/$1';
 $route['profile/upload-transfer'] = 'Controller_f_user/uploadTransfer';
 

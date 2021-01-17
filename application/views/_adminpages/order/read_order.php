@@ -35,7 +35,7 @@
     <?php echo form_open('order/order-list', array('class' => 'flex flex-row w-full  space-x-5 md:w-auto md:flex-row md:items-center')); ?>
     <label class="block text-sm" id="">
         <?php $array = array(
-            "" => "Select Status", "ONHOLD" => "Onhold", "PROCCESS" => "Process", "PACKING" => "Packing", "COMPLETE" => "Complete"
+            "" => "Select Status", "ONHOLD" => "Onhold", "PROCESS" => "Process", "PACKING" => "Packing", "COMPLETE" => "Complete"
         ); ?>
         <select name="status" class="block w-full text-sm  bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray">
             <?php foreach ($array as $key => $value) :

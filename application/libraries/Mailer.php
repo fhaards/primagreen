@@ -58,7 +58,7 @@ class Mailer
         $mail->addCC('Dont reply this messages');
         $mail->isHTML(true);
         $mail->Subject = $data['subject'];
-        $mail->Body = $data['content'];
+        $mail->Body = $data['registration_content'];
         $send = $mail->send();
         if ($send) {
             $response = array('status' => 'Sukses', 'message' => 'Email berhasil dikirim');

@@ -45,7 +45,12 @@ class Model_f_user_login extends CI_Model
 		return $query->result();
 	}
 
-	public function insert($user)
+	public function insert($user_regist)
+	{
+		return $this->db->insert('user', $user_regist);
+	}
+
+	public function insesrt($user)
 	{
 		$this->db->insert('user', $user);
 		return $this->db->insert_id();

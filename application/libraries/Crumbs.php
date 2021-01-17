@@ -1,21 +1,21 @@
 <?php
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
- 
+
 class Crumbs
 {
     private $breadcrumbs = array();
     private $separator = ' &nbsp; / &nbsp; ';
     private $start = '<ol id="breadcrumb" class="breadcrumb flex flex-row text-xs font-semibold text-gray-500 space-x-2">';
     private $end = '</ol>';
-    
+
     public function __construct($params = array())
     {
         if (count($params) > 0) {
             $this->initialize($params);
         }
     }
-    
+
     private function initialize($params = array())
     {
         if (count($params) > 0) {
@@ -26,29 +26,34 @@ class Crumbs
             }
         }
     }
-    
+
     function add($title, $href)
     {
-        if (!$title OR !$href)
+        if (!$title or !$href)
             return;
-        
+
         $this->breadcrumbs[] = array(
             'title' => $title,
             'href' => $href
         );
     }
-    
+
     function output()
     {
         if ($this->breadcrumbs) {
             $output = $this->start;
-            $output .= '<li><a href="'.base_url("dashboard").'" class="hover:text-gray-700 hover:underline"> Home  </a></li>';
+            if (isAdmin()) {
+                $output .= '<li><a href="' . base_url("dashboard") . '" class="hover:text-gray-700 hover:underline"> Home  </a></li>';
+            }
+            if (isUser()) {
+                $output .= '<li><a href="' . base_url("") . '" class="hover:text-gray-700 hover:underline"> Home  </a></li>';
+            }
             $output .= $this->separator;
             foreach ($this->breadcrumbs as $key => $crumb) {
                 if ($key) {
                     $output .= $this->separator;
                 }
-                $lastBreadcrumb=(array_keys($this->breadcrumbs));
+                $lastBreadcrumb = (array_keys($this->breadcrumbs));
                 if (end($lastBreadcrumb) == $key) {
                     $output .= '<li class="text-green-500 font-bold"><span>' . $crumb['title'] . '</span><li>';
                 } else {

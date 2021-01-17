@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html :class="{}" x-data="data()" lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -88,7 +87,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     $("#notif-cart").show();
                 }
             });
-
         });
     </script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_cart.js'; ?>" language="javascript"></script>

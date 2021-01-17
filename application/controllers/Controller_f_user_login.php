@@ -80,6 +80,56 @@ class Controller_f_user_login extends CI_Controller
 		$this->form_validation->set_rules('password', '<strong>Password</strong>', 'required|min_length[7]|max_length[30]');
 		$this->form_validation->set_rules('password_confirm', '<strong>Confirm Password</strong>', 'required|matches[password]');
 		$this->form_validation->set_rules('g-recaptcha-response', '<strong>Captcha</strong> ', 'callback_getResponseCaptcha');
+		$this->form_validation->set_message('required', '{field} is required.');
+		$this->form_validation->set_message('callback_getResponseCaptcha', '{field} {g-recaptcha-response} harus diisi. ');
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('frontend/master_frontend', $data);
+		} else {
+			$email = $this->input->post('email');
+			$password = $this->input->post('password');
+			$newPassword =  password_hash($password, PASSWORD_DEFAULT);
+			$name = $this->input->post('nama');
+			$tlp = $this->input->post('tlp');
+			$alamat = $this->input->post('alamat');
+			$dateNow  = date('Y-m-d H:i:s');
+			$user_regist = array(
+				'email' => $email,
+				'password' => $newPassword,
+				'nama' => $name,
+				'tlp' => $tlp,
+				'alamat' => $alamat,
+				'active' => false,
+				'join_date' => $dateNow,
+				'status_a' => 2,
+				'level' => 'user'
+			);
+			$insert_to_table = $this->model_f_user_login->insert($user_regist);
+			if ($insert_to_table) {
+				$this->load->library('mailer');
+				$subject = 'Hey, Thanks for signing up !';
+				$registration_content = $this->load->view('frontend/mail/mail_content_regist',  array('name' => $name), true);
+				$sendmail = array(
+					'email_receipt' => $email,
+					'subject' => $subject,
+					'registration_content' => $registration_content
+				);
+				$this->mailer->send_registration($sendmail);
+			} 
+			$this->session->set_flashdata('registMsg', 'Success');
+			redirect('login');
+		}
+	}
+
+	public function registrsation()
+	{
+		$data['show_captcha'] = $this->recaptcha->render();
+		$data['title']   = 'Registration - ' . APP_NAME;
+		$data['content'] = 'frontend/form-registration';
+		$this->form_validation->set_error_delimiters('<div class="bg-red-600 w-100 p-2 my-2 text-xs shadow-lg rounded-sm text-white">', '</div>');
+		$this->form_validation->set_rules('email', '<strong>Email</strong>', 'valid_email|required|is_unique[user.email]');
+		$this->form_validation->set_rules('password', '<strong>Password</strong>', 'required|min_length[7]|max_length[30]');
+		$this->form_validation->set_rules('password_confirm', '<strong>Confirm Password</strong>', 'required|matches[password]');
+		$this->form_validation->set_rules('g-recaptcha-response', '<strong>Captcha</strong> ', 'callback_getResponseCaptcha');
 		//set message form validation
 		$this->form_validation->set_message('required', '{field} is required.');
 		$this->form_validation->set_message('callback_getResponseCaptcha', '{field} {g-recaptcha-response} harus diisi. ');

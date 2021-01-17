@@ -28,7 +28,7 @@
                         <td><?= $orderLists['nama']; ?></td>
                         <td>
                             <span class="hidden"> <?= strftime("%d-%M-%Y-%H:%M", strtotime($orderLists['tgl_pnjl'])); ?></span>
-                            <?= strftime("%d-%M-%Y / %H:%M", strtotime($orderLists['tgl_pnjl'])); ?>
+                            <?= strftime("%d-%B-%Y / %H:%M", strtotime($orderLists['tgl_pnjl'])); ?>
                         </td>
                         <td>Rp. <?= number_format($orderLists['total_harga']); ?></td>
                     </tr>

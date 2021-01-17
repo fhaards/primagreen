@@ -28,7 +28,7 @@
                             Order By
                         </span>
                         <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-sm lg:text-xl">
-                            <a class="text-blue-500 underline hover:text-blue-600 " href="<?= base_url().'user/user-detail/'.$getOrderDetail['id_user'];?>"><?=  $getOrderDetail['nama']; ?></a>
+                            <a class="text-blue-500 underline hover:text-blue-600 " href="<?= base_url() . 'user/user-detail/' . $getOrderDetail['id_user']; ?>"><?= $getOrderDetail['nama']; ?></a>
                         </span>
                     </div>
                     <div class="flex flex-col mb-4">
@@ -41,8 +41,14 @@
                     </div>
                 </div>
             </div>
-            <div class="grid bg-white w-48 rounded-lg border border-gray-200 md:w-full p-4">
-                <div class="flex flex-col py-4 lg:py-0 lg:border-none mx-auto">
+            <div class="grid bg-white rounded-lg border border-gray-200 md:w-full p-4">
+                <div class="flex flex-col py-4 lg:py-0 lg:border-none ">
+                    <span class="border-b border-gray-200 py-1 my-1 mb-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs lg:text-sm">
+                        Resi Number
+                    </span>
+                    <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm lg:text-xl">
+                        <?= $getOrderDetail['no_resi']; ?>
+                    </span>
                     <span class="border-b border-gray-200 py-1 my-1 mb-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs lg:text-sm">
                         Bank Transfer
                     </span>
@@ -113,7 +119,7 @@
 
             <!-- SEND TO -->
             <div class="grid gid-cols-2">
-                <div class="grid gap-4 grid-flow-col auto-rows-max overflow-x-scroll" >
+                <div class="grid gap-4 grid-flow-col auto-rows-max overflow-x-scroll">
                     <div class="grid w-48 md:w-full border border-gray-200 rounded-lg p-5 my-5">
                         <div class="border-b border-gray-400 py-4">
                             <span class="text-gray-800 font-bold">Shipments To</span>

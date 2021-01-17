@@ -52,6 +52,28 @@ class Model_order extends CI_Model
 		return $this->db->get();
 	}
 
+	public function getAllOrderByUser_count($iduser)
+	{
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->group_by("no_pemesanan");
+		$this->db->where("pemesanan.id_user", $iduser);
+		return $this->db->get()->num_rows();
+	}
+
+	public function getAllOrderByUser_paging($number, $offset, $iduser)
+	{
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->group_by("no_pemesanan");
+		$this->db->where("pemesanan.id_user", $iduser);
+		$this->db->limit($number, $offset);
+		$this->db->order_by("tgl_pesan", "DESC");
+		return $this->db->get();
+	}
+
 	public function getAllOrderByNoOrder($noOrder)
 	{
 		$this->db->select('*');

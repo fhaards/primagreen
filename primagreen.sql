@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jan 2021 pada 23.02
+-- Waktu pembuatan: 17 Jan 2021 pada 23.28
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -73,11 +73,11 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id_barang`, `nm_barang`, `nm_barang_bot`, `sku`, `size`, `size_desc`, `light`, `id_type`, `harga`, `stok`, `gambar`, `gambar2`, `gambar3`, `detail`, `date_a`, `product_status`) VALUES
 (69, 'Monstera', 'Monstera Deliciosa', '0050PLNTMON114', 'Extra Large', '26\"-32\" tall, 20\"-26\"', 'Medium', 1, 270000, 49, 'beef5231bd07532863b4035566967829.jpg', 'e2cdff198017e28f1fa72c965ea92d69.jpg', 'e7af25fd8df57596c72890001b4d1723.jpg', '<p>When placed in the right environment, Monsteras are easy to care for and fast-growing&mdash;so give it some space to spread out, make a statement, and thrive! As the Monstera grows, its leaves will develop long ribbons and holes, resembling swiss cheese, giving it a distinct, graphic appearance.</p>\r\n<p>This tropical plant originates from the tropical rainforests of southern Mexico and is extremely adaptable to indoor conditions. Monsteras love bright, indirect light, but will be happy under fluorescent lights as well. Monsteras are climbers, so as they grow, they will want to vine out. This impressive, wild plant is also tolerant of the occasional missed watering, making it an ideal addition for any home.</p>', '2020-12-14', '1'),
-(70, 'Bromeliad Aechmea Pink', 'Aechmea fasciata ‘primera’', '0012PLNTBRO281', 'Extra Small', '15\"-20\" tall', 'Low', 1, 80000, 47, 'acb26019bc00703b5e85e6333de263eb.jpg', '60bd29d90875240bd2bcd5e0c3f50e29.jpg', 'default_img.jpg', '<p>Bromeliad Aechmea Pink is a unique, beautiful plant that features colorful, long-lasting blooms. This variety features silver-green leaves and pink blooms. These stunning plants will add a colorful and tropical splash to any space.</p>\r\n<p>Bromeliads are native to Brazil. In their native environments, they typically grow on trees as epiphytes. Because of this, they have minimal roots and absorb most of their nutrients through their foliage.</p>', '2020-12-14', '1'),
+(70, 'Bromeliad Aechmea Pink', 'Aechmea fasciata ‘primera’', '0012PLNTBRO281', 'Extra Small', '15\"-20\" tall', 'Low', 1, 80000, 46, 'acb26019bc00703b5e85e6333de263eb.jpg', '60bd29d90875240bd2bcd5e0c3f50e29.jpg', 'default_img.jpg', '<p>Bromeliad Aechmea Pink is a unique, beautiful plant that features colorful, long-lasting blooms. This variety features silver-green leaves and pink blooms. These stunning plants will add a colorful and tropical splash to any space.</p>\r\n<p>Bromeliads are native to Brazil. In their native environments, they typically grow on trees as epiphytes. Because of this, they have minimal roots and absorb most of their nutrients through their foliage.</p>', '2020-12-14', '1'),
 (71, 'Philodendron Brasil', 'Philodendron ‘brasil’', '0050PLNTPHI176', 'Medium', '10\"-14\" tall', 'Low', 1, 85000, 49, '22d1b63c93ff2852629e6ad4c9d1653f.jpg', '4a98542eb51148fa2b107cd08c3d2298.jpg', 'a1bdfc21d8d5ee19d813e6898920bbb8.jpg', '<p>The Philodendron Brasil is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark green with yellow variegation in the center of the leaf. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Brazil is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
 (72, 'Philodendron Xanadu', 'Philodendron Xanadu', '0065PLNTPHI258', 'Medium', '', 'Medium', 1, 98000, 0, 'e765ae733966f398580dff69955298eb.jpg', '4d36224841bcf07011ceee45e7fd362a.jpg', '4fdce8abc7e7c24b6d99f85a9e0ae664.jpg', '', '2020-12-14', '1'),
 (73, 'Philodendron Heartleaf', 'Philodendron cordatum green', '0052PLNTPHI144', 'Small', '7\"-12\" tall', 'Low', 1, 64998, 49, '205a381fbd698c4a56893a3c6b6370f7.jpg', '57b7aa8779396b9c8d226aa16025dea5.jpg', '8ab8e9852512e276a22e455156345894.jpg', '<p>The Philodendron Heartleaf is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark and glossy green in color but almost look transparent at times. Native to Africa and the Canary Islands, the Heartleaf can be grown as a trailer or climber. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Heartleaf is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
-(74, 'Catnip', 'Nepeta cataria', '0023PLNTCAT114', 'Small', '', 'Medium', 6, 56000, 48, 'cbfb9ad2b1bc528f908a10d708341cb8.jpg', 'a7248b5485c63c55469753dfcc86361b.jpg', 'default_img.jpg', '<p>Catnip is a must-have for any cat owner. It can be given to your cat fresh or dried. Catnip is safe for cats in small amounts, but some cats may have adverse reactions especially in large amounts. If this is the first time you are giving your cat catnip, we suggest asking your vet first or starting with a very small amount.<br />Catnip can successfully be grown indoors in your kitchen or on a sunny windowsill, but can also be grown outdoors on a patio or balcony. It is also well-suited for container gardening.</p>\r\n<p><em>We cannot guarantee specific size specs as these plants are very fast-growing. After arrival, growth speed will vary depending on environmental conditions such as light, temperature, and how often you water and prune.</em></p>', '2020-12-14', '1'),
+(74, 'Catnip', 'Nepeta cataria', '0023PLNTCAT114', 'Small', '', 'Medium', 6, 56000, 47, 'cbfb9ad2b1bc528f908a10d708341cb8.jpg', 'a7248b5485c63c55469753dfcc86361b.jpg', 'default_img.jpg', '<p>Catnip is a must-have for any cat owner. It can be given to your cat fresh or dried. Catnip is safe for cats in small amounts, but some cats may have adverse reactions especially in large amounts. If this is the first time you are giving your cat catnip, we suggest asking your vet first or starting with a very small amount.<br />Catnip can successfully be grown indoors in your kitchen or on a sunny windowsill, but can also be grown outdoors on a patio or balcony. It is also well-suited for container gardening.</p>\r\n<p><em>We cannot guarantee specific size specs as these plants are very fast-growing. After arrival, growth speed will vary depending on environmental conditions such as light, temperature, and how often you water and prune.</em></p>', '2020-12-14', '1'),
 (75, 'Mints', 'Mentha', '0081PLNTMIN247', 'Small', '', 'Bright', 6, 55000, 50, '6a4052efcdef003c649ba7468b0211fe.jpg', '1687e577eff95d43da366aa12ff68f61.jpg', 'c3df2772de0574e3cd9ee444bce86e98.jpg', '<p>Mint is one of the easiest herbs to grow. Mint plants love full sun but will also grow in partial shade. Place it on a sunny windowsill in your home or on your patio, or in your garden in the summer. Use this refreshing herb to add a bit of minty freshness to any dish or cocktail. Perfect for a calming tea.</p>\r\n<p>We cannot guarantee specific size specs because these plants are very quick-growing. After arrival, growth will vary on your plant depending on environmental conditions such as light, temperature, how often you water, and how often you prune.</p>', '2020-12-14', '1'),
 (76, 'Dragon Tree', 'Dracaena \'Song of India\'', '0078PLNTDRA250', 'Small', '6\"', 'Medium', 5, 150000, 46, 'e7ad56ef7777fe3e0e91e3095e820b92.jpg', 'b36be9615594e7a811bf805b6de805db.jpg', 'a17b247511b3df2e4b4ac5a93d4d0038.jpg', '<p>The Dracaena Plant has narrow smooth leaves with a bright yellow color. This hardy plant has yellow and green leaves that make for a great addition to any area. This Dracaena Song of India in a 4-inch pot is great for larger assortments or areas in your home or office near windows. Dracaenas compose of a large group of popular foliage plants. Most grow strongly upright with long variegated leaves with a large array of colors. Dracaenas grow well at average room temperatures and like ample light.</p>', '2020-12-14', '1'),
 (77, 'Zebra Plant', 'Calathea \'Makoyana\'', '0019PLNTZEB129', 'Small', '', 'Medium', 5, 150000, 49, '59f8d2eb751985b62f8d8609269c99f3.jpg', '5d9bd1afa7a89952a3dd6488ca387acf.jpg', '6d379363cccf7876c40417e404113ccb.jpg', '<p>This Calathea Makoyana comes with soft green leaves with uniquely shaped shades. Like all calathea plants, the leaves adjust as the sun rotates throughout the day. Calathea Plants, native to tropical South and Central America, Africa, and the West Indies, are grown primarily for their beautiful, brightly colored, upright, oval leaves.&nbsp;</p>', '2020-12-14', '1');
@@ -140,7 +140,8 @@ CREATE TABLE `faq` (
 --
 
 INSERT INTO `faq` (`id_faq`, `question`, `answer`, `date_add`) VALUES
-(1, 'Is this an online store, an offline store, a warehouse, or an office?', 'We are an online shop and have an offline store. We have a warehouse for stock and office supplies for our Staff and Customer Service. information about our store can be found on our contact page', '2021-01-15 02:36:58');
+(1, 'Is this an online store, an offline store, a warehouse, or an office?', 'We are an online shop and have an offline store. We have a warehouse for stock and office supplies for our Staff and Customer Service. information about our store can be found on our contact page', '2021-01-15 02:36:58'),
+(16, 'When will my order arrive?', 'We take great care in growing, packaging, and shipping your new plants so they’re ready to thrive in your home. This includes keeping them safe while they travel from the greenhouse to your doorstep.\r\n\r\nPlease Note: Due to the precautions we are taking in light of COVID-19 and an increased volume of orders, we are experiencing longer ship times than usual. Your order should ship within 3-4 weeks after being placed.', '2021-01-16 09:04:46');
 
 -- --------------------------------------------------------
 
@@ -263,7 +264,9 @@ CREATE TABLE `pay_con` (
 --
 
 INSERT INTO `pay_con` (`id_pay`, `no_pemesanan`, `ket`, `gambar`) VALUES
-(29, 'PYYX0545128251DJ', 'Done', '9064b9c38d36ec1d601de1a9d68b2c0a.jpg');
+(29, 'PYYX0545128251DJ', 'Done', '9064b9c38d36ec1d601de1a9d68b2c0a.jpg'),
+(30, 'ESCR1847024858KA', 'Done', 'a15873eb0dbfffb5a0e1ed5f27869c17.jpg'),
+(31, 'QJWU1747106240DE', 'Have Done yet', 'b7c54feddf579a04ec91a980e7a9b1d3.jpg');
 
 -- --------------------------------------------------------
 
@@ -295,7 +298,14 @@ INSERT INTO `pemesanan` (`id_pesan`, `id_user`, `id_barang`, `no_pemesanan`, `qt
 (114, 45, 70, 'PYYX0545128251DJ', 1, '', 1, 10000, 151440, '2021-01-05 00:51:56', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'COMPLETE'),
 (115, 45, 74, 'PYYX0545128251DJ', 1, '', 1, 10000, 151440, '2021-01-05 00:51:56', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'COMPLETE'),
 (116, 45, 69, 'USSA0845033921GV', 1, '', 3, 25000, 389000, '2021-01-08 03:21:22', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'ONHOLD'),
-(117, 45, 70, 'USSA0845033921GV', 1, '', 3, 25000, 389000, '2021-01-08 03:21:22', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'ONHOLD');
+(117, 45, 70, 'USSA0845033921GV', 1, '', 3, 25000, 389000, '2021-01-08 03:21:22', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'ONHOLD'),
+(118, 47, 74, 'QJWU1747106240DE', 1, '', 1, 10000, 151440, '2021-01-17 22:40:12', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'PACKING'),
+(119, 47, 70, 'QJWU1747106240DE', 1, '', 1, 10000, 151440, '2021-01-17 22:40:12', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'PACKING'),
+(120, 47, 74, 'ESCR1847024858KA', 1, '', 3, 25000, 166440, '2021-01-18 02:58:48', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
+(121, 47, 70, 'ESCR1847024858KA', 1, '', 3, 25000, 166440, '2021-01-18 02:58:48', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
+(122, 47, 71, 'UADG1847035408NZ', 1, '', 3, 25000, 171640, '2021-01-18 03:08:36', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
+(123, 47, 74, 'UADG1847035408NZ', 1, '', 3, 25000, 171640, '2021-01-18 03:08:36', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
+(124, 47, 69, 'GLNZ1847031909DB', 1, '', 4, 23000, 303800, '2021-01-18 03:09:07', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD');
 
 -- --------------------------------------------------------
 
@@ -326,7 +336,9 @@ CREATE TABLE `penjualan` (
 
 INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `id_barang`, `no_pemesanan`, `qty_pesan`, `p_size`, `id_kurir`, `hrg_kurir`, `no_resi`, `total_harga`, `tgl_pesan`, `tgl_pnjl`, `nama_t`, `alamat_t`) VALUES
 (54, 45, 70, 'PYYX0545128251DJ', 1, '', 1, 10000, '484555842', 151440, '2021-01-05 00:51:56', '2021-01-05 01:07:57', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32'),
-(55, 45, 74, 'PYYX0545128251DJ', 1, '', 1, 10000, '484555842', 151440, '2021-01-05 00:51:56', '2021-01-05 01:07:57', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32');
+(55, 45, 74, 'PYYX0545128251DJ', 1, '', 1, 10000, '484555842', 151440, '2021-01-05 00:51:56', '2021-01-05 01:07:57', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32'),
+(56, 47, 74, 'ESCR1847024858KA', 1, '', 3, 25000, '1854151564123', 166440, '2021-01-18 02:58:48', '2021-01-18 04:21:54', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32'),
+(57, 47, 70, 'ESCR1847024858KA', 1, '', 3, 25000, '1854151564123', 166440, '2021-01-18 02:58:48', '2021-01-18 04:21:54', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32');
 
 -- --------------------------------------------------------
 
@@ -384,7 +396,8 @@ INSERT INTO `products_features_related` (`id_features_related`, `id_barang`, `id
 (46, 77, 8),
 (47, 69, 5),
 (48, 69, 6),
-(49, 69, 8);
+(49, 69, 8),
+(50, 105, 6);
 
 -- --------------------------------------------------------
 
@@ -438,8 +451,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama`, `email`, `tlp`, `alamat`, `username`, `password`, `level`, `status_a`, `join_date`, `code`, `active`) VALUES
 (37, 'Administrator', 'primagreen@admin.com', '', '', 'admin', '$2y$10$dHSX3v3BZRWtz5Tt71ri1e2IWzRyLr0b0hkmxmJU4GbDy7TWDvxRu', 'admin', 2, '0000-00-00 00:00:00', '', 0),
 (38, 'Example', 'user@user.com', '081317352815', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'user', '$2y$10$h4aI4fp3Ou.A0sjnnvuvIOaINRQB8VG2AIcy7g8kDLZA.ytbMjAh6', 'user', 2, '0000-00-00 00:00:00', '', 0),
-(44, '', 'bagol37@gmail.com', '', '', '', '$2y$10$Gk4EKPs/.uiNtuPr9ZGRjexZ0DFPYu6jyVVLCbqzZojyaIEMqa1hi', 'user', 2, '0000-00-00 00:00:00', 'QDY6N1buwK4s', 0),
-(45, 'Muhammad Fahmi', 'm.fahmi37@gmail.com', '081317352815', 'Perumahan Bukit Dago Blok A-9 No. 32', '', '$2y$10$LIQQnvsRDknLwZ/t52cyveLcofXWD4i4weMQVRajBsZXnnXuJXkYW', 'user', 2, '2021-01-04 02:08:56', 'AR6IT1VCQyrx', 0);
+(45, 'Muhammad Fahmi', 'm.fahmi37@gmail.com', '081317352815', 'Perumahan Bukit Dago Blok A-9 No. 32', '', '$2y$10$LIQQnvsRDknLwZ/t52cyveLcofXWD4i4weMQVRajBsZXnnXuJXkYW', 'user', 2, '2021-01-04 02:08:56', 'AR6IT1VCQyrx', 0),
+(47, 'Muhammad Fahmi', 'bagol37@gmail.com', '+6281317352815', 'Perumahan Bukit Dago A-9 No.32', '', '$2y$10$eJFCBT6oLKt.s.QW2TXJLe5ReV4EMoOoAenP8zX5p1Y/3CmM3FB62', 'user', 2, '2021-01-17 22:21:10', '', 0),
+(48, 'Lia Hermawati', 'liahermaw@gmail.com', '+6281318181516', 'Perumahan Bukit dago A-9 No. 32 , Rawakalong Gn. Sindur Bogor', '', '$2y$10$71NMKierpoBzntc/lUF9yOWsnPy4c78VXMRmcQ3dxNMks8lmJ8yum', 'user', 2, '2021-01-17 16:21:10', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -560,7 +574,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_barang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT untuk tabel `cart`
@@ -578,7 +592,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT untuk tabel `faq`
 --
 ALTER TABLE `faq`
-  MODIFY `id_faq` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_faq` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `favorite_products`
@@ -608,19 +622,19 @@ ALTER TABLE `msg_user`
 -- AUTO_INCREMENT untuk tabel `pay_con`
 --
 ALTER TABLE `pay_con`
-  MODIFY `id_pay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_pay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_penjualan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_features`
@@ -632,7 +646,7 @@ ALTER TABLE `products_features`
 -- AUTO_INCREMENT untuk tabel `products_features_related`
 --
 ALTER TABLE `products_features_related`
-  MODIFY `id_features_related` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_features_related` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_type`
@@ -644,7 +658,7 @@ ALTER TABLE `products_type`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
