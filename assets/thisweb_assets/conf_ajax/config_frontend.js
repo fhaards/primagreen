@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var currentScrollPos = window.pageYOffset;
         var headerNav = document.getElementById("header-nav");
 		if(prevScrollpos > 32){
-            headerNav.classList.add('border-b','border-gray-300');
+            headerNav.classList.add('shadow-md');
         } else {
-            headerNav.classList.remove('border-b','border-gray-300');
+            headerNav.classList.remove('shadow-md');
         }
 		prevScrollpos = currentScrollPos;
 	};

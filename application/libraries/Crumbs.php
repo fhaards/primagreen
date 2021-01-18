@@ -6,7 +6,7 @@ class Crumbs
 {
     private $breadcrumbs = array();
     private $separator = ' &nbsp; / &nbsp; ';
-    private $start = '<ol id="breadcrumb" class="breadcrumb flex flex-row text-xs font-semibold text-gray-500 space-x-2">';
+    private $start = '<ol id="breadcrumb" class="breadcrumb flex flex-row text-xs font-semibold text-gray-500 space-x-2 bg-gray-100 rounded-md p-2 border border-gray-300">';
     private $end = '</ol>';
 
     public function __construct($params = array())

@@ -8,7 +8,7 @@
       </svg>
     </button>
 
-    <div class="flex-1">
+    <div class="flex-1 mr-10">
       <div class="md:block hidden">
         <?= $breadcrumb; ?>
       </div>

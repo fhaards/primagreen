@@ -1,4 +1,4 @@
-<div id="show-cart" class="flex border-l border-gray-300 show-cart z-40 fixed right-0 h-full lg:w-1/4 w-full bg-white focus:outline-none active:outline-none" aria-label="submenu">
+<div id="show-cart" class="flex flex-col border-l border-gray-300 show-cart z-40 fixed right-0 h-full lg:w-1/4 w-full bg-white focus:outline-none active:outline-none shadow-lg" aria-label="submenu">
     <div class="container mx-auto px-6">
         <div class="flex flex-row w-full py-4 mt-2">
             <div class="flex-1">
@@ -10,16 +10,19 @@
                 <button class="close-cart uppercase tracking-wide font-bold text-gray-700 text-xl px-2 hover:text-green-500"> X </button>
             </div>
         </div>
+    </div>
 
+    <div>
         <div class="w-full">
             <div class="flex flex-col">
-                <div id="detail_cart"></div>
+                <div id="detail_cart" class=""></div>
             </div>
-            <!-- <table class="w-full" style="max-height:400px;">
+        </div>
+        <!-- <table class="w-full" style="max-height:400px;">
                 <tbody id="detail_cart">
                 </tbody>
             </table> -->
-        </div>
+
 
         <!-- <div class="mt-4 w-full">
         <div class="w-4/5 mx-auto container">
@@ -30,7 +33,7 @@
         </div>
     </div> -->
 
-        <div class="flex flex-col mt-5">
+        <div class="flex flex-col mt-5 px-6">
             <?php if (isLoggedIn()) : ?>
                 <div class="flex">
                     <p class="text-xs text-gray-600 justify-between">

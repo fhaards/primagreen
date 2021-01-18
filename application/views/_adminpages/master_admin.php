@@ -25,7 +25,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 </head>
 
-<body>
+<body class="scrollbar-none">
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
         <?php $this->load->view('_partials/content_alert'); ?>
         <!-- sidebar -->

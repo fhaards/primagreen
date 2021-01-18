@@ -26,13 +26,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert_1/sweetalert.min.js'; ?>" language="javascript"></script>
 </head>
 
-<body>
-    <div class="flex h-screen bg-white" :class="{ 'overflow-hidden': isSideMenuOpen }">
+<body class="scrollbar-none">
+    <div class="flex h-screen bg-white " :class="{ 'overflow-hidden': isSideMenuOpen }">
         <?php $this->load->view('_partials/content_alert'); ?>
         <!-- Backdrop -->
         <?php $this->load->view('_partials/_user_part/user_backdrop'); ?>
         <!-- Main -->
-        <div class="flex flex-col flex-1 w-full">
+        <div class="flex flex-col flex-1 w-full ">
             <!-- Header & Cart Menu -->
             <?php $this->load->view('_partials/_user_part/user_header'); ?>
             <?php $this->load->view('frontend/cart/show_cart'); ?>

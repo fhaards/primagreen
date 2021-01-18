@@ -1,5 +1,7 @@
 <div class="container px-6 py-3  mx-auto grid min-h-screen">
     <section class="w-full mx-auto mt-20 md:mt-20">
+
+
         <?php echo $breadcrumb; ?>
 
         <div class="grid gid-cols-3 mt-5">
@@ -153,17 +155,19 @@
             <div class="mt-4 w-full">
                 <table class="w-full table-auto text-xs md:text-base">
                     <?php
-                    $classTr = 'p-2 border border-gray-300 ';
+                    $classTr = 'p-2 border border-gray-700 ';
                     ?>
                     <thead>
                         <tr>
-                            <th colspan="4" class="text-gray-600 bg-gray-100 border border-gray-300 p-2">Items</th>
+                            <th colspan="4" class="p-2 bg-gray-700 my-5">
+                                <span class="tracking-widest font-black text-white">ITEMS</span>
+                            </th>
                         </tr>
-                        <tr class="bg-gray-100">
-                            <th class="<?= $classTr; ?>">Name</th>
-                            <th class="<?= $classTr; ?>">Qty</th>
-                            <th class="<?= $classTr; ?>">Price</th>
-                            <th class="<?= $classTr; ?>">Subtotal Items</th>
+                        <tr class="bg-gray-600">
+                            <th class="<?= $classTr; ?> text-white">Name</th>
+                            <th class="<?= $classTr; ?> text-white">Qty</th>
+                            <th class="<?= $classTr; ?> text-white">Price</th>
+                            <th class="<?= $classTr; ?> text-white">Subtotal Items</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -193,14 +197,11 @@
             </div>
 
             <div class="mt-4 w-full text-xs md:text-base">
-                <table class="w-full table-auto text-xs md:text-base">
-                    <thead>
-                        <tr>
-                            <th colspan="4" class="text-gray-600 bg-gray-100 border border-gray-300 p-2">Shipments</th>
-                        </tr>
-                    </thead>
-                </table>
-
+                <div class="flex w-full mt-6">
+                    <div class="flex w-full items-center p-2 bg-gray-700  rounded-md">
+                        <div class="mx-auto tracking-widest font-black text-white">SHIPMENTS</div>
+                    </div>
+                </div>
                 <div class="flex w-full md:flex-row md:space-x-5 flex-col">
                     <!-- SEND TO -->
                     <div class="flex-1 w-full border border-gray-200  rounded-lg p-5 my-5">

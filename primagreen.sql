@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jan 2021 pada 18.04
+-- Waktu pembuatan: 19 Jan 2021 pada 00.21
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -41,21 +41,6 @@ CREATE TABLE `banner` (
 
 INSERT INTO `banner` (`id_banner`, `main_banner`, `login_banner`, `regist_banner`, `contactus_banner`) VALUES
 (11, 'da3c3b0aaea2e040219e26b031089f87.jpg', '1c54bf519f6104005f5a9db7e358db00.jpg', 'd74371c9bdbd8d7a265c1ceabce86fae.jpg', '78dbed9a22bc3b20a26f513fcc94566c.jpg');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `cart`
---
-
-CREATE TABLE `cart` (
-  `id_cart` int(10) NOT NULL,
-  `id_user` int(10) NOT NULL,
-  `id_barang` int(10) NOT NULL,
-  `qty_pesan` int(2) NOT NULL,
-  `id_kurir` int(10) NOT NULL,
-  `total_harga` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -443,12 +428,6 @@ ALTER TABLE `banner`
   ADD PRIMARY KEY (`id_banner`);
 
 --
--- Indeks untuk tabel `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id_cart`);
-
---
 -- Indeks untuk tabel `company`
 --
 ALTER TABLE `company`
@@ -546,12 +525,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `banner`
   MODIFY `id_banner` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT untuk tabel `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id_cart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT untuk tabel `company`

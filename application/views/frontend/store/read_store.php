@@ -1,6 +1,6 @@
 <!-- STORE ITEMS -->
-<div class="container px-6 py-3  mx-auto grid min-h-screen">
-    <section class="w-full mx-auto mt-20 lg:mt-32 bg-white">
+<div class="container px-6 py-3 mx-auto grid min-h-screen">
+    <section class="w-full mx-auto mt-24 bg-white">
         <div class="flex flex-col w-full">
 
             <!-- FILTER  -->
@@ -86,8 +86,8 @@
 
                     </ul>
                 </div>
-                <div class="store_items flex-1">
-                    <div id="filter_data" class="filter_data grid grid-cols-2 md:grid-cols-4 gap-6 w-full"> </div>
+                <div class="store_items flex-1 mt-5 md:mt-0">
+                    <div id="filter_data" class="filter_data grid grid-cols-2 md:grid-cols-4 gap-5 w-full scrollbar-none"> </div>
                     <div class="store-pagination mt-8">
                         <div id="pagination_link"></div>
                     </div>

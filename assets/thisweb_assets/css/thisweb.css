@@ -41,24 +41,26 @@ body {
 	font-weight: 400;
 	height: 100%;
 	width: 100%;
+	
 }
 
 ::-webkit-scrollbar {
 	width: 0.25rem;
 	height: 0.25rem;
-	display: none;
 }
 
 ::-webkit-scrollbar-track {
-	background-color: #F3F4F6;
+	background-color: #f3f4f6;
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #D1D5DB;
+	background-color: #d1d5db;
 	border-radius: 0.25rem;
 }
 
-
+.scrollbar-none::-webkit-scrollbar {
+	display:none;
+}
 /* ::-webkit-scrollbar {
 	width: 0px;
 	background: transparent;
@@ -106,6 +108,34 @@ form label {
 .page-title {
 	font-family: "DM Serif Text", serif;
 }
+
+/* Homepage Content */
+.cat-img-1 {
+	height: 20rem;
+	background: url(../../../uploads/category_image/category_image_1.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+.cat-img-2 {
+	height: 20rem;
+	background: url(../../../uploads/category_image/category_image_2.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+.cat-img-3 {
+	height: 20rem;
+	background: url(../../../uploads/category_image/category_image_3.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+
 
 /* ABOUT US */
 .about-1-banner {

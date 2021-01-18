@@ -1,4 +1,4 @@
-<header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto">
+<header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto border-b-2 border-gray-300">
   <div class="container flex items-center justify-between h-full mx-auto px-6">
     <!-- Mobile hamburger -->
     <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu" aria-label="Menu">
@@ -10,8 +10,8 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "py-1 px-4 uppercase bg-gray-200 tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-gray-100 mx-auto rounded-xs";
-    $inactiveside = "py-1 px-4 uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-gray-200 mx-auto rounded-xs focus:bg-gray-200";
+    $activeside = "py-1 px-4 uppercase bg-gray-200 tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-gray-100 mx-auto rounded-md";
+    $inactiveside = "py-1 px-4 uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-gray-200 mx-auto rounded-md focus:bg-gray-200";
     ?>
 
     <!-- Logo -->
@@ -25,7 +25,7 @@
 
     <!-- Desktop Menu -->
     <div class="hidden md:block items-center ">
-      <div class="mx-auto focus-within:text-green-500 flex flex-row space-x-8">
+      <div class="mx-auto focus-within:text-green-500 flex flex-row space-x-2">
         <!-- <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()"> -->
         <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger">
           Store
@@ -37,7 +37,7 @@
     </div>
 
     <div class="flex-1 items-center py-2">
-      <ul class="flex flex-row-reverse ">
+      <ul class="flex flex-row-reverse">
 
 
         <li class="relative">
@@ -81,13 +81,15 @@
           </template>
         </li>
 
-        <li class="relative">
+        <li id="cart_icons" class="relative  mr-2">
           <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
             <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
             <!-- -mt-5 right-10 -->
-            <span id="notif-cart" class="absolute -mt-5 right-6 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-green-600 border-2 border-white rounded-full"></span>
+            <div id="notif-cart">
+              <span class="absolute w-3 h-3 -mt-6 ml-1 bg-green-600 border-2 border-white rounded-full"></span>
+            </div>
           </button>
         </li>
       </ul>

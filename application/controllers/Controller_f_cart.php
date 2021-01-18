@@ -48,17 +48,17 @@ class Controller_f_cart extends CI_Controller
         if ($countCartRow == 0) {
             $output .= '<div class="bg-gray-300 p-10 w-full rounded-lg items-center flex"><div class="mx-auto text-sm font-bold"> Ops, Cart is empty. </div></div>';
         } else {
-            $output .= '<div class="list-cart overflow-y-scroll">';
+            $output .= '<div class="list-cart overflow-y-scroll px-6">';
             foreach ($this->cart->contents() as $items) {
                 $no++;
                 $output .= '
                 <input hidden type="text" value="' . $items['id'] . '" name="id_barang[]">
                 <input hidden type="text" value="' . $items['qty'] . '" name="qty[]">
-                        <div class="grid grid-cols-4 w-full border border-gray-500 my-3">
-                            <div class="grid grid-cols-1 col-span-1">
-                                <img class="object-cover w-20 h-full opacity-75" src="' . base_url() . 'uploads/product/' .  $items['sku'] . '/' . $items['gambar'] . '">
+                        <div class="grid grid-cols-4 w-full border border-gray-300 mb-3 rounded-md bg-white">
+                            <div class="grid grid-cols-1 col-span-1 p-2 ">
+                                <img class="object-cover w-20 h-full opacity-75 rounded-sm" src="' . base_url() . 'uploads/product/' .  $items['sku'] . '/' . $items['gambar'] . '">
                             </div>
-                            <div class="grid grid-cols-1 col-span-3 px-2 py-2">    
+                            <div class="grid grid-cols-1 col-span-3 px-2 py-2 md:text-base text-xs">    
                                 <div class="grid grid-cols-2 gap-4">
                                     <div class=""><span class="font-bold text-gray-800">' . $items['name'] . '</span></div>
                                     <div class="text-right">Rp <span class="font-bold text-gray-800">' . number_format($items['price']) . '</span></div>
@@ -77,7 +77,7 @@ class Controller_f_cart extends CI_Controller
                     ';
             }
             $output .= '</div>';
-            $output .= '<div class="flex flex-row space-x-8 border-t border-gray-500">
+            $output .= '<div class="flex flex-row space-x-8 px-6 bg-gray-100">
                             <div class="flex-1 text-gray-600 font-semibold py-4">
                                 <input type="number" id="cekrowcart" name="count_row" class="cekrowcart hidden" value="' . $countCartRow . '">
                                 Subtotal
