@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jan 2021 pada 23.28
+-- Waktu pembuatan: 18 Jan 2021 pada 17.01
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -280,7 +280,6 @@ CREATE TABLE `pemesanan` (
   `id_barang` int(10) NOT NULL,
   `no_pemesanan` varchar(50) NOT NULL,
   `qty_pesan` int(2) NOT NULL,
-  `p_size` text NOT NULL,
   `id_kurir` int(10) NOT NULL,
   `hrg_kurir` int(10) NOT NULL,
   `total_harga` int(15) NOT NULL,
@@ -294,18 +293,18 @@ CREATE TABLE `pemesanan` (
 -- Dumping data untuk tabel `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`id_pesan`, `id_user`, `id_barang`, `no_pemesanan`, `qty_pesan`, `p_size`, `id_kurir`, `hrg_kurir`, `total_harga`, `tgl_pesan`, `nama_t`, `alamat_t`, `status`) VALUES
-(114, 45, 70, 'PYYX0545128251DJ', 1, '', 1, 10000, 151440, '2021-01-05 00:51:56', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'COMPLETE'),
-(115, 45, 74, 'PYYX0545128251DJ', 1, '', 1, 10000, 151440, '2021-01-05 00:51:56', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'COMPLETE'),
-(116, 45, 69, 'USSA0845033921GV', 1, '', 3, 25000, 389000, '2021-01-08 03:21:22', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'ONHOLD'),
-(117, 45, 70, 'USSA0845033921GV', 1, '', 3, 25000, 389000, '2021-01-08 03:21:22', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'ONHOLD'),
-(118, 47, 74, 'QJWU1747106240DE', 1, '', 1, 10000, 151440, '2021-01-17 22:40:12', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'PACKING'),
-(119, 47, 70, 'QJWU1747106240DE', 1, '', 1, 10000, 151440, '2021-01-17 22:40:12', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'PACKING'),
-(120, 47, 74, 'ESCR1847024858KA', 1, '', 3, 25000, 166440, '2021-01-18 02:58:48', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
-(121, 47, 70, 'ESCR1847024858KA', 1, '', 3, 25000, 166440, '2021-01-18 02:58:48', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
-(122, 47, 71, 'UADG1847035408NZ', 1, '', 3, 25000, 171640, '2021-01-18 03:08:36', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
-(123, 47, 74, 'UADG1847035408NZ', 1, '', 3, 25000, 171640, '2021-01-18 03:08:36', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
-(124, 47, 69, 'GLNZ1847031909DB', 1, '', 4, 23000, 303800, '2021-01-18 03:09:07', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD');
+INSERT INTO `pemesanan` (`id_pesan`, `id_user`, `id_barang`, `no_pemesanan`, `qty_pesan`, `id_kurir`, `hrg_kurir`, `total_harga`, `tgl_pesan`, `nama_t`, `alamat_t`, `status`) VALUES
+(114, 45, 70, 'PYYX0545128251DJ', 1, 1, 10000, 151440, '2021-01-05 00:51:56', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'COMPLETE'),
+(115, 45, 74, 'PYYX0545128251DJ', 1, 1, 10000, 151440, '2021-01-05 00:51:56', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'COMPLETE'),
+(116, 45, 69, 'USSA0845033921GV', 1, 3, 25000, 389000, '2021-01-08 03:21:22', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'ONHOLD'),
+(117, 45, 70, 'USSA0845033921GV', 1, 3, 25000, 389000, '2021-01-08 03:21:22', 'Muhammad Fahmi', 'Perumahan Bukit Dago Blok A-9 No. 32', 'ONHOLD'),
+(118, 47, 74, 'QJWU1747106240DE', 1, 1, 10000, 151440, '2021-01-17 22:40:12', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'PACKING'),
+(119, 47, 70, 'QJWU1747106240DE', 1, 1, 10000, 151440, '2021-01-17 22:40:12', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'PACKING'),
+(120, 47, 74, 'ESCR1847024858KA', 1, 3, 25000, 166440, '2021-01-18 02:58:48', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
+(121, 47, 70, 'ESCR1847024858KA', 1, 3, 25000, 166440, '2021-01-18 02:58:48', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
+(122, 47, 71, 'UADG1847035408NZ', 1, 3, 25000, 171640, '2021-01-18 03:08:36', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
+(123, 47, 74, 'UADG1847035408NZ', 1, 3, 25000, 171640, '2021-01-18 03:08:36', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
+(124, 47, 69, 'GLNZ1847031909DB', 1, 4, 23000, 303800, '2021-01-18 03:09:07', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD');
 
 -- --------------------------------------------------------
 

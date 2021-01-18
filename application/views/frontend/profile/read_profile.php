@@ -1,5 +1,5 @@
-<div class="container px-6 py-3 mx-auto grid min-h-screen">
-    <div class="w-full mx-auto mt-20">
+<div class="container px-6 py-3 mx-auto grid overflow-y-auto h-full" style="max-height:600px;">
+    <div class="w-full mx-auto mt-20   md:mt-32">
         <div class="container flex flex-row md:space-x-10">
 
             <div class="flex flex-col w-1/5 mr-5 md:block hidden">

@@ -49,7 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- Modal -->
     <?php
     if (isLoggedIn()) {
-        $this->load->view('_partials/modals');
+        $this->load->view('_partials/_user_part/user_modals');
     }
     ?>
     <!-- Load JQ -->
