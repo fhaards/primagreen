@@ -13,8 +13,8 @@ class Model_sold extends CI_Model
 	public function getAllSold()
 	{
 		$this->db->select('*');
-		$this->db->from('penjualan');
-		$this->db->join('user', 'user.id_user=penjualan.id_user', 'inner');
+		$this->db->from('order_sold');
+		$this->db->join('user', 'user.id_user=order_sold.id_user', 'inner');
 		$this->db->group_by("no_pemesanan");
 		return $this->db->get();
 	}
@@ -22,22 +22,22 @@ class Model_sold extends CI_Model
 	public function getAllSoldByNoOrder($noOrder)
 	{
 		$this->db->select('*');
-		$this->db->from('penjualan');
-		$this->db->join('user', 'user.id_user=penjualan.id_user', 'inner');
-		$this->db->join('barang', 'barang.id_barang=penjualan.id_barang', 'inner');
-		$this->db->where("penjualan.no_pemesanan", $noOrder);
+		$this->db->from('order_sold');
+		$this->db->join('user', 'user.id_user=order_sold.id_user', 'inner');
+		$this->db->join('products', 'products.id_barang=order_sold.id_barang', 'inner');
+		$this->db->where("order_sold.no_pemesanan", $noOrder);
 		return $this->db->get();
 	}
 
 	public function getAllSoldByNoOrder_GroupBy($noOrder)
 	{
 		$this->db->select('*');
-		$this->db->from('penjualan');
-		$this->db->join('user', 'user.id_user=penjualan.id_user', 'inner');
-		$this->db->join('barang', 'barang.id_barang=penjualan.id_barang', 'inner');
-		$this->db->join('kurir', 'kurir.id_kurir=penjualan.id_kurir', 'inner');
+		$this->db->from('order_sold');
+		$this->db->join('user', 'user.id_user=order_sold.id_user', 'inner');
+		$this->db->join('products', 'products.id_barang=order_sold.id_barang', 'inner');
+		$this->db->join('kurir', 'kurir.id_kurir=order_sold.id_kurir', 'inner');
 		$this->db->group_by("no_pemesanan");
-		$this->db->where("penjualan.no_pemesanan", $noOrder);
+		$this->db->where("order_sold.no_pemesanan", $noOrder);
 		return $this->db->get();
 	}
 }

@@ -23,8 +23,8 @@ class Controller_f_store extends CI_Controller
     }
     public function index()
     {
-        $data['type_data'] = $this->model_f_store->fetch_filter_type('barang.id_type,nm_type');
-        $data['size_data'] = $this->model_f_store->fetch_filter_type('barang.size');
+        $data['type_data'] = $this->model_f_store->fetch_filter_type('products.id_type,nm_type');
+        $data['size_data'] = $this->model_f_store->fetch_filter_type('products.size');
         $data['title']   = 'Show All Items - ' . APP_NAME;
         $data['content'] = 'frontend/store/read_store';
         $this->load->view('frontend/master_frontend', $data);
@@ -32,7 +32,6 @@ class Controller_f_store extends CI_Controller
 
     function fetch_data()
     {
-
         sleep(1);
         $type = $this->input->post('type');
         $size = $this->input->post('size');

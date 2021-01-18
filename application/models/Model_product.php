@@ -13,7 +13,7 @@ class Model_product extends CI_Model
 	public function read_tb_product()
 	{
 		$this->db->select('*');
-		$this->db->from('barang');
+		$this->db->from('products');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -21,8 +21,8 @@ class Model_product extends CI_Model
 	public function getAllProducts()
 	{
 		$this->db->select('*');
-		$this->db->from('barang');
-		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
+		$this->db->from('products');
+		$this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -30,73 +30,20 @@ class Model_product extends CI_Model
 	public function getAllProductsByIdType($type)
 	{
 		$this->db->select('*');
-		$this->db->from('barang');
-		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
-		$this->db->where('barang.id_type', $type);
+		$this->db->from('products');
+		$this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
+		$this->db->where('products.id_type', $type);
 		$query = $this->db->get();
 		return $query->result_array();
 	}
 
-	// function fetchFilterType()
-	// {
-	// 	$this->db->distinct();
-	// 	$this->db->select('*');
-	// 	$this->db->from('barang');
-	// 	$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
-	// 	$this->db->where('product_status', '1');
-	// 	return $this->db->get();
-	// }
-
-	// function makeQuery($type)
-	// {
-	// 	$query = "SELECT * FROM barang INNER JOIN products_type on products_type.id_type=barang.id_type WHERE product_status = '1' ";
-	// 	if (isset($type)) {
-	// 		$type_filter = implode("','", $type);
-	// 		$query .= " AND barang.id_type IN('" . $type_filter . "')";
-	// 	}
-	// 	return $query;
-	// }
-
-	// function countAll($type)
-	// {
-	// 	$query = $this->makeQuery($type);
-	// 	$data = $this->db->query($query);
-	// 	return $data->num_rows();
-	// }
-
-	// function fetchData($type)
-	// {
-	// 	$query = $this->makeQuery($type);
-	// 	$data = $this->db->query($query);
-	// 	$output = '';
-	// 	if ($data->num_rows() > 0) {
-	// 		foreach ($data->result_array() as $row) {
-	// 			$output .= '
-	// 			<tr>
-	// 				<td>'.$row['nm_barang'].'</td>
-	// 			</tr>';
-	// 		}
-	// 	} else {
-	// 		$output = 
-	// 			'<tr>
-	// 				<td colspan="10">
-	// 					<h3 class="text-gray-600 font-semibold mx-auto"> Ooops , Data Not Found </h3>
-	// 					<p class="text-gray-600 mx-auto text-sm"> Please select any filter to found new one </p>
-	// 				</td>
-	// 			</tr>';
-	// 	}
-	// 	return $output;
-	// }
-
-
 
 	public function getAllProductsByType($nmType)
 	{
-
 		$newNmType = strtolower(str_replace('-', ' ', $nmType));
 		$this->db->select('*');
-		$this->db->from('barang');
-		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
+		$this->db->from('products');
+		$this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
 		$this->db->where('nm_type', $newNmType);
 		$query = $this->db->get();
 		return $query->result_array();
@@ -105,8 +52,8 @@ class Model_product extends CI_Model
 	public function detailProducts($id)
 	{
 		$this->db->select('*');
-		$this->db->from('barang');
-		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
+		$this->db->from('products');
+		$this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
 		$this->db->where('id_barang', $id);
 		$query = $this->db->get();
 		return $query->row_array();
@@ -114,7 +61,7 @@ class Model_product extends CI_Model
 
 	public function insert_product($data, $getSkuCode, $features)
 	{
-		$this->db->insert('barang', $data);
+		$this->db->insert('products', $data);
 		$getIdBarang = $this->db->insert_id();
 		$getNewSku = $getSkuCode;
 		if ($this->db->affected_rows() > 0) {
@@ -123,7 +70,7 @@ class Model_product extends CI_Model
 			);
 
 			$this->db->where('id_barang', $getIdBarang);
-			$this->db->update('barang', $dataSku);
+			$this->db->update('products', $dataSku);
 
 			$data2 = array();
 			foreach ($features as  $key => $value) {
@@ -141,7 +88,7 @@ class Model_product extends CI_Model
 
 	public function edt_product($id)
 	{
-		$query = $this->db->get_where('barang', array('id_barang' => $id));
+		$query = $this->db->get_where('products', array('id_barang' => $id));
 		return $query->row_array();
 	}
 
@@ -160,7 +107,7 @@ class Model_product extends CI_Model
 	public function edt_product_todb($id, $getData, $features)
 	{
 		$this->db->where('id_barang', $id);
-		$this->db->update('barang', $getData);
+		$this->db->update('products', $getData);
 
 		$this->db->delete('products_features_related', array('id_barang' => $id));
 		if ($this->db->affected_rows() > 0) {
@@ -179,7 +126,7 @@ class Model_product extends CI_Model
 	public function edt_productImage_todb($id, $data)
 	{
 		$this->db->where('id_barang', $id);
-		$this->db->update('barang', $data);
+		$this->db->update('products', $data);
 	}
 
 	// DELETING SPECIFIC IMAGE
@@ -188,7 +135,7 @@ class Model_product extends CI_Model
 	{
 
 		$this->db->select('sku,gambar');
-		$this->db->from('barang');
+		$this->db->from('products');
 		$this->db->where('id_barang', $id);
 		$query = $this->db->get();
 
@@ -199,13 +146,13 @@ class Model_product extends CI_Model
 			unlink($uploadPath . '/' . $getImage);
 		}
 		$this->db->where('id_barang', $id);
-		$this->db->update('barang', $data);
+		$this->db->update('products', $data);
 		return true;
 	}
 	public function edtProductImageSpecific2($id, $data)
 	{
 		$this->db->select('sku,gambar2');
-		$this->db->from('barang');
+		$this->db->from('products');
 		$this->db->where('id_barang', $id);
 		$query = $this->db->get();
 
@@ -216,13 +163,13 @@ class Model_product extends CI_Model
 			unlink($uploadPath . '/' . $getImage);
 		}
 		$this->db->where('id_barang', $id);
-		$this->db->update('barang', $data);
+		$this->db->update('products', $data);
 		return true;
 	}
 	public function edtProductImageSpecific3($id, $data)
 	{
 		$this->db->select('sku,gambar3');
-		$this->db->from('barang');
+		$this->db->from('products');
 		$this->db->where('id_barang', $id);
 		$query = $this->db->get();
 
@@ -233,7 +180,7 @@ class Model_product extends CI_Model
 			unlink($uploadPath . '/' . $getImage);
 		}
 		$this->db->where('id_barang', $id);
-		$this->db->update('barang', $data);
+		$this->db->update('products', $data);
 		return true;
 	}
 
@@ -242,27 +189,6 @@ class Model_product extends CI_Model
 	public function editProductStock($id, $data)
 	{
 		$this->db->where('id_barang', $id);
-		$this->db->update('barang', $data);
+		$this->db->update('products', $data);
 	}
 }
-
-	// public function insert_product($data){	
-		
-	// 	//GETPOST
-	// 	$nm_product   	= $this->input->post('nm_product');
-	// 	$stock   	  	= $this->input->post('stock');
-	// 	$detail_info   	= $this->input->post('detail_info');
-	// 	$category       = $this->input->post('category');
-	// 	$price       	= $this->input->post('price');
-
-	// 	$data = array(
-	// 		'nm_barang'=>$nm_product,
-	// 		'kat'=>$category,
-	// 		'harga'=>$price,
-	// 		'stok'=>$stock,
-	// 		'detail'=>$detail_info
-	// 	);
-
-	//     $this->db->insert('barang',$data);
-	//     return true;
-	// }

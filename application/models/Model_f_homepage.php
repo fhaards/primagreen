@@ -13,7 +13,7 @@ class Model_f_homepage extends CI_Model
 	public function getNewItems()
 	{
 		$this->db->select('*');
-		$this->db->from('barang');
+		$this->db->from('products');
 		$this->db->order_by("date_a", "desc");
 		$this->db->limit(4);
 		$query = $this->db->get();
@@ -22,7 +22,7 @@ class Model_f_homepage extends CI_Model
 	public function getSomeItems()
 	{
 		$this->db->select('*');
-		$this->db->from('barang');
+		$this->db->from('products');
 		$this->db->order_by("harga", "asc");
 		$this->db->limit(8);
 		$query = $this->db->get();

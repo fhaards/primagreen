@@ -194,7 +194,7 @@ class Controller_f_cart extends CI_Controller
             );
         }
 
-        $this->db->insert_batch('pemesanan', $data);
+        $this->db->insert_batch('order', $data);
         $this->session->set_flashdata('SuccessCheckout', 'Data berhasil ditambahkan');
         $this->cart->destroy();
         redirect('cart/checkout-finish/' . $setNoPemesanan);

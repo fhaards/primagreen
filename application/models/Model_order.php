@@ -13,7 +13,7 @@ class Model_order extends CI_Model
 	public function getAllOrder()
 	{
 		$this->db->select('*');
-		$this->db->from('pemesanan');
+		$this->db->from('order');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -21,10 +21,10 @@ class Model_order extends CI_Model
 	public function getAllOrderByStatus($status)
 	{
 		$this->db->select('*');
-		$this->db->from('pemesanan');
-		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->from('order');
+		$this->db->join('user', 'user.id_user=order.id_user', 'inner');
 		$this->db->group_by("no_pemesanan");
-		$this->db->where("pemesanan.status", $status);
+		$this->db->where("order.status", $status);
 		$this->db->order_by("tgl_pesan", "ASC");
 		$query = $this->db->get();
 		return $query->result_array();
@@ -33,8 +33,8 @@ class Model_order extends CI_Model
 	public function getAllOrderGroupBy()
 	{
 		$this->db->select('*');
-		$this->db->from('pemesanan');
-		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->from('order');
+		$this->db->join('user', 'user.id_user=order.id_user', 'inner');
 		$this->db->group_by("no_pemesanan");
 		$query = $this->db->get();
 		return $query->result_array();
@@ -43,11 +43,11 @@ class Model_order extends CI_Model
 	public function getAllOrderByUser($iduser)
 	{
 		$this->db->select('*');
-		$this->db->from('pemesanan');
-		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
-		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
+		$this->db->from('order');
+		$this->db->join('user', 'user.id_user=order.id_user', 'inner');
+		$this->db->join('kurir', 'kurir.id_kurir=order.id_kurir', 'inner');
 		$this->db->group_by("no_pemesanan");
-		$this->db->where("pemesanan.id_user", $iduser);
+		$this->db->where("order.id_user", $iduser);
 		$this->db->order_by("tgl_pesan", "ASC");
 		return $this->db->get();
 	}
@@ -55,20 +55,20 @@ class Model_order extends CI_Model
 	public function getAllOrderByUser_count($iduser)
 	{
 		$this->db->select('*');
-		$this->db->from('pemesanan');
-		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->from('order');
+		$this->db->join('user', 'user.id_user=order.id_user', 'inner');
 		$this->db->group_by("no_pemesanan");
-		$this->db->where("pemesanan.id_user", $iduser);
+		$this->db->where("order.id_user", $iduser);
 		return $this->db->get()->num_rows();
 	}
 
 	public function getAllOrderByUser_paging($number, $offset, $iduser)
 	{
 		$this->db->select('*');
-		$this->db->from('pemesanan');
-		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
+		$this->db->from('order');
+		$this->db->join('user', 'user.id_user=order.id_user', 'inner');
 		$this->db->group_by("no_pemesanan");
-		$this->db->where("pemesanan.id_user", $iduser);
+		$this->db->where("order.id_user", $iduser);
 		$this->db->limit($number, $offset);
 		$this->db->order_by("tgl_pesan", "DESC");
 		return $this->db->get();
@@ -77,34 +77,34 @@ class Model_order extends CI_Model
 	public function getAllOrderByNoOrder($noOrder)
 	{
 		$this->db->select('*');
-		$this->db->from('pemesanan');
-		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
-		$this->db->join('barang', 'barang.id_barang=pemesanan.id_barang', 'inner');
-		$this->db->where("pemesanan.no_pemesanan", $noOrder);
+		$this->db->from('order');
+		$this->db->join('user', 'user.id_user=order.id_user', 'inner');
+		$this->db->join('products', 'products.id_barang=order.id_barang', 'inner');
+		$this->db->where("order.no_pemesanan", $noOrder);
 		return $this->db->get();
 	}
 
 	public function getAllOrderByNoOrder_GroupBy($noOrder)
 	{
 		$this->db->select('*');
-		$this->db->from('pemesanan');
-		$this->db->join('user', 'user.id_user=pemesanan.id_user', 'inner');
-		$this->db->join('barang', 'barang.id_barang=pemesanan.id_barang', 'inner');
-		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
+		$this->db->from('order');
+		$this->db->join('user', 'user.id_user=order.id_user', 'inner');
+		$this->db->join('products', 'products.id_barang=order.id_barang', 'inner');
+		$this->db->join('kurir', 'kurir.id_kurir=order.id_kurir', 'inner');
 		$this->db->group_by("no_pemesanan");
-		$this->db->where("pemesanan.no_pemesanan", $noOrder);
+		$this->db->where("order.no_pemesanan", $noOrder);
 		return $this->db->get();
 	}
 
 	public function getAllOrderByMonthYear($month, $year)
 	{
-		$this->db->select('no_pemesanan,tgl_pesan,pemesanan.total_harga,status,pemesanan.hrg_kurir,kurir.nm_kurir,barang.harga,qty_pesan');
+		$this->db->select('no_pemesanan,tgl_pesan,order.total_harga,status,order.hrg_kurir,kurir.nm_kurir,products.harga,qty_pesan');
 		$this->db->select('SUM(qty_pesan) as tqty');
-		$this->db->select('SUM(barang.harga) as tharga');
-		$this->db->select('SUM(pemesanan.total_harga) as totAll');
-		$this->db->from('pemesanan');
-		$this->db->join('barang', 'barang.id_barang=pemesanan.id_barang', 'inner');
-		$this->db->join('kurir', 'kurir.id_kurir=pemesanan.id_kurir', 'inner');
+		$this->db->select('SUM(products.harga) as tharga');
+		$this->db->select('SUM(order.total_harga) as totAll');
+		$this->db->from('order');
+		$this->db->join('products', 'products.id_barang=order.id_barang', 'inner');
+		$this->db->join('kurir', 'kurir.id_kurir=order.id_kurir', 'inner');
 		$this->db->where("DATE_FORMAT(tgl_pesan,'%m')", $month);
 		$this->db->where("DATE_FORMAT(tgl_pesan,'%Y')", $year);
 		$this->db->where('status', 'COMPLETE');
@@ -122,7 +122,7 @@ class Model_order extends CI_Model
 
 	public function insertOrder($data)
 	{
-		$this->db->insert('pemesanan', $data);
+		$this->db->insert('order', $data);
 	}
 
 	public function uploadTransfer($data)
@@ -134,21 +134,21 @@ class Model_order extends CI_Model
 	{
 		$this->db->set('status', $status_order);
 		$this->db->where('no_pemesanan', $no_pemesanan);
-		return $this->db->update('pemesanan');
+		return $this->db->update('order');
 	}
 
 	public function changeStatusOrderToProcess($no_pemesanan)
 	{
 		$this->db->set('status', 'PROCESS');
 		$this->db->where('no_pemesanan', $no_pemesanan);
-		return $this->db->update('pemesanan');
+		return $this->db->update('order');
 	}
 	public function changeStatusComplete($no_pemesanan, $status_order, $get_resi)
 	{
 		$dateNow  = date('Y-m-d H:i:s');
 		$this->db->select('*');
-		$this->db->from('pemesanan');
-		$this->db->where("pemesanan.no_pemesanan", $no_pemesanan);
+		$this->db->from('order');
+		$this->db->where("order.no_pemesanan", $no_pemesanan);
 		$query = $this->db->get();
 		foreach ($query->result() as $key) {
 			$getBarang = $key->id_barang;
@@ -167,25 +167,25 @@ class Model_order extends CI_Model
 				'alamat_t' => $key->alamat_t,
 				'no_resi' => $get_resi
 			);
-			$inserting = $this->db->insert('penjualan', $data);
+			$inserting = $this->db->insert('order_sold', $data);
 			if ($inserting) {
 				$this->db->select('*');
-				$this->db->from('barang');
-				$this->db->where("barang.id_barang", $getBarang);
+				$this->db->from('products');
+				$this->db->where("products.id_barang", $getBarang);
 				$query2 = $this->db->get();
 				foreach ($query2->result() as $key2) {
 					$getStok = $key2->stok;
 					$setNewStok = $getStok - $getQty;
 					$this->db->set('stok', $setNewStok);
 					$this->db->where('id_barang', $getBarang);
-					$finish = $this->db->update('barang');
+					$finish = $this->db->update('products');
 				}
 			}
 		}
 		if ($finish) {
 			$this->db->set('status', $status_order);
 			$this->db->where('no_pemesanan', $no_pemesanan);
-			return $this->db->update('pemesanan');
+			return $this->db->update('order');
 		}
 	}
 }

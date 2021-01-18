@@ -15,8 +15,8 @@ class Model_f_store extends CI_Model
 
 		$this->db->distinct();
 		$this->db->select($type);
-		$this->db->from('barang');
-		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
+		$this->db->from('products');
+		$this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
 		$this->db->where('product_status', '1');
 		return $this->db->get();
 	}
@@ -30,15 +30,15 @@ class Model_f_store extends CI_Model
 	function make_query($type, $size, $minimum_price, $maximum_price)
 	{
 
-		$query = "SELECT * FROM barang INNER JOIN products_type on products_type.id_type=barang.id_type WHERE product_status = '1' ";
+		$query = "SELECT * FROM products INNER JOIN products_type on products_type.id_type=products.id_type WHERE product_status = '1' ";
 
 		if (isset($type)) {
 			$type_filter = implode("','", $type);
-			$query .= " AND barang.id_type IN('" . $type_filter . "')";
+			$query .= " AND products.id_type IN('" . $type_filter . "')";
 		}
 		if (isset($size)) {
 			$size_filter = implode("','", $size);
-			$query .= " AND barang.size IN('" . $size_filter . "')";
+			$query .= " AND products.size IN('" . $size_filter . "')";
 		}
 
 		if (isset($minimum_price, $maximum_price) && !empty($minimum_price) &&  !empty($maximum_price)) {
@@ -124,8 +124,8 @@ class Model_f_store extends CI_Model
 	public function detailProducts($id)
 	{
 		$this->db->select('*');
-		$this->db->from('barang');
-		$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
+		$this->db->from('products');
+		$this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
 		$this->db->where('id_barang', $id);
 		$query = $this->db->get();
 		return $query->row_array();
@@ -133,28 +133,28 @@ class Model_f_store extends CI_Model
 
 
 	// function getProduct($number,$offset){
-	// 	return $this->db->get('barang',$number,$offset)->result_array();		
+	// 	return $this->db->get('products',$number,$offset)->result_array();		
 	// }
 
 	// function getCount(){
-	// 	return $this->db->get('barang')->num_rows();
+	// 	return $this->db->get('products')->num_rows();
 	// }
 
 	// public function getProductByType($nmType,$number,$offset){	
 	//     $newNmType = strtolower(str_replace('-', ' ', $nmType));
-	//     return $this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner')->get_where('barang',array('nm_type'=>$newNmType),$number,$offset)->result_array();
+	//     return $this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner')->get_where('products',array('nm_type'=>$newNmType),$number,$offset)->result_array();
 	// }
 
 	// function getCountByType($nmType){
 	//     $newNmType = strtolower(str_replace('-', ' ', $nmType));
-	// 	return $this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner')->get_where('barang',array('nm_type'=>$newNmType))->num_rows();
+	// 	return $this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner')->get_where('products',array('nm_type'=>$newNmType))->num_rows();
 	// }
 
 	// public function detailProducts($id)
 	// {
 	// 	$this->db->select('*');
-	// 	$this->db->from('barang');
-	// 	$this->db->join('products_type', 'products_type.id_type=barang.id_type', 'inner');
+	// 	$this->db->from('products');
+	// 	$this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
 	// 	$this->db->where('id_barang', $id);
 	// 	$query = $this->db->get();
 	// 	return $query->row_array();
