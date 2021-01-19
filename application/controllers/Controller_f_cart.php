@@ -46,7 +46,7 @@ class Controller_f_cart extends CI_Controller
         $no = 0;
         $countCartRow = count($this->cart->contents());
         if ($countCartRow == 0) {
-            $output .= '<div class="bg-gray-300 p-10 w-full rounded-lg items-center flex"><div class="mx-auto text-sm font-bold"> Ops, Cart is empty. </div></div>';
+            $output .= '<div class="bg-gray-50 p-10 w-full items-center flex"><div class="mx-auto text-sm font-bold"> Ops, Cart is empty. </div></div>';
         } else {
             $output .= '<div class="list-cart overflow-y-scroll px-6">';
             foreach ($this->cart->contents() as $items) {
@@ -120,6 +120,10 @@ class Controller_f_cart extends CI_Controller
 
     function loadCheckoutDetail()
     {
+        $this->load->library('crumbs');
+        $this->crumbs->add('Checkout Detail', base_url() . 'cart/checkout-detail');
+        $data['breadcrumb'] = $this->crumbs->output();
+        
         $countCartRow = count($this->cart->contents());
         if ($countCartRow == 0) {
             $this->session->set_flashdata('emptyCart', 'Empty Cart');
@@ -158,6 +162,7 @@ class Controller_f_cart extends CI_Controller
 
     function checkOut()
     {
+        
         $idbarang = $this->input->post('id_barang');
         $getUser = $this->input->post('user_checkout');
         $qty = $this->input->post('qty');

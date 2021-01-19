@@ -1,5 +1,5 @@
 <div class="container px-6 py-3  mx-auto grid min-h-screen">
-    <section class="w-full mx-auto mt-20 md:mt-20">
+    <section class="w-full mx-auto mt-20 md:mt-24">
 
 
         <?php echo $breadcrumb; ?>
@@ -9,7 +9,7 @@
 
                 <div class="grid bg-white w-48 rounded-lg md:w-full">
                     <div class="flex flex-col w-full">
-                        <h2 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl py-2" href="#">
+                        <h2 class="uppercase tracking-wide no-underline hover:no-underline font-black text-sm md:text-xl ">
                             Order Detail
                         </h2>
                     </div>
@@ -49,9 +49,8 @@
                         <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs md:text-sm mx-auto">
                             Status
                         </span>
-                        <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-base">
-                            <span class="<?= status_order_color($getOrderDetail['status']); ?>"><?= $getOrderDetail['status']; ?></span>
-                        </span>
+                        
+                        <?= get_status_order($getOrderDetail['status']); ?>
                     </div>
                 </div>
 
@@ -87,87 +86,20 @@
             </div>
         </div>
 
-        <!-- <div class="container flex flex-col md:flex-row mb-8 mt-10">
-            <div class="flex-1 flex flex-col">
-                <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl mb-4">
-                    Order Detail
-                </span>
-                <div class="flex flex-col md:flex-row">
-                    <div class="flex flex-col flex-1">
-                        <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs md:text-sm">
-                            Order Number
-                        </span>
-                        <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl">
-                            <?= $getOrderDetail['no_pemesanan']; ?>
-                        </span>
-                        <span class="mt-4 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs md:text-sm">
-                            Order Date
-                        </span>
-                        <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl">
-                            <?= strftime("%d %B %Y | %H:%M", strtotime($getOrderDetail['tgl_pesan'])); ?>
-                        </span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="flex-1 my-4 md:my-0">
-                <div class="flex flex-col mx-auto">
-                    <div class="flex flex-col md:items-center md:text-center">
-                        <span class="uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs md:text-sm">
-                            Status
-                        </span>
-                        <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl">
-                            <span class="<?= status_order_color($getOrderDetail['status']); ?>"><?= $getOrderDetail['status']; ?></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-1">
-                <div class="flex flex-row py-4 md:py-0 space-x-4 border-t border-gray-300 md:border-none md:float-right ">
-                    <a href="<?php echo base_url() . 'report/report-order/' . $getOrderDetail['no_pemesanan']; ?>" target="_blank" class="flex space-x-2 shadow-lg items-center px-4 text-sm py-2 font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-                        <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                        </svg>
-                        <span class=""> Print </span>
-                    </a>
-                    <?php if ($getOrderDetail['status'] == 'ONHOLD') : ?>
-                        <button @click="openModal" data-nopemesanan="<?= $getOrderDetail['no_pemesanan']; ?>" class="upload-transfer flex space-x-2 shadow-lg items-center px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-                            <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                            </svg>
-                            <span class=""> Confirmation Transfer </span>
-                        </button>
-                    <?php else : ?>
-                        <a href="<?php echo base_url() . 'uploads/transfer_proof/' .  $getPaymentDetail['no_pemesanan'] . '/' . $getPaymentDetail['gambar']; ?>" target="_blank" class="flex space-x-2 shadow-lg items-center px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-green-600 rounded-md active:bg-green-700 hover:shadow-none hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
-                            <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span class=""> My Confirmation </span>
-                        </a>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div> -->
-
         <div class="container mt-4">
             <div class="mt-4 w-full">
+                <?= detail_order_title('Items'); ?>
+
                 <table class="w-full table-auto text-xs md:text-base">
                     <?php
-                    $classTr = 'p-2 border border-gray-700 ';
+                    $classTr = 'p-2 border border-gray-300 ';
                     ?>
                     <thead>
-                        <tr>
-                            <th colspan="4" class="p-2 bg-gray-700 my-5">
-                                <span class="tracking-widest font-black text-white">ITEMS</span>
-                            </th>
-                        </tr>
-                        <tr class="bg-gray-600">
-                            <th class="<?= $classTr; ?> text-white">Name</th>
-                            <th class="<?= $classTr; ?> text-white">Qty</th>
-                            <th class="<?= $classTr; ?> text-white">Price</th>
-                            <th class="<?= $classTr; ?> text-white">Subtotal Items</th>
+                        <tr class="bg-gray-200">
+                            <th class="<?= $classTr; ?> text-gray-700">Name</th>
+                            <th class="<?= $classTr; ?> text-gray-700">Qty</th>
+                            <th class="<?= $classTr; ?> text-gray-700">Price</th>
+                            <th class="<?= $classTr; ?> text-gray-700">Subtotal Items</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -196,13 +128,9 @@
                 </table>
             </div>
 
-            <div class="mt-4 w-full text-xs md:text-base">
-                <div class="flex w-full mt-6">
-                    <div class="flex w-full items-center p-2 bg-gray-700  rounded-md">
-                        <div class="mx-auto tracking-widest font-black text-white">SHIPMENTS</div>
-                    </div>
-                </div>
-                <div class="flex w-full md:flex-row md:space-x-5 flex-col">
+            <div class="mt-4 w-full">
+                <?= detail_order_title('Shipments'); ?>
+                <div class="flex w-full md:flex-row md:space-x-5 flex-col  text-xs md:text-base">
                     <!-- SEND TO -->
                     <div class="flex-1 w-full border border-gray-200  rounded-lg p-5 my-5">
                         <div class="border-b border-gray-400 py-4">
@@ -224,7 +152,7 @@
                         </div>
                     </div>
                     <!-- COURIER -->
-                    <div class="flex-1 flex w-full flex-col text-right border border-gray-200 rounded-lg p-5 my-5">
+                    <div class="flex-1 flex w-full flex-col text-right border border-gray-200 rounded-lg p-5 my-5 text-xs md:text-base">
                         <div class="border-b border-gray-400 py-4">
                             <span class="text-gray-800 font-bold">Courier</span>
                         </div>
@@ -250,8 +178,10 @@
 
                     </div>
                 </div>
+                
+                <?= detail_order_title('Payments'); ?>
 
-                <div class="flex w-full md:flex-row flex-col md:space-x-5 ">
+                <div class="flex w-full md:flex-row flex-col md:space-x-5 my-5  text-xs md:text-base">
                     <div class="flex-1"></div>
                     <div class="flex-1 flex flex-col">
                         <div class="flex flex-row py-1 my-1 border-b border-white0 p-2">

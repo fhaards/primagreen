@@ -57,34 +57,10 @@
                     <div class="flex lg:w-4/5 mb-5">
                         <?php $imgGot = array($urlImage1, $urlImage2, $urlImage3); ?>
 
-                        <!-- <template x-for="i in <?= $totalCount; ?>">
-                        <div class="flex-1 px-2">
-                            <div class="flex-1 px-2">
-                                <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                                    <?php foreach ($imgGot as $key => $imgGotValue) : ?>
-                                        <img class="object-cover w-full h-full rounded-lg" src="<?php echo base_url() . 'uploads/product/' . $imgGotValue; ?>">
-                                    <?php endforeach; ?>
-                                </button>
-                            </div>
-                        </div>
-                    </template> -->
-
-                        <!-- <template x-for="i in <?= $totalCount; ?>">
-                        <div class="flex-1 px-2">
-                            <?php for ($x = 1; $x <= $totalCount; $x++) { ?>
-                                <div class="flex-1 px-2">
-                                    <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" 
-                                    class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                                        <span x-text="i" class="text-2xl"></span>
-                                    </button>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </template> -->
-
                         <template x-for="i in <?= $totalCount; ?>">
-                            <div class="pr-2">
-                                <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="bg-gray-700 shadow-xs hover:bg-gray-800 focus:outline-none h-4 w-4 flex items-center justify-center">
+                            <div class="px-1">
+                                <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="bg-gray-700 shadow-xs w-4 h-4 hover:bg-gray-800 focus:outline-none  flex items-center justify-center">
+                                    <!-- <img class="object-cover h-full" src="<?php echo base_url() . 'uploads/product/' . $urlImage1; ?>"> -->
                                 </button>
                             </div>
                         </template>
@@ -146,8 +122,8 @@
                 <div class="flex text-center space-x-4 border-solid border-2 p-5 border-lg rounded-lg border-green-200 mt-8">
 
                     <div class="flex flex-1 space-x-2">
-                        <input type="number" name="qty" id="<?= $getDetail['id_barang']; ?>" value="1" placeholder="QTY" class="block w-20 text-sm font-bold leading-5 px-4dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
-                        <button data-produkid="<?= $getDetail['id_barang']; ?>" data-produknama="<?= $getDetail['nm_barang']; ?>" data-produkharga="<?= $getDetail['harga']; ?>" class="add_cart flex space-x-2 shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                        <input type="number" min="1" name="qty" id="<?= $getDetail['id_barang']; ?>" value="1" placeholder="QTY" class="block w-20 text-sm font-bold leading-5 px-4dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
+                        <button data-produkid="<?= $getDetail['id_barang']; ?>" data-produknama="<?= $getDetail['nm_barang']; ?>" data-produkharga="<?= $getDetail['harga']; ?>" data-sku="<?= $getDetail['sku']; ?>" data-gambar="<?= $checkImage1IfEmpty; ?>" class="add_cart flex space-x-2 shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                             <div class="mx-auto flex space-x-2">
                                 <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -171,3 +147,28 @@
         </div>
     </section>
 </div>
+
+<!-- <template x-for="i in <?= $totalCount; ?>">
+    <div class="flex-1 px-2">
+        <div class="flex-1 px-2">
+            <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
+            <?php foreach ($imgGot as $key => $imgGotValue) : ?>
+                    <img class="object-cover w-full h-full rounded-lg" src="<?php echo base_url() . 'uploads/product/' . $imgGotValue; ?>">
+                <?php endforeach; ?>
+            </button>
+        </div>
+    </div>
+</template> -->
+
+<!-- <template x-for="i in <?= $totalCount; ?>">
+    <div class="flex-1 px-2">
+        <?php for ($x = 1; $x <= $totalCount; $x++) { ?>
+            <div class="flex-1 px-2">
+                <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" 
+                class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
+                    <span x-text="i" class="text-2xl"></span>
+                </button>
+            </div>
+        <?php } ?>
+    </div>
+</template> -->

@@ -162,7 +162,8 @@ $route['cart/checkout-finish/(:any)'] = 'Controller_f_cart/loadCheckoutFinish/$1
 $route['cart/checkout'] = 'Controller_f_cart/checkOut';
 
 /*///////// Profile /////////////*/
-$route['profile/user-account'] = 'Controller_f_user/index';
+$route['profile/user-dashboard'] = 'Controller_f_user/index';
+$route['profile/user-account'] = 'Controller_f_user/userAccount';
 $route['profile/edit-account/(:any)'] = 'Controller_f_user/editAccount/$1';
 $route['profile/edit-address'] = 'Controller_f_user/editAddress';
 $route['profile/order-history'] = 'Controller_f_user/orderHistory';

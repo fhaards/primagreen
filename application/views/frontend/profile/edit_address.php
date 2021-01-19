@@ -1,10 +1,4 @@
-<?php echo form_open('profile/edit-account/' . getUserData()['id_user'],array('class'=>'md:w-1/3')); ?>
-<div class="mb-5">
-    <h2 class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl py-2" href="#">
-        Edit Address Book
-    </h2>
-</div>
-
+<?php echo form_open('profile/edit-account/' . getUserData()['id_user'], array('class' => 'md:w-1/3')); ?>
 <div class="my-2">
     <label>
         <p class="text-gray-600 font-semibold text-sm">Name</p>

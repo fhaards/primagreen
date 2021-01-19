@@ -6,7 +6,7 @@ class Crumbs
 {
     private $breadcrumbs = array();
     private $separator = ' &nbsp; / &nbsp; ';
-    private $start = '<ol id="breadcrumb" class="breadcrumb flex flex-row text-xs font-semibold text-gray-500 space-x-2 bg-gray-100 rounded-md p-2 border border-gray-300">';
+    private $start = '<ol id="breadcrumb" class="breadcrumb flex flex-row text-xs font-semibold text-gray-500 space-x-2 ">';
     private $end = '</ol>';
 
     public function __construct($params = array())
@@ -45,7 +45,7 @@ class Crumbs
             if (isAdmin()) {
                 $output .= '<li><a href="' . base_url("dashboard") . '" class="hover:text-gray-700 hover:underline"> Home  </a></li>';
             }
-            if (isUser()) {
+            else {
                 $output .= '<li><a href="' . base_url("") . '" class="hover:text-gray-700 hover:underline"> Home  </a></li>';
             }
             $output .= $this->separator;

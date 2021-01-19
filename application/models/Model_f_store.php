@@ -97,7 +97,7 @@ class Model_f_store extends CI_Model
 					</a>
 					<div class="flex md:flex-row md:flex-wrap space-x-2">
 							<div class="flex-0">
-								<input name="quantity" type="number" id="' . $row['id_barang'] . '" value="1" class="quantity font-bold text-xs block w-16 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
+								<input name="quantity" min="1" type="number" id="' . $row['id_barang'] . '" value="1" class="quantity font-bold text-xs block w-16 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
 							</div>
 							<div class="flex-1">
 								<button data-produkid="' . $row['id_barang'] . '" data-produknama="' . $row['nm_barang'] . '" data-produkharga="' . $row['harga'] . '" data-sku="' . $row['sku'] . '" data-gambar="' . $row['gambar'] . '" 

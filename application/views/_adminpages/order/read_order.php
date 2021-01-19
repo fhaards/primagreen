@@ -80,7 +80,7 @@
                         </td>
                         <td>Rp. <?= number_format($orderLists['total_harga']); ?></td>
                         <td class="">
-                            <span class="<?= status_order_color($statusType); ?>"><?= $statusType; ?></span>
+                            <?= get_status_order($statusType); ?>
                         </td>
                         <td>
                             <div class="flex flex-row items-center space-x-4 text-sm">

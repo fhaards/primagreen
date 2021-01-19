@@ -17,6 +17,11 @@ function closeThisCart(index){
     thiscart.classList.add("lg:hidden");
 }
 
+function openThisFaq(index){
+    var thiscart = document.getElementById("this_faq_"+index);
+    thiscart.classList.toggle("hidden");
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
     var prevScrollpos = window.pageYOffset;
 	window.onscroll = function () {

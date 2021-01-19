@@ -43,8 +43,8 @@
             </div>
 
             <div class="flex flex-row my-4 space-x-4 text-gray-800 font-semibold border-b border-gray-300 py-4">
-                <div class="w-1/3 uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
-                    <span class="<?= status_order_color('ONHOLD'); ?>">ONHOLD</span>
+                <div class="w-1/3">
+                    <?= get_status_order('ONHOLD'); ?>
                 </div>
                 <div class="w-2/3">
                     <?= status_order_info('ONHOLD'); ?>
@@ -52,8 +52,8 @@
             </div>
 
             <div class="my-4 space-x-4 flex flex-row text-gray-800 font-semibold  border-b border-gray-300 py-4">
-                <div class="w-1/3 uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
-                    <span class="<?= status_order_color('PROCESS'); ?>">PROCESS</span>
+                <div class="w-1/3">
+                    <?= get_status_order('PROCESS'); ?>
                 </div>
                 <div class="w-2/3">
                     <?= status_order_info('PROCESS'); ?>
@@ -61,8 +61,8 @@
             </div>
 
             <div class="my-4 space-x-4 flex flex-row text-gray-800 font-semibold  border-b border-gray-300 py-4">
-                <div class="w-1/3 uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
-                    <span class="<?= status_order_color('PACKING'); ?>">PACKING</span>
+                <div class="w-1/3">
+                    <?= get_status_order('PACKING'); ?>
                 </div>
                 <div class="w-2/3">
                     <?= status_order_info('PACKING'); ?>
@@ -70,8 +70,8 @@
             </div>
 
             <div class="my-4 space-x-4 flex flex-row text-gray-800 font-semibold  border-b border-gray-300 py-4">
-                <div class="w-1/3 uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl">
-                    <span class="<?= status_order_color('COMPLETE'); ?>">COMPLETE</span>
+                <div class="w-1/3">
+                    <?= get_status_order('COMPLETE'); ?>
                 </div>
                 <div class="w-2/3">
                     <?= status_order_info('COMPLETE'); ?>

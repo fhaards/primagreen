@@ -5,6 +5,7 @@ class Controller_dashboard extends CI_Controller {
     function __construct(){
         parent::__construct();
         redirectIfNotLogin();
+        redirectIfNotAdmin();
         $this->load->helper('array');
         $this->load->library('form_validation');
         $this->load->library('crumbs');

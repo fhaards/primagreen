@@ -1,39 +1,35 @@
 <div class="container px-6 py-3  mx-auto grid min-h-screen">
-    <section class="w-full mx-auto mt-24">
+    <section class="w-full mx-auto mt-20 md:mt-24">
+        <?php echo $breadcrumb; ?>
         <?php echo validation_errors(); ?>
         <?php echo form_open('cart/checkout'); ?>
-        <div class="container flex flex-col items-center">
+        <div class="container flex flex-col items-center my-5 py-5">
 
             <div class="flex lg:flex-row flex-col w-full">
-                <div class="md:w-1/3  mb-4">
-                    <div id="new-items" class="w-full top-0 py-1">
+                <div class=" mb-4">
+                    <div id="new-items" class="w-full top-0 ">
                         <div class=" container mx-auto flex flex-col">
-                            <h2 class="uppercase  tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl " href="#">
+                            <h2 class="uppercase tracking-wide no-underline hover:no-underline font-black text-sm md:text-xl ">
                                 Checkout Detail
                             </h2>
-                            <p class="font-semibold text-gray-500 md:text-sm text-xs mt-5">
+                            <h2 class="font-bold text-sm md:text-md tracking-wide text-gray-800">
                                 Please check again the items to be purchased. We will not be held responsible for any mistakes you make during checkout.
-                            </p>
+                            </h2>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="mt-4 w-full">
-                <div class="flex w-full">
-                    <div class="flex w-full items-center p-2 bg-gray-700  rounded-md">
-                        <div class="mx-auto tracking-widest font-black text-white">ITEMS</div>
-                    </div>
-                </div>
+
+                <?= detail_order_title('Items'); ?>
+
                 <div class="flex flex-col pt-6">
                     <div> <?php echo $detailCart; ?></div>
                 </div>
                 <!-- SHIPMENTS -->
-                <div class="flex w-full mt-6">
-                    <div class="flex w-full items-center p-2 bg-gray-700 rounded-md">
-                        <div class="mx-auto tracking-widest font-black text-white">SHIPMENTS</div>
-                    </div>
-                </div>
+
+                <?= detail_order_title('Shipments'); ?>
 
                 <div clas="grid grid-cols-1">
                     <div class="grid gid-cols-2">
@@ -79,7 +75,7 @@
                                                         <p>: <?= $getCouriers['estimasi']; ?> Days</p>
                                                     </div>
                                                     <div class="text-left font-semibold grid grid-cols-2 gap-4">
-                                                        <p class="text-left">Price :</p>
+                                                        <p class="text-left">Price </p>
                                                         <p class="text-left font-semibold">
                                                             : Rp. <?= number_format($getCouriers['harga_kurir']); ?>
                                                         </p>
@@ -99,11 +95,7 @@
 
                 <!-- PAYMENTS -->
 
-                <div class="flex w-full mt-6">
-                    <div class="flex w-full items-center p-2 bg-gray-700 rounded-md">
-                        <div class="mx-auto tracking-widest font-black text-white">PAYMENT</div>
-                    </div>
-                </div>
+                <?= detail_order_title('Payment'); ?>
 
                 <div class="grid md:grid md:grid-cols-3">
                     <div></div>

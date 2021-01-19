@@ -28,16 +28,14 @@
                             Order By
                         </span>
                         <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-sm lg:text-xl">
-                            <a class="text-blue-500 underline hover:text-blue-600 " href="<?= base_url().'user/user-detail/'.$getOrderDetail['id_user'];?>"><?=  $getOrderDetail['nama']; ?></a>
+                            <a class="text-blue-500 underline hover:text-blue-600 " href="<?= base_url() . 'user/user-detail/' . $getOrderDetail['id_user']; ?>"><?= $getOrderDetail['nama']; ?></a>
                         </span>
                     </div>
                     <div class="flex flex-col mb-4">
                         <span class="border-b border-gray-200 py-1 my-1 uppercase tracking-wide no-underline hover:no-underline font-semibold text-gray-600 text-xs lg:text-sm">
                             Status
                         </span>
-                        <span class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm lg:text-xl">
-                            <span class="<?= status_order_color($getOrderDetail['status']); ?>"><?= $getOrderDetail['status']; ?></span>
-                        </span>
+                        <?= get_status_order($getOrderDetail['status']); ?>
                     </div>
                 </div>
             </div>
@@ -60,17 +58,15 @@
     </div>
 
 
-    <div class="container flex-col lg:flex-row w-full bg-white overflow-hidden rounded-lg shadow-xs p-4 my-4">
-
+    <div class="container flex-col lg:flex-row w-full bg-white overflow-hidden rounded-lg shadow-xs px-4 my-4">
+        <?= detail_order_title('Items'); ?>
         <div class=" w-full">
+
             <table class="w-full table-auto text-xs lg:text-base">
                 <?php
                 $classTr = 'p-2 border border-gray-300 ';
                 ?>
                 <thead>
-                    <tr>
-                        <th colspan="4" class="text-gray-600 bg-gray-100 border border-gray-300 p-2">Items</th>
-                    </tr>
                     <tr class="bg-gray-100">
                         <th class="<?= $classTr; ?>">Name</th>
                         <th class="<?= $classTr; ?>">Qty</th>
@@ -105,13 +101,7 @@
         </div>
 
         <div class="mt-4 w-full text-xs lg:text-base">
-            <table class="w-full table-auto text-xs lg:text-base">
-                <thead>
-                    <tr>
-                        <th colspan="4" class="text-gray-600 bg-gray-100 border border-gray-300 p-2">Shipments</th>
-                    </tr>
-                </thead>
-            </table>
+            <?= detail_order_title('Shipments'); ?>
 
             <!-- SEND TO -->
             <div class="grid gid-cols-2">
@@ -163,8 +153,10 @@
                     </div>
                 </div>
             </div>
+            
+            <?= detail_order_title('Payment'); ?>
 
-            <div class="flex w-full lg:flex-row flex-col lg:space-x-5 ">
+            <div class="flex w-full lg:flex-row flex-col lg:space-x-5 mt-5">
                 <div class="flex-1"></div>
                 <div class="flex-1 flex flex-col">
                     <div class="flex flex-row py-1 my-1 border-b border-gray-500 p-2">

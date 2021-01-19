@@ -13,6 +13,7 @@ class Controller_f_about extends CI_Controller {
         $this->load->model('model_settings');
         $this->load->helper('array');
         $this->load->library('form_validation');
+        $this->load->library('crumbs');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -22,6 +23,8 @@ class Controller_f_about extends CI_Controller {
 
     public function index(){
         // $data['someItems'] = $this->model_f_homepage->getSomeItems();
+        $this->crumbs->add('About Us', base_url() . 'about-us');
+        $data['breadcrumb'] = $this->crumbs->output();
         $data['title']   = 'About Us - ' . APP_NAME;
         $data['content'] = 'frontend/about_us';
         $this->load->view('frontend/master_frontend', $data);

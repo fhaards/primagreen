@@ -3,15 +3,21 @@
         <div class="flex md:flex-row flex-col md:space-x-10 md:space-y-0 space-y-10">
             <div class="flex-1">
                 <ul class="text-sm">
-                    <li class="font-bold text-white mb-1 md:mb-4">Get in Touch</li>
+                    <li class="font-bold text-white mb-1 md:mb-4">Who We Are</li>
                     <li class="py-1">
                         <!-- <p class="hover:text-gray-500 hover:underline text-gray-400 font-semibold">
                             Stay in the loop with special offers, plant-parenting tips, and more.
                         </p> -->
-                        <p class="text-gray-400 font-semibold md:w-2/3">
-                            Primagreen is a startup that tries to bring green space wherever you are. 
-                            Both in Indonesia or other parts of the world. We start a business 
-                            by bridging farmers who have crops or services but they don't get very good results.
+                        <p class="text-gray-400 font-semibold md:w-2/3 text-justify">
+                            <?php
+                            $this_slice_about =
+                                "Primagreen is a startup that tries to bring green space wherever you are. 
+                                Both in Indonesia or other parts of the world. We start a business 
+                                by bridging farmers who have crops or services but they don't get very good results";
+                            ?>
+                            <?= substr($this_slice_about, 0, 350).'... '; ?>
+                            <a class="underline" href="<?= base_url().'about-us'; ?>"> read more </a>
+
                         </p>
                     </li>
                 </ul>

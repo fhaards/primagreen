@@ -16,6 +16,7 @@ class Controller_f_user extends CI_Controller
         $this->load->helper('array');
         $this->load->library('form_validation');
         $this->load->library('pagination');
+        $this->load->library('crumbs');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -28,23 +29,43 @@ class Controller_f_user extends CI_Controller
     {
         redirectIfNotLogin();
         $iduser = getUserData()['id_user'];
+        $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
+        $data['breadcrumb'] = $this->crumbs->output();
         $data['title']   = 'Profile - ' . APP_NAME;
-        $data['content'] = 'frontend/profile/read_profile';
+        $data['content'] = 'frontend/profile/index';
+        $data['profile_title'] = 'Account Dashboard';
+        $data['profile_content'] = 'frontend/profile/read_dashboard';
+        $data['getUser'] = $this->model_order->getAllOrderByUser($iduser)->result_array();
+        $this->load->view('frontend/master_frontend', $data);
+    }
+
+    function userAccount()
+    {
+        redirectIfNotLogin();
+        $iduser = getUserData()['id_user'];
+        $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
+        $this->crumbs->add('Account Information', base_url() . 'profile/user-account');
+        $data['breadcrumb'] = $this->crumbs->output();
+        $data['title']   = 'Profile - ' . APP_NAME;
+        $data['content'] = 'frontend/profile/index';
+        $data['profile_title'] = 'Edit Account Information';
         $data['profile_content'] = 'frontend/profile/edit_account';
         $data['getUser'] = $this->model_order->getAllOrderByUser($iduser)->result_array();
         $this->load->view('frontend/master_frontend', $data);
     }
 
-    function editAccount()
-    {
-    }
+    function editAccount(){ }
 
     function editAddress()
     {
         redirectIfNotLogin();
         // $iduser = getUserData()['id_user'];
+        $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
+        $this->crumbs->add('Address Book', base_url() . 'profile/edit-address');
+        $data['breadcrumb'] = $this->crumbs->output();
         $data['title']   = 'Profile - ' . APP_NAME;
-        $data['content'] = 'frontend/profile/read_profile';
+        $data['content'] = 'frontend/profile/index';
+        $data['profile_title'] = 'Edit Address Book';
         $data['profile_content'] = 'frontend/profile/edit_address';
         $this->load->view('frontend/master_frontend', $data);
     }
@@ -53,6 +74,9 @@ class Controller_f_user extends CI_Controller
     {
         redirectIfNotLogin();
         $iduser = getUserData()['id_user'];
+        $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
+        $this->crumbs->add('Order History', base_url() . 'profile/order-history');
+        $data['breadcrumb'] = $this->crumbs->output();
         $jumlah_data = $this->model_order->getAllOrderByUser_count($iduser);
         $config = array();
         $config['base_url'] = base_url() . 'profile/order-history';
@@ -63,7 +87,8 @@ class Controller_f_user extends CI_Controller
         $from = $this->uri->segment(3);
         $this->pagination->initialize($config);
         $data['title']   = 'Profile - ' . APP_NAME;
-        $data['content'] = 'frontend/profile/read_profile';
+        $data['content'] = 'frontend/profile/index';
+        $data['profile_title'] = 'Order History';
         $data['profile_content'] = 'frontend/profile/read_order';
         $data['getUser'] = $this->model_order->getAllOrderByUser_paging($config['per_page'], $from, $iduser)->result_array();
         $this->load->view('frontend/master_frontend', $data);
@@ -72,8 +97,7 @@ class Controller_f_user extends CI_Controller
     function detailOrder($noOrder)
     {
         redirectIfNotLogin();
-        $this->load->library('crumbs');
-        $this->crumbs->add('My Account', base_url() . 'profile/edit-account');
+        $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
         $this->crumbs->add('Order History', base_url() . 'profile/order-history');
         $this->crumbs->add('Detail Order', base_url() . 'profile/detail-order');
         $data['breadcrumb'] = $this->crumbs->output();

@@ -19,6 +19,7 @@ class Controller_sold extends CI_Controller {
         $this->load->helper('date');
         $this->load->helper('directory');
         $this->load->helper("file");
+        $this->load->helper("styling");
     }
 
     public function index(){
