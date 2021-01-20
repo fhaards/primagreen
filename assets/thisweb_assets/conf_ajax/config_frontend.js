@@ -7,15 +7,7 @@ function closeSubNav() {
 	document.getElementById("sub-nav").style.height = "0%";
 }
 
-function openThisCart(index) {
-	var thiscart = document.getElementById("this_items_" + index);
-	thiscart.classList.remove("lg:hidden");
-}
 
-function closeThisCart(index) {
-	var thiscart = document.getElementById("this_items_" + index);
-	thiscart.classList.add("lg:hidden");
-}
 
 function openThisFaq(index) {
 	var thiscart = document.getElementById("this_faq_" + index);
@@ -41,3 +33,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		prevScrollpos = currentScrollPos;
 	};
 });
+
+
+/* 
+function openThisCart(index) {
+	var thiscart = document.getElementById("this_items_" + index);
+	thiscart.classList.remove("lg:hidden");
+}
+
+function closeThisCart(index) {
+	var thiscart = document.getElementById("this_items_" + index);
+	thiscart.classList.add("lg:hidden");
+}
+*/

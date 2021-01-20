@@ -67,7 +67,7 @@ class Controller_f_cart extends CI_Controller
                                         <label class="uppercase flex flex-row  items-center space-x-2 font-bold w-full">
                                             <div class="flex-1  text-gray-600 text-xs">Qty : ' . $items['qty'] . '</div>
                                             <button type="button" id="' . $items['rowid'] . '" 
-                                                class="hapus_cart block px-2 py-1 mt-0 font-bold text-xs text-gray-500 transition-colors duration-150 bg-white active:bg-red-600 hover:bg-gray-800 focus:outline-none focus:shadow-outline-red hover:text-white">
+                                                class="hapus_cart rounded-md block px-2 py-1 mt-0 font-bold text-xs text-gray-500 transition-colors duration-150 bg-white active:bg-red-600 hover:bg-gray-800 focus:outline-none focus:shadow-outline-red hover:text-white">
                                                     REMOVE
                                             </button>
                                         </label>

@@ -98,17 +98,15 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="flex text-center space-x-4 p-4 rounded-md bg-gray-50 border-2 border-gray-200 mb-5">
-                        <div class="flex flex-1 space-x-2">
-                            <input type="number" min="1" name="qty" id="<?= $getDetail['id_barang']; ?>" value="1" placeholder="QTY" class="block items-center w-20 bg-white text-sm font-bold leading-5 px-4 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
+                
+                    <div class="inline-block flex flex-row p-4 items-center space-x-4 rounded-md bg-gray-50 border-2 border-gray-200 mb-5">
+                            <input type="number" min="1" name="qty" id="<?= $getDetail['id_barang']; ?>" value="1" placeholder="QTY" class=" items-center w-20 bg-white text-sm font-bold  px-4 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
                             <button data-produkid="<?= $getDetail['id_barang']; ?>" data-produknama="<?= $getDetail['nm_barang']; ?>" data-produkharga="<?= $getDetail['harga']; ?>" data-sku="<?= $getDetail['sku']; ?>" data-gambar="<?= $checkImage1IfEmpty; ?>" class="add_cart flex space-x-2 shadow-lg px-4 py-2 items-center text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
                                 <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                                 <span class="">Add to Cart</span>
                             </button>
-                        </div>
                     </div>
 
                     <div class="w-full">

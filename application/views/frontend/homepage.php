@@ -45,7 +45,7 @@
                                 $urlImage = $newItemsValue['sku'] . '/' . $newItemsValue['gambar'];
                             }
                             ?>
-                            <div id="showProducts" class="p-2 rounded-md flex flex-col bg-white shadow-sm hover:shadow-md" style="width:15rem;">
+                            <div id="showProducts" class="p-2 rounded-md flex flex-col bg-white shadow-sm hover:shadow-md border-2 border-transparent hover:border-gray-800" style="width:15rem;">
                                 <a href="<?php echo site_url('store/product-list/detail/' . $newItemsValue['id_barang'] . '/' . $newNmProduct); ?>" class="">
                                     <div class="h-48 w-full">
                                         <img class="object-cover w-full h-full rounded-md" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
@@ -89,22 +89,22 @@
 
 <section class="container px-6 mx-auto grid grid-cols-1 my-5">
     <div class="grid gid-cols-2">
-        <div class="bg-gray-100 grid gap-4 md:gap-6 grid-flow-col auto-rows-max overflow-x-scroll w-full h-full scrollbar-none">
-            <div class="relative h-full px-10 cat-img-2 md:w-full w-56 rounded-md">
+        <div class="bg-gray-100 grid gap-4 md:gap-10 grid-flow-col auto-rows-max overflow-x-scroll w-full h-full scrollbar-none">
+            <a href="<?php echo site_url('store/show-all-items'); ?>" class="relative h-full px-10 cat-img-2 md:w-full w-56 rounded-md">
                 <div class="absolute bottom-0 pb-10">
                     <div class="md:text-xl text-md text-white">
                         <h1 class="text-white  uppercase"> Shop</h1>
                         <h1 class="text-white -mt-2 uppercase font-bold"> All Items </h1>
                     </div>
 
-                    <a href="<?php echo site_url('store/show-all-items'); ?>" class="block text-xs md:text-md flex flex-row space-x-4 text-white uppercase py-2  font-bold leading-5 transition-colors duration-150">
+                    <div class="block text-xs md:text-md flex flex-row space-x-4 text-white uppercase py-2  font-bold leading-5 transition-colors duration-150">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                         <span class="tracking-widest md:block hidden"> Go to store </span>
-                    </a>
+                    </div>
                 </div>
-            </div>
+            </a>
             <div class="relative h-full px-10 cat-img-1 md:w-full w-56 rounded-md">
                 <div class="absolute bottom-0 pb-10">
                     <div class="md:text-xl text-md text-white">
@@ -140,7 +140,7 @@
 </section>
 
 <!-- STORE ITEMS -->
-<section class="container w-full mx-auto bg-white my-5 px-5 md:px-4" id="show_someitems">
+<section class="container w-full mx-auto bg-white my-5 md:my-8 px-5 md:px-5" id="show_someitems">
     <div class="flex flex-wrap ">
         <!-- <div id="store" class="w-full  py-10">
                 <div class="w-full flex flex-row space-x-10 items-center justify-between mt-0 py-3">
@@ -152,7 +152,7 @@
                     <div class="flex-1 h-1 bg-gray-900"></div>
                 </div>
             </div> -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-2">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-5">
             <?php foreach ($someItems as $someItemsValue) { ?>
                 <?php
                 $getIds = $someItemsValue['id_barang'];
@@ -164,8 +164,8 @@
                     $urlImage = $someItemsValue['sku'] . '/' . $someItemsValue['gambar'];
                 }
                 ?>
-                <div class="flex flex-col md:p-2 p-1">
-                    <div id="open_this_items" onmouseover="openThisCart(<?= $getIds; ?>)" onmouseleave="closeThisCart(<?= $getIds; ?>)">
+                <div class="flex flex-col w-full p-2 rounded-md border-2 border-transparent  md:border-gray-50 hover:border-gray-800 hover:shadow-md ">
+                    <div id="open_this_items">
                         <a style="cursor:pointer;" href="<?php echo site_url('store/product-list/detail/' . $someItemsValue['id_barang'] . '/' . $someNmProduct); ?>" class="flex flex-col">
                             <div class="w-full h-20 md:h-48 lg:h-48 md:block">
                                 <img class="object-cover w-full h-full rounded-md" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
@@ -175,19 +175,19 @@
                                     <p class="text-gray-900 font-bold text-xs md:text-sm"><?= $someItemsValue['nm_barang']; ?></p>
                                 </div>
                                 <div class="w-1/3 text-right">
-                                    <p class="text-gray-600 font-bold text-xs lg:text-sm"><?= number_format($someItemsValue['harga']); ?></p>
+                                    <p class="text-gray-600 font-bold text-xs lg:text-sm">Rp <?= number_format($someItemsValue['harga']); ?></p>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div id="this_items_<?= $getIds; ?>" onmouseover="openThisCart(<?= $getIds; ?>)" onmouseleave="closeThisCart(<?= $getIds; ?>)" class="lg:hidden lg:absolute flex flex-row  lg:mx-8 lg:mt-20 space-x-2 lg:px-2 lg:py-2 rounded-md lg:shadow-lg lg:bg-gray-100 z-30 block">
+                    <div class="flex flex-row space-x-2 rounded-md">
                         <?php if ($someItemsValue['stok'] == 0) : ?>
-                            <div class="flex items-center py-1 lg:py-2 md:mx-6">
-                                <span class="lg:text-sm text-xs lg:block text-gray-600 font-semibold">Ops Sorry , Out Stock</span>
+                            <div class="flex items-center py-1 lg:py-2 md:mx-auto">
+                                <span class="text-xs lg:block text-gray-600 font-semibold">Sorry , Out of Stock</span>
                             </div>
                         <?php else : ?>
                             <div class="flex-0">
-                                <input name="quantity" type="number" id="<?= $someItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 md:py-2 text-xs dark:border-gray-600 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
+                                <input name="quantity" min="1" type="number" id="<?= $someItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 md:py-2 text-xs dark:border-gray-600 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
                             </div>
                             <div class="flex-1">
                                 <button data-produkid="<?= $someItemsValue['id_barang']; ?>" data-produknama="<?= $someItemsValue['nm_barang']; ?>" data-produkharga="<?= $someItemsValue['harga']; ?>" data-sku="<?= $someItemsValue['sku']; ?>" data-gambar="<?= $someItemsValue['gambar']; ?>" class="add_cart flex space-x-2 shadow-lg w-full lg:w-full px-4 py-2 text-xs font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">

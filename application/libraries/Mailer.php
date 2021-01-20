@@ -13,7 +13,6 @@ class Mailer
     public function __construct()
     {
         $this->_ci = &get_instance();
-
         require_once('vendor/phpmailer/phpmailer/src/Exception.php');
         require_once('vendor/phpmailer/phpmailer/src/PHPMailer.php');
         require_once('vendor/phpmailer/phpmailer/src/SMTP.php');
@@ -68,6 +67,32 @@ class Mailer
         return $response;
     }
 
+
+    public function send_mail($data)
+    {
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Username = $this->email_pengirim;
+        $mail->Password = $this->password;
+        $mail->Port = 465;
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'ssl';
+        $mail->setFrom($this->email_pengirim, $this->nama_pengirim);
+        $mail->addAddress($data['email_receipt'], '');
+        $mail->addCC('Dont reply this messages');
+        $mail->isHTML(true);
+        $mail->Subject = $data['subject'];
+        $mail->Body = $data['this_mail_content'];
+        $send = $mail->send();
+        if ($send) {
+            $response = array('status' => 'Sukses', 'message' => 'Email Has Been Send');
+        } else {
+            $response = array('status' => 'Gagal', 'message' => 'Email Cannot Send');
+        }
+        return $response;
+    }
+
     public function send_with_attachment($data)
     {
         $mail = new PHPMailer;
@@ -99,8 +124,3 @@ class Mailer
         return $response;
     }
 }
-
-
-        // require_once(APPPATH . 'assets\PHPMailer\src\Exception.php');
-        // require_once(APPPATH . 'assets\PHPMailer\src\PHPMailer.php');
-        // require_once(APPPATH . 'assets\PHPMailer\src\SMTP.php');

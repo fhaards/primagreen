@@ -60,6 +60,7 @@ class Controller_f_user extends CI_Controller
         $getOldEmail = getUserData()['email'];
         $iduser = getUserData()['id_user'];
         $getOldPassword = getUserData()['password'];
+        $dateNow  = date('Y-m-d H:i:s');
 
         $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
         $this->crumbs->add('Account Information', base_url() . 'profile/user-account');
@@ -85,9 +86,6 @@ class Controller_f_user extends CI_Controller
         $this->form_validation->set_rules('email', '<strong>Email</strong>', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('frontend/master_frontend', $data);
-            // $this->session->set_flashdata('errorEditAccount', 'Data Was Error');
-            // redirect('profile/user-account');
-            // echo "error";
         } else {
             $id_user = $this->input->post('id_user');
             $name = $this->input->post('name');
@@ -111,6 +109,15 @@ class Controller_f_user extends CI_Controller
 
             $get_change_account = $this->model_user->changeAccount($id_user, $change_account);
             if ($get_change_account) {
+                $this->load->library('mailer');
+				$subject = 'Modify Account Information';
+				$this_mail_content = $this->load->view('frontend/mail/mail_content_change_account',  array('name' => $name,'date'=>$dateNow), true);
+				$sendmail = array(
+					'email_receipt' => $email,
+					'subject' => $subject,
+					'this_mail_content' => $this_mail_content
+				);
+                $this->mailer->send_mail($sendmail);
                 $this->session->set_flashdata('successEditAccount', 'Data Was Changes');
                 redirect('profile/user-account');
             }
