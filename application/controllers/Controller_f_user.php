@@ -10,6 +10,7 @@ class Controller_f_user extends CI_Controller
         // redirectIfAdminAccessUserPage();
         $this->load->database();
         $this->load->model('model_product');
+        $this->load->model('model_user');
         $this->load->model('model_order');
         $this->load->model('model_payment');
         $this->load->model('model_f_user_login');
@@ -35,7 +36,7 @@ class Controller_f_user extends CI_Controller
         $data['content'] = 'frontend/profile/index';
         $data['profile_title'] = 'Account Dashboard';
         $data['profile_content'] = 'frontend/profile/read_dashboard';
-        $data['getUser'] = $this->model_order->getAllOrderByUser($iduser)->result_array();
+        $data['getUser'] = $this->model_order->getAllOrderByUserRecent($iduser)->result_array();
         $this->load->view('frontend/master_frontend', $data);
     }
 
@@ -54,7 +55,81 @@ class Controller_f_user extends CI_Controller
         $this->load->view('frontend/master_frontend', $data);
     }
 
-    function editAccount(){ }
+    function editAccount()
+    {
+        $getOldEmail = getUserData()['email'];
+        $iduser = getUserData()['id_user'];
+        $getOldPassword = getUserData()['password'];
+
+        $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
+        $this->crumbs->add('Account Information', base_url() . 'profile/user-account');
+        $data['breadcrumb'] = $this->crumbs->output();
+        $data['title']   = 'Profile - ' . APP_NAME;
+        $data['content'] = 'frontend/profile/index';
+        $data['profile_title'] = 'Edit Account Information';
+        $data['profile_content'] = 'frontend/profile/edit_account';
+        $data['getUser'] = $this->model_order->getAllOrderByUser($iduser)->result_array();
+
+        $cbk_change_password = $this->input->post('check_change_password');
+
+        if (!empty($cbk_change_password)) :
+            $newpassword = $this->input->post('newpassword');
+            $setNewPassword = password_hash($newpassword, PASSWORD_DEFAULT);
+            $this->form_validation->set_rules('old_password', '<strong>Old Password</strong>', 'required|callback_oldpassword_check');
+            $this->form_validation->set_rules('newpassword', '<strong>New Password</strong>', 'required|min_length[7]|max_length[30]');
+            $this->form_validation->set_rules('newpassword_confirm', '<strong>Confirm New Password</strong>', 'required|matches[newpassword]');
+        else :
+            $setNewPassword = $getOldPassword;
+        endif;
+
+        $this->form_validation->set_rules('email', '<strong>Email</strong>', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('frontend/master_frontend', $data);
+            // $this->session->set_flashdata('errorEditAccount', 'Data Was Error');
+            // redirect('profile/user-account');
+            // echo "error";
+        } else {
+            $id_user = $this->input->post('id_user');
+            $name = $this->input->post('name');
+            $email = $this->input->post('email');
+            $tlp = $this->input->post('tlp');
+
+            if ($getOldEmail == $email) :
+                $newemail = $email;
+            else :
+                $newemail = $email;
+                $data_session = array('email' => $newemail);
+                $this->session->set_userdata($data_session);
+            endif;
+
+            $change_account = array(
+                'nama' => $name,
+                'email' => $newemail,
+                'tlp' => $tlp,
+                'password' => $setNewPassword
+            );
+
+            $get_change_account = $this->model_user->changeAccount($id_user, $change_account);
+            if ($get_change_account) {
+                $this->session->set_flashdata('successEditAccount', 'Data Was Changes');
+                redirect('profile/user-account');
+            }
+        }
+    }
+
+    public function oldpassword_check($old_password)
+    {
+        $email = getUserData()['email'];
+        // $old_password_hash = password_hash($old_password, PASSWORD_DEFAULT);
+        $userData = $this->model_f_user_login->findBy('email', $email);
+        $get_old_password_db = $userData['password'];
+        if (password_verify($old_password, $get_old_password_db)) {
+            return TRUE;
+        } else {
+            $this->form_validation->set_message('oldpassword_check', 'The <strong>Old Password</strong> field was wrong');
+            return FALSE;
+        }
+    }
 
     function editAddress()
     {

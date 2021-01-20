@@ -139,29 +139,6 @@
     </div>
 </section>
 
-<!-- <div class="container px-6 mx-auto grid">
-    <div class="grid grid-rows-3 grid-flow-col gap-3 w-full mt-10" style="max-height:400px;">
-        <div class="md:row-span-3 bg-gray-200 homepage-banner">
-            <div class="relative h-full w-full px-10">
-                <div class="absolute bottom-0 pb-10">
-                    <h1 class="text-white text-4xl uppercase"> Shop</h1>
-                    <h1 class="text-white text-4xl -mt-3 uppercase font-bold"> All Items </h1>
-                    <a href="<?php echo site_url('store/show-all-items'); ?>" class="block flex flex-row space-x-4 text-white uppercase py-2 text-sm font-bold leading-5 transition-colors duration-150">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                        <span class="tracking-widest">
-                            Go to store
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="md:col-span-2 bg-gray-100 h-48">2</div>
-        <div class="md:row-span-2 md:col-span-2 bg-gray-400">3</div>
-    </div>
-</div> -->
-
 <!-- STORE ITEMS -->
 <section class="container w-full mx-auto bg-white my-5 px-5 md:px-4" id="show_someitems">
     <div class="flex flex-wrap ">
@@ -188,7 +165,6 @@
                 }
                 ?>
                 <div class="flex flex-col md:p-2 p-1">
-                    <!--  onmouseover="openThisCart()" onmouseout="closeThisCart()" -->
                     <div id="open_this_items" onmouseover="openThisCart(<?= $getIds; ?>)" onmouseleave="closeThisCart(<?= $getIds; ?>)">
                         <a style="cursor:pointer;" href="<?php echo site_url('store/product-list/detail/' . $someItemsValue['id_barang'] . '/' . $someNmProduct); ?>" class="flex flex-col">
                             <div class="w-full h-20 md:h-48 lg:h-48 md:block">
@@ -248,33 +224,3 @@
         <div class='flex-1'></div>
     </div>
 </section>
-
-
-<!-- <?php if (isLoggedIn()) : ?>
-<?php
-            $getIdUser2 = getUserData()['id_user'];
-            $getIdBarang2 = $someItemsValue['id_barang'];
-?>
-<?php if (in_array($getIdBarang2, $favItems)) : ?>
-    <?php
-                $classFav2 = 'w-5 text-red-500';
-                $classFillFav2 = 'currentColor';
-    ?>
-<?php else : ?>
-    <?php
-                $classFav2 = 'w-5 text-gray-500 hover:text-red-500';
-                $classFillFav2 = 'none';
-    ?>
-<?php endif; ?>
-<button data-itemsid="<?= $getIdBarang2; ?>" data-userid="<?= $getIdUser2; ?>" class="add_favorites absolute items-center bg-white p-1 rounded-br-lg">
-    <svg class="<?= $classFav2; ?>" fill="<?= $classFillFav2; ?>" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-    </svg>
-</button>
-<?php else : ?>
-<a href="<?= base_url() . 'login'; ?>" class="absolute items-center bg-white p-1 rounded-br-lg">
-    <svg class="h-6 text-gray-600 right-0 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-    </svg>
-</a>
-<?php endif; ?> -->

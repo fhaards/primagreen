@@ -26,4 +26,9 @@ class Model_user extends CI_Model
         $this->db->where('id_user',$id);
         return $this->db->get();
     }
+
+    public function changeAccount($id_user,$change_account){
+		$this->db->where('id_user', $id_user);
+		return $this->db->update('user', $change_account);
+    }
 }

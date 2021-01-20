@@ -1,4 +1,4 @@
-<div class="container px-6 py-3 mx-auto grid overflow-y-auto h-full" style="max-height:600px;">
+<div class="container px-6 py-3 mx-auto grid overflow-y-auto max-h-screen scrollbar-none">
     <div class="w-full mx-auto mt-20 md:mt-24">
         <?php echo $breadcrumb; ?>
         <div class="container flex flex-row md:space-x-10 my-5 py-5">
@@ -19,7 +19,7 @@
                         $inactive = "transition-colors duration-150 text-gray-800 hover:text-green-500 border-b border-gray-300";
                         ?>
                         <li><a href="<?= base_url() . 'profile/user-dashboard'; ?>" class="inline-block py-2 w-full <?= ($profile_page == 'user-dashboard') ? $active :  $inactive; ?>"> Account Dashboard </a></li>
-                        <li><a href="<?= base_url() . 'profile/user-account'; ?>" class="inline-block py-2 w-full <?= ($profile_page == 'user-account') ? $active :  $inactive; ?>"> Account Information </a></li>
+                        <li><a href="<?= base_url() . 'profile/user-account'; ?>" class="inline-block py-2 w-full <?= ($profile_page == 'user-account' || $profile_page == 'edit-account') ? $active :  $inactive; ?>"> Account Information </a></li>
                         <li><a href="<?= base_url() . 'profile/edit-address'; ?>" class="inline-block py-2 w-full <?= ($profile_page == 'edit-address') ? $active :  $inactive; ?>"> Address Book </a></li>
                         <li><a href="<?= base_url() . 'profile/order-history'; ?>" class="inline-block py-2 w-full <?= ($profile_page == 'order-history') ? $active :  $inactive; ?>"> My Order </a></li>
                     </ul>

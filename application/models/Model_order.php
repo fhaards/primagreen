@@ -3,6 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_order extends CI_Model
 {
+
+	protected $table = 'order';
+
 	public function __construct()
 	{
 		$this->load->database();
@@ -73,6 +76,19 @@ class Model_order extends CI_Model
 		$this->db->order_by("tgl_pesan", "DESC");
 		return $this->db->get();
 	}
+
+	public function getAllOrderByUserRecent($iduser)
+	{
+		$this->db->select('*');
+		$this->db->from('order');
+		$this->db->join('user', 'user.id_user=order.id_user', 'inner');
+		$this->db->group_by("no_pemesanan");
+		$this->db->where("order.id_user", $iduser);
+		$this->db->limit(3);
+		$this->db->order_by("tgl_pesan", "DESC");
+		return $this->db->get();
+	}
+
 
 	public function getAllOrderByNoOrder($noOrder)
 	{

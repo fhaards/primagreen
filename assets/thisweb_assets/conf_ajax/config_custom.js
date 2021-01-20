@@ -56,6 +56,19 @@ $(document).ready(function () {
 		});
 	});
 
+
+	// PROFILE PAGES 
+	$("#change_password").on("click",".changepw_click", function () {
+		var checkBoxes = $(".checkedbox_changepw");
+		$(".type_password").toggleClass('hidden');
+		checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+		checkBoxes.on("click", function(){
+			checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+		})
+	});
+
+	// $(".checkedbox_changepw").prop('checked', true);
+
 	// $("#show_someitems").on("mouseover", ".open_thisitem", function () {
 	// 	var index = $("#show_someitems").index(this);
 	// 	$(".this_item").show();

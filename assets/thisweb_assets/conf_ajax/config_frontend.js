@@ -41,10 +41,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		prevScrollpos = currentScrollPos;
 	};
 });
-// function initMap() {
-//     var mapProp = {
-//         center: new google.maps.LatLng(-6.793285909058999, 107.60184618438252),
-//         zoom: 5,
-//     };
-//     var map = new google.maps.Map(document.getElementById("map"), mapProp);
-// }

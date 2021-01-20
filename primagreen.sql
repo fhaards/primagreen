@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jan 2021 pada 00.21
+-- Waktu pembuatan: 20 Jan 2021 pada 20.23
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -158,7 +158,11 @@ INSERT INTO `msg_guest` (`id_msg`, `name`, `email`, `subject`, `msg`, `status_ms
 (9, 'asdasd', 'sadas@mail.com', 'asdasd', 'asdasd', 'UNREAD'),
 (10, 'asdasd', 'sadas@mail.com', 'asdasd', 'asdasd', 'UNREAD'),
 (11, 'fahmi', 'fahmi37@gmail.com', 'lalala', 'lalalala', 'UNREAD'),
-(12, 'thisguest', 'test@mail.com', 'thistestguest', 'teetetetessss', 'UNREAD');
+(12, 'thisguest', 'test@mail.com', 'thistestguest', 'teetetetessss', 'UNREAD'),
+(13, 'test', 'test@gmail.com', 'test', 'cust_test', 'UNREAD'),
+(14, 'test', 'test@gmail.com', 'test', 'cust_test', 'UNREAD'),
+(15, 'tested', 'tested@gmail.com', 'tested', 'tested', 'UNREAD'),
+(16, 'asdasd', 'asdas@mail.com', 'asdasd', 'asdasdasd', 'UNREAD');
 
 -- --------------------------------------------------------
 
@@ -179,7 +183,8 @@ CREATE TABLE `msg_user` (
 --
 
 INSERT INTO `msg_user` (`id_msg`, `id_user`, `subject`, `msg`, `status_msg`) VALUES
-(1, 45, 'test', 'test1', 'UNREAD');
+(1, 45, 'test', 'test1', 'UNREAD'),
+(2, 47, 'ini tested', 'test', 'UNREAD');
 
 -- --------------------------------------------------------
 
@@ -208,7 +213,12 @@ CREATE TABLE `order` (
 
 INSERT INTO `order` (`id_pesan`, `id_user`, `id_barang`, `no_pemesanan`, `qty_pesan`, `id_kurir`, `hrg_kurir`, `total_harga`, `tgl_pesan`, `nama_t`, `alamat_t`, `status`) VALUES
 (125, 47, 69, 'LANE1847110235QD', 1, 4, 23000, 392200, '2021-01-18 23:35:38', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
-(126, 47, 71, 'LANE1847110235QD', 1, 4, 23000, 392200, '2021-01-18 23:35:38', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE');
+(126, 47, 71, 'LANE1847110235QD', 1, 4, 23000, 392200, '2021-01-18 23:35:38', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
+(127, 47, 74, 'JXFY2047036132FG', 1, 1, 10000, 224240, '2021-01-20 03:32:19', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
+(128, 47, 76, 'JXFY2047036132FG', 1, 1, 10000, 224240, '2021-01-20 03:32:19', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
+(129, 47, 74, 'YEFF2147016554QR', 1, 2, 20000, 78240, '2021-01-21 01:54:52', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
+(130, 47, 75, 'HWVC2147016955AF', 1, 3, 25000, 82200, '2021-01-21 01:55:04', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
+(131, 47, 73, 'OBMM2147017255CI', 1, 3, 25000, 92597, '2021-01-21 01:55:14', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD');
 
 -- --------------------------------------------------------
 
@@ -399,6 +409,7 @@ CREATE TABLE `user` (
   `alamat` text NOT NULL,
   `username` varchar(10) NOT NULL,
   `password` text NOT NULL,
+  `password_dump` text NOT NULL,
   `level` varchar(10) NOT NULL,
   `status_a` int(2) NOT NULL,
   `join_date` datetime NOT NULL,
@@ -410,12 +421,12 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `email`, `tlp`, `alamat`, `username`, `password`, `level`, `status_a`, `join_date`, `code`, `active`) VALUES
-(37, 'Administrator', 'primagreen@admin.com', '', '', 'admin', '$2y$10$dHSX3v3BZRWtz5Tt71ri1e2IWzRyLr0b0hkmxmJU4GbDy7TWDvxRu', 'admin', 2, '0000-00-00 00:00:00', '', 0),
-(38, 'Example', 'user@user.com', '081317352815', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'user', '$2y$10$h4aI4fp3Ou.A0sjnnvuvIOaINRQB8VG2AIcy7g8kDLZA.ytbMjAh6', 'user', 2, '0000-00-00 00:00:00', '', 0),
-(45, 'Muhammad Fahmi', 'm.fahmi37@gmail.com', '081317352815', 'Perumahan Bukit Dago Blok A-9 No. 32', '', '$2y$10$LIQQnvsRDknLwZ/t52cyveLcofXWD4i4weMQVRajBsZXnnXuJXkYW', 'user', 2, '2021-01-04 02:08:56', 'AR6IT1VCQyrx', 0),
-(47, 'Muhammad Fahmi', 'bagol37@gmail.com', '+6281317352815', 'Perumahan Bukit Dago A-9 No.32', '', '$2y$10$eJFCBT6oLKt.s.QW2TXJLe5ReV4EMoOoAenP8zX5p1Y/3CmM3FB62', 'user', 2, '2021-01-17 22:21:10', '', 0),
-(48, 'Lia Hermawati', 'liahermaw@gmail.com', '+6281318181516', 'Perumahan Bukit dago A-9 No. 32 , Rawakalong Gn. Sindur Bogor', '', '$2y$10$71NMKierpoBzntc/lUF9yOWsnPy4c78VXMRmcQ3dxNMks8lmJ8yum', 'user', 2, '2021-01-17 16:21:10', '', 0);
+INSERT INTO `user` (`id_user`, `nama`, `email`, `tlp`, `alamat`, `username`, `password`, `password_dump`, `level`, `status_a`, `join_date`, `code`, `active`) VALUES
+(37, 'Administrator', 'primagreen@admin.com', '', '', 'admin', '$2y$10$dHSX3v3BZRWtz5Tt71ri1e2IWzRyLr0b0hkmxmJU4GbDy7TWDvxRu', '', 'admin', 2, '0000-00-00 00:00:00', '', 0),
+(38, 'Example', 'user@user.com', '081317352815', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'user', '$2y$10$h4aI4fp3Ou.A0sjnnvuvIOaINRQB8VG2AIcy7g8kDLZA.ytbMjAh6', '', 'user', 2, '0000-00-00 00:00:00', '', 0),
+(45, 'Muhammad Fahmi', 'm.fahmi37@gmail.com', '081317352815', 'Perumahan Bukit Dago Blok A-9 No. 32', '', '$2y$10$LIQQnvsRDknLwZ/t52cyveLcofXWD4i4weMQVRajBsZXnnXuJXkYW', '', 'user', 2, '2021-01-04 02:08:56', 'AR6IT1VCQyrx', 0),
+(47, 'Muhammad Fahmi', 'bagol37@gmail.com', '+6281317352815', 'Perumahan Bukit Dago A-9 No.32', '', '$2y$10$upp1DWH5Yqk8OWWRIFz3..DQdP4Xh7eGCOeti3jgdfl5WSbr9s/Hy', '', 'user', 2, '2021-01-17 22:21:10', '', 0),
+(48, 'Lia Hermawati', 'liahermaw@gmail.com', '+6281318181516', 'Perumahan Bukit dago A-9 No. 32 , Rawakalong Gn. Sindur Bogor', '', '$2y$10$71NMKierpoBzntc/lUF9yOWsnPy4c78VXMRmcQ3dxNMks8lmJ8yum', '', 'user', 2, '2021-01-17 16:21:10', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -554,19 +565,19 @@ ALTER TABLE `kurir`
 -- AUTO_INCREMENT untuk tabel `msg_guest`
 --
 ALTER TABLE `msg_guest`
-  MODIFY `id_msg` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_msg` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `msg_user`
 --
 ALTER TABLE `msg_user`
-  MODIFY `id_msg` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_msg` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT untuk tabel `order_sold`

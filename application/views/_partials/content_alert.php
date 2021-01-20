@@ -194,3 +194,31 @@
 		})
 	</script>
 <?php endif; ?>
+
+<!-- ACCOUNT MODIFIED -->
+
+<?php if ($this->session->flashdata('successEditAccount')) : ?>
+	<script type="text/javascript">
+		swal({
+			title: "Success",
+			text: "Success edit account",
+			type: 'success',
+			timer: 3000,
+			allowOutsideClick: false,
+			icon: "success",
+		})
+	</script>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('errorEditAccount')) : ?>
+	<script type="text/javascript">
+		swal({
+			title: "Error",
+			text: "Ops, something wrong",
+			type: 'error',
+			timer: 3000,
+			allowOutsideClick: false,
+			icon: "error",
+		})
+	</script>
+<?php endif; ?>
