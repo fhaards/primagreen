@@ -1,4 +1,4 @@
-<div class="container px-6 py-3  mx-auto grid min-h-screen">
+<div class="container px-6 py-3 mx-auto grid min-h-screen">
     <section class="about w-full mt-20 md:mt-24 mx-auto ">
         <?php echo $breadcrumb; ?>
 
