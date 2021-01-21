@@ -36,15 +36,8 @@
                         <span class="text-gray-700 dark:text-gray-400">Full Name</span>
                         <input name="nama" type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type youre name" />
                     </label>
-                    <label class="block text-sm py-2">
-                        <span class="text-gray-700 dark:text-gray-400">Telp. Number</span>
-                        <input name="tlp" type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" value="+628 " />
-                    </label>
-                    <label class="block text-sm py-2">
-                        <span class="text-gray-700 dark:text-gray-400">Address</span>
-                        <textarea name="alamat" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Type youre address"></textarea>
-                    </label>
                     <label>
+                        <hr class="my-8">
                         <div class="mt-4">
                             <?php echo $show_captcha; ?>
                             <?php echo form_error('g-recaptcha-response'); ?>
@@ -64,7 +57,7 @@
                 </div>
             </div>
             <div class="flex-1  h-full lg:block hidden">
-                <div class="signup-banner"></div>
+                <div class="signup-banner rounded-md"></div>
             </div>
         </div>
     </section>

@@ -7,8 +7,6 @@ function closeSubNav() {
 	document.getElementById("sub-nav").style.height = "0%";
 }
 
-
-
 function openThisFaq(index) {
 	var thiscart = document.getElementById("this_faq_" + index);
 	thiscart.classList.toggle("hidden");

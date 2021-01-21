@@ -1,5 +1,5 @@
 <?php echo validation_errors(); ?>
-<?php echo form_open('profile/edit-account',array('class'=>'my-5')); ?>
+<?php echo form_open('profile/edit-account',array('class'=>'my-0')); ?>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
     <div class="flex flex-col">
         <div class="mb-4">
@@ -20,7 +20,7 @@
         </div>
         <div class="mb-2">
             <label>
-                <p class="text-gray-600 font-semibold text-sm">Telphone</p>
+                <p class="text-gray-600 font-semibold text-sm">Telephone</p>
                 <input name="tlp" type="text" value="<?= getUserData()['tlp']; ?>" class="block w-full mt-1 text-sm focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
             </label>
         </div>

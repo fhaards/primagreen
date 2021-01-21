@@ -89,19 +89,16 @@ class Controller_f_user_login extends CI_Controller
 			$password = $this->input->post('password');
 			$newPassword =  password_hash($password, PASSWORD_DEFAULT);
 			$name = $this->input->post('nama');
-			$tlp = $this->input->post('tlp');
-			$alamat = $this->input->post('alamat');
 			$dateNow  = date('Y-m-d H:i:s');
 			$user_regist = array(
 				'email' => $email,
 				'password' => $newPassword,
 				'nama' => $name,
-				'tlp' => $tlp,
-				'alamat' => $alamat,
 				'active' => false,
 				'join_date' => $dateNow,
 				'status_a' => 2,
-				'level' => 'user'
+				'level' => 'user',
+				'status_user' => 0
 			);
 			$insert_to_table = $this->model_f_user_login->insert($user_regist);
 			if ($insert_to_table) {

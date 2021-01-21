@@ -166,6 +166,7 @@ $route['profile/user-dashboard'] = 'Controller_f_user/index';
 $route['profile/user-account'] = 'Controller_f_user/userAccount';
 $route['profile/edit-account'] = 'Controller_f_user/editAccount';
 $route['profile/edit-address'] = 'Controller_f_user/editAddress';
+$route['profile/edit-address/edit-form'] = 'Controller_f_user/editAddressForm';
 $route['profile/order-history'] = 'Controller_f_user/orderHistory';
 $route['profile/order-history/(:any)'] = 'Controller_f_user/orderHistory/$1';
 $route['profile/detail-order/(:any)'] = 'Controller_f_user/detailOrder/$1';

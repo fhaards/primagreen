@@ -1,6 +1,6 @@
 <?php if (empty($getUser)) : ?>
     <div class="">
-        <span class="text-gray-600 font-semibold">You don't have any order :( </span> <a class="ml-4 underline text-blue-600" href="<?php echo base_url() . 'store/product-list'; ?>">go to store</a>
+        <span class="text-xs md:text-sm font-semibold text-gray-500 text-justify">You don't have any order :( </span> <a class="ml-4 underline text-blue-600" href="<?php echo base_url() . 'store/product-list'; ?>">go to store</a>
     </div>
 <?php else : ?>
     <div class="mt-2 grid grid-cols-3 gap-4 p-1 bg-gray-800 text-white rounded-sm shadow-xs border border-gray-300 font-bold mb-1">

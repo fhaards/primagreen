@@ -81,3 +81,41 @@ function detail_order_title($var)
                     </div>';
     return $title_output;
 }
+
+
+/// STATUS USER
+
+function status_user_info_longtext($var)
+{
+    if ($var == 0) :
+        $suinfo =   '<div class="bg-red-100 text-red-600 font-bold py-1 px-4 rounded-md flex flex-row space-x-2 md:space-x-5 items-center">
+                        <svg class="h-3 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg> 
+                        <div class="text-xs md:text-sm">Please , Complete Your Account !</div>
+                    </div>';
+    else :
+        $suinfo =  '<div class="bg-green-100 text-green-600 font-bold py-1 px-4 rounded-md flex flex-row space-x-2 md:space-x-5 items-center">
+                        <svg class="h-3 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="text-xs md:text-sm">Your Accout Is Complete !</div>
+                    </div>';
+    endif;
+    return $suinfo;
+}
+
+function status_user_info_icon_address($var)
+{
+    if (empty($var)) :
+        $su_icon_address = '<svg class="h-3 md:h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>';
+    else :
+
+        $su_icon_address = '<svg class="h-3 md:h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>';
+    endif;
+    return $su_icon_address;
+}

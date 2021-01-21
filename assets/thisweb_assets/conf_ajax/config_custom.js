@@ -1,4 +1,7 @@
 $(document).ready(function () {
+	getToken();
+	initProvinceAndCity();
+
 	// GET NO PEMESANAN WHEN UPLOAD TRANSFER PROOF
 	$(".upload-transfer").on("click", function () {
 		$("#upNoOrderInput").val($(this).data("nopemesanan"));
@@ -56,82 +59,131 @@ $(document).ready(function () {
 		});
 	});
 
-
-	// PROFILE PAGES 
-	$("#change_password").on("click",".changepw_click", function () {
+	// PROFILE PAGES
+	$("#change_password").on("click", ".changepw_click", function () {
 		var checkBoxes = $(".checkedbox_changepw");
-		$(".type_password").toggleClass('hidden');
+		$(".type_password").toggleClass("hidden");
 		checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-		checkBoxes.on("click", function(){
+		checkBoxes.on("click", function () {
 			checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-		})
+		});
 	});
 
-	// $(".checkedbox_changepw").prop('checked', true);
+	/////////////////////////////// GET PROVINCE ////////////////////////////////////////////
+	function getToken() {
+		var tmp = null;
+		$.ajax({
+			async: false,
+			type: "get",
+			global: false,
+			dataType: "json",
+			url: "https://x.rajaapi.com/poe",
+			success: function (data) {
+				tmp = data.token;
+			},
+		});
+		return tmp;
+	}
 
-	// $("#show_someitems").on("mouseover", ".open_thisitem", function () {
-	// 	var index = $("#show_someitems").index(this);
-	// 	$(".this_item").show();
-	// 	$(".this_item:eq(" + index + ")").show();
-	// });
+	$("#getProvince").on("change", function () {
+		getCity();
+		// SEND NAME PROVINCE
+		$("#inputProvinceName").val(
+			$(this).find(":selected").attr("data-nmprovince")
+		);
+		$("#getCityHide").show();
+	});
 
-	// $(".open_thisitem").on("mouseleave", function () {
-	// 	$(this).find(".this_item").hide();
-	// });
+	$("#getCity").on("change", function () {
+		// SEND NAME CITY
+		$("#inputCityName").val($(this).find(":selected").attr("data-nmcity"));
+	});
 
-	// $(".open_thiscart").hover(
-	// 	function (e) {
-	// 		$(this).find(".this_cart").toggleClass("md:hidden");
-	// 	},
-	// 	function (e) {
-	// 		$(this).find(".this_cart").toggleClass("md:hidden");
-	// 	}
-	// );
+	function getProvince(callback = setProvinceList) {
+		$.ajax({
+			type: "GET",
+			url:
+				"https://x.rajaapi.com/MeP7c5ne" + getToken() + "/m/wilayah/provinsi",
+			success: function (data) {
+				callback(data);
+			},
+		});
+	}
 
-	// $(".open_thiscart").on("hover", function () {
-	// 	$(".this_cart").not($(this).next()).hide();
-	// 	$(this).next(".this_cart").fadeIn();
-	// });
+	function initProvinceAndCity() {
+		getProvince(initSetProvinceAndCityList);
+	}
 
-	// $("#open_thiscart").each(function () {
-	// 	$(".open_thiscart").mouseover(function () {
-	// 		$("#this_cart").toggleClass("md:hidden");
-	// 	});
-	// });
+	function setProvinceList(data) {
+		let getProvince = $("#getProvince");
+		var data = data.data;
+		var options = "";
+		for (var i = 0; i < data.length; i++) {
+			options +=
+				'<option value="' +
+				data[i].id +
+				'" data-nmprovince="' +
+				data[i].name +
+				'">' +
+				data[i].name +
+				"</option>";
+		}
+		getProvince.append(options);
+	}
 
-	// $("#open_thiscart .open_thiscart").mouseout(function (e) {
-	// 	$("#this_cart").toggleClass("md:hidden");
-	// });
+	function initSetProvinceAndCityList(data) {
+		setProvinceList(data);
+		var idProvince = $("#getProvince").data("idProvince");
+		$("#getProvince").val(idProvince);
+		getCity(initSetCityList);
+	}
 
-	// $("#show_someitems").on("mouseover", ".open_thiscart", function() {
-	// 	$("#this_cart").not($(this).next()).toggleClass("md:hidden");
-	// 	$(this).next("#this_cart").toggleClass("md:hidden");
-	// });
+	/////////////////////////////// GET CITY ////////////////////////////////////////////
 
-	// $(".open_thiscart").on('mouseover', mEnter)
-	// $('.this_cart').on('mouseleave', function () {
-	// 	$('.this_cart').stop();
-	// });
-	// function mEnter() {
-	// 	$(".this_cart").show();
-	// }
+	function getCity(callback = setCityList) {
+		var idProvince = $("#getProvince").val();
+		let getCity = $("#getCity");
+		$.ajax({
+			type: "GET",
+			url:
+				"https://x.rajaapi.com/MeP7c5ne" +
+				getToken() +
+				"/m/wilayah/kabupaten?idpropinsi=" +
+				idProvince,
+			success: function (data) {
+				callback(data);
+			},
+			beforeSend: function () {
+				getCity.html(" ");
+			},
+		});
+	}
 
-	// $("#open_thiscart").each(function (e) {
-	// 	$(this).mouseover(
-	// 		function (e) {
-	// 			$("#this_cart").hide();
-	// 		},
-	// 		function () {
-	// 			$("#this_cart").hide();
-	// 		}
-	// 	);
-	// });
+	function initGetCity() {
+		getCity(initSetCityList);
+	}
 
-	// $("#show_someitems").on("mouseover", ".open_thiscart", function() {
-	// 	$(".this_cart").toggleClass('md:hidden');
-	// });
+	function setCityList(data) {
+		let getCity = $("#getCity");
+		var options = "";
+		var data = data.data;
+		options += ' <option> -- SELECT CITY -- </option>'; 
+		for (var i = 0; i < data.length; i++) {
+			options +=
+				'<option value="' +
+				data[i].id +
+				'" data-nmcity="' +
+				data[i].name +
+				'">' +
+				data[i].name +
+				"</option>";
+		}
+		getCity.append(options);
+	}
 
-	// $("#show_someitems").on("mouseout", ".open_thiscart", function() {
-	// 	$(".this_cart").toggleClass('md:hidden');
-	// });
+	function initSetCityList(data) {
+		setCityList(data);
+		var idCity = $("#getCity").data("idCity");
+		$("#getCity").val(idCity);
+	}
 });

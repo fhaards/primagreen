@@ -110,13 +110,13 @@ class Controller_f_user extends CI_Controller
             $get_change_account = $this->model_user->changeAccount($id_user, $change_account);
             if ($get_change_account) {
                 $this->load->library('mailer');
-				$subject = 'Modify Account Information';
-				$this_mail_content = $this->load->view('frontend/mail/mail_content_change_account',  array('name' => $name,'date'=>$dateNow), true);
-				$sendmail = array(
-					'email_receipt' => $email,
-					'subject' => $subject,
-					'this_mail_content' => $this_mail_content
-				);
+                $subject = 'Modify Account Information';
+                $this_mail_content = $this->load->view('frontend/mail/mail_content_change_account',  array('name' => $name, 'date' => $dateNow), true);
+                $sendmail = array(
+                    'email_receipt' => $email,
+                    'subject' => $subject,
+                    'this_mail_content' => $this_mail_content
+                );
                 $this->mailer->send_mail($sendmail);
                 $this->session->set_flashdata('successEditAccount', 'Data Was Changes');
                 redirect('profile/user-account');
@@ -141,14 +141,32 @@ class Controller_f_user extends CI_Controller
     function editAddress()
     {
         redirectIfNotLogin();
-        // $iduser = getUserData()['id_user'];
+        $getAddress = getUserData()['alamat'];
         $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
         $this->crumbs->add('Address Book', base_url() . 'profile/edit-address');
         $data['breadcrumb'] = $this->crumbs->output();
         $data['title']   = 'Profile - ' . APP_NAME;
         $data['content'] = 'frontend/profile/index';
         $data['profile_title'] = 'Edit Address Book';
-        $data['profile_content'] = 'frontend/profile/edit_address';
+        if (empty($getAddress)) :
+            $data['profile_content'] = 'frontend/profile/edit_address_form';
+        else :
+            $data['profile_content'] = 'frontend/profile/edit_address';
+        endif;
+        $this->load->view('frontend/master_frontend', $data);
+    }
+
+    function editAddressForm()
+    {
+        redirectIfNotLogin();
+        $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
+        $this->crumbs->add('Address Book', base_url() . 'profile/edit-address');
+        $this->crumbs->add('Edit Address', base_url() . 'profile/edit-address/edit-form');
+        $data['breadcrumb'] = $this->crumbs->output();
+        $data['title']   = 'Profile - ' . APP_NAME;
+        $data['content'] = 'frontend/profile/index';
+        $data['profile_title'] = 'Edit Address Book';
+        $data['profile_content'] = 'frontend/profile/edit_address_form';
         $this->load->view('frontend/master_frontend', $data);
     }
 
