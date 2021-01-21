@@ -1,6 +1,8 @@
 $(document).ready(function () {
 	getToken();
 	initProvinceAndCity();
+	initCityAndDistricts();
+	console.log(getToken());
 
 	// GET NO PEMESANAN WHEN UPLOAD TRANSFER PROOF
 	$(".upload-transfer").on("click", function () {
@@ -91,12 +93,12 @@ $(document).ready(function () {
 		$("#inputProvinceName").val(
 			$(this).find(":selected").attr("data-nmprovince")
 		);
-		$("#getCityHide").show();
-	});
-
-	$("#getCity").on("change", function () {
-		// SEND NAME CITY
-		$("#inputCityName").val($(this).find(":selected").attr("data-nmcity"));
+		if ($("#inputProvinceName").val() == "0") {
+			$("#getCityHide").hide();
+		} else {
+			$("#getCityHide").show();
+		}
+	
 	});
 
 	function getProvince(callback = setProvinceList) {
@@ -118,6 +120,7 @@ $(document).ready(function () {
 		let getProvince = $("#getProvince");
 		var data = data.data;
 		var options = "";
+		options += ' <option data-nmprovince="0"> -- SELECT PROVINCE -- </option>';
 		for (var i = 0; i < data.length; i++) {
 			options +=
 				'<option value="' +
@@ -140,6 +143,17 @@ $(document).ready(function () {
 
 	/////////////////////////////// GET CITY ////////////////////////////////////////////
 
+	$("#getCity").on("change", function () {
+		getSubDistricts();
+		// SEND NAME CITY
+		$("#inputCityName").val($(this).find(":selected").attr("data-nmcity"));
+		if ($("#inputCityName").val() == "0") {
+			$("#getSubDistrictsHide").hide();
+		} else {
+			$("#getSubDistrictsHide").show();
+		}
+	});
+
 	function getCity(callback = setCityList) {
 		var idProvince = $("#getProvince").val();
 		let getCity = $("#getCity");
@@ -159,7 +173,7 @@ $(document).ready(function () {
 		});
 	}
 
-	function initGetCity() {
+	function initCityAndDistricts() {
 		getCity(initSetCityList);
 	}
 
@@ -167,7 +181,7 @@ $(document).ready(function () {
 		let getCity = $("#getCity");
 		var options = "";
 		var data = data.data;
-		options += ' <option> -- SELECT CITY -- </option>'; 
+		options += ' <option data-nmcity="0"> -- SELECT CITY -- </option>';
 		for (var i = 0; i < data.length; i++) {
 			options +=
 				'<option value="' +
@@ -185,5 +199,75 @@ $(document).ready(function () {
 		setCityList(data);
 		var idCity = $("#getCity").data("idCity");
 		$("#getCity").val(idCity);
+		getSubDistricts(initSetSubDistrictsList);
+	}
+
+	// function initSetCityAndDistrictsList(data) {
+	// 	setCityList(data);
+	// 	var idCity = $("#getCity").data("idCity");
+	// 	$("#getCity").val(idCity);
+
+	// }
+
+	/////////////////////////////// GET SUBDISTRICTS ////////////////////////////////////////////
+
+	$("#getSubDistricts").on("change", function () {
+		// SEND NAME CITY
+		$("#inputSubDistrictsName").val(
+			$(this).find(":selected").attr("data-nmsubdistricts")
+		);
+		if ($("#inputSubDistrictsName").val() == "0") {
+			$("#submitEditAddress").hide();
+		} else {
+			$("#submitEditAddress").show();
+		}
+	});
+
+	function getSubDistricts(callback = setSubDistrictsList) {
+		var idCity = $("#getCity").val();
+		let getSubDistricts = $("#getSubDistricts");
+		$.ajax({
+			type: "GET",
+			url:
+				"https://x.rajaapi.com/MeP7c5ne" +
+				getToken() +
+				"/m/wilayah/kecamatan?idkabupaten=" +
+				idCity,
+			success: function (data) {
+				callback(data);
+			},
+			beforeSend: function () {
+				getSubDistricts.html(" ");
+			},
+		});
+	}
+
+	// function initGetSubDistricts() {
+	// 	getSubDistricts(initSetSubDistrictsList);
+	// }
+
+	function setSubDistrictsList(data) {
+		let getSubDistricts = $("#getSubDistricts");
+		var options = "";
+		var data = data.data;
+		options +=
+			'<option data-nmsubdistricts="0"> -- SELECT SUB DISTRICTS -- </option>';
+		for (var i = 0; i < data.length; i++) {
+			options +=
+				'<option value="' +
+				data[i].id +
+				'" data-nmsubdistricts="' +
+				data[i].name +
+				'">' +
+				data[i].name +
+				"</option>";
+		}
+		getSubDistricts.append(options);
+	}
+
+	function initSetSubDistrictsList(data) {
+		setSubDistrictsList(data);
+		var idSubDistricts = $("#getSubDistricts").data("idSubDistricts");
+		$("#getSubDistricts").val(idSubDistricts);
 	}
 });
