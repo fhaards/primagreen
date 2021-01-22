@@ -5,6 +5,8 @@
                 <p class="text-gray-600 font-semibold text-sm">Your Address</p>
                 <p class="my-5 font-semibold text-gray-800 md:text-sm text-xs text-justify">
                     <?= getUserData()['alamat']; ?>
+                    <br>
+                    <?= getUserData()['zip_code']; ?>
                 </p>
             </label>
         </div>

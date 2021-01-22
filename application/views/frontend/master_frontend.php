@@ -91,7 +91,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_cart.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_custom.js'; ?>" language="javascript"></script>
-    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_frontend.js'; ?>" language="javascript"></script>
+    <?php $this->load->view('_partials/_user_part/user_js_control'); ?>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuxj-0utMuNbJbokRsEEVbfiV5t_t6NRU&callback=initMap"></script>
 </body>
 

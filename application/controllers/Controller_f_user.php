@@ -24,6 +24,7 @@ class Controller_f_user extends CI_Controller
         $this->load->helper('directory');
         $this->load->helper("file");
         $this->load->helper('styling');
+        $this->load->helper('text');
     }
 
     function index()
@@ -83,6 +84,8 @@ class Controller_f_user extends CI_Controller
             $setNewPassword = $getOldPassword;
         endif;
 
+        $this->form_validation->set_rules('name', '<strong>Name</strong>', 'required');
+        $this->form_validation->set_rules('tlp', '<strong>Telephone</strong>', 'required');
         $this->form_validation->set_rules('email', '<strong>Email</strong>', 'required');
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('frontend/master_frontend', $data);
@@ -159,6 +162,7 @@ class Controller_f_user extends CI_Controller
     function editAddressForm()
     {
         redirectIfNotLogin();
+        $id_user = getUserData()['id_user'];
         $this->crumbs->add('My Account', base_url() . 'profile/user-dashboard');
         $this->crumbs->add('Address Book', base_url() . 'profile/edit-address');
         $this->crumbs->add('Edit Address', base_url() . 'profile/edit-address/edit-form');
@@ -167,7 +171,32 @@ class Controller_f_user extends CI_Controller
         $data['content'] = 'frontend/profile/index';
         $data['profile_title'] = 'Edit Address Book';
         $data['profile_content'] = 'frontend/profile/edit_address_form';
-        $this->load->view('frontend/master_frontend', $data);
+
+        //GETTING FORM
+        $street = strtoupper($this->input->post('street'));
+        $province_name = $this->input->post('province_name');
+        $city_name = $this->input->post('city_name');
+        $subdistricts_name = $this->input->post('subdistricts_name');
+        $zip_code = $this->input->post('zip_code');
+        $setup_address = $street.' , '.$subdistricts_name.' ,  '.$city_name.' , '.$province_name;
+
+        $this->form_validation->set_rules('street', 'Street', 'required|min_length[5]');
+        $this->form_validation->set_rules('idProvince', 'Province', 'required');
+        $this->form_validation->set_rules('IdCity', 'City', 'required');
+        $this->form_validation->set_rules('idSubDistricts', 'Sub Districts', 'required');
+        $this->form_validation->set_rules('zip_code', 'Zip Code', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('frontend/master_frontend', $data);
+        } else { 
+            $change_account = array(
+                'alamat' => $setup_address,
+                'zip_code' => $zip_code
+            );
+            $this->model_user->changeAccount($id_user,$change_account);
+            $this->session->set_flashdata('successEditAccount', 'Data Was Changes');
+            redirect('profile/edit-address');
+        }
+
     }
 
     function orderHistory()

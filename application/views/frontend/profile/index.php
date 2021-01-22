@@ -22,9 +22,7 @@
                         <li>
                             <a href="<?= base_url() . 'profile/user-account'; ?>" class="inline-block py-2 w-full flex flex-row <?= ($profile_page == 'user-account' || $profile_page == 'edit-account') ? $active :  $inactive; ?>">
                                 <span class="flex-1 ">Account Information</span>
-                                <svg class="h-3 md:h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
+                                <?= status_user_info_icon_address(getUserData()['tlp']);?>
                             </a>
                         </li>
                         <li>

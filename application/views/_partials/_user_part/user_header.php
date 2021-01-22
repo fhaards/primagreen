@@ -1,5 +1,5 @@
-<header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto border-b-2 border-gray-300">
-  <div class="container flex items-center justify-between h-full mx-auto px-6">
+<header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto border-b-2 border-gray-300 ">
+  <div class="container flex items-center justify-between h-full mx-auto px-6 ">
     <!-- Mobile hamburger -->
     <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu" aria-label="Menu">
       <svg class="w-6 h-6 fill-current text-green-500" aria-hidden="true" fill="" viewBox="0 0 20 20">
@@ -41,25 +41,32 @@
 
 
         <li class="relative">
+
           <button style="cursor:pointer;" class="flex flex-row md:space-x-5 focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
             <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
-            <?php if (isUser()) : ?><label class="md:block hidden"><?= getUserData()['nama']; ?></label> <?php endif; ?>
+            <?php if (isUser()) : ?><label class="md:block hidden" style="cursor:pointer;"><?= getUserData()['nama']; ?></label> <?php endif; ?>
           </button>
           <template x-if="isProfileMenuOpen">
             <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
               <?php if (isUser()) : ?>
                 <li class="flex">
+
                   <a href="<?= base_url(); ?>profile/user-account/<?= getUserData()['username']; ?>" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
                     <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
-                    <span>My Account</span>
+                    <?php if (getUserData()['status_user'] != 0) : ?>
+                      <span>My Account</span>
+                    <?php else: ?>
+                      <span>Completing Account </span>
+                    <?php endif; ?>
                   </a>
+
                 </li>
                 <li class="flex">
-                  <a href="<?= base_url().'profile/order-history'; ?>" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
+                  <a href="<?= base_url() . 'profile/order-history'; ?>" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">
                     <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                     </svg>
