@@ -119,3 +119,4 @@ function status_user_info_icon_address($var)
     endif;
     return $su_icon_address;
 }
+

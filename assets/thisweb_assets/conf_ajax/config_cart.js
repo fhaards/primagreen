@@ -5,7 +5,7 @@ $(document).ready(function () {
 	function successMsg() {
 		swal({
 			type: "success",
-			buttons:false,
+			buttons: false,
 			timer: 1500,
 			icon: "success",
 		});
@@ -16,7 +16,7 @@ $(document).ready(function () {
 			type: "success",
 			title: "Success",
 			text: "Add items to Cart",
-			buttons:false,
+			buttons: false,
 			timer: 1500,
 			icon: "success",
 		});
@@ -26,7 +26,7 @@ $(document).ready(function () {
 		swal({
 			// imageUrl: "assets/image/loading2.gif",
 			text: "loading ..",
-			buttons:false,
+			buttons: false,
 			allowOutsideClick: false,
 			imageWidth: 160,
 		});
@@ -55,15 +55,19 @@ $(document).ready(function () {
 		calculateCheckout();
 	}
 
-	$(".show-cart").hide();
+	// $(".show-cart").hide();
 	$("#checkout-btn").hide();
 
 	$(".show-cart-menu").click(function () {
-		$(".show-cart").animate({ width: "toggle" }, 100);
+		$(".show-cart").animate({ fadeIn: "toggle" }, 100, function () {
+			$(".this-cart").animate({ width: "toggle" }, 100);
+		});
 	});
 
 	$(".close-cart").click(function () {
-		$(".show-cart").animate({ width: "toggle" }, 100);
+		$(".show-cart").animate({ fadeIn: "toggle" }, 100, function () {
+			$(".this-cart").animate({ width: "toggle" }, 100);
+		});
 	});
 
 	$(".add_cart").click(function () {

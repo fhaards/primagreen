@@ -104,6 +104,14 @@ form label {
 	-o-background-size: cover;
 	background-size: cover;
 }
+.footer-bg {
+	background: url(../../image/footer_bg.svg) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: #1F2937;
+}
 
 .page-title {
 	font-family: "DM Serif Text", serif;

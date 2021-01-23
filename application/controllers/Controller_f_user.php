@@ -178,7 +178,7 @@ class Controller_f_user extends CI_Controller
         $city_name = $this->input->post('city_name');
         $subdistricts_name = $this->input->post('subdistricts_name');
         $zip_code = $this->input->post('zip_code');
-        $setup_address = $street.' , '.$subdistricts_name.' ,  '.$city_name.' , '.$province_name;
+        $setup_address = $street.' , '.$subdistricts_name.' ,  '.$city_name.' , '.$province_name.' . ZIP CODE : '.$zip_code;
 
         $this->form_validation->set_rules('street', 'Street', 'required|min_length[5]');
         $this->form_validation->set_rules('idProvince', 'Province', 'required');

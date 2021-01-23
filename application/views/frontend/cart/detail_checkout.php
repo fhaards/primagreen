@@ -135,16 +135,23 @@
                                 <span id="totalorder" class="text-right"></span>
                             </div>
                         </div>
-                        <div class="flex flex-row py-1 my-1">
+                        <div class="flex flex-col py-1 my-1">
                             <span class="sel-courier font-bold text-green-500 uppercase">Before Checkout , Select a Courier First !</span>
-                            <button type="submit" class="checkout-final-btn flex w-full shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-green-500 rounded-md active:bg-green-600 hover:shadow-none hover:bg-green-600 focus:outline-none focus:shadow-outline-green">
-                                <div class="flex mx-auto space-x-2 items-center">
-                                    <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                    <span class="">Finish Checkout</span>
-                                </div>
-                            </button>
+                            <?php if (getUserData()['status_user'] == 0) : ?>
+                                <span class="text-center text-sm font-bold py-4 text-red-500">
+                                    Please complete youre account <a href="<?= base_url() . 'profile/user-account'; ?>" class="underline"> Here </a> <br>
+                                    to finish youre cart
+                                </span>
+                            <?php else : ?>
+                                <button type="submit" class="checkout-final-btn flex w-full shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-green-500 rounded-md active:bg-green-600 hover:shadow-none hover:bg-green-600 focus:outline-none focus:shadow-outline-green">
+                                    <div class="flex mx-auto space-x-2 items-center">
+                                        <svg class="w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                        <span class="">Finish Checkout</span>
+                                    </div>
+                                </button>
+                            <?php endif; ?>
                         </div>
                     </div>
 

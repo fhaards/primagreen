@@ -1,11 +1,11 @@
-<section class="homepage-banner min-w-full w-full h-screen mt-20 lg:mt-20 mx-auto flex pt-12 md:pt-0 md:items-center bg-cover bg-right" style="">
-    <div class="container mx-auto md:mt-0 mt-10 px-6">
+<section class="homepage-banner  min-w-full w-full mt-20 lg:mt-20 mx-auto flex md:items-center bg-cover bg-right" style="height:600px;">
+    <div class="container mx-auto md:mt-0 mt-20 px-6 text-gray-800">
         <div class="flex flex-col w-full lg:w-2/3 tracking-wide md:mx-0 mx-auto ">
-            <h1 class="uppercase text-white font-black md:text-5xl text-2xl tracking-wide">Time to bloom </h1>
-            <h1 class="uppercase md:-mt-5 text-white font-bold md:text-4xl text-xl tracking-wide py-0">youre house with plants</h1>
+            <h1 class="uppercase  font-black md:text-5xl text-2xl tracking-wide">Time to bloom </h1>
+            <h1 class="uppercase md:-mt-5 font-bold md:text-4xl text-xl tracking-wide py-0">youre house with plants</h1>
         </div>
-        <div class="flex flex-col w-full  lg:w-1/3 tracking-wide md:mx-0 mx-auto mt-5">
-            <h4 class="text-white font-semibold md:text-xl ">
+        <div class="flex flex-col w-full md:w-1/3 tracking-wide md:mx-0 mx-auto mt-5">
+            <h4 class=" font-semibold md:text-xl text-md md:w-full w-2/3 ">
                 Studies have also proven that indoor plants improve concentration and productivity , reduce stress levels and boost your mood.
             </h4>
             <a href="<?= base_url(); ?>store/product-list" class="block flex flex-row px-4 py-2 items-center mt-10 text-sm uppercase shadow-lg hover:shadow-none font-bold leading-5 text-green-600 transition-colors duration-150 bg-green-100 border border-transparent rounded-sm active:bg-green-600 hover:bg-green-200 focus:border-green-400 focus:shadow-outline-green">
@@ -24,9 +24,9 @@
     <div class="container px-6 mx-auto flex md:flex-row lg:flex-row flex-col md:space-x-10">
         <div class="md:w-1/4 w-full">
             <div class="w-full container flex md:flex-col md:space-x-0 space-x-5 mt-0 pt-10">
-                <div class="flex flex-col">
-                    <span class="uppercase tracking-widest no-underline hover:no-underline font-bold text-gray-800 md:text-4xl text-xl">New</span>
-                    <span class="md:-mt-5 uppercase tracking-widest no-underline hover:no-underline font-black text-gray-800 md:text-4xl text-xl">Arrival</span>
+                <div class="flex flex-col text-gray-800">
+                    <span class="uppercase tracking-widest no-underline hover:no-underline font-bold  md:text-4xl text-xl">New</span>
+                    <span class="md:-mt-5 uppercase tracking-widest no-underline hover:no-underline font-black  md:text-4xl text-xl">Arrival</span>
                 </div>
                 <span class="w-full uppercase tracking-widest text-gray-600 font-semibold md:text-xl text-xs md:text-left text-right">PLANTS ALWAYS <BR> GROW UP</span>
             </div>

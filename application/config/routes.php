@@ -129,23 +129,17 @@ $route['messages'] = 'Controller_messages/index';
 
 /*///////// Homepage ETC /////////////*/
 
-$route['primagreen'] = 'Controller_f_homepage/index';
+$route['index'] = 'Controller_f_homepage/index';
 $route['login'] = 'Controller_f_user_login/index';
 $route['registration'] = 'Controller_f_user_login/registration';
 $route['registration/data_exist'] = 'Controller_f_user_login/dataExist';
 $route['logout'] = 'Controller_f_user_login/logout';
-
-
 
 /*///////// Store /////////////*/
 $route['store/product-list'] = 'Controller_f_store';
 $route['store/product-list/(:any)'] = 'Controller_f_store/fetch_data/$1';
 $route['store/product-list/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
 $route['store/add-favorites'] = 'Controller_favorites/addFavorites';
-// $route['store/show-all-items/(:num)'] = 'Controller_f_store';
-// $route['store/(:any)'] = 'Controller_f_store/showByType/$1';
-// $route['store/(:any)/(:num)'] = 'Controller_f_store/showByType/$1';
-// $route['store/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';
 
 /*///////// Cart /////////////*/
 $route['cart/add-to-cart'] = 'Controller_f_cart/addToCart';
@@ -206,3 +200,10 @@ $route['foo/sendthismail_regist'] = 'Controller_foo/sendthismail_regist';
 $route['foo/tested'] = 'Controller_foo/tested';
 $route['foo/base'] = 'Controller_base/index';
 
+/*
+| -------------------------------------------------------------------------
+| FOLDER MANAGEMENT
+| -------------------------------------------------------------------------
+*/
+
+$route['uploads/'] = 'Controller_f_homepage/index';

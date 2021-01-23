@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="flex-1 lg:block hidden">
-                <div class="login-banner h-full"></div>
+                <div class="login-banner h-full rounded-md"></div>
             </div>
 
         </div>

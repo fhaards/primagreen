@@ -34,14 +34,18 @@
         </div>
         <div class="w-full flex md:flex-row md:space-x-10 flex-col">
             <div class="w-1/3 flex flex-col">
-                <h2 class="text-gray-800 font-bold text-xl">Contact Us </h2>
-                <div class="mt-10">
+                <h2 class="text-gray-800 font-bold text-xl mb-5">Contact Us </h2>
+                <div class="mb-5">
                     <p class="text-gray-900 font-bold text-base">Phone :</p>
-                    <p class="text-base text-gray-600 font-semibold"><?php echo getCompanyData()['telp']; ?></p>
+                    <p class="text-base text-gray-600 font-semibold">
+                        <?= objectSocmed('whatsapp'); ?>
+                    </p>
                 </div>
-                <div class="mt-10">
+                <div class="mb-5">
                     <p class="text-gray-900 font-bold text-base">Instagram :</p>
-                    <p class="text-base text-gray-600 font-semibold"><?php echo getCompanyData()['instagram']; ?></p>
+                    <p class="text-base text-gray-600 font-semibold">
+                        <?= objectSocmed('Instagram'); ?>
+                    </p>
                 </div>
             </div>
             <div class="md:w-2/3 w-full md:mt-0 mt-10">
