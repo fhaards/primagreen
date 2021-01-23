@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jan 2021 pada 20.23
+-- Waktu pembuatan: 23 Jan 2021 pada 01.13
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -40,7 +40,7 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id_banner`, `main_banner`, `login_banner`, `regist_banner`, `contactus_banner`) VALUES
-(11, 'da3c3b0aaea2e040219e26b031089f87.jpg', '1c54bf519f6104005f5a9db7e358db00.jpg', 'd74371c9bdbd8d7a265c1ceabce86fae.jpg', '78dbed9a22bc3b20a26f513fcc94566c.jpg');
+(11, 'faff70f9ab8823bd4e78c1dfb5157f05.png', 'e761e57969bd6c1d5ece015c6fd8ae5a.png', 'd74371c9bdbd8d7a265c1ceabce86fae.jpg', '78dbed9a22bc3b20a26f513fcc94566c.jpg');
 
 -- --------------------------------------------------------
 
@@ -183,8 +183,7 @@ CREATE TABLE `msg_user` (
 --
 
 INSERT INTO `msg_user` (`id_msg`, `id_user`, `subject`, `msg`, `status_msg`) VALUES
-(1, 45, 'test', 'test1', 'UNREAD'),
-(2, 47, 'ini tested', 'test', 'UNREAD');
+(1, 45, 'test', 'test1', 'UNREAD');
 
 -- --------------------------------------------------------
 
@@ -212,13 +211,8 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id_pesan`, `id_user`, `id_barang`, `no_pemesanan`, `qty_pesan`, `id_kurir`, `hrg_kurir`, `total_harga`, `tgl_pesan`, `nama_t`, `alamat_t`, `status`) VALUES
-(125, 47, 69, 'LANE1847110235QD', 1, 4, 23000, 392200, '2021-01-18 23:35:38', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
-(126, 47, 71, 'LANE1847110235QD', 1, 4, 23000, 392200, '2021-01-18 23:35:38', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'COMPLETE'),
-(127, 47, 74, 'JXFY2047036132FG', 1, 1, 10000, 224240, '2021-01-20 03:32:19', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
-(128, 47, 76, 'JXFY2047036132FG', 1, 1, 10000, 224240, '2021-01-20 03:32:19', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
-(129, 47, 74, 'YEFF2147016554QR', 1, 2, 20000, 78240, '2021-01-21 01:54:52', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
-(130, 47, 75, 'HWVC2147016955AF', 1, 3, 25000, 82200, '2021-01-21 01:55:04', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD'),
-(131, 47, 73, 'OBMM2147017255CI', 1, 3, 25000, 92597, '2021-01-21 01:55:14', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32', 'ONHOLD');
+(132, 51, 69, 'MAMN2351027134TR', 1, 1, 10000, 290800, '2021-01-23 02:34:35', 'amril aziz', 'BUKIT DAGO A10 N09 , GUNUNG SINDUR ,  KABUPATEN BOGOR , JAWA BARAT . ZIP CODE : 16340', 'COMPLETE'),
+(133, 49, 70, 'MNAC2349028946EE', 1, 3, 25000, 108200, '2021-01-23 02:46:12', 'Muhammad Fahmi', 'PERUMAHAN BUKIT DAGO A9-32  , GUNUNG SINDUR ,  KABUPATEN BOGOR , JAWA BARAT . ZIP CODE : 16340', 'PROCESS');
 
 -- --------------------------------------------------------
 
@@ -248,8 +242,7 @@ CREATE TABLE `order_sold` (
 --
 
 INSERT INTO `order_sold` (`id_penjualan`, `id_user`, `id_barang`, `no_pemesanan`, `qty_pesan`, `p_size`, `id_kurir`, `hrg_kurir`, `no_resi`, `total_harga`, `tgl_pesan`, `tgl_pnjl`, `nama_t`, `alamat_t`) VALUES
-(58, 47, 69, 'LANE1847110235QD', 1, '', 4, 23000, '15123548', 392200, '2021-01-18 23:35:38', '2021-01-18 23:44:31', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32'),
-(59, 47, 71, 'LANE1847110235QD', 1, '', 4, 23000, '15123548', 392200, '2021-01-18 23:35:38', '2021-01-18 23:44:31', 'Muhammad Fahmi', 'Perumahan Bukit Dago A-9 No.32');
+(60, 51, 69, 'MAMN2351027134TR', 1, '', 1, 10000, '9879955446', 290800, '2021-01-23 02:34:35', '2021-01-23 02:36:43', 'amril aziz', 'BUKIT DAGO A10 N09 , GUNUNG SINDUR ,  KABUPATEN BOGOR , JAWA BARAT . ZIP CODE : 16340');
 
 -- --------------------------------------------------------
 
@@ -269,7 +262,8 @@ CREATE TABLE `pay_con` (
 --
 
 INSERT INTO `pay_con` (`id_pay`, `no_pemesanan`, `ket`, `gambar`) VALUES
-(32, 'LANE1847110235QD', 'Done', '520de1192be3c14d61df001f32ae7ec3.jpg');
+(33, 'MAMN2351027134TR', 'jangan lama mas please', 'c1d0c7f69aaf8fd7d8b0109f19d5302c.jpg'),
+(34, 'MNAC2349028946EE', 'Buru', '9eb735051163e6f4c3fd9bf219582585.jpg');
 
 -- --------------------------------------------------------
 
@@ -301,7 +295,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id_barang`, `nm_barang`, `nm_barang_bot`, `sku`, `size`, `size_desc`, `light`, `id_type`, `harga`, `stok`, `gambar`, `gambar2`, `gambar3`, `detail`, `date_a`, `product_status`) VALUES
-(69, 'Monstera', 'Monstera Deliciosa', '0050PLNTMON114', 'Extra Large', '26\"-32\" tall, 20\"-26\"', 'Medium', 1, 270000, 48, 'beef5231bd07532863b4035566967829.jpg', 'e2cdff198017e28f1fa72c965ea92d69.jpg', 'e7af25fd8df57596c72890001b4d1723.jpg', '<p>When placed in the right environment, Monsteras are easy to care for and fast-growing&mdash;so give it some space to spread out, make a statement, and thrive! As the Monstera grows, its leaves will develop long ribbons and holes, resembling swiss cheese, giving it a distinct, graphic appearance.</p>\r\n<p>This tropical plant originates from the tropical rainforests of southern Mexico and is extremely adaptable to indoor conditions. Monsteras love bright, indirect light, but will be happy under fluorescent lights as well. Monsteras are climbers, so as they grow, they will want to vine out. This impressive, wild plant is also tolerant of the occasional missed watering, making it an ideal addition for any home.</p>', '2020-12-14', '1'),
+(69, 'Monstera', 'Monstera Deliciosa', '0050PLNTMON114', 'Extra Large', '26\"-32\" tall, 20\"-26\"', 'Medium', 1, 270000, 47, 'beef5231bd07532863b4035566967829.jpg', 'e2cdff198017e28f1fa72c965ea92d69.jpg', 'e7af25fd8df57596c72890001b4d1723.jpg', '<p>When placed in the right environment, Monsteras are easy to care for and fast-growing&mdash;so give it some space to spread out, make a statement, and thrive! As the Monstera grows, its leaves will develop long ribbons and holes, resembling swiss cheese, giving it a distinct, graphic appearance.</p>\r\n<p>This tropical plant originates from the tropical rainforests of southern Mexico and is extremely adaptable to indoor conditions. Monsteras love bright, indirect light, but will be happy under fluorescent lights as well. Monsteras are climbers, so as they grow, they will want to vine out. This impressive, wild plant is also tolerant of the occasional missed watering, making it an ideal addition for any home.</p>', '2020-12-14', '1'),
 (70, 'Bromeliad Aechmea Pink', 'Aechmea fasciata ‘primera’', '0012PLNTBRO281', 'Extra Small', '15\"-20\" tall', 'Low', 1, 80000, 46, 'acb26019bc00703b5e85e6333de263eb.jpg', '60bd29d90875240bd2bcd5e0c3f50e29.jpg', 'default_img.jpg', '<p>Bromeliad Aechmea Pink is a unique, beautiful plant that features colorful, long-lasting blooms. This variety features silver-green leaves and pink blooms. These stunning plants will add a colorful and tropical splash to any space.</p>\r\n<p>Bromeliads are native to Brazil. In their native environments, they typically grow on trees as epiphytes. Because of this, they have minimal roots and absorb most of their nutrients through their foliage.</p>', '2020-12-14', '1'),
 (71, 'Philodendron Brasil', 'Philodendron ‘brasil’', '0050PLNTPHI176', 'Medium', '10\"-14\" tall', 'Low', 1, 85000, 48, '22d1b63c93ff2852629e6ad4c9d1653f.jpg', '4a98542eb51148fa2b107cd08c3d2298.jpg', 'a1bdfc21d8d5ee19d813e6898920bbb8.jpg', '<p>The Philodendron Brasil is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark green with yellow variegation in the center of the leaf. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Brazil is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
 (72, 'Philodendron Xanadu', 'Philodendron Xanadu', '0065PLNTPHI258', 'Medium', '', 'Medium', 1, 98000, 0, 'e765ae733966f398580dff69955298eb.jpg', '4d36224841bcf07011ceee45e7fd362a.jpg', '4fdce8abc7e7c24b6d99f85a9e0ae664.jpg', '', '2020-12-14', '1'),
@@ -407,26 +401,26 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `tlp` varchar(20) NOT NULL,
   `alamat` text NOT NULL,
+  `zip_code` varchar(15) NOT NULL,
   `username` varchar(10) NOT NULL,
   `password` text NOT NULL,
-  `password_dump` text NOT NULL,
   `level` varchar(10) NOT NULL,
   `status_a` int(2) NOT NULL,
   `join_date` datetime NOT NULL,
   `code` varchar(20) NOT NULL,
-  `active` int(1) NOT NULL
+  `active` int(1) NOT NULL,
+  `status_user` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `email`, `tlp`, `alamat`, `username`, `password`, `password_dump`, `level`, `status_a`, `join_date`, `code`, `active`) VALUES
-(37, 'Administrator', 'primagreen@admin.com', '', '', 'admin', '$2y$10$dHSX3v3BZRWtz5Tt71ri1e2IWzRyLr0b0hkmxmJU4GbDy7TWDvxRu', '', 'admin', 2, '0000-00-00 00:00:00', '', 0),
-(38, 'Example', 'user@user.com', '081317352815', 'Perumahan Bukit Dago A-9 No. 32, Rawakalong , Gn.Sindur , Bogor', 'user', '$2y$10$h4aI4fp3Ou.A0sjnnvuvIOaINRQB8VG2AIcy7g8kDLZA.ytbMjAh6', '', 'user', 2, '0000-00-00 00:00:00', '', 0),
-(45, 'Muhammad Fahmi', 'm.fahmi37@gmail.com', '081317352815', 'Perumahan Bukit Dago Blok A-9 No. 32', '', '$2y$10$LIQQnvsRDknLwZ/t52cyveLcofXWD4i4weMQVRajBsZXnnXuJXkYW', '', 'user', 2, '2021-01-04 02:08:56', 'AR6IT1VCQyrx', 0),
-(47, 'Muhammad Fahmi', 'bagol37@gmail.com', '+6281317352815', 'Perumahan Bukit Dago A-9 No.32', '', '$2y$10$upp1DWH5Yqk8OWWRIFz3..DQdP4Xh7eGCOeti3jgdfl5WSbr9s/Hy', '', 'user', 2, '2021-01-17 22:21:10', '', 0),
-(48, 'Lia Hermawati', 'liahermaw@gmail.com', '+6281318181516', 'Perumahan Bukit dago A-9 No. 32 , Rawakalong Gn. Sindur Bogor', '', '$2y$10$71NMKierpoBzntc/lUF9yOWsnPy4c78VXMRmcQ3dxNMks8lmJ8yum', '', 'user', 2, '2021-01-17 16:21:10', '', 0);
+INSERT INTO `user` (`id_user`, `nama`, `email`, `tlp`, `alamat`, `zip_code`, `username`, `password`, `level`, `status_a`, `join_date`, `code`, `active`, `status_user`) VALUES
+(37, 'Administrator', 'primagreen@admin.com', '', '', '', 'admin', '$2y$10$dHSX3v3BZRWtz5Tt71ri1e2IWzRyLr0b0hkmxmJU4GbDy7TWDvxRu', 'admin', 2, '0000-00-00 00:00:00', '', 0, 0),
+(49, 'Muhammad Fahmi', 'bagol37@gmail.com', '081317352815', 'PERUMAHAN BUKIT DAGO A9-32  , GUNUNG SINDUR ,  KABUPATEN BOGOR , JAWA BARAT . ZIP CODE : 16340', '16340', '', '$2y$10$oNGIkzlfYtzQNAvAZPjqB.F7GM.w0aeswhY1VkpHQMcZRqifbqKti', 'user', 2, '2021-01-22 00:14:54', '', 0, 1),
+(50, 'Adityo Wardani', 'adityowardani@gmail.com', '', '', '', '', '$2y$10$5l1NLoPMEwRWal3Y6jc4ne8jnRkJGKhpoRqSYevW2qhO0b5DAI9QS', 'user', 2, '2021-01-23 00:48:45', '', 0, 0),
+(51, 'amril aziz', 'amrielaziz@gmail.com', '081311664819', 'BUKIT DAGO A10 N09 , GUNUNG SINDUR ,  KABUPATEN BOGOR , JAWA BARAT . ZIP CODE : 16340', '16340', '', '$2y$10$GPaoz07MhQ.FfPqK5Xvce.2ZrMF9QdP2vkj84Xzz24wvonxtEBOMm', 'user', 2, '2021-01-23 02:31:53', '', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -577,19 +571,19 @@ ALTER TABLE `msg_user`
 -- AUTO_INCREMENT untuk tabel `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id_pesan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- AUTO_INCREMENT untuk tabel `order_sold`
 --
 ALTER TABLE `order_sold`
-  MODIFY `id_penjualan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_penjualan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT untuk tabel `pay_con`
 --
 ALTER TABLE `pay_con`
-  MODIFY `id_pay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_pay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `products`
@@ -619,7 +613,7 @@ ALTER TABLE `products_type`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
