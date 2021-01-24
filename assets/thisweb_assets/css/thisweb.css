@@ -105,7 +105,7 @@ form label {
 	background-size: cover;
 }
 .footer-bg {
-	background: url(../../image/footer_bg.svg) no-repeat center center;
+	background: url(../../image/footer_bg.svg) no-repeat top;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;

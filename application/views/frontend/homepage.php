@@ -20,7 +20,9 @@
     </div>
 </section>
 
-<section class="w-full bg-gray-200 mb-10">
+<!-- NEW ARRIVAL  -->
+
+<section class="w-full bg-white mb-10">
     <div class="container px-6 mx-auto flex md:flex-row lg:flex-row flex-col md:space-x-10">
         <div class="md:w-1/4 w-full">
             <div class="w-full container flex md:flex-col md:space-x-0 space-x-5 mt-0 pt-10">
@@ -45,7 +47,7 @@
                                 $urlImage = $newItemsValue['sku'] . '/' . $newItemsValue['gambar'];
                             }
                             ?>
-                            <div id="showProducts" class="p-2 rounded-md flex flex-col bg-white shadow-sm hover:shadow-md border-2 border-transparent hover:border-gray-800" style="width:15rem;">
+                            <div id="showProducts" class="p-2 rounded-md flex flex-col bg-white hover:shadow-md border-2 border-transparent hover:border-gray-800 transition duration-700 ease-in-out" style="width:15rem;">
                                 <a href="<?php echo site_url('store/product-list/detail/' . $newItemsValue['id_barang'] . '/' . $newNmProduct); ?>" class="">
                                     <div class="h-48 w-full">
                                         <img class="object-cover w-full h-full rounded-md" src="<?php echo base_url() . 'uploads/product/' . $urlImage; ?>">
@@ -64,7 +66,7 @@
                                     <?php else : ?>
                                         <input name="quantity" type="hidden" id="<?= $newItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 lg:py-2 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
                                         <div class="w-full">
-                                            <button data-produkid="<?= $newItemsValue['id_barang']; ?>" data-produknama="<?= $newItemsValue['nm_barang']; ?>" data-produkharga="<?= $newItemsValue['harga']; ?>" data-sku="<?= $newItemsValue['sku']; ?>" data-gambar="<?= $newItemsValue['gambar']; ?>" class="add_cart flex space-x-2 shadow-lg w-full lg:w-full rounded-md px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
+                                            <button data-produkid="<?= $newItemsValue['id_barang']; ?>" data-produknama="<?= $newItemsValue['nm_barang']; ?>" data-produkharga="<?= $newItemsValue['harga']; ?>" data-sku="<?= $newItemsValue['sku']; ?>" data-gambar="<?= $newItemsValue['gambar']; ?>" class="add_cart  <?= buttonPrimary('Background');?>">
                                                 <div class="mx-auto flex space-x-2 items-center mx-auto">
                                                     <svg class="load-icon type-load hidden w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -72,7 +74,7 @@
                                                     <svg class="cart-icon type-cart w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                                     </svg>
-                                                    <span class="lg:text-sm text-xs lg:block hidden">Add to Cart</span>
+                                                    <span class="">Add to Cart</span>
                                                 </div>
                                             </button>
                                         </div>
@@ -190,15 +192,15 @@
                                 <input name="quantity" min="1" type="number" id="<?= $someItemsValue['id_barang']; ?>" value="1" class="quantity block w-16 py-1 md:py-2 text-xs dark:border-gray-600 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
                             </div>
                             <div class="flex-1">
-                                <button data-produkid="<?= $someItemsValue['id_barang']; ?>" data-produknama="<?= $someItemsValue['nm_barang']; ?>" data-produkharga="<?= $someItemsValue['harga']; ?>" data-sku="<?= $someItemsValue['sku']; ?>" data-gambar="<?= $someItemsValue['gambar']; ?>" class="add_cart flex space-x-2 shadow-lg w-full lg:w-full px-4 py-2 text-xs font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-                                    <div class="mx-auto flex space-x-2">
+                                <button data-produkid="<?= $someItemsValue['id_barang']; ?>" data-produknama="<?= $someItemsValue['nm_barang']; ?>" data-produkharga="<?= $someItemsValue['harga']; ?>" data-sku="<?= $someItemsValue['sku']; ?>" data-gambar="<?= $someItemsValue['gambar']; ?>" class="add_cart <?= buttonPrimary('Background'); ?>">
+                                    <div class="flex flex-row mx-auto space-x-2">
                                         <svg class="load-icon type-load hidden w-3 text-white text-xs" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                         </svg>
                                         <svg class="cart-icon type-cart w-3 text-white text-xs" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                         </svg>
-                                        <span class="text-xs lg:block md:block hidden">Add to Cart</span>
+                                        <span class="text-xs lg:block md:inline-block hidden">Add to Cart</span>
                                     </div>
                                 </button>
                             </div>
