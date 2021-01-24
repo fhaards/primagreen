@@ -31,7 +31,6 @@ function data() {
 	}
 
 
-
 	function setThemeToLocalStorage(value) {
 		window.localStorage.setItem("dark", value);
 	}
@@ -79,10 +78,12 @@ function data() {
 			this.isSettingMenuOpen = !this.isSettingMenuOpen;
 		},
 		// Modal
+		
 		isModalOpen: false,
 		isModalReportOpen: false,
 		isModalAddFaqOpen: false,
 		isModalEditFaqOpen: false,
+		isModalSearchOpen: false,
 		trapCleanup: null,
 		openModal() {
 			this.isModalOpen = true;
@@ -100,11 +101,17 @@ function data() {
 			this.isModalEditFaqOpen = true;
 			this.trapCleanup = focusTrap(document.querySelector("#modal-faq-edit"));
 		},
+		openModalSearch(){
+			this.isModalSearchOpen = true;
+			this.trapCleanup = focusTrap(document.querySelector("#modal-search"));
+		},
 		closeModal() {
 			this.isModalOpen = false;
 			this.isModalReportOpen = false;
 			this.isModalAddFaqOpen = false;
 			this.isModalEditFaqOpen = false;
+			this.isModalSearchOpen = false;
+			// document.getElementById('searching').value = '';
 			this.trapCleanup();
 		},
 	};

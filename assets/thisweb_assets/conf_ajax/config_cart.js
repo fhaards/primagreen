@@ -2,35 +2,6 @@ $(document).ready(function () {
 	//START CART CONFIGURATION
 
 	subTotal();
-	function successMsg() {
-		swal({
-			type: "success",
-			buttons: false,
-			timer: 1500,
-			icon: "success",
-		});
-	}
-
-	function successAddToCartMsg() {
-		swal({
-			type: "success",
-			title: "Success",
-			text: "Add items to Cart",
-			buttons: false,
-			timer: 1500,
-			icon: "success",
-		});
-	}
-
-	function loadMsg() {
-		swal({
-			// imageUrl: "assets/image/loading2.gif",
-			text: "loading ..",
-			buttons: false,
-			allowOutsideClick: false,
-			imageWidth: 160,
-		});
-	}
 
 	$(".checkout-final-btn").hide();
 
@@ -179,26 +150,6 @@ $(document).ready(function () {
 		});
 	});
 
-	// $(document).on("click", ".hapus_cart", function () {
-	// 	var row_id = $(this).attr("id");
-	// 	$.ajax({
-	// 		url: BASE_URL + "cart/delete-cart-items",
-	// 		method: "POST",
-	// 		data: {
-	// 			row_id: row_id,
-	// 		},
-	// 		success: function (data) {
-	// 			$("#detail_cart").html(data);
-	// 			$("#detail_checkout").html(data);
-	// 			if ($("#cekrowcart").val() == "0" || $("#cekrowcart").val() == null) {
-	// 				$("#checkout-btn").hide();
-	// 				$("#notif-cart").hide();
-	// 			}
-	// 			subTotal();
-
-	// 		},
-	// 	});
-	// });
 
 	function subTotal() {
 		$.ajax({
@@ -215,17 +166,6 @@ $(document).ready(function () {
 		});
 	}
 
-	function addCommas(numberString) {
-		var resultString = numberString + "",
-			x = resultString.split("."),
-			x1 = x[0],
-			x2 = x.length > 1 ? "." + x[1] : "",
-			rgxp = /(\d+)(\d{3})/;
-		while (rgxp.test(x1)) {
-			x1 = x1.replace(rgxp, "$1" + "," + "$2");
-		}
-		return x1 + x2;
-	}
 
 	function calculateCheckout() {
 		var isCourierChoosen = !isNaN(parseInt($("#setkurir-harga").val()));

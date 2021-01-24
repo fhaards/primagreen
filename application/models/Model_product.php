@@ -10,6 +10,24 @@ class Model_product extends CI_Model
 		$this->load->helper("file");
 	}
 
+	public function findBy($key)
+	{
+		$this->db->select('id_barang,nm_barang,nm_barang_bot,harga,gambar,products_type.id_type,products_type.nm_type');
+		// $this->db->select('*');
+		$this->db->from('products');
+		$this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
+		$this->db->like('products.nm_barang',$key);
+		// $this->db->like('products_type.nm_type',$key);
+		$query = $this->db->get();
+		$count = $query->num_rows();
+		if(!empty($count)){
+			return $query->result_array(true);
+		} else {
+			return false;
+		}
+	
+	}
+
 	public function read_tb_product()
 	{
 		$this->db->select('*');

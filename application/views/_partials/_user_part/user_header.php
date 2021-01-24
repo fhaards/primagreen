@@ -1,4 +1,4 @@
-<header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto border-b-2 border-gray-300 ">
+<header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto">
   <div class="container flex items-center justify-between h-full mx-auto px-6 ">
     <!-- Mobile hamburger -->
     <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu" aria-label="Menu">
@@ -110,6 +110,14 @@
             <div id="notif-cart">
               <span class="absolute w-3 h-3 md:-mt-6 md:ml-1 -mt-3 ml-2 bg-green-600 border-2 border-white rounded-full"></span>
             </div>
+          </button>
+        </li>
+
+        <li id="" class="relative mr-2">
+          <button @click="openModalSearch" class="align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
+            <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
           </button>
         </li>
       </ul>

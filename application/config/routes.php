@@ -172,6 +172,9 @@ $route['about-us'] = 'Controller_f_about/index';
 /*///////// FAQ /////////////*/
 $route['faq'] = 'Controller_f_faq/index';
 
+/*///////// Search /////////////*/
+$route['search'] = 'Controller_search/index';
+
 /*
 | -------------------------------------------------------------------------
 | MESSAGES / CONTACT US

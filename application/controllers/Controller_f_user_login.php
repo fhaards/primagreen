@@ -29,7 +29,7 @@ class Controller_f_user_login extends CI_Controller
 		$data['title']   = 'Login - ' . APP_NAME;
 		$data['content'] = 'frontend/form-login';
 		if ($this->session->userdata('status') == "login") {
-			redirect(base_url("primagreen"));
+			redirect(base_url(""));
 		} else {
 			$this->form_validation->set_error_delimiters('<div class="bg-red-600 w-100 p-2 my-2 text-xs shadow-lg rounded-sm text-white">', '</div>');
 			$this->form_validation->set_rules('email', '<strong>Email</strong>', 'valid_email|required');

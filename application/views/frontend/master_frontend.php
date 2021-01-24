@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html :class="{}" x-data="data()" lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,6 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     if (isLoggedIn()) {
         $this->load->view('_partials/_user_part/user_modals');
     }
+    $this->load->view('frontend/modal_search');
     ?>
     <!-- Load JQ -->
     <script>
@@ -89,8 +91,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
             });
         });
     </script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_base.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_cart.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_custom.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/frontend/config_frontend.js'; ?>" language="javascript"></script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/frontend/config_search.js'; ?>" language="javascript"></script>
     <?php $this->load->view('_partials/_user_part/user_js_control'); ?>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuxj-0utMuNbJbokRsEEVbfiV5t_t6NRU&callback=initMap"></script>
 </body>
