@@ -18,6 +18,8 @@ class Controller_product extends CI_Controller
         $this->load->helper('date');
         $this->load->helper('directory');
         $this->load->helper("file");
+        $this->load->helper("product");
+        $this->load->helper("material");
     }
     public function index()
     {

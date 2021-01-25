@@ -1,14 +1,14 @@
 <div x-show="isModalSearchOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed w-full inset-0 z-30 flex items-start bg-black bg-opacity-50  sm:justify-center">
     <!-- Modal -->
     <div id="searchModal" class="container flex mx-auto mt-20">
-        <div x-show="isModalSearchOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform -translate-y-1/2" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0  transform -translate-y-1/2" @click.away="closeModal" @keydown.escape="closeModal" class="px-6 md:mx-6 py-4 md:shadow-lg bg-white overflow-hidden sm:m-4 sm:rounded-md w-full" role="dialog" id="modal-search">
+        <div x-show="isModalSearchOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform -translate-y-1/2" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0  transform -translate-y-1/2" @click.away="closeModal" @keydown.escape="closeModal" class="px-6 md:mx-6 md:shadow-lg bg-white overflow-hidden sm:m-4 sm:rounded-md w-full" role="dialog" id="modal-search">
             <!-- Remove header if you don't want a close icon. Use modal body to place modal tile. -->
 
             <header class="flex flex-col w-full">
-                <div class="relative text-gray-600  w-full ">
-                    <input id="searching" placeholder="Type to search .. " name="nama" value="" type="text" class="searchKey w-full bg-white  text-xl font-bold tracking-wide py-5 border-none focus:border-green-400 focus:outline-none focus:shadow-outline-none " />
+                <div class="relative text-gray-600  w-full items-center">
+                    <input id="searching" placeholder="Type to search .. " name="nama" value="" type="text" class="searchKey w-full bg-white  text-lg font-bold tracking-wide py-5 border-none focus:border-green-400 focus:outline-none focus:shadow-outline-none " />
                     <span class="absolute right-0 top-0 py-6 md:px-5 px-4">
-                        <svg class="w-6 h-6 fillCurrent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="w-5 h-5 fillCurrent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </span>
