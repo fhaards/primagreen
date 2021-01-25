@@ -6,8 +6,8 @@
 
             <header class="flex flex-col w-full">
                 <div class="relative text-gray-600  w-full ">
-                    <input id="searching" placeholder="Type to search .. " name="nama" value="" type="text" class="searchKey w-full bg-white sm:rounded-full text-xl font-bold tracking-wide py-5 border-none focus:border-green-400 focus:outline-none focus:shadow-outline-none " />
-                    <span class="absolute right-0 top-0 py-6 md:px-5 px-4  transition-colors duration-150  hover: hover:text-gray-700">
+                    <input id="searching" placeholder="Type to search .. " name="nama" value="" type="text" class="searchKey w-full bg-white  text-xl font-bold tracking-wide py-5 border-none focus:border-green-400 focus:outline-none focus:shadow-outline-none " />
+                    <span class="absolute right-0 top-0 py-6 md:px-5 px-4">
                         <svg class="w-6 h-6 fillCurrent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
