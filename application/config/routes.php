@@ -72,6 +72,7 @@ $route['product/product-edit-image/(:any)'] = 'Controller_product/editProductImg
 $route['product/product-edit-image-s1/(:any)'] = 'Controller_product/editProductImgS1/$1';
 $route['product/product-edit-image-s2/(:any)'] = 'Controller_product/editProductImgS2/$1';
 $route['product/product-edit-image-s3/(:any)'] = 'Controller_product/editProductImgS3/$1';
+$route['product/product-delete/(:any)'] = 'Controller_product/deleteProduct/$1';
 
 /*///////// Product Type /////////////*/
 $route['product/type-list'] = 'Controller_type/index';

@@ -267,6 +267,18 @@ class Controller_product extends CI_Controller
         $this->session->set_flashdata('editMsg', 'Data berhasil diubah');
         redirect('product/product-edit-image/' . $id);
     }
+
+    public function deleteProduct($id){
+        
+        $getData    = $this->model_product->detailProducts($id);
+        $getSku     = $getData['sku'];
+        $uploadPath = './uploads/product/' . $getSku;
+        $deleteFolder = rmdir($uploadPath);
+        if($deleteFolder){
+            $data =  $this->model_product->deleteProductById($id);
+        } 
+        echo json_encode($data);
+    }
 }
 
     // public function newProductForm()

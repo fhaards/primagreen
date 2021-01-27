@@ -42,7 +42,7 @@
                     <th class="">Action</th>
                 </tr>
             </thead>
-            <tbody id="filter_data" class="filter_data bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            <tbody id="isProductTable" class=" bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 <?php foreach ($productList as $productLists) { ?>
                     <?php
                     $id = $productLists['id_barang'];
@@ -108,17 +108,16 @@
                             <?php echo form_close(); ?>
                         </td>
                         <td class="w-10">
-                            <div id="isProductTable" class="flex items-center space-x-1">
+                            <div class="flex items-center space-x-1">
                                 <a href="<?php echo site_url('product/product-edit/' . $id); ?>" class="<?= smallIconColor('edit') ?>" aria-label="Edit">
                                     <?= smallIcon('edit'); ?>
                                 </a>
-
                                 <?php if (in_array($id, $productInOrder)) : ?>
-                                    <button type="button" disabled class="delete-products <?= smallIconColor('deleteDisabled'); ?>" style="cursor: context-menu;" title="Product Cannot be Deleted">
+                                    <button type="button" disabled class="<?= smallIconColor('deleteDisabled'); ?>" style="cursor: context-menu;" title="Product Cannot be Deleted">
                                         <?= smallIcon('delete'); ?>
                                     </button>
                                 <?php else : ?>
-                                    <button class="<?= smallIconColor('delete'); ?>">
+                                    <button type="submit" data-isidproductdelete="<?= $id; ?>"  class="delete-products <?= smallIconColor('delete'); ?>">
                                         <?= smallIcon('delete'); ?>
                                     </button>
 

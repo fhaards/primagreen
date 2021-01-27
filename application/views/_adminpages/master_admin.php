@@ -19,6 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/chart.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/thisweb_assets/css/thisweb.css'; ?>" />
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert_1/sweetalert.min.js'; ?>" language="javascript"></script>
+   
     <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.css'; ?>">
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.js'; ?>" language="javascript"></script> -->
@@ -59,7 +60,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/tailwind/js/charts-lines.js'; ?>" defer></script>
     <script src="<?php echo base_url() . 'assets/tailwind/js/charts-pie.js'; ?>" defer></script>
     <script src="<?php echo base_url() . 'assets/DataTables/datatables.min.js'; ?>" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/DataTables/datatables-config.js'; ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/adminpages/config_dataTables.js'; ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_base.js'; ?>" type="text/javascript"></script>
     <script src="<?php echo base_url() . 'vendor/tinymce/tinymce/tinymce.min.js'; ?>"></script>
     <?php $this->load->view('_partials/_admin_part/js_control'); ?>
     <script>
@@ -75,6 +77,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
         });
+
         tinymce.remove();
         tinymce.init({
             selector: '.tiny-mce'

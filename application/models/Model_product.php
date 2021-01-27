@@ -209,4 +209,11 @@ class Model_product extends CI_Model
 		$this->db->where('id_barang', $id);
 		$this->db->update('products', $data);
 	}
+
+
+	// DELETE PRODUCTS 
+
+	public function deleteProductById($id){
+		return $this->db->delete('products', array('id_barang' => $id));
+	}
 }

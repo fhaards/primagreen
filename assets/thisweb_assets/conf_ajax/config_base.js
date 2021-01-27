@@ -32,7 +32,6 @@ function successMsg() {
 
 function loadMsg() {
 	swal({
-		// imageUrl: "assets/image/loading2.gif",
 		text: "loading ..",
 		buttons: false,
 		allowOutsideClick: false,
