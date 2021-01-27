@@ -17,6 +17,14 @@ class Model_favorites extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function getFavoritesId()
+    {
+        return array_map(function ($item) {
+            return $item['id_barang'];
+        }, $this->getFavorites());
+    }
+
+
     public function getFavoriteste()
     {
         $this->db->select('*');
@@ -33,12 +41,6 @@ class Model_favorites extends CI_Model
         }
     }
 
-    public function getFavoritesId()
-    {
-        return array_map(function ($item) {
-            return $item['id_barang'];
-        }, $this->getFavorites());
-    }
 
     public function insert()
     {

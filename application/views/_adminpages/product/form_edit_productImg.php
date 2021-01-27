@@ -29,7 +29,7 @@ if ($checkImage3IfEmpty == 'default_img.jpg') {
     $hiddenDelete3 = '';
 }
 ?>
-<div class="px-5 py-3 mb-8 bg-white rounded-lg shadow-xs">
+<div class="px-5 py-3 mb-8 bg-white rounded-md shadow-xs">
     <input type="hidden" name="nm_product" value="<?php echo $edtProductImg['nm_barang']; ?>">
     <input type="hidden" name="sku" value="<?php echo $edtProductImg['sku']; ?>">
     <input type="hidden" name="baseImg1" value="<?= $edtProductImg['gambar']; ?>">
@@ -50,7 +50,7 @@ if ($checkImage3IfEmpty == 'default_img.jpg') {
         <label class="block text-sm p-5 border-2 border-gray-300 border-dashed rounded-md bg-white hover:bg-gray-100">
             <div class="flex flex-row space-x-2 items-center mb-2">
                 <div class="flex-1 text-gray-700 uppercase font-bold">Image 1</div>
-                <a href="<?php echo site_url('product/product-edit-image-s1/' . $id); ?>" class="flex flex-nowarp <?= $hiddenDelete1; ?> items-center px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+                <a href="<?php echo site_url('product/product-edit-image-s1/' . $id); ?>" class="flex flex-nowarp <?= $hiddenDelete1; ?>  items-center px-1 py-1 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-md active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
                     <svg class="w-4 h-4" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
                         <path d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" fill-rule="evenodd"></path>
                     </svg>
@@ -83,11 +83,10 @@ if ($checkImage3IfEmpty == 'default_img.jpg') {
         <label class="block text-sm p-5 border-2 border-gray-300 border-dashed rounded-md bg-white hover:bg-gray-100">
             <div class="flex flex-row space-x-2 items-center mb-2">
                 <div class="flex-1 text-gray-700 uppercase font-bold">Image 2</div>
-                <a href="<?php echo site_url('product/product-edit-image-s2/' . $id); ?>" class="flex flex-nowarp <?= $hiddenDelete2; ?> items-center px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
-                    <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
+                <a href="<?php echo site_url('product/product-edit-image-s2/' . $id); ?>" class="flex flex-nowarp <?= $hiddenDelete2; ?> items-center  px-1 py-1 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-md active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+                    <svg class="w-4 h-4" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
                         <path d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" fill-rule="evenodd"></path>
                     </svg>
-                    <span>Delete</span>
                 </a>
             </div>
             <div class="flex flex-col  space-y-2">
@@ -117,8 +116,8 @@ if ($checkImage3IfEmpty == 'default_img.jpg') {
         <label class="block text-sm p-5 border-2 border-gray-300 border-dashed rounded-md bg-white hover:bg-gray-100">
             <div class="flex flex-row space-x-2 items-center mb-2">
                 <div class="flex-1 text-gray-700 uppercase font-bold">Image 3</div>
-                <a href="<?php echo site_url('product/product-edit-image-s3/' . $id); ?>" class="flex flex-nowarp <?= $hiddenDelete3; ?> items-center px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
-                    <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
+                <a href="<?php echo site_url('product/product-edit-image-s3/' . $id); ?>" class="flex flex-nowarp <?= $hiddenDelete3; ?> items-center  px-1 py-1 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-md active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+                    <svg class="w-4 h-4" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
                         <path d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" fill-rule="evenodd"></path>
                     </svg>
                     <span>Delete</span>

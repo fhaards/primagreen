@@ -10,6 +10,7 @@ class Controller_product extends CI_Controller
         $this->load->database();
         $this->load->model('model_product');
         $this->load->model('model_product_related');
+        $this->load->model('model_order');
         $this->load->helper('array');
         $this->load->library('form_validation');
         $this->load->library('crumbs');
@@ -28,9 +29,11 @@ class Controller_product extends CI_Controller
         if (!empty($type)) {
             $data['getType'] = $type;
             $data['productList'] = $this->model_product->getAllProductsByIdType($type);
+            $data['productInOrder'] = $this->model_order->getProductsId();
         } else {
             $data['getType'] = $type;
             $data['productList'] = $this->model_product->getAllProducts();
+            $data['productInOrder'] = $this->model_order->getProductsId();
         }
 
         $this->crumbs->add('Product List', base_url().'product/product-list');  

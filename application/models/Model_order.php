@@ -17,9 +17,15 @@ class Model_order extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('order');
-		$query = $this->db->get();
-		return $query->result_array();
+		return $this->db->get()->result_array();
 	}
+
+	public function getProductsId()
+    {
+        return array_map(function ($item) {
+            return $item['id_barang'];
+        }, $this->getAllOrder());
+    }
 
 	public function getAllOrderByStatus($status)
 	{
