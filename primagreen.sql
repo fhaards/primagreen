@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jan 2021 pada 01.13
+-- Waktu pembuatan: 28 Jan 2021 pada 23.06
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -298,7 +298,7 @@ INSERT INTO `products` (`id_barang`, `nm_barang`, `nm_barang_bot`, `sku`, `size`
 (69, 'Monstera', 'Monstera Deliciosa', '0050PLNTMON114', 'Extra Large', '26\"-32\" tall, 20\"-26\"', 'Medium', 1, 270000, 47, 'beef5231bd07532863b4035566967829.jpg', 'e2cdff198017e28f1fa72c965ea92d69.jpg', 'e7af25fd8df57596c72890001b4d1723.jpg', '<p>When placed in the right environment, Monsteras are easy to care for and fast-growing&mdash;so give it some space to spread out, make a statement, and thrive! As the Monstera grows, its leaves will develop long ribbons and holes, resembling swiss cheese, giving it a distinct, graphic appearance.</p>\r\n<p>This tropical plant originates from the tropical rainforests of southern Mexico and is extremely adaptable to indoor conditions. Monsteras love bright, indirect light, but will be happy under fluorescent lights as well. Monsteras are climbers, so as they grow, they will want to vine out. This impressive, wild plant is also tolerant of the occasional missed watering, making it an ideal addition for any home.</p>', '2020-12-14', '1'),
 (70, 'Bromeliad Aechmea Pink', 'Aechmea fasciata ‘primera’', '0012PLNTBRO281', 'Extra Small', '15\"-20\" tall', 'Low', 1, 80000, 46, 'acb26019bc00703b5e85e6333de263eb.jpg', '60bd29d90875240bd2bcd5e0c3f50e29.jpg', 'default_img.jpg', '<p>Bromeliad Aechmea Pink is a unique, beautiful plant that features colorful, long-lasting blooms. This variety features silver-green leaves and pink blooms. These stunning plants will add a colorful and tropical splash to any space.</p>\r\n<p>Bromeliads are native to Brazil. In their native environments, they typically grow on trees as epiphytes. Because of this, they have minimal roots and absorb most of their nutrients through their foliage.</p>', '2020-12-14', '1'),
 (71, 'Philodendron Brasil', 'Philodendron ‘brasil’', '0050PLNTPHI176', 'Medium', '10\"-14\" tall', 'Low', 1, 85000, 48, '22d1b63c93ff2852629e6ad4c9d1653f.jpg', '4a98542eb51148fa2b107cd08c3d2298.jpg', 'a1bdfc21d8d5ee19d813e6898920bbb8.jpg', '<p>The Philodendron Brasil is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark green with yellow variegation in the center of the leaf. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Brazil is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
-(72, 'Philodendron Xanadu', 'Philodendron Xanadu', '0065PLNTPHI258', 'Medium', '', 'Medium', 1, 98000, 0, 'e765ae733966f398580dff69955298eb.jpg', '4d36224841bcf07011ceee45e7fd362a.jpg', '4fdce8abc7e7c24b6d99f85a9e0ae664.jpg', '', '2020-12-14', '1'),
+(72, 'Philodendron Xanadu', 'Philodendron Xanadu', '0065PLNTPHI258', 'Medium', '', 'Medium', 1, 98000, 1, 'e765ae733966f398580dff69955298eb.jpg', '4d36224841bcf07011ceee45e7fd362a.jpg', '4fdce8abc7e7c24b6d99f85a9e0ae664.jpg', '', '2020-12-14', '1'),
 (73, 'Philodendron Heartleaf', 'Philodendron cordatum green', '0052PLNTPHI144', 'Small', '7\"-12\" tall', 'Low', 1, 64998, 49, '205a381fbd698c4a56893a3c6b6370f7.jpg', '57b7aa8779396b9c8d226aa16025dea5.jpg', '8ab8e9852512e276a22e455156345894.jpg', '<p>The Philodendron Heartleaf is a fast-growing, easy, vining plant. Its graceful, heart-shaped leaves are dark and glossy green in color but almost look transparent at times. Native to Africa and the Canary Islands, the Heartleaf can be grown as a trailer or climber. This full, trailing plant is perfect on top of bookshelves or in a plant hanger where its vines can &lsquo;spill&rsquo; out.</p>\r\n<p>The Philodendron Heartleaf is incredibly forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering. This is a great first-time houseplant or gift for anyone who wants to enjoy the natural beauty of plants without a lot of maintenance.</p>', '2020-12-14', '1'),
 (74, 'Catnip', 'Nepeta cataria', '0023PLNTCAT114', 'Small', '', 'Medium', 6, 56000, 47, 'cbfb9ad2b1bc528f908a10d708341cb8.jpg', 'a7248b5485c63c55469753dfcc86361b.jpg', 'default_img.jpg', '<p>Catnip is a must-have for any cat owner. It can be given to your cat fresh or dried. Catnip is safe for cats in small amounts, but some cats may have adverse reactions especially in large amounts. If this is the first time you are giving your cat catnip, we suggest asking your vet first or starting with a very small amount.<br />Catnip can successfully be grown indoors in your kitchen or on a sunny windowsill, but can also be grown outdoors on a patio or balcony. It is also well-suited for container gardening.</p>\r\n<p><em>We cannot guarantee specific size specs as these plants are very fast-growing. After arrival, growth speed will vary depending on environmental conditions such as light, temperature, and how often you water and prune.</em></p>', '2020-12-14', '1'),
 (75, 'Mints', 'Mentha', '0081PLNTMIN247', 'Small', '', 'Bright', 6, 55000, 50, '6a4052efcdef003c649ba7468b0211fe.jpg', '1687e577eff95d43da366aa12ff68f61.jpg', 'c3df2772de0574e3cd9ee444bce86e98.jpg', '<p>Mint is one of the easiest herbs to grow. Mint plants love full sun but will also grow in partial shade. Place it on a sunny windowsill in your home or on your patio, or in your garden in the summer. Use this refreshing herb to add a bit of minty freshness to any dish or cocktail. Perfect for a calming tea.</p>\r\n<p>We cannot guarantee specific size specs because these plants are very quick-growing. After arrival, growth will vary on your plant depending on environmental conditions such as light, temperature, how often you water, and how often you prune.</p>', '2020-12-14', '1'),
@@ -322,11 +322,10 @@ CREATE TABLE `products_features` (
 --
 
 INSERT INTO `products_features` (`id_features`, `nm_features`, `status_features`) VALUES
-(1, 'None', 'Enabled'),
 (2, 'Up discount 25%', 'Disabled'),
 (4, 'Up discount 50%', 'Disabled'),
 (5, 'Easy Indoor Favorites', 'Enabled'),
-(6, 'Pet-Friendly Plants', 'Enabled'),
+(6, 'Pet Friendly Plants', 'Enabled'),
 (7, 'Low Light Favorites', 'Enabled'),
 (8, 'Best Seller', 'Enabled');
 
@@ -355,15 +354,14 @@ INSERT INTO `products_features_related` (`id_features_related`, `id_barang`, `id
 (35, 72, 5),
 (36, 73, 5),
 (37, 74, 5),
-(38, 75, 5),
 (39, 76, 5),
 (45, 77, 5),
 (46, 77, 8),
 (47, 69, 5),
 (48, 69, 6),
 (49, 69, 8),
-(50, 105, 6),
-(51, 107, 6);
+(83, 75, 7),
+(84, 75, 8);
 
 -- --------------------------------------------------------
 
@@ -589,19 +587,19 @@ ALTER TABLE `pay_con`
 -- AUTO_INCREMENT untuk tabel `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_barang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id_barang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_features`
 --
 ALTER TABLE `products_features`
-  MODIFY `id_features` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_features` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_features_related`
 --
 ALTER TABLE `products_features_related`
-  MODIFY `id_features_related` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_features_related` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_type`
