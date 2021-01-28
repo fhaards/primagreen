@@ -16,16 +16,15 @@ class Model_product extends CI_Model
 		// $this->db->join('products_type', 'products_type.id_type=products.id_type', 'inner');
 		$this->db->select('id_barang,nm_barang,nm_barang_bot,size,harga,gambar');
 		$this->db->from('products');
-		$this->db->like('nm_barang',$key);
-		$this->db->or_like('size',$key);
+		$this->db->like('nm_barang', $key);
+		$this->db->or_like('size', $key);
 		$query = $this->db->get();
 		$count = $query->num_rows();
-		if(!empty($count)){
+		if (!empty($count)) {
 			return $query->result_array(true);
 		} else {
 			return false;
 		}
-	
 	}
 
 	public function read_tb_product()
@@ -77,30 +76,53 @@ class Model_product extends CI_Model
 		return $query->row_array();
 	}
 
-	public function insert_product($data, $getSkuCode, $features)
+	// public function insert_product($data, $getSkuCode, $features)
+	// {
+	// 	$this->db->insert('products', $data);
+	// 	$getIdBarang = $this->db->insert_id();
+	// 	$getNewSku = $getSkuCode;
+	// 	if ($this->db->affected_rows() > 0) {
+	// 		$dataSku = array(
+	// 			'sku' => $getNewSku
+	// 		);
+
+	// 		$this->db->where('id_barang', $getIdBarang);
+	// 		$this->db->update('products', $dataSku);
+
+	// 		$data2 = array();
+	// 		foreach ($features as  $key => $value) {
+	// 			$data2[] = array(
+	// 				'id_barang' => $getIdBarang,
+	// 				'id_features' => $value
+	// 			);
+	// 		}
+	// 		$this->db->insert_batch('products_features_related', $data2);
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// }
+
+	public function insert_product($data, $features)
 	{
-		$this->db->insert('products', $data);
-		$getIdBarang = $this->db->insert_id();
-		$getNewSku = $getSkuCode;
-		if ($this->db->affected_rows() > 0) {
-			$dataSku = array(
-				'sku' => $getNewSku
-			);
-
-			$this->db->where('id_barang', $getIdBarang);
-			$this->db->update('products', $dataSku);
-
-			$data2 = array();
-			foreach ($features as  $key => $value) {
-				$data2[] = array(
-					'id_barang' => $getIdBarang,
-					'id_features' => $value
-				);
+		$query = $this->db->insert('products', $data);
+		if (!empty($features)) {
+			$getIdBarang = $this->db->insert_id();
+			if ($this->db->affected_rows() > 0) {
+				$data2 = array();
+				foreach ($features as  $key => $value) {
+					$data2[] = array(
+						'id_barang' => $getIdBarang,
+						'id_features' => $value
+					);
+				}
+				$this->db->insert_batch('products_features_related', $data2);
+				return true;
+			} else {
+				return false;
 			}
-			$this->db->insert_batch('products_features_related', $data2);
-			return true;
 		} else {
-			return false;
+			return $query;
 		}
 	}
 
@@ -125,10 +147,12 @@ class Model_product extends CI_Model
 	public function edt_product_todb($id, $getData, $features)
 	{
 		$this->db->where('id_barang', $id);
-		$this->db->update('products', $getData);
+		$updateBarang = $this->db->update('products', $getData);
+		if ($updateBarang) {
+			$query = $this->db->get_where('products_features_related', array('id_barang' => $id));
+			$countBarangInFeaturesRelated = $query->num_rows();
 
-		$this->db->delete('products_features_related', array('id_barang' => $id));
-		if ($this->db->affected_rows() > 0) {
+			//COUNTING FROM FEATURES
 			$data2 = array();
 			foreach ($features as  $key => $value) {
 				$data2[] = array(
@@ -136,9 +160,24 @@ class Model_product extends CI_Model
 					'id_features' => $value
 				);
 			}
-			$this->db->insert_batch('products_features_related', $data2);
+
+			if ($countBarangInFeaturesRelated > 0) {  //JIKA BARANG ADA DIDALAM FEATURES RELATED
+				if (!empty($data2)) {
+					$this->db->delete('products_features_related', array('id_barang' => $id));
+					if ($this->db->affected_rows() > 0) {
+						return $this->db->insert_batch('products_features_related', $data2);
+					}
+				} else {
+					return $this->db->delete('products_features_related', array('id_barang' => $id));
+				}
+			} else {   //JIKA BARANG TIDAK ADA DIDALAM FEATURES RELATED
+				if (!empty($data2)) {
+					return $this->db->insert_batch('products_features_related', $data2);
+				} else {
+					return $updateBarang;
+				}
+			}
 		}
-		return true;
 	}
 
 	public function edt_productImage_todb($id, $data)
@@ -213,7 +252,11 @@ class Model_product extends CI_Model
 
 	// DELETE PRODUCTS 
 
-	public function deleteProductById($id){
-		return $this->db->delete('products', array('id_barang' => $id));
+	public function deleteProductById($id)
+	{
+		$this->db->delete('products', array('id_barang' => $id));
+		if ($this->db->affected_rows() > 0) {
+			return $this->db->delete('products_features_related',array('id_barang' => $id));
+		}
 	}
 }

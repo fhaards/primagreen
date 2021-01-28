@@ -1,6 +1,6 @@
 <!-- STORE ITEMS -->
-<div class="container px-6 py-3 mx-auto grid min-h-screen">
-    <section class="w-full mx-auto mt-24 bg-white">
+<div class="container px-6 mx-auto grid min-h-screen">
+    <section class="w-full mx-auto mt-20 bg-white">
         <div class="flex flex-col w-full">
 
             <!-- FILTER  -->
@@ -10,11 +10,11 @@
             ?>
             <!-- PRODUCT LIST -->
 
-            <div class="flex flex-col md:border-none border-b border-gray-300">
+            <div class="flex flex-col md:border-none border-b border-gray-300 py-5">
                 <nav id="store" class="w-full mb-6">
                     <div class="w-full container mx-auto flex md:flex-row flex-col justify-between">
-                        <h2 class="uppercase py-2 tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
-                            Store
+                        <h2 class="uppercase py-2 tracking-widest no-underline hover:no-underline font-black text-gray-800 text-xl " href="#">
+                            Store / <?= $pageTitle; ?>
                         </h2>
                         <div class="flex flex-row md:space-x-0 space-x-5">
                             <button class="open_filter md:hidden block flex space-x-2 shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-200 rounded-md active:bg-gray-300 hover:shadow-none hover:bg-gray-300 focus:outline-none focus:shadow-outline-gray">
@@ -39,13 +39,14 @@
                 </nav>
             </div>
             <div class="flex md:flex-row flex-col md:space-x-10 h-full">
-                <div class="filter_store md:block hidden bg-white h-0 md:h-full">
+                <div class="filter_store flex flex-col space-y-10 md:block hidden bg-white h-0 md:h-full">
                     <ul class=" pr-5">
+                        <input type="hidden" id="getFeatures" value="<?= $getIdFeatures; ?>">
                         <li class="flex flex-row md:w-full w-5/5">
                             <span class="md:w-full w:3/5 text-gray-800 text-md font-bold">Filter </span>
                         </li>
                         <li class="my-4">
-                            <span class="text-gray-600 text-md font-bold">by Type </span>
+                            <span class="text-gray-600 text-md font-bold">Product Type </span>
                         </li>
                         <?php
                         foreach ($type_data->result_array() as $row) {
@@ -57,7 +58,7 @@
                         }
                         ?>
                         <li class="my-4">
-                            <span class="text-gray-600 text-md font-bold">by Size </span>
+                            <span class="text-gray-600 text-md font-bold">Product Size </span>
                         </li>
                         <?php
                         foreach ($size_data->result_array() as $row) {
@@ -70,7 +71,7 @@
                         ?>
 
                         <li class="my-4">
-                            <span class="text-gray-600 text-md font-bold">by Price Range </span>
+                            <span class="text-gray-600 text-md font-bold">Price Range </span>
                         </li>
                         <li class="md:w-full w-4/5">
                             <!-- <div class="slidecontainer">
@@ -82,8 +83,13 @@
                             <p id="price_show" class="text-gray-600 text-md font-semibold space-x-3 flex flex-row items-center">1,000 - 1,000,000</p>
                             <div id="price_range"></div>
                         </li>
-
-
+                    </ul>
+                    <ul class="pr-5 py-5">
+                        <li><a href="<?= base_url('store/all-items'); ?>">Show All Items</a></li>
+                        <?php foreach ($features_data as $row) : ?>
+                            <?php $newNmFeatures = strtolower(str_replace(' ', '-', $row['nm_features'])); ?>
+                            <li><a href="<?= base_url('store/features/' . $newNmFeatures); ?>"><?= $row['nm_features']; ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="store_items flex-1 mt-5 md:mt-0">

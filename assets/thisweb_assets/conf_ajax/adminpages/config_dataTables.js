@@ -4,13 +4,13 @@ primaTable2();
 function primaTable(){
     $("#primaTable").DataTable({
         responsive: true,
-        pageLength : 5,
+        pageLength : 10,
 	});
 }
 function primaTable2(){
     $("#primaTable2").DataTable({
         responsive: true,
-        pageLength : 5,
+        pageLength : 10,
 	});
 }
 

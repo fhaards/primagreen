@@ -12,7 +12,6 @@ class Model_f_store extends CI_Model
 
 	function fetch_filter_type($type)
 	{
-
 		$this->db->distinct();
 		$this->db->select($type);
 		$this->db->from('products');
@@ -21,16 +20,18 @@ class Model_f_store extends CI_Model
 		return $this->db->get();
 	}
 
-	// function fetch_filter_productType($type){
-	// 	$this->db->select($type);
-	// 	$this->db->from('products_type');
-	// 	return $this->db->get();
-	// }
-
-	function make_query($type, $size, $minimum_price, $maximum_price)
+	function make_query($features, $type, $size, $minimum_price, $maximum_price)
 	{
-
-		$query = "SELECT * FROM products INNER JOIN products_type on products_type.id_type=products.id_type WHERE product_status = '1' ";
+		if ($features=="All") {
+			$query = "	SELECT * FROM products 
+			INNER JOIN products_type on products_type.id_type=products.id_type 
+			WHERE products.product_status = '1'";
+		} else {
+			$query = "	SELECT * FROM products 
+			INNER JOIN products_type on products_type.id_type=products.id_type 
+			INNER JOIN products_features_related on products_features_related.id_barang=products.id_barang 
+			WHERE products_features_related.id_features = $features AND products.product_status = '1'";
+		}
 
 		if (isset($type)) {
 			$type_filter = implode("','", $type);
@@ -47,16 +48,16 @@ class Model_f_store extends CI_Model
 		return $query;
 	}
 
-	function count_all($type, $size, $minimum_price, $maximum_price)
+	function count_all($features, $type, $size, $minimum_price, $maximum_price)
 	{
-		$query = $this->make_query($type, $size, $minimum_price, $maximum_price);
+		$query = $this->make_query($features, $type, $size, $minimum_price, $maximum_price);
 		$data = $this->db->query($query);
 		return $data->num_rows();
 	}
 
-	function fetch_data($limit, $start, $type, $size, $minimum_price, $maximum_price, $sorted_name)
+	function fetch_data($limit, $start, $features, $type, $size, $minimum_price, $maximum_price, $sorted_name)
 	{
-		$query = $this->make_query($type, $size, $minimum_price, $maximum_price);
+		$query = $this->make_query($features, $type, $size, $minimum_price, $maximum_price);
 		if (isset($sorted_name) || !empty($sorted_name)) {
 			if ($sorted_name == 'NMASC') {
 				$query .= 'ORDER BY nm_barang ASC';

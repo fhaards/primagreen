@@ -150,7 +150,6 @@ $(document).ready(function () {
 		});
 	});
 
-
 	function subTotal() {
 		$.ajax({
 			type: "ajax",
@@ -165,7 +164,6 @@ $(document).ready(function () {
 			},
 		});
 	}
-
 
 	function calculateCheckout() {
 		var isCourierChoosen = !isNaN(parseInt($("#setkurir-harga").val()));
@@ -218,13 +216,14 @@ $(document).ready(function () {
 		var minimum_price = $("#hidden_minimum_price").val();
 		var maximum_price = $("#hidden_maximum_price").val();
 		var sorted_name = $("#get-sorted").val();
+		var features = $("#getFeatures").val();
 
 		// loadMsg();
 		$(".filter_data").html(
 			'<div class="loading_store grid col-span-4 items-center w-full"><div class="mx-auto text-gray-800 font-bold mx-auto">Loading .. <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6"></div></div>'
 		);
 		$.ajax({
-			url: BASE_URL + "store/product-list/" + page,
+			url: BASE_URL + "store/product-json/" + page,
 			method: "POST",
 			dataType: "JSON",
 			data: {
@@ -234,6 +233,7 @@ $(document).ready(function () {
 				minimum_price: minimum_price,
 				maximum_price: maximum_price,
 				sorted_name: sorted_name,
+				features: features,
 			},
 			success: function (data) {
 				// successMsg();

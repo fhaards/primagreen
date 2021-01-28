@@ -137,6 +137,10 @@ $route['registration/data_exist'] = 'Controller_f_user_login/dataExist';
 $route['logout'] = 'Controller_f_user_login/logout';
 
 /*///////// Store /////////////*/
+$route['store/all-items'] = 'Controller_f_store';
+$route['store/features/(:any)'] = 'Controller_f_store/getFeatures/$1';
+$route['store/product-json/(:any)'] = 'Controller_f_store/fetch_data/$1';
+// $route['store/product-list'] = 'Controller_f_store';
 $route['store/product-list'] = 'Controller_f_store';
 $route['store/product-list/(:any)'] = 'Controller_f_store/fetch_data/$1';
 $route['store/product-list/detail/(:any)/(:any)'] = 'Controller_f_store/detailProduct/$1';

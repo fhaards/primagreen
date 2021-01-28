@@ -59,10 +59,12 @@ class Controller_product extends CI_Controller
         $data['typeList'] = $this->model_product_related->getAllTypes();
         $data['featuresList'] = $this->model_product_related->getFeaturesEnabled();
 
-        $this->form_validation->set_rules('nm_product', 'Product Name', 'required');
-        $this->form_validation->set_rules('features[]', 'Features', 'required');
+        $this->form_validation->set_error_delimiters('<div class="bg-red-100 w-100 py-1 px-4 my-1 text-xs border-2 border-red-300 rounded-md text-red-500">', '</div>');
+        $this->form_validation->set_rules('nm_product', 'Common Name', 'required');
+        $this->form_validation->set_rules('size', 'Size', 'required');
+        $this->form_validation->set_rules('price', 'Price', 'required');
+        // $this->form_validation->set_rules('features[]', 'Features', 'required');
         if ($this->form_validation->run() === FALSE) {
-            // $this->session->set_flashdata('errorMsgInput', 'Something Wrong');
             $this->load->view('_adminpages/master_admin', $data);
         } else {
             $nmProduct = $this->input->post('nm_product');
@@ -114,13 +116,14 @@ class Controller_product extends CI_Controller
                 'stok' => $this->input->post('stock'),
                 'detail' => $this->input->post('detail_info'),
                 'date_a' => $date,
+                'sku' => $getSkuCode,
                 'gambar' => $getProductImage1,
                 'gambar2' => $getProductImage2,
                 'gambar3' => $getProductImage3,
                 'product_status' => '1'
             );
 
-            $this->model_product->insert_product($data, $getSkuCode, $features);
+            $this->model_product->insert_product($data, $features);
             $this->session->set_flashdata('InputMsg', 'Data berhasil ditambahkan');
             redirect('product/product-list');
         }
@@ -146,7 +149,6 @@ class Controller_product extends CI_Controller
         } else {
             //SEND FEATURES AS ARRAY
             $features = $this->input->post('features');
-            
             $getData = array(
                 'nm_barang' => $this->input->post('nm_barang'),
                 'nm_barang_bot' => $this->input->post('nm_barang_bot'),

@@ -53,7 +53,7 @@ class Controller_f_user_login extends CI_Controller
 						redirect(base_url("dashboard"));
 					}
 					if (getUserData()['level'] == 'user') {
-						redirect(base_url("primagreen"));
+						redirect(base_url("index"));
 					}
 				} else {
 					$this->session->set_flashdata('errloginMsg', 'Error');

@@ -21,11 +21,28 @@ class Controller_f_store extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('pagination');
     }
+
     public function index()
     {
         $data['type_data'] = $this->model_f_store->fetch_filter_type('products.id_type,nm_type');
         $data['size_data'] = $this->model_f_store->fetch_filter_type('products.size');
+        $data['features_data'] = $this->model_product_related->getFeaturesEnabled();
+        $data['getIdFeatures'] = "All";
         $data['title']   = 'Show All Items - ' . APP_NAME;
+        $data['pageTitle'] = 'All Items';
+        $data['content'] = 'frontend/store/read_store';
+        $this->load->view('frontend/master_frontend', $data);
+    }
+
+    public function getFeatures($var)
+    {
+        $newNmFeatures = str_replace('-', ' ', $var);
+        $data['type_data'] = $this->model_f_store->fetch_filter_type('products.id_type,nm_type');
+        $data['size_data'] = $this->model_f_store->fetch_filter_type('products.size');
+        $data['features_data'] = $this->model_product_related->getFeaturesEnabled();
+        $data['getIdFeatures'] = $this->model_product_related->getFeaturesIdByName($newNmFeatures);
+        $data['title']   = $newNmFeatures . ' - ' . APP_NAME;
+        $data['pageTitle'] = $newNmFeatures;
         $data['content'] = 'frontend/store/read_store';
         $this->load->view('frontend/master_frontend', $data);
     }
@@ -38,10 +55,11 @@ class Controller_f_store extends CI_Controller
         $minimum_price = $this->input->post('minimum_price');
         $maximum_price = $this->input->post('maximum_price');
         $sorted_name =  $this->input->post('sorted_name');
+        $features =  $this->input->post('features');
 
         $config = array();
         $config['base_url'] = "#";
-        $config['total_rows'] = $this->model_f_store->count_all($type, $size, $minimum_price, $maximum_price);
+        $config['total_rows'] = $this->model_f_store->count_all($features, $type, $size, $minimum_price, $maximum_price);
         $config['per_page'] = 8;
         $config['uri_segment'] = 3;
         $config['use_page_numbers'] = TRUE;
@@ -67,7 +85,7 @@ class Controller_f_store extends CI_Controller
         $start = ($page - 1) * $config['per_page'];
         $output = array(
             'pagination_link'  => $this->pagination->create_links(),
-            'product_list'   => $this->model_f_store->fetch_data($config["per_page"], $start, $type, $size, $minimum_price, $maximum_price, $sorted_name)
+            'product_list'   => $this->model_f_store->fetch_data($config["per_page"], $start, $features, $type, $size, $minimum_price, $maximum_price, $sorted_name)
         );
         echo json_encode($output);
     }

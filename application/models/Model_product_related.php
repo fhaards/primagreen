@@ -29,8 +29,15 @@ class Model_product_related extends CI_Model
         return $query->result_array();
     }
 
-
-
+    public function getFeaturesIdByName($getName)
+    {
+        $this->db->select('*');
+        $this->db->from('products_features');
+        $this->db->where('nm_features',$getName);
+        $query = $this->db->get();
+        return $query->row_array()['id_features'];
+    }
+    
     public function getAllTypes()
     {
         $this->db->select('*');
