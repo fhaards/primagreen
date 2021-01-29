@@ -84,6 +84,7 @@ function data() {
 		isModalAddFaqOpen: false,
 		isModalEditFaqOpen: false,
 		isModalSearchOpen: false,
+		isModalEditFeaturesOpen:false,
 		trapCleanup: null,
 		openModal() {
 			this.isModalOpen = true;
@@ -105,12 +106,17 @@ function data() {
 			this.isModalSearchOpen = true;
 			this.trapCleanup = focusTrap(document.querySelector("#modal-search"));
 		},
+		openModalEditFeatures(){
+			this.isModalEditFeaturesOpen = true;
+			this.trapCleanup = focusTrap(document.querySelector("#modal-edit-features"));
+		},
 		closeModal() {
 			this.isModalOpen = false;
 			this.isModalReportOpen = false;
 			this.isModalAddFaqOpen = false;
 			this.isModalEditFaqOpen = false;
 			this.isModalSearchOpen = false;
+			this.isModalEditFeaturesOpen = false;
 			// document.getElementById('searching').value = '';
 			this.trapCleanup();
 		},

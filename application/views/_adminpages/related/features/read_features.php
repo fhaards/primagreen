@@ -1,39 +1,18 @@
-<?php echo validation_errors(); ?>
-<?php echo form_open('product/add-features'); ?>
-<div class="flex md:flex-row-reverse w-full py-5 px-4 mb-5 bg-white rounded-lg relative shadow-xs">
-    <div class="flex flex-col space-y-2 w-full md:space-y-0 md:space-x-5 md:w-auto md:flex-row">
-        <label class="block text-sm">
-            <input name="nm_features" required features="text" class="block w-full text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Features Name" />
-        </label>
-        <label class="block text-sm">
-            <select name="status_features" class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 bg-gray-100 focus:bg-white dark:bg-gray-700 form-select focus:border-green-400 focus:outline-none focus:shadow-outline-green">
-                <option value="Enabled">Enabled</option>
-                <option value="Disabled">Disabled</option>
-            </select>
-        </label>
-        <label>
-            <button type="submit" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-                <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                <span class="">New Features</span>
-            </button>
-        </label>
-    </div>
-</div>
-<?php echo form_close(); ?>
+<div class="flex flex-col md:flex-row md:space-x-8 md:space-y-0 space-x-0 space-y-8">
 
-<div class="w-full bg-white overflow-hidden rounded-lg shadow-xs">
-    <div class="w-full overflow-x-auto">
-        <table id="primaTable2" class="w-full whitespace-no-wrap stripe hover" width="100%">
+    <?php $this->load->view('_adminpages/related/features/form_add_features'); ?>
+
+    <div class="flex-1 bg-white overflow-hidden rounded-lg shadow-xs">
+        <table id="primaTable2" class="stripe hover">
             <thead>
                 <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                    <th class="px-4 py-3"></th>
-                    <th class="px-4 py-3">Name</th>
-                    <th class="px-4 py-3">Status</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y dark:divide-gray-700">
+            <tbody class="bg-white divide-y dark:divide-gray-700 text-center">
                 <?php
                 foreach ($featuresList as $featuresLists) {
                     $idFeatures = $featuresLists['id_features'];
@@ -45,27 +24,34 @@
                     }
                 ?>
                     <tr class="text-gray-700">
-                        <td class="px-4 py-3"></td>
-                        <td class="px-4 py-3">
-                            <span class="hidden"><?= $featuresLists['nm_features']; ?></span>
-                            <?php echo form_open('product/edit-features/' . $idFeatures); ?>
-                            <div class="flex items-center space-x-4 text-sm">
-                                <label class="block text-sm">
-                                    <input type="text" name="nameFeatures" value="<?= $featuresLists['nm_features']; ?>" class="text-sm focus:border-green-400 focus:outline-none focus:shadow-outline-green bg-gray-100 focus:bg-white form-input" />
-                                </label>
-                                <button type="submit" class="flex items-center justify-between px-1 py-1 text-sm font-medium leading-5 rounded-md shadow-xs text-white transition-colors duration-150 bg-gray-800 active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-                                    <svg class="w-4 h-4 fill-current text-white" aria-hidden="true" fill="" viewBox="0 0 20 20">
-                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <?php echo form_close(); ?>
+                        <td class="w-full">
+                            <?= $featuresLists['nm_features']; ?>
                         </td>
-                        <td class="px-4 py-3 flex items-center  space-x-4">
+                        <td class="align-center items-center">
+                            <?php
+                            if (!empty($featuresLists['img_features'])) :
+                                $getImageFeaturesUrl = 'uploads/features/' . $featuresLists['img_features'];
+                            else :
+                                $getImageFeaturesUrl = 'uploads/default_img.jpg';
+                            endif;
+                            ?>
+                            <div class="relative h-6 w-6  rounded-sm md:block">
+                                <img class="object-cover w-full h-full rounded-sm" src="<?= base_url($getImageFeaturesUrl); ?>" alt="" loading="lazy" />
+                                <div class="absolute inset-0 rounded-sm shadow-inner" aria-hidden="true"></div>
+                            </div>
+                        </td>
+                        <td class="text-center flex items-center  space-x-4">
                             <div class="flex items-center space-x-4 text-sm">
                                 <a href="<?php echo site_url('product/change-features-status/' . $idFeatures); ?>" class="<?= $statusClass; ?>" aria-label="Edit">
                                     <span class="px-1"> <?= $statusFeatures; ?></span>
                                 </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex items-center space-x-1">
+                                <button @click="openModalEditFeatures" class="<?= smallIconColor('edit'); ?>">
+                                    <?= smallIcon('edit'); ?>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -73,4 +59,6 @@
             </tbody>
         </table>
     </div>
+
+
 </div>

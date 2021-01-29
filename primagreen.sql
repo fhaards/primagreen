@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jan 2021 pada 23.06
+-- Waktu pembuatan: 29 Jan 2021 pada 02.42
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -314,6 +314,8 @@ INSERT INTO `products` (`id_barang`, `nm_barang`, `nm_barang_bot`, `sku`, `size`
 CREATE TABLE `products_features` (
   `id_features` int(10) NOT NULL,
   `nm_features` varchar(50) NOT NULL,
+  `desc_features` varchar(100) NOT NULL,
+  `img_features` text NOT NULL,
   `status_features` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -321,13 +323,13 @@ CREATE TABLE `products_features` (
 -- Dumping data untuk tabel `products_features`
 --
 
-INSERT INTO `products_features` (`id_features`, `nm_features`, `status_features`) VALUES
-(2, 'Up discount 25%', 'Disabled'),
-(4, 'Up discount 50%', 'Disabled'),
-(5, 'Easy Indoor Favorites', 'Enabled'),
-(6, 'Pet Friendly Plants', 'Enabled'),
-(7, 'Low Light Favorites', 'Enabled'),
-(8, 'Best Seller', 'Enabled');
+INSERT INTO `products_features` (`id_features`, `nm_features`, `desc_features`, `img_features`, `status_features`) VALUES
+(2, 'Up discount 25%', '', '', 'Disabled'),
+(4, 'Up discount 50%', '', '', 'Disabled'),
+(5, 'Easy Indoor Favorites', '', 'bd32e0043e157f58d9337e822d3d1a0d.jpeg', 'Enabled'),
+(6, 'Pet Friendly Plants', '', '', 'Enabled'),
+(7, 'Low Light Favorites', '', 'f656e826219ce6afd30a0afd22371718.jpg', 'Enabled'),
+(8, 'Best Seller', '', 'f9f6c17cf4ccbb111ffc0de60b733320.jpg', 'Enabled');
 
 -- --------------------------------------------------------
 
@@ -593,7 +595,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT untuk tabel `products_features`
 --
 ALTER TABLE `products_features`
-  MODIFY `id_features` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_features` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_features_related`

@@ -11,10 +11,16 @@ if($modal_page == 'sold') :
     $this->load->view('_adminpages/sold/report_order');
 endif;
 
+
 if($modal_page_2 == 'faq') :
     // MODAL FAQ
     $this->load->view('_adminpages/faq/form_add');
     $this->load->view('_adminpages/faq/form_edit');
+endif;
+
+if($modal_page == 'product') :
+    // MODAL REPORT ORDER
+    $this->load->view('_adminpages/related/features/form_edit_features_modals');
 endif;
 
 
