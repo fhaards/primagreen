@@ -8,29 +8,6 @@ $(document).ready(function () {
 		});
 	}
 
-	// swal({
-	// 	title: 'Now loading',
-	// 	allowEscapeKey: false,
-	// 	allowOutsideClick: false,
-	// 	timer: 2000,
-	// 	onOpen: () => {
-	// 	  swal.showLoading();
-	// 	}
-	//   }).then(
-	// 	() => {},
-	// 	(dismiss) => {
-	// 	  if (dismiss === 'timer') {
-	// 		console.log('closed by timer!!!!');
-	// 		swal({
-	// 		  title: 'Finished!',
-	// 		  type: 'success',
-	// 		  timer: 2000,
-	// 		  showConfirmButton: false
-	// 		})
-	// 	  }
-	// 	}
-	//   )
-
 	$("#isProductTable").on("click", ".delete-products", function () {
 		var getId = $(this).data("isidproductdelete");
 		swal({
@@ -69,5 +46,21 @@ $(document).ready(function () {
 				swal("Cancelled", "Your product is still in table", "error");
 			}
 		});
+	});
+
+	$(".open-features-edit").on("click", function () {
+		$("#idFeaturesEdit").val($(this).data("idfeatures"));
+		$("#nmFeaturesEdit").val($(this).data("nmfeatures"));
+
+		var getImgFeatures = $(this).data("urlimgfeatures");
+		var setUrlImgFeatures = "";
+		if (getImgFeatures == "") {
+			setUrlImgFeatures = BASE_URL + "uploads/default_img.jpg";
+		} else {
+			setUrlImgFeatures = BASE_URL + "uploads/features/" + getImgFeatures;
+		}
+		// console.log(BASE_URL + "uploads/features/" + getImgFeatures);
+		$("#baseUrlImgFeatures").val(getImgFeatures);
+		$("#loadImgFeatureEdit").attr("src", setUrlImgFeatures);
 	});
 });

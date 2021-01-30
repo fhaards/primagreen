@@ -32,8 +32,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		var headerNav = document.getElementById("header-nav");
 		if (prevScrollpos > 32) {
 			headerNav.classList.add("shadow-md");
+			headerNav.classList.add("bg-white");
 		} else {
 			headerNav.classList.remove("shadow-md");
+			headerNav.classList.remove("bg-white");
 		}
 
 		// if (prevScrollpos > 300) {

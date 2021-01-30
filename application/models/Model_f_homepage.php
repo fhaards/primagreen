@@ -24,7 +24,7 @@ class Model_f_homepage extends CI_Model
 		$this->db->select('*');
 		$this->db->from('products');
 		$this->db->order_by("harga", "asc");
-		$this->db->limit(8);
+		$this->db->limit(6);
 		$query = $this->db->get();
 		return $query->result_array();
 	}

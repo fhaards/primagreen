@@ -332,3 +332,56 @@ $(document).ready(function () {
 		});
 
 });
+
+
+<section class="container px-6 mx-auto grid grid-cols-1 my-5">
+    <div class="grid gid-cols-2">
+        <div class="bg-gray-100 grid gap-4 md:gap-10 grid-flow-col auto-rows-max overflow-x-scroll w-full h-full scrollbar-none">
+            <a href="<?php echo site_url('store/show-all-items'); ?>" class="relative h-full px-10 cat-img-2 md:w-full w-56 rounded-md">
+                <div class="absolute bottom-0 pb-10">
+                    <div class="md:text-xl text-md text-white">
+                        <h1 class="text-white  uppercase"> Shop</h1>
+                        <h1 class="text-white -mt-2 uppercase font-bold"> All Items </h1>
+                    </div>
+
+                    <div class="block text-xs md:text-md flex flex-row space-x-4 text-white uppercase py-2  font-bold leading-5 transition-colors duration-150">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                        <span class="tracking-widest md:block hidden"> Go to store </span>
+                    </div>
+                </div>
+            </a>
+            <div class="relative h-full px-10 cat-img-1 md:w-full w-56 rounded-md">
+                <div class="absolute bottom-0 pb-10">
+                    <div class="md:text-xl text-md text-white">
+                        <h1 class="text-white uppercase"> Pet-Friendly</h1>
+                        <h1 class="text-white -mt-2 uppercase font-bold"> Plants</h1>
+                    </div>
+                    <a href="<?php echo site_url('store/show-all-items'); ?>" class="block text-xs md:text-md flex flex-row space-x-4 text-white uppercase py-2 font-bold leading-5 transition-colors duration-150">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                        <span class="tracking-widest md:block hidden"> Go to store </span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative h-full px-10 cat-img-3 md:w-full w-56 rounded-md">
+                <div class="absolute bottom-0 pb-10">
+                    <div class="md:text-xl text-md text-white">
+                        <h1 class="text-white uppercase"> Edible</h1>
+                        <h1 class="text-white -mt-2 uppercase font-bold"> Garden </h1>
+                    </div>
+
+                    <a href="<?php echo site_url('store/show-all-items'); ?>" class="block text-xs md:text-md flex flex-row space-x-4 text-white uppercase py-2 font-bold leading-5 transition-colors duration-150">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                        <span class="tracking-widest md:block hidden"> Go to store </span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

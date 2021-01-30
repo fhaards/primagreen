@@ -11,6 +11,7 @@ class Controller_f_homepage extends CI_Controller {
         $this->load->model('model_product');
         $this->load->model('model_f_homepage');
         $this->load->model('model_favorites');
+        $this->load->model('model_product_related');
         $this->load->helper('array');
         $this->load->library('form_validation');
         $this->load->helper('url');
@@ -24,6 +25,7 @@ class Controller_f_homepage extends CI_Controller {
         $data['newItems'] = $this->model_f_homepage->getNewItems();
         $data['someItems'] = $this->model_f_homepage->getSomeItems();
         $data['favItems'] = $this->model_favorites->getFavoritesId();
+        $data['features'] = $this->model_product_related->getFeaturesEnabled();
         $data['title']   = 'Welcome - ' . APP_NAME;
         $data['content'] = 'frontend/homepage';
         $this->load->view('frontend/master_frontend', $data);

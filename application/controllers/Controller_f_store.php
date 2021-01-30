@@ -24,6 +24,14 @@ class Controller_f_store extends CI_Controller
 
     public function index()
     {
+        $data['title']   = 'Store - ' . APP_NAME;
+        $data['pageTitle'] = 'Store';
+        $data['content'] = 'frontend/store/index';
+        $this->load->view('frontend/master_frontend', $data);
+    }
+
+    public function shopAllItems()
+    {
         $data['type_data'] = $this->model_f_store->fetch_filter_type('products.id_type,nm_type');
         $data['size_data'] = $this->model_f_store->fetch_filter_type('products.size');
         $data['features_data'] = $this->model_product_related->getFeaturesEnabled();

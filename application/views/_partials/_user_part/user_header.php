@@ -1,4 +1,4 @@
-<header id="header-nav" class="nav-header fixed z-40 bg-white h-20 py-5 top-0 w-full mx-auto">
+<header id="header-nav" class="nav-header fixed z-40 h-20 py-5 top-0 w-full mx-auto">
   <div class="container flex items-center justify-between h-full mx-auto px-6 ">
     <!-- Mobile hamburger -->
     <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu" aria-label="Menu">
@@ -27,7 +27,7 @@
     <div class="hidden md:block items-center ">
       <div class="mx-auto focus-within:text-green-500 flex flex-row space-x-2">
         <!-- <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()"> -->
-        <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger">
+        <a href="<?= base_url(); ?>store" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger">
           Store
         </a>
         <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activeside :  $inactiveside; ?>">

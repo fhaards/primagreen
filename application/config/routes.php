@@ -84,7 +84,7 @@ $route['product/edit-type/(:any)'] = 'Controller_type/editType/$1';
 $route['product/features-list'] = 'Controller_features/index';
 $route['product/add-features'] = 'Controller_features/newFeatures';
 $route['product/change-features-status/(:any)'] = 'Controller_features/changeFeaturesStatus/$1';
-$route['product/edit-features/(:any)'] = 'Controller_features/editFeatures/$1';
+$route['product/edit-features'] = 'Controller_features/editFeatures';
 
 /*///////// Product Features /////////////*/
 $route['product/courier-list'] = 'Controller_courier/index';
@@ -137,7 +137,8 @@ $route['registration/data_exist'] = 'Controller_f_user_login/dataExist';
 $route['logout'] = 'Controller_f_user_login/logout';
 
 /*///////// Store /////////////*/
-$route['store/all-items'] = 'Controller_f_store';
+$route['store'] = 'Controller_f_store';
+$route['store/all-items'] = 'Controller_f_store/shopAllItems';
 $route['store/features/(:any)'] = 'Controller_f_store/getFeatures/$1';
 $route['store/product-json/(:any)'] = 'Controller_f_store/fetch_data/$1';
 // $route['store/product-list'] = 'Controller_f_store';

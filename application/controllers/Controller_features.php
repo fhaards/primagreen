@@ -70,10 +70,10 @@ class Controller_features extends CI_Controller
         }
     }
 
-    public function editFeatures($idFeatures)
+    public function editFeatures()
     {
+        $idFeatures = $this->input->post('idFeaturesEdit');
         $baseImgFeatures = $this->input->post('base_img_features');
-
         $uploadPaths = './uploads/features';
         $configs = array('upload_path' => $uploadPaths, 'allowed_types' =>
         'jpg|jpeg|gif|png|webp', 'max_size' => '5000', 'encrypt_name' => true);

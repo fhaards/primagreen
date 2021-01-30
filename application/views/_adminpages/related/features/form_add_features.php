@@ -1,5 +1,5 @@
 <?php echo validation_errors(); ?>
-<?php echo form_open_multipart('product/add-features', array('class' => 'bg-white shadow-xs rounded-lg px-4 py-2 flex flex-col space-y-4 ')); ?>
+<?php echo form_open_multipart('product/add-features', array('class' => 'bg-white shadow-xs rounded-lg px-4 py-2 flex flex-col space-y-4 w-full ')); ?>
 <div class="border-b-2 border-gray-200 mb-2  py-4">
     <h1 class="font-bold tracking-wide text-sm text-gray-600">New Features Form</h1>
 </div>
