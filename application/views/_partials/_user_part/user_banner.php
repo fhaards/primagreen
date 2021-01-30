@@ -8,6 +8,7 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        background-color:#A7F3D0;
     }
 
     .signup-banner {

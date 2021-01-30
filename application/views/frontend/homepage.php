@@ -1,6 +1,6 @@
-<section class="homepage-banner  min-w-full w-full mt-20 lg:mt-20 mx-auto flex md:items-center bg-cover bg-right" style="height:600px;">
-    <div class="container mx-auto md:mt-0 mt-20 px-6 text-gray-800">
-        <div class="flex flex-col w-full lg:w-2/3 tracking-wide md:mx-0 mx-auto ">
+<section class="homepage-banner  min-w-full w-full mx-auto flex md:items-center bg-cover bg-right" style="height:600px;">
+    <div class="container mx-auto px-6 text-gray-800">
+        <div class="flex flex-col w-full lg:w-2/3 tracking-wide md:mx-0 mx-auto md:mt-0 mt-32">
             <h1 class="uppercase  font-black md:text-5xl text-2xl tracking-wide">Time to bloom </h1>
             <h1 class="uppercase md:-mt-5 font-bold md:text-4xl text-xl tracking-wide py-0">youre house with plants</h1>
         </div>

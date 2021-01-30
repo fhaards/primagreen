@@ -1,7 +1,7 @@
 <div x-show="isModalSearchOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed w-full inset-0 z-30 flex items-start bg-black bg-opacity-50  sm:justify-center">
     <!-- Modal -->
     <div id="searchModal" class="container flex mx-auto mt-20">
-        <div x-show="isModalSearchOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform -translate-y-1/2" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0  transform -translate-y-1/2" @click.away="closeModal" @keydown.escape="closeModal" class="px-6 md:mx-6 md:shadow-lg bg-white overflow-hidden sm:m-4 sm:rounded-md w-full" role="dialog" id="modal-search">
+        <div x-show="isModalSearchOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform -translate-y-1/2" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150 " x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0  transform -translate-y-1/2" @click.away="closeModal" @keydown.escape="closeModal" class="px-6 md:mx-6 md:shadow-lg bg-white overflow-hidden sm:m-4 sm:rounded-md w-full" role="dialog" id="modal-search">
             <!-- Remove header if you don't want a close icon. Use modal body to place modal tile. -->
 
             <header class="flex flex-col w-full">
