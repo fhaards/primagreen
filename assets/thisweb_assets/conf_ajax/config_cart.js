@@ -219,8 +219,9 @@ $(document).ready(function () {
 		var features = $("#getFeatures").val();
 
 		// loadMsg();
+		// <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6">
 		$(".filter_data").html(
-			'<div class="loading_store grid col-span-4 items-center w-full"><div class="mx-auto text-gray-800 font-bold mx-auto">Loading .. <img src="../assets/image/loading2.gif" class="mr-4 h-6 w-6"></div></div>'
+			'<div class="loading_store grid col-span-4 items-center w-full"><div class="mx-auto text-gray-800 font-bold mx-auto">loading products  .. </div></div>'
 		);
 		$.ajax({
 			url: BASE_URL + "store/product-json/" + page,

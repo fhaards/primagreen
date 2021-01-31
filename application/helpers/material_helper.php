@@ -31,6 +31,16 @@ function buttonPrimary($var)
     return $var;
 }
 
+function buttonPrimaryRounded($var)
+{
+    if ($var == 'Background') :
+        $var = 'flex shadow-lg p-3 text-xs text-white rounded-full font-bold transition-colors duration-150 bg-gray-800 active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray';
+    endif;
+
+    return $var;
+}
+
+
 
 function smallIconColor($var)
 {

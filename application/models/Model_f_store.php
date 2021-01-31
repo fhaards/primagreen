@@ -7,6 +7,7 @@ class Model_f_store extends CI_Model
 	{
 		$this->load->database();
 		$this->load->helper('directory');
+		$this->load->helper('product');
 		$this->load->helper("file");
 	}
 
@@ -22,7 +23,7 @@ class Model_f_store extends CI_Model
 
 	function make_query($features, $type, $size, $minimum_price, $maximum_price)
 	{
-		if ($features=="All") {
+		if ($features == "All") {
 			$query = "	SELECT * FROM products 
 			INNER JOIN products_type on products_type.id_type=products.id_type 
 			WHERE products.product_status = '1'";
@@ -78,19 +79,20 @@ class Model_f_store extends CI_Model
 			foreach ($data->result_array() as $row) {
 				$newNmProduct = strtolower(str_replace(' ', '-', $row['nm_barang']));
 				$output .= '
-				<div class="flex flex-col w-full p-2 rounded-md border border-gray-300 hover:border-gray-800 hover:shadow-md">
+				<div class="flex flex-col w-full p-2 rounded-md shadow-lg transition duration-700 ease-in-out border border-gray-300 hover:border-gray-800 hover:shadow-xs">
 					<a href="' . site_url('store/product-list/detail/' . $row['id_barang'] . '/' . $newNmProduct) . '" 
 					class="flex flex-col">
 						<div class="w-full h-20 md:h-48 md:h-48  md:block">
 							<img class="object-cover w-full h-full rounded-md opacity-75 hover:opacity-100" src="' . base_url() . 'uploads/product/' .  $row['sku'] . '/' . $row['gambar'] . '">
 						</div>
-						<div class="flex flex-row pt-2 space-x-2">
-							<div class="flex-1 h-16 max-h-16 md:h-12 md:max-h-12 overflow-y-auto">
-								<p class="w-2/3  text-gray-900 font-bold text-xs md:text-sm">' . $row['nm_barang'] . '</p>
+						<div class="flex flex-col pt-2 ">
+							<div class="">
+								<p class="text-green-500 font-bold text-xs md:text-sm"> RP ' . number_format($row['harga']) . '</p>
 							</div>
-							<div class="text-right float-right">
-								<p class="text-gray-600 font-bold text-xs md:text-sm">' . number_format($row['harga']) . '</p>
+							<div class="flex-1">
+								<p class="text-gray-900 font-bold text-xs md:text-lg">' . productNameStrip($row['nm_barang']) . '</p>
 							</div>
+							
 						</div>
 						<div class="flex pb-4">
 							<p class="text-gray-600 font-semibold text-xs md:text-xs"> Size : ' . $row['size'] . '</p>

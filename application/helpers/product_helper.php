@@ -33,3 +33,14 @@ function stockInList($var)
 
     return $stockInListOutput;
 }
+
+function productNameStrip($var)
+{
+    $countLength = strlen($var);
+    if ($countLength > 20) {
+        $output = substr($var, 0, 15).' ..';
+    } else {
+        $output = $var;
+    }
+    return $output;
+}

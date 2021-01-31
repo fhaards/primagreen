@@ -10,8 +10,8 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "py-1 px-4 uppercase bg-gray-200 tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-gray-100 mx-auto rounded-md";
-    $inactiveside = "py-1 px-4 uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-gray-200 mx-auto rounded-md focus:bg-gray-200";
+    $activeside = "py-1 px-4 uppercase text-white bg-green-500 tracking-widest items-center text-sm font-bold transition-colors duration-150 hover:bg-green-600 mx-auto rounded-md";
+    $inactiveside = "py-1 px-4 uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-green-500 mx-auto rounded-md focus:bg-green-500 hover:bg-opacity-75";
     ?>
 
     <!-- Logo -->

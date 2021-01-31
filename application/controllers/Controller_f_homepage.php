@@ -15,6 +15,7 @@ class Controller_f_homepage extends CI_Controller {
         $this->load->helper('array');
         $this->load->library('form_validation');
         $this->load->helper('url');
+        $this->load->helper('product');
         $this->load->helper('form');
         $this->load->helper('date');
         $this->load->helper('directory');

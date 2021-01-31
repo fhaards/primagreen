@@ -1,4 +1,30 @@
 $(document).ready(function () {
+
+	// PRODUCTS LIST
+	$("div[class^='t']").mouseover(function () {
+		$(this).find("div[id^='sover']").addClass('bg-gray-800 bg-opacity-75');
+	});
+	$("div[class^='t']").mouseout(function () {
+		$(this).find("div[id^='sover']").removeClass('bg-gray-800 bg-opacity-75');
+	});
+
+	// $("#open_this_items")
+	// 	.live("mouseover", function () {
+	// 		$(".product_bg").show();
+	// 	})
+	// 	.live("mouseleave", function () {
+	// 		$(".product_bg").hide();
+	// 	});
+
+	// $(".product_hover").live({
+	// 	mouseenter: function () {
+	// 		$("#products_names").addClass('bg-black bg-opacity-50');
+	// 	},
+	// 	mouseleave: function () {
+	// 		$("#products_names").removeClass('bg-black bg-opacity-50');
+	// 	}
+	// });
+
 	// GET NO PEMESANAN WHEN UPLOAD TRANSFER PROOF
 	$(".upload-transfer").on("click", function () {
 		$("#upNoOrderInput").val($(this).data("nopemesanan"));
@@ -55,5 +81,4 @@ $(document).ready(function () {
 			},
 		});
 	});
-	
 });

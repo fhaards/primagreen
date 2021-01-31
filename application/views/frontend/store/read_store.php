@@ -1,6 +1,6 @@
 <!-- STORE ITEMS -->
-<div class="container px-6 mx-auto grid min-h-screen">
-    <section class="w-full mx-auto mt-20 bg-white">
+<div class="container px-6 mx-auto grid min-h-screen mt-24">
+    <section class="w-full mx-auto bg-white">
         <div class="flex flex-col w-full">
 
             <!-- FILTER  -->

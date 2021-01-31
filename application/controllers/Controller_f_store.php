@@ -18,6 +18,7 @@ class Controller_f_store extends CI_Controller
         $this->load->helper('date');
         $this->load->helper('directory');
         $this->load->helper("file");
+        $this->load->helper("product");
         $this->load->library('form_validation');
         $this->load->library('pagination');
     }
@@ -26,6 +27,7 @@ class Controller_f_store extends CI_Controller
     {
         $data['title']   = 'Store - ' . APP_NAME;
         $data['pageTitle'] = 'Store';
+        $data['features'] = $this->model_product_related->getFeaturesEnabled();
         $data['content'] = 'frontend/store/index';
         $this->load->view('frontend/master_frontend', $data);
     }
