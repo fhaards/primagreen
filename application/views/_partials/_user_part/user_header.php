@@ -11,7 +11,7 @@
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
     $activeside = "py-1 px-4 uppercase text-white bg-green-500 tracking-widest items-center text-sm font-bold transition-colors duration-150 hover:bg-green-600 mx-auto rounded-md";
-    $inactiveside = "py-1 px-4 uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:bg-green-500 mx-auto rounded-md focus:bg-green-500 hover:bg-opacity-75";
+    $inactiveside = "py-1 px-4 uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:text-white hover:bg-green-500 mx-auto rounded-md focus:bg-green-500 focus:text-white active:text-white hover:bg-opacity-75";
     ?>
 
     <!-- Logo -->
@@ -38,10 +38,7 @@
 
     <div class="flex-1 items-center py-2">
       <ul class="flex flex-row-reverse">
-
-
         <li class="relative">
-
           <button style="cursor:pointer;" class="relative align-middle flex flex-row md:space-x-5 focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
             <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -68,7 +65,6 @@
                       <span>Completing My Account </span>
                     <?php endif; ?>
                   </a>
-
                 </li>
                 <li class="flex">
                   <a href="<?= base_url() . 'profile/order-history'; ?>" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200">

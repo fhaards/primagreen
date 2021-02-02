@@ -2,10 +2,10 @@ $(document).ready(function () {
 
 	// PRODUCTS LIST
 	$("div[class^='t']").mouseover(function () {
-		$(this).find("div[id^='sover']").addClass('bg-gray-800 bg-opacity-75');
+		$(this).find("div[id^='sover']").addClass('bg-gray-900 bg-opacity-75');
 	});
 	$("div[class^='t']").mouseout(function () {
-		$(this).find("div[id^='sover']").removeClass('bg-gray-800 bg-opacity-75');
+		$(this).find("div[id^='sover']").removeClass('bg-gray-900 bg-opacity-75');
 	});
 
 	// $("#open_this_items")

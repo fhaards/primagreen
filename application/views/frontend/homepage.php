@@ -57,7 +57,8 @@
 
                                 <div class="absolute bottom-0 left-0 rounded-b-md w-full bg-black bg-opacity-50 z-30">
                                     <div class="flex flex-row py-3 px-4 items-center">
-                                        <div class="flex-1 w-2/3 items-start">
+                                        <div class="flex-1 w-2/3 items-start flex-col">
+                                            <p class="text-green-500 font-bold tracking-wide items-center text-xs">Rp <?= number_format($newItemsValue['harga']); ?></p>
                                             <p class="text-white font-bold text-xs lg:text-sm"><?= productNameStrip($newItemsValue['nm_barang']); ?></p>
                                         </div>
                                         <div class="">
@@ -137,12 +138,12 @@
                                 <div class="flex flex-row">
                                     <div class="flex flex-1 flex-col">
                                         <div class="text-sm lg:text-lg">
-                                            <p class="text-green-500 text-shadow font-bold items-center">
+                                            <p class="text-green-500 font-bold tracking-wide items-center">
                                                 Rp <?= number_format($someItemsValue['harga']); ?>
                                             </p>
                                         </div>
-                                        <div class="font-bold text-sm md:text-xl tracking-wide text-gray-100">
-                                            <p class="text-shadow"><?= productNameStrip($someItemsValue['nm_barang']); ?></p>
+                                        <div class="font-bold text-sm md:text-xl tracking-wide text-white">
+                                            <p class=""><?= productNameStrip($someItemsValue['nm_barang']); ?></p>
                                         </div>
                                     </div>
 

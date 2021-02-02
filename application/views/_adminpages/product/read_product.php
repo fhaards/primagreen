@@ -9,22 +9,12 @@
                 <!-- <option value="<?= $row['id_type']; ?>"><?= $row['nm_type']; ?></option> -->
             <?php endforeach; ?>
         </select>
-        <button type="submit" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-            <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-            </svg>
-            <span class="">Filter</span>
-        </button>
+        <?= $filterButton; ?>
         <?php echo form_close(); ?>
     </div>
 
     <div class="flex flex-col py-5 px-4 mb-5 bg-white rounded-lg relative shadow-xs">
-        <a href="<?= base_url(); ?>product/product-add" class="flex space-x-2 items-center shadow-lg px-4 py-2 text-sm font-bold text-white transition-colors duration-150 bg-gray-800 rounded-md active:bg-gray-900 hover:shadow-none hover:bg-gray-900 focus:outline-none focus:shadow-outline-gray">
-            <svg class="w-4 h-4" fill="" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-            <span class="">New Products</span>
-        </a>
+        <?= $addButton; ?>
     </div>
 </div>
 
@@ -94,7 +84,7 @@
                                     <div class="absolute inset-0 rounded-sm shadow-inner" aria-hidden="true"></div>
                                 </div>
                                 <a href="<?php echo site_url('product/product-edit-image/' . $id); ?>" class="flex items-center justify-between text-center px-1 py-1 text-sm font-medium leading-5 bg-blue-500 rounded-md hover:bg-blue-700">
-                                    <svg class="w-4 h-4 fill-current text-white"  viewBox="0 0 20 20" fill="currentColor">
+                                    <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
                                     </svg>
                                 </a>
@@ -117,7 +107,7 @@
                                         <?= smallIcon('delete'); ?>
                                     </button>
                                 <?php else : ?>
-                                    <button type="submit" data-isidproductdelete="<?= $id; ?>"  class="delete-products <?= smallIconColor('delete'); ?>">
+                                    <button type="submit" data-isidproductdelete="<?= $id; ?>" class="delete-products <?= smallIconColor('delete'); ?>">
                                         <?= smallIcon('delete'); ?>
                                     </button>
 

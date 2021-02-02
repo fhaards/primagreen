@@ -14,6 +14,7 @@ class Controller_product extends CI_Controller
         $this->load->helper('array');
         $this->load->library('form_validation');
         $this->load->library('crumbs');
+        $this->load->library('components');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->helper('date');
@@ -25,7 +26,7 @@ class Controller_product extends CI_Controller
     public function index()
     {
         $type = $this->input->post("type");
-        $data['getType'] =  '' ;
+        $data['getType'] =  '';
         if (!empty($type)) {
             $data['getType'] = $type;
             $data['productList'] = $this->model_product->getAllProductsByIdType($type);
@@ -36,11 +37,16 @@ class Controller_product extends CI_Controller
             $data['productInOrder'] = $this->model_order->getProductsId();
         }
 
-        $this->crumbs->add('Product List', base_url().'product/product-list');  
-        $data['breadcrumb']=$this->crumbs->output();
+        $this->crumbs->add('Product List', base_url() . 'product/product-list');
+        $data['breadcrumb'] = $this->crumbs->output();
         $data['type_data'] = $this->model_product_related->getAllTypesEnabled();
         $data['title']   = 'Product - ' . APP_NAME;
         $data['pageTitle']   = 'Product';
+
+        //BUTTON
+        $data['addButton'] = $this->components->isHref('typeStandard', 'colorPrimary', 'iconAdd', 'New Product', 'product/product-add');
+        $data['filterButton'] = $this->components->isButtonSubmit('typeStandard', 'colorPrimary', 'iconFilter', 'Filter');
+
         $data['pageSubTitle']   = 'List of Table Products';
         $data['content'] = '_adminpages/product/read_product';
         $this->load->view('_adminpages/master_admin', $data);
@@ -49,9 +55,9 @@ class Controller_product extends CI_Controller
 
     public function newProductForm()
     {
-        $this->crumbs->add('Product List', base_url().'product/product-list');  
-        $this->crumbs->add('New Product', base_url().'product/product-add');  
-        $data['breadcrumb']=$this->crumbs->output();
+        $this->crumbs->add('Product List', base_url() . 'product/product-list');
+        $this->crumbs->add('New Product', base_url() . 'product/product-add');
+        $data['breadcrumb'] = $this->crumbs->output();
         $data['title']   = 'Add New Product - ' . APP_NAME;
         $data['pageTitle']   = 'Product';
         $data['pageSubTitle']   = 'New Product Form';
@@ -131,10 +137,10 @@ class Controller_product extends CI_Controller
 
     public function editProductForm($id)
     {
-        $this->crumbs->add('Product List', base_url().'product/product-list');  
-        $this->crumbs->add('Edit Product', base_url().'product/product-edit');  
-        $data['breadcrumb']=$this->crumbs->output();
-        
+        $this->crumbs->add('Product List', base_url() . 'product/product-list');
+        $this->crumbs->add('Edit Product', base_url() . 'product/product-edit');
+        $data['breadcrumb'] = $this->crumbs->output();
+
         $data['title']   = 'Edit Product - ' . APP_NAME;
         $data['pageTitle']   = 'Product';
         $data['pageSubTitle']   = 'Edit Product Form';
@@ -168,9 +174,9 @@ class Controller_product extends CI_Controller
 
     public function editProductImg($id)
     {
-        $this->crumbs->add('Product List', base_url().'product/product-list');  
-        $this->crumbs->add('Edit Product', base_url().'product/product-edit-image');  
-        $data['breadcrumb']=$this->crumbs->output();
+        $this->crumbs->add('Product List', base_url() . 'product/product-list');
+        $this->crumbs->add('Edit Product', base_url() . 'product/product-edit-image');
+        $data['breadcrumb'] = $this->crumbs->output();
 
         $data['title']   = 'Edit Product - ' . APP_NAME;
         $data['pageTitle']   = 'Product';
@@ -223,7 +229,7 @@ class Controller_product extends CI_Controller
 
             $this->model_product->edt_productImage_todb($id, $data);
             $this->session->set_flashdata('editMsg', 'Data berhasil diubah');
-            redirect('product/product-edit-image/'.$id);
+            redirect('product/product-edit-image/' . $id);
         }
     }
 
@@ -270,15 +276,16 @@ class Controller_product extends CI_Controller
         redirect('product/product-edit-image/' . $id);
     }
 
-    public function deleteProduct($id){
-        
+    public function deleteProduct($id)
+    {
+
         $getData    = $this->model_product->detailProducts($id);
         $getSku     = $getData['sku'];
         $uploadPath = './uploads/product/' . $getSku;
         $deleteFolder = rmdir($uploadPath);
-        if($deleteFolder){
+        if ($deleteFolder) {
             $data =  $this->model_product->deleteProductById($id);
-        } 
+        }
         echo json_encode($data);
     }
 }
