@@ -46,4 +46,12 @@ class Model_user extends CI_Model
             endif;
         }
     }
+
+    public function countUser(){
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('level', 'user');
+        // $this->db->get();
+        return $this->db->count_all_results();
+    }
 }

@@ -142,6 +142,7 @@ class Model_order extends CI_Model
 		}
 	}
 
+
 	public function insertOrder($data)
 	{
 		$this->db->insert('order', $data);
@@ -209,6 +210,22 @@ class Model_order extends CI_Model
 			$this->db->where('no_pemesanan', $no_pemesanan);
 			return $this->db->update('order');
 		}
+	}
+
+
+	
+	public function countOrderComplete(){
+		$this->db->select('*');
+		$this->db->from('order');
+		$this->db->where('status', 'COMPLETE');
+		return $this->db->count_all_results();
+	}
+
+	public function countOrderNotComplete(){
+		$this->db->select('*');
+		$this->db->from('order');
+		$this->db->where('status !=', 'COMPLETE');
+		return $this->db->count_all_results();
 	}
 }
 

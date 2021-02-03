@@ -256,7 +256,15 @@ class Model_product extends CI_Model
 	{
 		$this->db->delete('products', array('id_barang' => $id));
 		if ($this->db->affected_rows() > 0) {
-			return $this->db->delete('products_features_related',array('id_barang' => $id));
+			return $this->db->delete('products_features_related', array('id_barang' => $id));
 		}
+	}
+
+
+	//COUNT PRODUCTS
+	public function countProducts(){
+		$this->db->select('*');
+		$this->db->from('products');
+		return $this->db->count_all_results();
 	}
 }

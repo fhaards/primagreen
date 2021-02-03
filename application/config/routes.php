@@ -61,6 +61,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 /*///////// Dashboard /////////////*/
 $route['dashboard'] = 'Controller_dashboard/index';
+$route['dashboard/count-purchased'] = 'Controller_dashboard/countPurchased';
+$route['dashboard/count-user'] = 'Controller_dashboard/countUser';
 
 /*///////// Product /////////////*/
 $route['product/product-list'] = 'Controller_product/index';

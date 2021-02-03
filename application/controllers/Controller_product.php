@@ -64,6 +64,7 @@ class Controller_product extends CI_Controller
         $data['content'] = '_adminpages/product/form_add_product';
         $data['typeList'] = $this->model_product_related->getAllTypes();
         $data['featuresList'] = $this->model_product_related->getFeaturesEnabled();
+        $data['submitButton'] = $this->components->isButtonSubmit('typeStandard', 'colorPrimary', 'iconSubmit', 'Submit');
 
         $this->form_validation->set_error_delimiters('<div class="bg-red-100 w-100 py-1 px-4 my-1 text-xs border-2 border-red-300 rounded-md text-red-500">', '</div>');
         $this->form_validation->set_rules('nm_product', 'Common Name', 'required');
@@ -147,6 +148,7 @@ class Controller_product extends CI_Controller
         $data['content'] = '_adminpages/product/form_edit_product';
         $data['typeList'] = $this->model_product_related->getAllTypes();
         $data['featuresList'] = $this->model_product_related->getFeaturesEnabled();
+        $data['submitButton'] = $this->components->isButtonSubmit('typeStandard', 'colorPrimary', 'iconSubmit', 'Submit');
         $this->form_validation->set_rules('Nama Produk', 'Stok', 'Detail Info', 'features', 'price', 'required');
         if ($this->form_validation->run() === FALSE) {
             $data['edt_product'] = $this->model_product->edt_product($id);
