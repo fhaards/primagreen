@@ -123,7 +123,7 @@ class Controller_f_cart extends CI_Controller
         $this->load->library('crumbs');
         $this->crumbs->add('Checkout Detail', base_url() . 'cart/checkout-detail');
         $data['breadcrumb'] = $this->crumbs->output();
-        
+
         $countCartRow = count($this->cart->contents());
         if ($countCartRow == 0) {
             $this->session->set_flashdata('emptyCart', 'Empty Cart');
@@ -162,7 +162,7 @@ class Controller_f_cart extends CI_Controller
 
     function checkOut()
     {
-        
+
         $idbarang = $this->input->post('id_barang');
         $getUser = $this->input->post('user_checkout');
         $qty = $this->input->post('qty');
@@ -207,6 +207,21 @@ class Controller_f_cart extends CI_Controller
 
     function loadCheckoutFinish($setNoPemesanan)
     {
+        require 'vendor/autoload.php';
+
+        $options = array(
+            'cluster' => 'ap1',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'a666a399a7a6016c0bf0',
+            'b5be9dd992bce27c8b46',
+            '1149954',
+            $options
+        );
+        $data['message'] = 'hello world';
+        $pusher->trigger('my-channel', 'my-event', $data);
+
         $data['getNoPemesanan'] = $setNoPemesanan;
         $data['title']   = 'Checkout Finish - ' . APP_NAME;
         $data['content'] = 'frontend/cart/success_checkout';

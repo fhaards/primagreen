@@ -19,7 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/tailwind/css/chart.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/thisweb_assets/css/thisweb.css'; ?>" />
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert_1/sweetalert.min.js'; ?>" language="javascript"></script>
-   
+
     <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.css'; ?>">
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.min.js'; ?>" language="javascript"></script>
     <script src="<?php echo base_url() . 'assets/sweetalert/sweetalert2.js'; ?>" language="javascript"></script> -->
@@ -37,7 +37,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="flex flex-col flex-1 w-full">
             <!-- Header Menu -->
             <?php $this->load->view('_partials/_admin_part/header'); ?>
-
+            <div id="popup-notif" class="fixed right-0 mt-20 mr-10 flex flex-col z-40">
+                <div class="order-notif hidden bg-blue-200 text-blue-600 font-semibold border border-blue-300 shadow-xs px-4 py-1 rounded-md mb-2">
+                    Some user order a products
+                </div>
+            </div>
             <!-- Main Content -->
             <main class="h-full overflow-y-auto">
                 <div class="container px-6 py-3 mx-auto grid">
@@ -64,7 +68,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script src="<?php echo base_url() . 'assets/thisweb_assets/conf_ajax/config_base.js'; ?>" type="text/javascript"></script>
     <script src="<?php echo base_url() . 'vendor/tinymce/tinymce/tinymce.min.js'; ?>"></script>
     <?php $this->load->view('_partials/_admin_part/js_control'); ?>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+        var pusher = new Pusher('a666a399a7a6016c0bf0', {
+            cluster: 'ap1'
+        });
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            // alert(JSON.stringify(data));
+            $(".order-notif").show("slow",function (){
+                setTimeout(function(){
+                    $(".order-notif").hide();
+                },4000);
+            });
+        });
+    </script>
+    <script>
+        // $("#order-notif").show(function() {
+        //     setTimeout(function() {
+        //         $("#popup-notif .order-notif").hide();
+        //     }, 4000);
+        // });
         $("#resi_no").hide();
         $(document).ready(function() {
             $("#change_status_order").on('change', 'select', function() {
