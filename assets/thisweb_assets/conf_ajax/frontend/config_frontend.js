@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	window.onscroll = function () {
 		var currentScrollPos = window.pageYOffset;
 		var headerNav = document.getElementById("header-nav");
-		if (prevScrollpos > 32) {
-			headerNav.classList.add("shadow-md");
-			headerNav.classList.add("bg-white");
+		var headerOverlay =  document.getElementById("header-overlay")
+		if (prevScrollpos > 20) {
+			// headerNav.classList.add("bg-white");
+			headerOverlay.style.marginTop = "0px";
 		} else {
-			headerNav.classList.remove("shadow-md");
-			headerNav.classList.remove("bg-white");
+			headerOverlay.style.marginTop = "-150px";
 		}
 
 		// if (prevScrollpos > 300) {

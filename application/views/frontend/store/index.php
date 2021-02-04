@@ -1,4 +1,4 @@
-<section class="store-banner min-w-full w-full mx-auto flex md:items-center bg-cover bg-right" style="height:500px;">
+<section class="store-banner min-w-full w-full mx-auto flex md:items-center bg-cover bg-right h-full" >
     <div class="container mx-auto px-6 text-gray-800 w-full md:mt-16 mt-32">
         <div class="flex flex-col items-center tracking-wide md:mx-0 mx-auto ">
             <h1 class="uppercase font-black md:text-5xl text-2xl tracking-wide text-white">Shop All Items </h1>

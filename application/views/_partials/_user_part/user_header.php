@@ -1,5 +1,6 @@
-<header id="header-nav" class="nav-header fixed z-40 h-20 py-5 top-0 w-full mx-auto">
-  <div class="container flex items-center justify-between h-full mx-auto px-6 ">
+<header id="header-nav" class="nav-header fixed z-40 h-20 py-5 top-0 w-full mx-auto transition duration-300">
+  <div id="header-overlay" class="bg-white w-full h-full absolute left-0 top-0 "></div>
+  <div class="container flex items-center justify-between h-full mx-auto px-6 relative">
     <!-- Mobile hamburger -->
     <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple" @click="toggleSideMenu" aria-label="Menu">
       <svg class="w-6 h-6 fill-current text-gray-800" aria-hidden="true" fill="" viewBox="0 0 20 20">
@@ -10,8 +11,10 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $activeside = "py-1 px-4 uppercase text-white bg-green-500 tracking-widest items-center text-sm font-bold transition-colors duration-150 hover:bg-green-600 mx-auto rounded-md";
-    $inactiveside = "py-1 px-4 uppercase tracking-widest items-center text-sm font-bold transition-colors duration-150 text-gray-800 hover:text-white hover:bg-green-500 mx-auto rounded-md focus:bg-green-500 focus:text-white active:text-white hover:bg-opacity-75";
+    $baseHrefColor = "text-gray-800 hover:bg-green-500 active:text-white hover:bg-opacity-75 focus:bg-green-500 focus:text-white";
+    $activeHrefColor = "text-green-900 bg-green-500 hover:bg-green-600";
+    $activehref = $activeHrefColor . " py-1 px-4 text-xs font-bold uppercase tracking-widest items-center transition-colors duration-150 mx-auto rounded-md";
+    $baseHref = $baseHrefColor . " py-1 px-4  text-xs font-bold uppercase tracking-widest items-center transition-colors duration-150 mx-auto rounded-md";
     ?>
 
     <!-- Logo -->
@@ -24,13 +27,13 @@
     </div>
 
     <!-- Desktop Menu -->
-    <div class="hidden md:block items-center ">
+    <div class="hidden md:block items-center">
       <div class="mx-auto focus-within:text-green-500 flex flex-row space-x-2">
-        <!-- <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()"> -->
-        <a href="<?= base_url(); ?>store" class="<?= ($hal == 'store') ? $activeside :  $inactiveside; ?> store-trigger">
+        <!-- <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activehref :  $baseHref; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()"> -->
+        <a href="<?= base_url(); ?>store" class="<?= ($hal == 'store') ? $activehref :  $baseHref; ?> store-trigger">
           Store
         </a>
-        <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activeside :  $inactiveside; ?>">
+        <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activehref :  $baseHref; ?>">
           About Us
         </a>
       </div>
@@ -39,7 +42,7 @@
     <div class="flex-1 items-center py-2">
       <ul class="flex flex-row-reverse">
         <li class="relative">
-          <button style="cursor:pointer;" class="relative align-middle flex flex-row md:space-x-5 focus:outline-none <?= ($hal == 'profile') ? $activeside :  $inactiveside; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
+          <button style="cursor:pointer;" class="relative align-middle flex flex-row md:space-x-5 focus:outline-none <?= ($hal == 'profile') ? $activehref :  $baseHref; ?>" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
             <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
@@ -98,10 +101,13 @@
         </li>
 
         <li id="cart_icons" class="relative mr-2">
-          <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activeside :  $inactiveside; ?>">
+          <button class="show-cart-menu align-middle focus:outline-none <?= ($hal == 'cart') ? $activehref :  $baseHref; ?>">
             <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
+            <!-- <svg class="md:w-5 md:h-5 h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+            </svg> -->
             <!-- -mt-5 right-10 -->
             <div id="notif-cart">
               <span class="absolute w-3 h-3 md:-mt-6 md:ml-1 -mt-3 ml-2 bg-green-600 border-2 border-white rounded-full"></span>
@@ -110,7 +116,7 @@
         </li>
 
         <li id="" class="relative mr-2">
-          <button @click="openModalSearch" class="align-middle focus:outline-none <?= $inactiveside; ?>">
+          <button @click="openModalSearch" class="align-middle focus:outline-none <?= $baseHref; ?>">
             <svg class="md:w-5 md:h-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
