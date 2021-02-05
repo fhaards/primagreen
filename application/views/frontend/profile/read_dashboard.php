@@ -10,8 +10,8 @@
         <p class="font-semibold text-gray-700 md:text-lg text-md"> Account Information</p>
     </div>
     <div class="grid gid-cols-3">
-        <div class="grid gap-4 grid-flow-col auto-rows-max overflow-x-scroll pb-5 text-xs md:text-sm">
-            <div class="flex-1 flex flex-col md:w-full w-48 py-2 px-5 border-gray-300 border-2 rounded-md">
+        <div class="grid gap-4 grid-flow-col auto-rows-max overflow-x-scroll pb-5 text-xs md:text-sm md:overflow-x-hidden">
+            <div class="flex flex-col md:w-full w-48 py-2 px-5 border-gray-300 border-2 rounded-md">
                 <div class="mb-4">
                     <h2 class="font-semibold text-gray-500">Personal Information </h2>
                 </div>

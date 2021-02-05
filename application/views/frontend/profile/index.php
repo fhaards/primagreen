@@ -1,4 +1,5 @@
-<div class="container px-6 py-3 mx-auto grid overflow-y-auto max-h-screen scrollbar-none">
+<!-- <div class="container px-6 py-3 mx-auto grid overflow-y-auto max-h-screen scrollbar-none"> -->
+<div class="container px-6 py-3 mx-auto grid  scrollbar-none">
     <div class="w-full mx-auto mt-20 md:mt-24">
         <?php echo $breadcrumb; ?>
         <div class="container flex flex-row md:space-x-10 my-5 py-5">

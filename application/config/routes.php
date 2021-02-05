@@ -177,6 +177,9 @@ $route['profile/upload-transfer'] = 'Controller_f_user/uploadTransfer';
 /*///////// About Us /////////////*/
 $route['about-us'] = 'Controller_f_about/index';
 
+/*///////// How To Buy /////////////*/
+$route['how-to-buy'] = 'Controller_f_howtobuy/index';
+
 /*///////// FAQ /////////////*/
 $route['faq'] = 'Controller_f_faq/index';
 

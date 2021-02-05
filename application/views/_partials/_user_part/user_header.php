@@ -11,8 +11,8 @@
     <?php
     $hal = $this->uri->segment(1);
     $hal2 = $this->uri->segment(2);
-    $baseHrefColor = "text-gray-800 hover:bg-green-500 active:text-white hover:bg-opacity-75 focus:bg-green-500 focus:text-white";
-    $activeHrefColor = "text-green-900 bg-green-500 hover:bg-green-600";
+    $baseHrefColor = "text-gray-800 hover:bg-green-500 hover:bg-opacity-75 focus:bg-green-500";
+    $activeHrefColor = "text-white bg-green-500 hover:bg-green-600";
     $activehref = $activeHrefColor . " py-1 px-4 text-xs font-bold uppercase tracking-widest items-center transition-colors duration-150 mx-auto rounded-md";
     $baseHref = $baseHrefColor . " py-1 px-4  text-xs font-bold uppercase tracking-widest items-center transition-colors duration-150 mx-auto rounded-md";
     ?>
@@ -110,7 +110,7 @@
             </svg> -->
             <!-- -mt-5 right-10 -->
             <div id="notif-cart">
-              <span class="absolute w-3 h-3 md:-mt-6 md:ml-1 -mt-3 ml-2 bg-green-600 border-2 border-white rounded-full"></span>
+              <span class="absolute w-3 h-3 md:-mt-6 md:ml-1 -mt-3 ml-2 bg-red-600 border-2 border-white rounded-full"></span>
             </div>
           </button>
         </li>

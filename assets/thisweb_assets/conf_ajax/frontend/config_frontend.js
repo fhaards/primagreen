@@ -30,8 +30,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	window.onscroll = function () {
 		var currentScrollPos = window.pageYOffset;
 		var headerNav = document.getElementById("header-nav");
-		var headerOverlay =  document.getElementById("header-overlay")
-		if (prevScrollpos > 20) {
+		var headerOverlay = document.getElementById("header-overlay");
+		var mainPage = document.getElementById("main");
+		if (prevScrollpos > 10) {
 			// headerNav.classList.add("bg-white");
 			headerOverlay.style.marginTop = "0px";
 		} else {
