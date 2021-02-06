@@ -247,3 +247,13 @@ form label {
 	-o-background-size: cover;
 	background-size: cover;
 }
+
+
+/* HOW TO BUY PAGES */
+.howtobuy-1{
+	background: url(../../../uploads/howtobuy/1_select_items.svg) no-repeat;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+}
