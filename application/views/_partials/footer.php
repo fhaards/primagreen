@@ -1,5 +1,5 @@
 <?php $whatext = "Hello, .. "; ?>
-<section class="w-full bg-gray-900 mt-20 py-20 inset-x-0 bottom-0 footer-bg">
+<section class="w-full mt-20 bg-gray-900 py-20 inset-x-0 bottom-0 footer-bg">
     <div class="container mx-auto items-center px-6">
         <div class="flex items-center md:flex-col flex-col md:space-y-0 space-y-10">
             <div class="flex flex-col mx-auto md:w-1/3 text-center mb-10">
@@ -37,8 +37,8 @@
                     ?>
                     <ul class="md:text-sm text-xs">
                         <li class="font-bold text-white mb-1 md:mb-4">Support</li>
-                        <li class="py-1"><a class="hover:text-gray-500 hover:underline text-gray-100 font-semibold" href="">How to buy</a></li>
-                        <li class="py-1"><a href="<?= base_url() . 'contact-us/' . $whoThis; ?>" class="hover:text-gray-500 hover:underline text-gray-100 font-semibold" href="">Contact us</a></li>
+                        <li class="py-1"><a href="<?= base_url() . 'how-to-buy'; ?>" class="hover:text-gray-500 hover:underline text-gray-100 font-semibold">How to buy</a></li>
+                        <li class="py-1"><a href="<?= base_url() . 'contact-us/' . $whoThis; ?>"class="hover:text-gray-500 hover:underline text-gray-100 font-semibold" href="">Contact us</a></li>
                         <li class="py-1"><a href="<?= base_url() . 'faq'; ?>" class="hover:text-gray-500 hover:underline text-gray-100 font-semibold" href="">FAQ</a></li>
                     </ul>
                 </div>

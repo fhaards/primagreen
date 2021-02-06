@@ -13,8 +13,8 @@
     $hal2 = $this->uri->segment(2);
     $baseHrefColor = "text-gray-800 hover:bg-green-500 hover:bg-opacity-75 focus:bg-green-500";
     $activeHrefColor = "text-white bg-green-500 hover:bg-green-600";
-    $activehref = $activeHrefColor . " py-1 px-4 text-xs font-bold uppercase tracking-widest items-center transition-colors duration-150 mx-auto rounded-md";
-    $baseHref = $baseHrefColor . " py-1 px-4  text-xs font-bold uppercase tracking-widest items-center transition-colors duration-150 mx-auto rounded-md";
+    $activehref = $activeHrefColor . " py-1 px-4 text-xs font-bold uppercase tracking-widest  transition-colors duration-150 rounded-md";
+    $baseHref = $baseHrefColor . " py-1 px-4 text-xs font-bold uppercase tracking-widest items-center transition-colors duration-150 rounded-md";
     ?>
 
     <!-- Logo -->
@@ -30,11 +30,11 @@
     <div class="hidden md:block items-center">
       <div class="mx-auto focus-within:text-green-500 flex flex-row space-x-2">
         <!-- <a href="<?= base_url(); ?>store/product-list" class="<?= ($hal == 'store') ? $activehref :  $baseHref; ?> store-trigger" onmouseover="openSubNav()" onmouseout="closeSubNav()"> -->
-        <a href="<?= base_url(); ?>store" class="<?= ($hal == 'store') ? $activehref :  $baseHref; ?> store-trigger">
-          Store
+        <a href="<?= base_url(); ?>store" class="<?= ($hal == 'store') ? $activehref :  $baseHref; ?> store-trigger ">
+          <span> Store </span>
         </a>
         <a href="<?= base_url(); ?>about-us" class="<?= ($hal == 'about-us') ? $activehref :  $baseHref; ?>">
-          About Us
+          <span> About Us </span>
         </a>
       </div>
     </div>
